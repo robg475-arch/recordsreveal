@@ -34,21 +34,23 @@ img{max-width:100%}
 .topbar span{color:#f5c842}
 
 /* MASTHEAD */
-.masthead{border-bottom:3px double var(--border);padding:20px 0 16px;text-align:center;background:var(--white)}
+.masthead{padding:20px 0 16px;text-align:center;background:var(--white)}
 .masthead-eyebrow{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px}
 .masthead-title{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,6vw,4.5rem);font-weight:900;letter-spacing:-.02em;color:var(--ink);line-height:1}
 .masthead-title span{color:var(--red)}
 .masthead-tagline{font-size:13px;color:var(--ink3);margin-top:8px;letter-spacing:.06em;font-style:italic}
-.masthead-nav{display:flex;justify-content:center;gap:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-top:16px}
-.masthead-nav a{padding:9px 20px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);border-right:1px solid var(--border);transition:background .15s}
-.masthead-nav a:last-child{border-right:none}
-.masthead-nav a:hover{background:var(--cream)}
 /* SITE NAV */
-.site-nav{display:flex;justify-content:center;gap:0;border-bottom:1px solid var(--border);background:var(--ink)}
-.site-nav a{padding:8px 20px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.55);border-right:1px solid rgba(255,255,255,.1);transition:all .15s}
+.site-nav{display:flex;justify-content:center;gap:0;border-top:1px solid var(--border);border-bottom:3px double var(--border);background:var(--ink)}
+.site-nav a{padding:9px 20px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.55);border-right:1px solid rgba(255,255,255,.1);transition:all .15s}
 .site-nav a:last-child{border-right:none}
 .site-nav a:hover{color:white;background:rgba(255,255,255,.08)}
 .site-nav a.active{color:white;background:var(--red)}
+/* JUMP TO */
+.jump-to{background:var(--cream);border-bottom:1px solid var(--border);padding:8px 24px;display:flex;align-items:center;gap:0;font-size:11px}
+.jump-to-label{color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;margin-right:12px;white-space:nowrap}
+.jump-to a{padding:5px 14px;color:var(--ink2);letter-spacing:.08em;text-transform:uppercase;border-right:1px solid var(--border);transition:color .15s}
+.jump-to a:last-child{border-right:none}
+.jump-to a:hover{color:var(--red)}
 
 /* LAYOUT */
 .container{max-width:1180px;margin:0 auto;padding:0 24px}
@@ -205,25 +207,26 @@ img{max-width:100%}
     <div class="masthead-eyebrow">An independent data investigation</div>
     <div class="masthead-title">RUNWAY <span>RISK</span></div>
     <div class="masthead-tagline">The wildlife strike investigation airlines don't advertise</div>
-    <nav class="masthead-nav">
-      <a href="#airports">Airports</a>
-      <a href="#species">Species</a>
-      <a href="#seasons">Seasons</a>
-      <a href="#damage">Damage</a>
-      <a href="#data">The Data</a>
-    </nav>
   </div>
+  <nav class="site-nav">
+    <a href="../index.html">Home</a>
+    <a href="bird-strikes.html" class="active">Aviation</a>
+    <a href="hollywood.html">Entertainment</a>
+    <a href="#">Safety</a>
+    <a href="#">Health</a>
+    <a href="#">Environment</a>
+    <a href="#">Economy</a>
+    <a href="../about/index.html">About</a>
+  </nav>
 </header>
-<nav class="site-nav">
-  <a href="../index.html">Home</a>
-  <a href="bird-strikes.html" class="active">Aviation</a>
-  <a href="hollywood.html">Entertainment</a>
-  <a href="#">Safety</a>
-  <a href="#">Health</a>
-  <a href="#">Environment</a>
-  <a href="#">Economy</a>
-  <a href="../about/index.html">About</a>
-</nav>
+<div class="jump-to">
+  <span class="jump-to-label">Jump to:</span>
+  <a href="#airports">Airports</a>
+  <a href="#species">Species</a>
+  <a href="#seasons">Seasons</a>
+  <a href="#damage">Damage</a>
+  <a href="#data">The Data</a>
+</div>
 
 <!-- LEADERBOARD AD -->
 <div class="container">
