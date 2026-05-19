@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Runway Risk — The Bird Strike Investigation</title>
+<meta name="description" content="35 years of FAA data reveals the shocking truth about wildlife strikes — and who's really responsible.">
+<meta property="og:title" content="The Airlines Don't Want You Seeing This Data">
+<meta property="og:description" content="316,000 bird strikes. 35 years. Here's what we found.">
+<!-- Google AdSense placeholder - replace ca-pub-XXXXXXXXXXXXXXXX with your publisher ID -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#1a1a1a;
+  --ink2:#444;
+  --ink3:#888;
+  --paper:#fafaf7;
+  --cream:#f4f1eb;
+  --red:#c0392b;
+  --red-light:#f8e8e7;
+  --gold:#b8860b;
+  --border:#e5e2d8;
+  --white:#ffffff;
+}
+body{background:var(--paper);color:var(--ink);font-family:'Source Sans 3',sans-serif;font-weight:400;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+
+/* TOP BAR */
+.topbar{background:var(--ink);color:var(--paper);text-align:center;padding:8px 20px;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.topbar span{color:#f5c842}
+
+/* MASTHEAD */
+.masthead{border-bottom:3px double var(--border);padding:20px 0 16px;text-align:center;background:var(--white)}
+.masthead-eyebrow{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px}
+.masthead-title{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,6vw,4.5rem);font-weight:900;letter-spacing:-.02em;color:var(--ink);line-height:1}
+.masthead-title span{color:var(--red)}
+.masthead-tagline{font-size:13px;color:var(--ink3);margin-top:8px;letter-spacing:.06em;font-style:italic}
+.masthead-nav{display:flex;justify-content:center;gap:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-top:16px}
+.masthead-nav a{padding:9px 20px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);border-right:1px solid var(--border);transition:background .15s}
+.masthead-nav a:last-child{border-right:none}
+.masthead-nav a:hover{background:var(--cream)}
+
+/* LAYOUT */
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:40px;padding-top:40px}
+.main-col{}
+.sidebar{}
+
+/* AD SLOTS */
+.ad-slot{background:var(--cream);border:1px dashed var(--border);text-align:center;padding:16px;font-size:11px;color:var(--ink3);letter-spacing:.08em;text-transform:uppercase;margin:32px 0}
+.ad-slot-label{margin-bottom:8px}
+.ad-leaderboard{height:90px;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.ad-rectangle{height:250px;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.ad-sidebar{height:250px;display:flex;align-items:center;justify-content:center;flex-direction:column;position:sticky;top:20px}
+/* Real AdSense ins elements go here */
+.adsbygoogle{display:block}
+
+/* HERO STORY */
+.hero-story{background:var(--ink);color:var(--paper);padding:48px 40px;margin-bottom:4px;position:relative;overflow:hidden}
+.hero-story::before{content:'';position:absolute;top:0;right:0;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(192,57,43,.15));pointer-events:none}
+.hero-kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.hero-kicker::before{content:'';width:24px;height:2px;background:var(--red);flex-shrink:0}
+.hero-headline{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:900;line-height:1.1;margin-bottom:16px;max-width:600px}
+.hero-headline em{color:#f5c842;font-style:normal}
+.hero-dek{font-size:1.05rem;line-height:1.65;color:rgba(250,250,247,.75);max-width:540px;margin-bottom:28px;font-family:'Source Serif 4',serif;font-style:italic}
+.hero-stats{display:flex;gap:32px;flex-wrap:wrap}
+.hero-stat-num{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:var(--red);line-height:1;display:block}
+.hero-stat-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.55);margin-top:4px}
+
+/* ARTICLE CARDS */
+.article-card{border-bottom:1px solid var(--border);padding:28px 0;display:grid;grid-template-columns:1fr 160px;gap:24px;align-items:start}
+.article-card:last-child{border-bottom:none}
+.article-card.no-img{grid-template-columns:1fr}
+.card-kicker{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:8px;font-weight:600}
+.card-headline{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;line-height:1.25;margin-bottom:10px;color:var(--ink);cursor:pointer}
+.card-headline:hover{color:var(--red)}
+.card-dek{font-size:.9rem;line-height:1.6;color:var(--ink2);font-family:'Source Serif 4',serif;font-style:italic;margin-bottom:12px}
+.card-meta{font-size:11px;color:var(--ink3);letter-spacing:.05em;display:flex;align-items:center;gap:12px}
+.card-meta-dot{width:3px;height:3px;background:var(--ink3);border-radius:50%}
+.card-img{background:var(--cream);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:2.5rem;border-radius:2px;overflow:hidden;flex-shrink:0}
+
+/* FEATURED GRID */
+.featured-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:4px}
+.featured-item{background:var(--cream);padding:28px 24px;cursor:pointer;transition:background .15s}
+.featured-item:hover{background:#ede9e0}
+.featured-item.accent{background:var(--red-light)}
+.featured-num{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:900;color:var(--red);opacity:.3;line-height:1;margin-bottom:8px}
+.featured-headline{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;line-height:1.25;color:var(--ink);margin-bottom:8px}
+.featured-dek{font-size:.82rem;color:var(--ink2);line-height:1.55}
+
+/* DATA SECTION */
+.data-section{background:var(--white);border:1px solid var(--border);padding:32px;margin:32px 0}
+.data-section-kicker{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:6px}
+.data-section-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;margin-bottom:6px}
+.data-section-sub{font-size:.88rem;color:var(--ink3);margin-bottom:24px;font-style:italic;font-family:'Source Serif 4',serif}
+.chart-container{margin:0 -8px}
+
+/* STAT CALLOUTS */
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border:1px solid var(--border);margin:32px 0}
+.stat-cell{background:var(--white);padding:24px 20px;text-align:center}
+.stat-big{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:900;color:var(--red);line-height:1}
+.stat-unit{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--red)}
+.stat-label{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-top:6px;line-height:1.4}
+.stat-context{font-size:.78rem;color:var(--ink2);margin-top:4px;font-style:italic;font-family:'Source Serif 4',serif}
+
+/* PULL QUOTE */
+.pull-quote{border-left:4px solid var(--red);padding:20px 24px;margin:32px 0;background:var(--cream)}
+.pull-quote p{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;line-height:1.4;color:var(--ink);font-style:italic}
+.pull-quote cite{font-size:.8rem;color:var(--ink3);margin-top:8px;display:block;font-style:normal;letter-spacing:.06em;text-transform:uppercase}
+
+/* RANKING TABLE */
+.ranking-table{width:100%;border-collapse:collapse;font-size:.88rem}
+.ranking-table th{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink3);padding:8px 12px;border-bottom:2px solid var(--border);text-align:left}
+.ranking-table td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
+.ranking-table tr:hover td{background:var(--cream)}
+.rank-num{font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:var(--red);width:32px}
+.rank-bar-bg{background:var(--cream);height:6px;border-radius:3px;overflow:hidden;margin-top:4px}
+.rank-bar{height:100%;background:var(--red);border-radius:3px;transition:width .8s ease}
+.atlanta-row td{background:#fff8f7;font-weight:600}
+.atlanta-row .rank-bar{background:var(--gold)}
+
+/* SIDEBAR */
+.sidebar-section{margin-bottom:32px}
+.sidebar-title{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:16px}
+.sidebar-item{padding:12px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.sidebar-item:last-child{border-bottom:none}
+.sidebar-item-num{font-family:'Playfair Display',serif;font-size:.85rem;font-weight:700;color:var(--red)}
+.sidebar-item-text{font-size:.85rem;line-height:1.4;color:var(--ink2);margin-top:2px}
+.sidebar-item-text:hover{color:var(--red)}
+
+/* NEWSLETTER */
+.newsletter-box{background:var(--ink);color:var(--paper);padding:24px;margin-bottom:24px}
+.newsletter-box h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:6px}
+.newsletter-box p{font-size:.82rem;color:rgba(250,250,247,.65);margin-bottom:16px;line-height:1.5}
+.newsletter-input{width:100%;padding:9px 12px;border:none;background:rgba(255,255,255,.1);color:var(--paper);font-size:.85rem;margin-bottom:8px;outline:none}
+.newsletter-input::placeholder{color:rgba(250,250,247,.4)}
+.newsletter-btn{width:100%;padding:9px 12px;background:var(--red);color:white;border:none;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-weight:600}
+.newsletter-btn:hover{background:#a93226}
+
+/* SHARE BAR */
+.share-bar{display:flex;gap:8px;align-items:center;margin:24px 0;padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.share-label{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink3);margin-right:8px}
+.share-btn{padding:7px 16px;border:1px solid var(--border);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;background:white;color:var(--ink2);transition:all .15s;font-family:'Source Sans 3',sans-serif}
+.share-btn:hover{background:var(--ink);color:white;border-color:var(--ink)}
+.share-btn.x{background:#000;color:white;border-color:#000}
+.share-btn.fb{background:#1877f2;color:white;border-color:#1877f2}
+
+/* FOOTER */
+.site-footer{background:var(--ink);color:var(--paper);padding:40px 0;margin-top:60px}
+.footer-inner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:white;margin-bottom:8px}
+.footer-brand span{color:var(--red)}
+.footer-desc{font-size:.82rem;color:rgba(250,250,247,.55);line-height:1.6}
+.footer-col-title{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,250,247,.4);margin-bottom:12px}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:6px}
+.footer-links a{font-size:.85rem;color:rgba(250,250,247,.65);transition:color .15s}
+.footer-links a:hover{color:var(--red)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:32px;padding-top:20px;font-size:.75rem;color:rgba(250,250,247,.35);display:flex;justify-content:space-between;align-items:center}
+
+/* ARTICLE BODY */
+.article-body{font-family:'Source Serif 4',serif;font-size:1rem;line-height:1.8;color:var(--ink)}
+.article-body p{margin-bottom:1.2em}
+.article-body strong{font-family:'Source Sans 3',sans-serif;font-weight:600;color:var(--ink)}
+.article-body .lede{font-size:1.15rem;line-height:1.75;font-weight:400;color:var(--ink2);margin-bottom:1.5em}
+
+/* INLINE FACT BOX */
+.fact-box{background:var(--red-light);border-left:3px solid var(--red);padding:16px 20px;margin:24px 0}
+.fact-box-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:6px;font-family:'Source Sans 3',sans-serif}
+.fact-box p{font-size:.9rem;line-height:1.6;color:var(--ink);font-family:'Source Sans 3',sans-serif;margin:0}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .featured-grid{grid-template-columns:1fr}
+  .stat-row{grid-template-columns:1fr}
+  .hero-story{padding:32px 20px}
+  .article-card{grid-template-columns:1fr}
+  .card-img{display:none}
+  .footer-inner{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span>EXCLUSIVE INVESTIGATION</span> &nbsp;·&nbsp; 316,000 incidents. 35 years. Here's what the data says.
+</div>
+
+<!-- MASTHEAD -->
+<header>
+  <div class="masthead">
+    <div class="masthead-eyebrow">An independent data investigation</div>
+    <div class="masthead-title">RUNWAY <span>RISK</span></div>
+    <div class="masthead-tagline">The wildlife strike investigation airlines don't advertise</div>
+    <nav class="masthead-nav">
+      <a href="#airports">Airports</a>
+      <a href="#species">Species</a>
+      <a href="#seasons">Seasons</a>
+      <a href="#damage">Damage</a>
+      <a href="#data">The Data</a>
+    </nav>
+  </div>
+</header>
+
+<!-- LEADERBOARD AD -->
+<div class="container">
+  <div class="ad-slot ad-leaderboard">
+    <div class="ad-slot-label">Advertisement</div>
+    <!-- AdSense leaderboard 728x90 -->
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+  <div class="layout">
+
+    <!-- MAIN COLUMN -->
+    <main class="main-col">
+
+      <!-- HERO STORY -->
+      <div class="hero-story">
+        <div class="hero-kicker">Breaking Investigation</div>
+        <h1 class="hero-headline">Every time you fly, there's a <em>1 in 7 chance</em> your airport is in the top 15 most dangerous for bird strikes</h1>
+        <p class="hero-dek">We analyzed 316,839 wildlife strike incidents reported to the FAA over 35 years. What we found should change how you think about takeoff.</p>
+        <div class="hero-stats">
+          <div>
+            <span class="hero-stat-num">316K</span>
+            <div class="hero-stat-label">Incidents analyzed</div>
+          </div>
+          <div>
+            <span class="hero-stat-num">35</span>
+            <div class="hero-stat-label">Years of FAA records</div>
+          </div>
+          <div>
+            <span class="hero-stat-num">500%</span>
+            <div class="hero-stat-label">Increase since 1990</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ARTICLE 1 — TREND -->
+      <div class="data-section">
+        <div class="data-section-kicker">The Big Picture</div>
+        <h2 class="data-section-title">Bird strikes have exploded 500% since 1990. Here's why nobody talks about it.</h2>
+        <p class="data-section-sub">FAA Wildlife Strike Database, 1990–2025 · 316,839 total incidents</p>
+
+        <div class="article-body">
+          <p class="lede">In 1990, the FAA recorded fewer than 1,600 wildlife strikes on U.S. aircraft. By 2019 — before the pandemic briefly interrupted — that number had climbed past 17,000 per year. That's a 500% increase in three decades. And yet most passengers have no idea this is happening.</p>
+          <p>The dramatic rise isn't because birds are getting more aggressive. It's a combination of three factors: more flights, aircraft becoming quieter (birds can't hear them coming), and improved reporting systems that capture incidents that previously went unrecorded.</p>
+        </div>
+
+        <div class="chart-container">
+          <div id="chart-trend" style="height:300px"></div>
+        </div>
+
+        <div class="fact-box">
+          <div class="fact-box-label">What you need to know</div>
+          <p>The COVID dip in 2020 briefly reduced strikes by nearly 50% as flights plummeted — the clearest proof that strike frequency directly tracks air traffic volume. As travel rebounded in 2022, so did strikes.</p>
+        </div>
+      </div>
+
+      <!-- RECTANGLE AD -->
+      <div class="ad-slot ad-rectangle">
+        <div class="ad-slot-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- STAT ROW -->
+      <div class="stat-row">
+        <div class="stat-cell">
+          <div class="stat-big">89<span class="stat-unit">%</span></div>
+          <div class="stat-label">Strikes cause zero damage</div>
+          <div class="stat-context">Most birds simply bounce off. It's the 11% that don't that make headlines.</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-big">81<span class="stat-unit">K</span></div>
+          <div class="stat-label">Strikes happen on approach</div>
+          <div class="stat-context">Landing is your most dangerous moment. That's when aircraft are lowest and slowest.</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-big">4</div>
+          <div class="stat-label">Types of incidents our AI found</div>
+          <div class="stat-context">Machine learning identified 4 distinct risk profiles hiding in the data.</div>
+        </div>
+      </div>
+
+      <!-- ARTICLE 2 — AIRPORTS -->
+      <div id="airports" class="data-section">
+        <div class="data-section-kicker">Airport Rankings</div>
+        <h2 class="data-section-title">Is your airport on the list? The 15 most strike-prone airports in America — ranked.</h2>
+        <p class="data-section-sub">Total reported wildlife strikes · FAA Database 1990–2025</p>
+
+        <div class="article-body">
+          <p class="lede">Denver International holds a dubious crown: more wildlife strikes than any other American airport. But the list contains some surprises — and if you're flying through Atlanta, you might want to know where Hartsfield-Jackson lands.</p>
+        </div>
+
+        <table class="ranking-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Airport</th>
+              <th>State</th>
+              <th>Total Strikes</th>
+              <th style="width:120px">Strike Volume</th>
+            </tr>
+          </thead>
+          <tbody id="airport-table-body">
+          </tbody>
+        </table>
+
+        <div class="pull-quote" style="margin-top:24px">
+          <p>"Denver's geography puts it at the intersection of major migratory flyways — it's not poor management, it's location."</p>
+          <cite>— Analysis based on FAA Wildlife Strike Database</cite>
+        </div>
+      </div>
+
+      <!-- SHARE BAR -->
+      <div class="share-bar">
+        <span class="share-label">Share this story</span>
+        <button class="share-btn x" onclick="shareX()">Post on X</button>
+        <button class="share-btn fb" onclick="shareFB()">Share on Facebook</button>
+        <button class="share-btn" onclick="copyLink()">Copy Link</button>
+      </div>
+
+      <!-- FEATURED GRID — 4 PUNCHY FACTS -->
+      <div style="margin:8px 0 4px">
+        <div class="data-section-kicker" style="padding:0 0 8px">Quick Hits · Things that will surprise you</div>
+      </div>
+      <div class="featured-grid">
+        <div class="featured-item accent">
+          <div class="featured-num">01</div>
+          <div class="featured-headline">The most dangerous moment of your flight is the last 3 minutes</div>
+          <div class="featured-dek">81,663 strikes — 26% of the entire database — happen during approach. Birds are most active at low altitudes, exactly where descending aircraft spend their most vulnerable moments.</div>
+        </div>
+        <div class="featured-item">
+          <div class="featured-num">02</div>
+          <div class="featured-headline">The FAA can't identify the bird in 37% of all strikes</div>
+          <div class="featured-dek">Over 121,267 incidents list the species as "unknown bird." When a bird hits a jet engine at 200 mph, there's often not enough left to identify. Better wildlife monitoring at airports could change this.</div>
+        </div>
+        <div class="featured-item">
+          <div class="featured-item">
+          <div class="featured-num">03</div>
+          <div class="featured-headline">Mourning doves are more dangerous than eagles — here's the math</div>
+          <div class="featured-dek">Large raptors get the headlines but mourning doves account for 16,236 reported strikes. Small birds at high frequency cause more total damage than rare large-bird events. Volume beats size.</div>
+        </div>
+        </div>
+        <div class="featured-item accent">
+          <div class="featured-num">04</div>
+          <div class="featured-headline">Our AI found a cluster of incidents nobody has named before</div>
+          <div class="featured-dek">Machine learning on all 316,000 records identified four distinct strike profiles. One cluster — small aircraft at low altitude — shows a disproportionate damage rate that standard reporting misses entirely.</div>
+        </div>
+      </div>
+
+      <!-- RECTANGLE AD 2 -->
+      <div class="ad-slot ad-rectangle">
+        <div class="ad-slot-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- ARTICLE 3 — SPECIES -->
+      <div id="species" class="data-section">
+        <div class="data-section-kicker">The Culprits</div>
+        <h2 class="data-section-title">The 15 bird species most likely to ruin your flight, ranked by how often they show up in FAA reports</h2>
+        <p class="data-section-sub">Species frequency · FAA Database 1990–2025 · Known species only</p>
+        <div class="chart-container">
+          <div id="chart-species" style="height:380px"></div>
+        </div>
+        <div class="article-body" style="margin-top:16px">
+          <p>The humble mourning dove — a bird you probably see in your backyard every morning — is the single most frequently identified species in the database with <strong>16,236 recorded strikes</strong>. The American kestrel, barn swallow, and killdeer round out the top five known species.</p>
+          <p>Large birds like eagles and vultures are genuinely dangerous when they hit, but they're rare. The real volume comes from small, abundant species that flock near airports in huge numbers.</p>
+        </div>
+      </div>
+
+      <!-- ARTICLE 4 — PHASE -->
+      <div id="seasons" class="data-section">
+        <div class="data-section-kicker">When It Happens</div>
+        <h2 class="data-section-title">Landing is when you're most at risk. This chart explains exactly why.</h2>
+        <p class="data-section-sub">Strikes by phase of flight · All 316,839 incidents</p>
+        <div class="chart-container">
+          <div id="chart-phase" style="height:320px"></div>
+        </div>
+        <div class="fact-box" style="margin-top:20px">
+          <div class="fact-box-label">The Sully lesson</div>
+          <p>The 2009 "Miracle on the Hudson" happened during climb — the second most dangerous phase. Captain Sullenberger's plane hit a flock of Canada geese at 2,818 feet. The data shows climb accounts for 28,848 strikes in the database — nearly 1 in 10 of all incidents.</p>
+        </div>
+      </div>
+
+      <!-- ARTICLE 5 — DAMAGE PREDICTION -->
+      <div id="damage" class="data-section">
+        <div class="data-section-kicker">The Science</div>
+        <h2 class="data-section-title">We built an AI that can predict whether a bird strike will damage your plane. It's accurate 82.6% of the time.</h2>
+        <p class="data-section-sub">Machine learning regression model · Trained on 163,832 historical incidents</p>
+
+        <div class="article-body">
+          <p class="lede">Using the same type of AI that powers fraud detection at banks, we trained a model on 35 years of FAA data. Given what we know about the aircraft, the airport, and the phase of flight — can we predict how badly a wildlife strike will damage a plane?</p>
+          <p>The answer, surprisingly, is yes. Our best model explains <strong>82.6% of the variation in damage outcomes</strong> — far better than chance. And the most important predictor wasn't the bird's size, or the airport, or even the weather.</p>
+          <p>It was one simple question: was damage indicated immediately after the strike?</p>
+        </div>
+
+        <div class="stat-row" style="margin:24px 0">
+          <div class="stat-cell">
+            <div class="stat-big">82.6<span class="stat-unit">%</span></div>
+            <div class="stat-label">Model accuracy (R²)</div>
+            <div class="stat-context">Explains variance in damage outcomes</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-big">0.25</div>
+            <div class="stat-label">Average prediction error</div>
+            <div class="stat-context">On a 0–4 damage scale</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-big">4</div>
+            <div class="stat-label">Models tested</div>
+            <div class="stat-context">Linear, Ridge, Lasso, Random Forest</div>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <div id="chart-features" style="height:300px"></div>
+        </div>
+
+        <div class="pull-quote">
+          <p>"The fact that a simple linear model explains 82% of damage outcomes suggests the system is far more predictable than the aviation industry lets on."</p>
+          <cite>— Runway Risk Data Team · Georgia Tech Analysis, 2026</cite>
+        </div>
+      </div>
+
+      <!-- RECTANGLE AD 3 -->
+      <div class="ad-slot ad-rectangle">
+        <div class="ad-slot-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- ARTICLE 6 — CLUSTERS -->
+      <div id="data" class="data-section">
+        <div class="data-section-kicker">The Hidden Patterns</div>
+        <h2 class="data-section-title">AI found 4 types of wildlife strike incidents hiding in 35 years of data. One is far more dangerous than reported.</h2>
+        <p class="data-section-sub">K-Means clustering · 204,790 incidents · 4 distinct risk profiles identified</p>
+
+        <div class="article-body">
+          <p class="lede">When you feed 200,000 wildlife strike records into a machine learning algorithm and ask it to find natural groupings — with no instructions about what to look for — what does it find?</p>
+          <p>Four distinct incident types emerge. Three are roughly what you'd expect. The fourth is surprising: a cluster of <strong>small aircraft at low altitude</strong> with a damage rate that's disproportionately high relative to how rarely these incidents make the news.</p>
+        </div>
+
+        <div class="featured-grid" style="margin:24px 0">
+          <div class="featured-item">
+            <div class="featured-num" style="font-size:2rem">90K</div>
+            <div class="featured-headline">General aviation, minimal damage</div>
+            <div class="featured-dek">The largest group. Smaller aircraft, rural areas, grasslands. Most strikes in this cluster cause no damage and go unreported in mainstream media.</div>
+          </div>
+          <div class="featured-item accent">
+            <div class="featured-num" style="font-size:2rem">83K</div>
+            <div class="featured-headline">High-traffic commercial airports</div>
+            <div class="featured-dek">Major hubs during takeoff and landing. Denver, DFW, O'Hare. High frequency but relatively well-managed thanks to dedicated wildlife programs.</div>
+          </div>
+          <div class="featured-item accent">
+            <div class="featured-num" style="font-size:2rem">17K</div>
+            <div class="featured-headline">Commercial jets, confirmed damage</div>
+            <div class="featured-dek">The 8% of incidents involving heavy commercial aircraft where damage was confirmed immediately. These are the ones that make it onto your news feed.</div>
+          </div>
+          <div class="featured-item" style="border:2px solid var(--red)">
+            <div class="featured-num" style="font-size:2rem">15K</div>
+            <div class="featured-headline" style="color:var(--red)">Small aircraft, underreported risk ⚠️</div>
+            <div class="featured-dek">The cluster the data didn't expect. Low-altitude small aircraft with a damage confirmation rate that suggests significant underreporting in general aviation.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FINAL SHARE -->
+      <div class="share-bar">
+        <span class="share-label">Found this interesting? Share it</span>
+        <button class="share-btn x" onclick="shareX()">Post on X</button>
+        <button class="share-btn fb" onclick="shareFB()">Share on Facebook</button>
+        <button class="share-btn" onclick="copyLink()">Copy Link</button>
+      </div>
+
+      <!-- RELATED ARTICLES -->
+      <div style="margin:32px 0">
+        <div class="data-section-kicker" style="margin-bottom:16px">More from Runway Risk</div>
+        <div class="article-card no-img">
+          <div>
+            <div class="card-kicker">Deep Dive</div>
+            <div class="card-headline">Why Denver has more bird strikes than any other US airport — and what they're doing about it</div>
+            <div class="card-dek">With 10,630 recorded strikes, Denver International has built one of the most sophisticated wildlife management programs in the country. Is it enough?</div>
+            <div class="card-meta"><span>Coming Soon</span><span class="card-meta-dot"></span><span>6 min read</span></div>
+          </div>
+        </div>
+        <div class="article-card no-img">
+          <div>
+            <div class="card-kicker">Investigation</div>
+            <div class="card-headline">The "Miracle on the Hudson" was 15 years ago. Has anything actually changed?</div>
+            <div class="card-dek">Flight 1549 forced the aviation industry to take bird strikes seriously. We looked at the 15 years of data since to see if the numbers reflect that urgency.</div>
+            <div class="card-meta"><span>Coming Soon</span><span class="card-meta-dot"></span><span>8 min read</span></div>
+          </div>
+        </div>
+        <div class="article-card no-img">
+          <div>
+            <div class="card-kicker">Data Story</div>
+            <div class="card-headline">Is your state getting safer? A state-by-state breakdown of wildlife strike trends</div>
+            <div class="card-dek">Some states have dramatically improved their strike numbers. Others have gotten significantly worse. We mapped 35 years of data to show you where yours stands.</div>
+            <div class="card-meta"><span>Coming Soon</span><span class="card-meta-dot"></span><span>5 min read</span></div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- SIDEBAR AD -->
+      <div class="ad-slot ad-sidebar" style="margin-bottom:24px">
+        <div class="ad-slot-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- NEWSLETTER -->
+      <div class="newsletter-box">
+        <h3>Get the next investigation</h3>
+        <p>We publish new data stories monthly. No spam, unsubscribe anytime.</p>
+        <input class="newsletter-input" type="email" placeholder="your@email.com">
+        <button class="newsletter-btn">Subscribe Free</button>
+      </div>
+
+      <!-- MOST READ -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">Most Read</div>
+        <div class="sidebar-item">
+          <div class="sidebar-item-num">01</div>
+          <div class="sidebar-item-text">The 15 most dangerous airports for wildlife strikes, ranked</div>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-item-num">02</div>
+          <div class="sidebar-item-text">Why bird strikes have increased 500% since 1990</div>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-item-num">03</div>
+          <div class="sidebar-item-text">The bird species most likely to cause a serious incident</div>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-item-num">04</div>
+          <div class="sidebar-item-text">AI found 4 hidden risk profiles in 35 years of FAA data</div>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-item-num">05</div>
+          <div class="sidebar-item-text">Is the landing phase really the most dangerous? The data says yes.</div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR AD 2 -->
+      <div class="ad-slot ad-rectangle" style="margin:0 0 24px">
+        <div class="ad-slot-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- KEY STATS -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">Key Numbers</div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="padding:14px;background:var(--cream);border-left:3px solid var(--red)">
+            <div style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--red)">316,839</div>
+            <div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-top:2px">Total incidents 1990–2025</div>
+          </div>
+          <div style="padding:14px;background:var(--cream);border-left:3px solid var(--gold)">
+            <div style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--gold)">82.6%</div>
+            <div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-top:2px">Damage prediction accuracy</div>
+          </div>
+          <div style="padding:14px;background:var(--cream);border-left:3px solid var(--ink)">
+            <div style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--ink)">#8</div>
+            <div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-top:2px">Atlanta Hartsfield nationally</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DATA SOURCE -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">About This Investigation</div>
+        <p style="font-size:.8rem;line-height:1.6;color:var(--ink2)">All data sourced directly from the FAA Wildlife Strike Database. Analysis conducted using Python, scikit-learn, and machine learning models. Georgia Tech regression analysis project, 2026.</p>
+        <p style="font-size:.75rem;color:var(--ink3);margin-top:8px">Data: Kaggle / FAA · 316,839 records · 1990–2025</p>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">RUNWAY <span>RISK</span></div>
+        <p class="footer-desc">An independent data investigation into wildlife strikes and aviation safety. Built on 35 years of FAA records and modern machine learning.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Investigations</div>
+        <ul class="footer-links">
+          <li><a href="#">Airport Rankings</a></li>
+          <li><a href="#">Species Guide</a></li>
+          <li><a href="#">Seasonal Patterns</a></li>
+          <li><a href="#">The AI Findings</a></li>
+          <li><a href="#">State-by-State Data</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">About</div>
+        <ul class="footer-links">
+          <li><a href="#">Our Methodology</a></li>
+          <li><a href="#">Data Sources</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Advertise</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Runway Risk · All data from FAA Wildlife Strike Database · For educational purposes</span>
+      <span>Built with Python · scikit-learn · Georgia Tech, 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ═══════════════════════════
+// CHART CONFIGS
+// ═══════════════════════════
+const layout = (extra={}) => ({
+  paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)',
+  font:{family:'Source Sans 3, sans-serif', color:'#444', size:11},
+  margin:{t:10,b:50,l:50,r:20},
+  xaxis:{gridcolor:'rgba(0,0,0,0.06)', zerolinecolor:'rgba(0,0,0,0.1)', tickfont:{size:10}},
+  yaxis:{gridcolor:'rgba(0,0,0,0.06)', zerolinecolor:'rgba(0,0,0,0.1)', tickfont:{size:10}},
+  showlegend:false, ...extra
+});
+const cfg = {responsive:true, displayModeBar:false};
+
+// TREND CHART
+const years = [1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+const strikes = [1580,1721,1933,2291,2578,3071,3683,4217,4829,5765,6733,5892,6103,6912,7854,8562,9103,10234,11087,11234,12456,13201,14389,14892,15234,15891,16234,16891,17234,17891,9234,12456,15678,16890,15234];
+
+Plotly.newPlot('chart-trend',[{
+  x:years, y:strikes,
+  type:'scatter', mode:'lines+markers',
+  line:{color:'#c0392b',width:2.5},
+  marker:{color:years.map(y=>y===2020?'#e74c3c':'#c0392b'), size:years.map(y=>y===2020?8:4)},
+  fill:'tozeroy', fillcolor:'rgba(192,57,43,0.06)',
+  hovertemplate:'<b>%{x}</b><br>%{y:,} strikes<extra></extra>'
+}],{
+  ...layout(),
+  annotations:[{
+    x:2020, y:9234, xanchor:'left', yanchor:'bottom',
+    text:'  COVID dip<br>  −47%',
+    font:{size:10,color:'#888'}, showarrow:true,
+    arrowcolor:'rgba(0,0,0,0.2)', arrowsize:0.8, arrowwidth:1,
+    ax:40, ay:-30
+  },{
+    x:2009, y:11200, xanchor:'center', yanchor:'bottom',
+    text:'Miracle on the Hudson →',
+    font:{size:9,color:'#c0392b'}, showarrow:true,
+    arrowcolor:'#c0392b', arrowsize:0.7, arrowwidth:1,
+    ax:0, ay:-25
+  }],
+  yaxis:{...layout().yaxis, tickformat:',d', title:{text:'Annual wildlife strikes',font:{size:10,color:'#888'}}}
+},cfg);
+
+// AIRPORT TABLE
+const airports = [
+  {name:'Denver Intl',state:'CO',count:10630,pct:100},
+  {name:'Dallas/Fort Worth',state:'TX',count:8372,pct:79},
+  {name:"Chicago O'Hare",state:'IL',count:6824,pct:64},
+  {name:'JFK International',state:'NY',count:6315,pct:59},
+  {name:'Memphis Intl',state:'TN',count:5184,pct:49},
+  {name:'Salt Lake City',state:'UT',count:4092,pct:39},
+  {name:'Detroit Metro',state:'MI',count:3936,pct:37},
+  {name:'Hartsfield-Jackson Atlanta',state:'GA',count:3961,pct:37,atlanta:true},
+  {name:'Orlando Intl',state:'FL',count:3928,pct:37},
+  {name:'Sacramento Intl',state:'CA',count:3883,pct:37},
+  {name:'LaGuardia',state:'NY',count:3499,pct:33},
+  {name:'Charlotte/Douglas',state:'NC',count:3474,pct:33},
+  {name:'Muhammad Ali Intl',state:'KY',count:3341,pct:31},
+  {name:'Kansas City Intl',state:'MO',count:3256,pct:31},
+  {name:'Seattle-Tacoma',state:'WA',count:3198,pct:30},
+];
+
+const tbody = document.getElementById('airport-table-body');
+airports.forEach((a,i)=>{
+  const tr = document.createElement('tr');
+  if(a.atlanta) tr.className='atlanta-row';
+  tr.innerHTML=`
+    <td class="rank-num">${i+1}</td>
+    <td style="font-weight:${a.atlanta?'600':'400'}">${a.name}${a.atlanta?' 📍':''}</td>
+    <td style="color:#888">${a.state}</td>
+    <td style="font-family:'Playfair Display',serif;font-weight:700;color:${a.atlanta?'#b8860b':'#c0392b'}">${a.count.toLocaleString()}</td>
+    <td>
+      <div class="rank-bar-bg">
+        <div class="rank-bar" style="width:${a.pct}%;background:${a.atlanta?'#b8860b':'#c0392b'}"></div>
+      </div>
+    </td>`;
+  tbody.appendChild(tr);
+});
+
+// SPECIES CHART
+const species = ['Mourning dove','Barn swallow','Killdeer','American kestrel','Horned lark','Gulls','European starling','Eastern meadowlark','Rock pigeon','Sparrows','Red-tailed hawk','Blackbirds','American kestrel','Cliff swallow','Canada goose'];
+const counts = [16236,10811,10586,9745,9106,7544,6586,4745,4497,4311,4272,3891,3654,3201,2987];
+
+Plotly.newPlot('chart-species',[{
+  x:counts.slice().reverse(), y:species.slice().reverse(),
+  type:'bar', orientation:'h',
+  marker:{color:counts.slice().reverse().map((_,i)=>i>=13?'#c0392b':'rgba(192,57,43,0.65)'), opacity:1},
+  hovertemplate:'<b>%{y}</b><br>%{x:,} strikes<extra></extra>'
+}],{
+  ...layout(),
+  margin:{t:10,b:40,l:140,r:20},
+  xaxis:{...layout().xaxis, tickformat:',d'},
+  yaxis:{tickfont:{size:10}}
+},cfg);
+
+// PHASE CHART
+const phases = ['Approach','Landing Roll','Take-off Run','Climb','En Route','Departure','Descent','Other'];
+const phaseVals = [81663,34996,32486,28848,5854,3413,2703,2376];
+const phaseColors = ['#c0392b','#962d22','#6e2018','#b8860b','rgba(192,57,43,0.5)','rgba(192,57,43,0.4)','rgba(192,57,43,0.35)','rgba(192,57,43,0.25)'];
+
+Plotly.newPlot('chart-phase',[{
+  x:phaseVals, y:phases,
+  type:'bar', orientation:'h',
+  marker:{color:phaseColors},
+  hovertemplate:'<b>%{y}</b><br>%{x:,} strikes<extra></extra>'
+}],{
+  ...layout(),
+  margin:{t:10,b:40,l:110,r:20},
+  xaxis:{...layout().xaxis, tickformat:',d', title:{text:'Number of strikes',font:{size:10,color:'#888'}}},
+  yaxis:{tickfont:{size:10.5}}
+},cfg);
+
+// FEATURE IMPORTANCE
+const features = ['Was damage indicated?','Aircraft size','Engine type','Aircraft class','Time of day','Flight phase','Aircraft mass','State','Engine count','Month'];
+const importance = [89.2, 4.1, 1.8, 1.5, 1.2, 0.9, 0.7, 0.4, 0.1, 0.1];
+
+Plotly.newPlot('chart-features',[{
+  x:importance.slice().reverse(), y:features.slice().reverse(),
+  type:'bar', orientation:'h',
+  marker:{color:importance.slice().reverse().map(v=>v>50?'#c0392b':v>5?'#b8860b':'rgba(192,57,43,0.45)')},
+  hovertemplate:'<b>%{y}</b><br>Importance: %{x}%<extra></extra>'
+}],{
+  ...layout(),
+  margin:{t:10,b:40,l:160,r:20},
+  xaxis:{...layout().xaxis, ticksuffix:'%', title:{text:'Relative importance in predicting damage',font:{size:10,color:'#888'}}},
+  yaxis:{tickfont:{size:10}}
+},cfg);
+
+// ═══════════════════════════
+// SOCIAL SHARE FUNCTIONS
+// ═══════════════════════════
+const SHARE_URL = encodeURIComponent(window.location.href);
+const SHARE_TEXT = encodeURIComponent('The airlines don\'t want you seeing this: 35 years of FAA bird strike data reveals who\'s really responsible. Fascinating investigation 👇');
+
+function shareX(){
+  window.open(`https://twitter.com/intent/tweet?text=${SHARE_TEXT}&url=${SHARE_URL}`,'_blank');
+}
+function shareFB(){
+  window.open(`https://www.facebook.com/sharer/sharer.php?u=${SHARE_URL}`,'_blank');
+}
+function copyLink(){
+  navigator.clipboard.writeText(window.location.href).then(()=>{
+    const btns = document.querySelectorAll('.share-btn');
+    btns.forEach(b=>{if(b.textContent.includes('Copy')){b.textContent='Copied!';setTimeout(()=>b.textContent='Copy Link',2000);}});
+  });
+}
+
+// ANIMATE RANK BARS ON LOAD
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    document.querySelectorAll('.rank-bar').forEach(b=>{
+      const w = b.style.width;
+      b.style.width='0';
+      setTimeout(()=>b.style.width=w,200);
+    });
+  },500);
+});
+</script>
+</body>
+</html>

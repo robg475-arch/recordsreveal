@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RecordsReveal — Investigative Data Journalism</title>
+<meta name="description" content="We dig through mountains of public data and tell you what the records actually reveal. Independent investigative data journalism.">
+<meta property="og:title" content="RecordsReveal — The data investigations they don't advertise">
+<meta property="og:description" content="Public records. Real data. Surprising findings.">
+<meta property="og:url" content="https://recordsreveal.com">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#1c1c1c;
+  --ink2:#4a4a4a;
+  --ink3:#888;
+  --paper:#f8f6f1;
+  --white:#ffffff;
+  --cream:#f0ece3;
+  --red:#b5271f;
+  --red2:#d4302a;
+  --gold:#9a7c2e;
+  --border:#ddd9ce;
+  --border2:#c8c3b5;
+}
+body{background:var(--paper);color:var(--ink);font-family:'Barlow',sans-serif;font-weight:400;line-height:1.6}
+a{color:inherit;text-decoration:none}
+
+/* HEADER */
+.site-header{background:var(--white);border-bottom:1px solid var(--border)}
+.header-top{display:flex;justify-content:space-between;align-items:center;padding:12px 40px;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink3)}
+.header-top a{color:var(--ink3);margin-left:20px;transition:color .15s}
+.header-top a:hover{color:var(--red)}
+.header-main{text-align:center;padding:28px 40px 20px}
+.site-name{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);line-height:1}
+.site-name span{color:var(--red)}
+.site-rule{width:100%;height:3px;background:var(--ink);margin:12px 0 10px;position:relative}
+.site-rule::after{content:'';position:absolute;top:5px;left:0;right:0;height:1px;background:var(--ink)}
+.site-tagline{font-family:'Libre Baskerville',serif;font-style:italic;font-size:.95rem;color:var(--ink3);letter-spacing:.03em}
+.header-nav{display:flex;justify-content:center;gap:0;border-top:1px solid var(--border);margin-top:16px}
+.header-nav a{padding:8px 24px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:var(--ink2);border-right:1px solid var(--border);transition:all .15s}
+.header-nav a:last-child{border-right:none}
+.header-nav a:hover{background:var(--cream);color:var(--red)}
+.header-nav a.active{background:var(--ink);color:var(--white)}
+
+/* DATE BAR */
+.date-bar{background:var(--ink);color:rgba(255,255,255,.5);font-size:11px;letter-spacing:.12em;padding:6px 40px;display:flex;justify-content:space-between;align-items:center}
+.date-bar strong{color:rgba(255,255,255,.8)}
+
+/* AD - LEADERBOARD */
+.ad-leaderboard{background:var(--cream);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px;text-align:center}
+.ad-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px}
+
+/* LAYOUT */
+.container{max-width:1200px;margin:0 auto;padding:0 40px}
+.main-layout{display:grid;grid-template-columns:1fr 300px;gap:48px;padding:40px 0}
+
+/* SECTION HEADERS */
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.section-label{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);white-space:nowrap}
+.section-rule{flex:1;height:1px;background:var(--border2)}
+
+/* HERO STORY */
+.hero-story{border-bottom:2px solid var(--ink);padding-bottom:36px;margin-bottom:36px}
+.hero-kicker{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:10px}
+.hero-headline{font-family:'Libre Baskerville',serif;font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:700;line-height:1.2;color:var(--ink);margin-bottom:14px}
+.hero-headline a:hover{color:var(--red)}
+.hero-dek{font-family:'Libre Baskerville',serif;font-style:italic;font-size:1rem;line-height:1.65;color:var(--ink2);margin-bottom:16px;max-width:640px}
+.hero-meta{font-size:11px;letter-spacing:.08em;color:var(--ink3);display:flex;align-items:center;gap:10px}
+.hero-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--ink3)}
+.hero-img{background:var(--cream);border:1px solid var(--border);height:340px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;overflow:hidden;position:relative}
+.hero-img-label{font-family:'Barlow Condensed',sans-serif;font-size:4rem;font-weight:700;letter-spacing:.1em;color:var(--border2);text-transform:uppercase}
+.hero-img-stat{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(28,28,28,.85));padding:24px 20px 16px;color:white}
+.hero-img-stat-num{font-family:'Barlow Condensed',sans-serif;font-size:2.4rem;font-weight:700;line-height:1}
+.hero-img-stat-label{font-size:11px;opacity:.75;letter-spacing:.08em;text-transform:uppercase}
+.hero-tag{display:inline-block;background:var(--red);color:white;font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;padding:3px 10px;margin-bottom:12px}
+
+/* STORY GRID */
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:36px}
+.story-card{border-bottom:1px solid var(--border);padding-bottom:20px}
+.story-card-kicker{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:6px}
+.story-card-headline{font-family:'Libre Baskerville',serif;font-size:1.05rem;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:8px;cursor:pointer;transition:color .15s}
+.story-card-headline:hover{color:var(--red)}
+.story-card-dek{font-size:.85rem;color:var(--ink2);line-height:1.55;margin-bottom:8px}
+.story-card-meta{font-size:10px;color:var(--ink3);letter-spacing:.06em}
+.story-card-img{background:var(--cream);border:1px solid var(--border);height:140px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:2rem;color:var(--border2);font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:1.4rem}
+
+/* COMING SOON CARDS */
+.coming-soon{opacity:.55;position:relative}
+.coming-soon::after{content:'Coming Soon';position:absolute;top:8px;right:8px;background:var(--gold);color:white;font-size:9px;letter-spacing:.15em;text-transform:uppercase;padding:3px 8px;font-weight:600}
+
+/* LIST STORIES */
+.list-stories{border-top:2px solid var(--ink)}
+.list-story{display:grid;grid-template-columns:48px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--border);align-items:start}
+.list-num{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:700;color:var(--border2);line-height:1;margin-top:2px}
+.list-story-kicker{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:4px}
+.list-story-headline{font-family:'Libre Baskerville',serif;font-size:.95rem;font-weight:700;line-height:1.3;color:var(--ink);cursor:pointer;transition:color .15s}
+.list-story-headline:hover{color:var(--red)}
+.list-story-meta{font-size:10px;color:var(--ink3);margin-top:4px;letter-spacing:.05em}
+
+/* SIDEBAR */
+.sidebar-block{margin-bottom:32px;border-top:2px solid var(--ink);padding-top:16px}
+.sidebar-title{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--ink);margin-bottom:16px}
+.sidebar-story{padding:12px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.sidebar-story:last-child{border-bottom:none}
+.sidebar-story-num{font-family:'Barlow Condensed',sans-serif;font-size:.8rem;font-weight:700;color:var(--red);margin-bottom:2px}
+.sidebar-story-headline{font-size:.85rem;line-height:1.35;color:var(--ink2);transition:color .15s}
+.sidebar-story:hover .sidebar-story-headline{color:var(--red)}
+
+/* NEWSLETTER */
+.newsletter{background:var(--ink);color:var(--white);padding:24px;margin-bottom:24px}
+.newsletter h3{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.newsletter p{font-size:.82rem;color:rgba(255,255,255,.6);margin-bottom:16px;line-height:1.5}
+.newsletter input{width:100%;padding:9px 12px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:white;font-size:.85rem;margin-bottom:8px;outline:none;font-family:'Barlow',sans-serif}
+.newsletter input::placeholder{color:rgba(255,255,255,.35)}
+.newsletter input:focus{border-color:rgba(255,255,255,.4)}
+.newsletter button{width:100%;padding:10px;background:var(--red);color:white;border:none;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:background .15s}
+.newsletter button:hover{background:var(--red2)}
+
+/* STAT STRIP */
+.stat-strip{background:var(--ink);color:var(--white);padding:24px 40px;display:flex;justify-content:center;gap:0;border-top:3px solid var(--red);border-bottom:3px solid var(--red)}
+.stat-strip-item{text-align:center;padding:0 40px;border-right:1px solid rgba(255,255,255,.15)}
+.stat-strip-item:last-child{border-right:none}
+.strip-num{font-family:'Barlow Condensed',sans-serif;font-size:2.4rem;font-weight:700;color:var(--red);line-height:1;display:block}
+.strip-label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px}
+
+/* MISSION STRIP */
+.mission{background:var(--cream);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px 40px;text-align:center}
+.mission p{font-family:'Libre Baskerville',serif;font-style:italic;font-size:1.05rem;line-height:1.7;color:var(--ink2);max-width:680px;margin:0 auto}
+.mission strong{color:var(--ink);font-style:normal}
+
+/* FOOTER */
+footer{background:var(--ink);color:var(--white);padding:48px 40px 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.footer-brand{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+.footer-brand span{color:var(--red)}
+.footer-desc{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.65;max-width:280px}
+.footer-col-title{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:8px}
+.footer-links a{font-size:.82rem;color:rgba(255,255,255,.55);transition:color .15s}
+.footer-links a:hover{color:var(--red)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;display:flex;justify-content:space-between;font-size:.75rem;color:rgba(255,255,255,.3)}
+
+/* AD SIDEBAR */
+.ad-sidebar{background:var(--cream);border:1px dashed var(--border2);padding:12px;text-align:center;margin-bottom:24px}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .main-layout{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .story-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .stat-strip{flex-wrap:wrap;gap:20px}
+  .stat-strip-item{border-right:none;padding:0 20px}
+  .container{padding:0 20px}
+  .header-top,.date-bar,.mission,.stat-strip{padding-left:20px;padding-right:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-top">
+    <span>Independent Data Investigations · Public Records · Real Findings</span>
+    <div>
+      <a href="about/index.html">About</a>
+      <a href="privacy/index.html">Privacy</a>
+      <a href="mailto:tips@recordsreveal.com">Submit a Tip</a>
+    </div>
+  </div>
+  <div class="header-main">
+    <div class="site-name">Records<span>Reveal</span></div>
+    <div class="site-rule"></div>
+    <div class="site-tagline">What the public data actually shows — and what they'd rather you didn't know</div>
+  </div>
+  <nav class="header-nav">
+    <a href="index.html" class="active">Home</a>
+    <a href="investigations/bird-strikes.html">Aviation</a>
+    <a href="#">Safety</a>
+    <a href="#">Health</a>
+    <a href="#">Environment</a>
+    <a href="#">Economy</a>
+    <a href="about/index.html">About</a>
+  </nav>
+</header>
+
+<!-- DATE BAR -->
+<div class="date-bar">
+  <span id="today-date">Loading...</span>
+  <span><strong>1</strong> Investigation Published · <strong>4</strong> In Progress</span>
+</div>
+
+<!-- LEADERBOARD AD -->
+<div class="ad-leaderboard">
+  <div class="ad-label">Advertisement</div>
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<!-- STAT STRIP -->
+<div class="stat-strip">
+  <div class="stat-strip-item">
+    <span class="strip-num">316K</span>
+    <div class="strip-label">Records Analyzed</div>
+  </div>
+  <div class="stat-strip-item">
+    <span class="strip-num">35</span>
+    <div class="strip-label">Years of Data</div>
+  </div>
+  <div class="stat-strip-item">
+    <span class="strip-num">82.6%</span>
+    <div class="strip-label">Prediction Accuracy</div>
+  </div>
+  <div class="stat-strip-item">
+    <span class="strip-num">1</span>
+    <div class="strip-label">Investigation Live</div>
+  </div>
+  <div class="stat-strip-item">
+    <span class="strip-num">4</span>
+    <div class="strip-label">Coming Soon</div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+  <div class="main-layout">
+
+    <!-- MAIN COLUMN -->
+    <main>
+
+      <!-- HERO -->
+      <div class="hero-story">
+        <div class="hero-tag">Investigation #001 · Live Now</div>
+        <div class="hero-img">
+          <div style="text-align:center">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:5rem;font-weight:700;color:rgba(180,170,155,.4);line-height:1">✈ 🐦</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:var(--border2);letter-spacing:.1em">BIRD STRIKE NATION</div>
+          </div>
+          <div class="hero-img-stat">
+            <div class="hero-img-stat-num">316,839</div>
+            <div class="hero-img-stat-label">Wildlife strikes analyzed · FAA Database 1990–2025</div>
+          </div>
+        </div>
+        <div class="hero-kicker">Aviation Safety Investigation</div>
+        <h1 class="hero-headline">
+          <a href="investigations/bird-strikes.html">
+            35 years of FAA data reveals who's really responsible for bird strikes — and it's not who you think
+          </a>
+        </h1>
+        <p class="hero-dek">We analyzed every wildlife strike reported to the FAA since 1990. The findings challenge what the aviation industry tells the public about this growing safety problem.</p>
+        <div class="hero-meta">
+          <span>RecordsReveal Data Team</span>
+          <span class="hero-meta-dot"></span>
+          <span id="pub-date">May 2026</span>
+          <span class="hero-meta-dot"></span>
+          <span>12 min read</span>
+          <span class="hero-meta-dot"></span>
+          <span style="color:var(--red);font-weight:600">316,839 records</span>
+        </div>
+      </div>
+
+      <!-- SECTION: COMING INVESTIGATIONS -->
+      <div class="section-header">
+        <span class="section-label">Next Investigations</span>
+        <div class="section-rule"></div>
+      </div>
+
+      <div class="story-grid">
+        <div class="story-card coming-soon">
+          <div class="story-card-img">CRASH DATA</div>
+          <div class="story-card-kicker">Road Safety</div>
+          <div class="story-card-headline">6 million car crashes analyzed: the exact time and road type most likely to kill you</div>
+          <div class="story-card-dek">NHTSA fatality data reveals patterns in crash severity that contradict conventional road safety wisdom.</div>
+          <div class="story-card-meta">Coming Q3 2026 · NHTSA Database · 6M+ records</div>
+        </div>
+        <div class="story-card coming-soon">
+          <div class="story-card-img">FOOD DATA</div>
+          <div class="story-card-kicker">Nutrition</div>
+          <div class="story-card-headline">AI ranked 8,000 foods by actual nutritional density. The results will surprise you.</div>
+          <div class="story-card-dek">The USDA database contains every nutrient in every food. We let machine learning decide what "healthy" actually means.</div>
+          <div class="story-card-meta">Coming Q3 2026 · USDA FoodData Central · 8,000+ foods</div>
+        </div>
+        <div class="story-card coming-soon">
+          <div class="story-card-img">CRIME DATA</div>
+          <div class="story-card-kicker">Public Safety</div>
+          <div class="story-card-headline">The crime statistics politicians cite are misleading. Here's what 30 years of FBI data actually shows.</div>
+          <div class="story-card-dek">We ran the FBI Uniform Crime Report through a regression model. The strongest predictor of violent crime isn't what anyone is talking about.</div>
+          <div class="story-card-meta">Coming Q4 2026 · FBI UCR Database · 30 years</div>
+        </div>
+        <div class="story-card coming-soon">
+          <div class="story-card-img">HOSPITAL DATA</div>
+          <div class="story-card-kicker">Healthcare</div>
+          <div class="story-card-headline">1 in 5 patients returns to the hospital within 30 days. The data shows exactly which hospitals fail them.</div>
+          <div class="story-card-dek">CMS readmission data for every US hospital reveals that ownership type — not size or prestige — predicts patient outcomes.</div>
+          <div class="story-card-meta">Coming Q4 2026 · CMS Hospital Compare · All US hospitals</div>
+        </div>
+      </div>
+
+      <!-- RECTANGLE AD -->
+      <div class="ad-leaderboard" style="margin:8px 0 32px">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- SECTION: HOW WE WORK -->
+      <div class="section-header">
+        <span class="section-label">Our Methodology</span>
+        <div class="section-rule"></div>
+      </div>
+
+      <div class="list-stories">
+        <div class="list-story">
+          <div class="list-num">01</div>
+          <div>
+            <div class="list-story-kicker">Data Sourcing</div>
+            <div class="list-story-headline">We only use public government databases — FAA, FBI, USDA, CMS, NHTSA</div>
+            <div class="list-story-meta">All data is freely available · No proprietary sources · Full transparency</div>
+          </div>
+        </div>
+        <div class="list-story">
+          <div class="list-num">02</div>
+          <div>
+            <div class="list-story-kicker">Machine Learning Analysis</div>
+            <div class="list-story-headline">Every investigation uses regression modeling and unsupervised clustering to find patterns humans miss</div>
+            <div class="list-story-meta">Python · scikit-learn · GPU-accelerated · Reproducible methodology</div>
+          </div>
+        </div>
+        <div class="list-story">
+          <div class="list-num">03</div>
+          <div>
+            <div class="list-story-kicker">Plain English Findings</div>
+            <div class="list-story-headline">We translate statistical findings into stories that anyone can understand and share</div>
+            <div class="list-story-meta">No jargon · No agenda · Just what the records reveal</div>
+          </div>
+        </div>
+        <div class="list-story">
+          <div class="list-num">04</div>
+          <div>
+            <div class="list-story-kicker">Full Transparency</div>
+            <div class="list-story-headline">Every investigation includes a complete methodology section with data sources, model specs, and limitations</div>
+            <div class="list-story-meta">Open methodology · Reproducible results · Corrections policy in effect</div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- AD -->
+      <div class="ad-sidebar">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- NEWSLETTER -->
+      <div class="newsletter">
+        <h3>Get the next investigation</h3>
+        <p>New data stories monthly. No spam — unsubscribe anytime.</p>
+        <input type="email" placeholder="your@email.com">
+        <button>Subscribe Free →</button>
+      </div>
+
+      <!-- TOP STORIES -->
+      <div class="sidebar-block">
+        <div class="sidebar-title">Top Stories</div>
+        <div class="sidebar-story" onclick="location.href='investigations/bird-strikes.html'">
+          <div class="sidebar-story-num">Live Now</div>
+          <div class="sidebar-story-headline">35 years of FAA data reveals the truth about bird strikes</div>
+        </div>
+        <div class="sidebar-story">
+          <div class="sidebar-story-num">Coming Soon</div>
+          <div class="sidebar-story-headline">6M car crashes: the road conditions that actually kill people</div>
+        </div>
+        <div class="sidebar-story">
+          <div class="sidebar-story-num">Coming Soon</div>
+          <div class="sidebar-story-headline">AI ranked 8,000 foods. The healthy ones might shock you.</div>
+        </div>
+        <div class="sidebar-story">
+          <div class="sidebar-story-num">Coming Soon</div>
+          <div class="sidebar-story-headline">30 years of FBI crime data vs what politicians actually say</div>
+        </div>
+      </div>
+
+      <!-- KEY FACTS -->
+      <div class="sidebar-block">
+        <div class="sidebar-title">From Our First Investigation</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="padding:14px;background:var(--cream);border-left:3px solid var(--red)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:var(--red);line-height:1">10,630</div>
+            <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-top:3px">Bird strikes at Denver alone</div>
+          </div>
+          <div style="padding:14px;background:var(--cream);border-left:3px solid var(--gold)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:var(--gold);line-height:1">89%</div>
+            <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-top:3px">Of strikes cause zero damage</div>
+          </div>
+          <div style="padding:14px;background:var(--cream);border-left:3px solid var(--ink)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:var(--ink);line-height:1">500%</div>
+            <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-top:3px">Increase in strikes since 1990</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AD 2 -->
+      <div class="ad-sidebar">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- ABOUT BLURB -->
+      <div class="sidebar-block">
+        <div class="sidebar-title">About RecordsReveal</div>
+        <p style="font-size:.82rem;line-height:1.65;color:var(--ink2)">We dig through public government databases — millions of records the public paid for but rarely sees analyzed — and publish what we find in plain English.</p>
+        <p style="font-size:.82rem;line-height:1.65;color:var(--ink2);margin-top:8px">No agenda. No spin. Just what the data actually shows.</p>
+        <a href="about/index.html" style="display:inline-block;margin-top:12px;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--red);border-bottom:1px solid var(--red);padding-bottom:2px">Read Our Mission →</a>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+<!-- MISSION STRIP -->
+<div class="mission">
+  <p><strong>RecordsReveal is independent.</strong> We have no advertisers with editorial influence, no political agenda, and no financial stake in any finding. Every investigation is driven entirely by what the public data shows — wherever that leads.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Records<span>Reveal</span></div>
+        <p class="footer-desc">Independent investigative data journalism. We analyze public government records and publish findings in plain English. Built on Python, machine learning, and a commitment to transparency.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Investigations</div>
+        <ul class="footer-links">
+          <li><a href="investigations/bird-strikes.html">Bird Strikes · Live</a></li>
+          <li><a href="#">Car Crashes · Soon</a></li>
+          <li><a href="#">Food Nutrition · Soon</a></li>
+          <li><a href="#">Crime Statistics · Soon</a></li>
+          <li><a href="#">Hospital Data · Soon</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Publication</div>
+        <ul class="footer-links">
+          <li><a href="about/index.html">About Us</a></li>
+          <li><a href="about/index.html#methodology">Methodology</a></li>
+          <li><a href="privacy/index.html">Privacy Policy</a></li>
+          <li><a href="mailto:tips@recordsreveal.com">Submit a Tip</a></li>
+          <li><a href="mailto:advertise@recordsreveal.com">Advertise</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Data Sources</div>
+        <ul class="footer-links">
+          <li><a href="https://wildlife.faa.gov" target="_blank">FAA Wildlife Database</a></li>
+          <li><a href="https://www.nhtsa.gov/research-data" target="_blank">NHTSA FARS</a></li>
+          <li><a href="https://fdc.nal.usda.gov" target="_blank">USDA FoodData</a></li>
+          <li><a href="https://ucr.fbi.gov" target="_blank">FBI Crime Data</a></li>
+          <li><a href="https://data.cms.gov" target="_blank">CMS Hospital Data</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 RecordsReveal.com · All data sourced from public government databases · For informational purposes</span>
+      <span>Built with Python · scikit-learn · Plotly</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Set today's date
+const d = new Date();
+document.getElementById('today-date').textContent = d.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+document.getElementById('pub-date').textContent = d.toLocaleDateString('en-US',{month:'long',year:'numeric'});
+</script>
+</body>
+</html>
