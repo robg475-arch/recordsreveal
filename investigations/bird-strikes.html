@@ -43,6 +43,12 @@ img{max-width:100%}
 .masthead-nav a{padding:9px 20px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);border-right:1px solid var(--border);transition:background .15s}
 .masthead-nav a:last-child{border-right:none}
 .masthead-nav a:hover{background:var(--cream)}
+/* SITE NAV */
+.site-nav{display:flex;justify-content:center;gap:0;border-bottom:1px solid var(--border);background:var(--ink)}
+.site-nav a{padding:8px 20px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.55);border-right:1px solid rgba(255,255,255,.1);transition:all .15s}
+.site-nav a:last-child{border-right:none}
+.site-nav a:hover{color:white;background:rgba(255,255,255,.08)}
+.site-nav a.active{color:white;background:var(--red)}
 
 /* LAYOUT */
 .container{max-width:1180px;margin:0 auto;padding:0 24px}
@@ -208,6 +214,16 @@ img{max-width:100%}
     </nav>
   </div>
 </header>
+<nav class="site-nav">
+  <a href="../index.html">Home</a>
+  <a href="bird-strikes.html" class="active">Aviation</a>
+  <a href="hollywood.html">Entertainment</a>
+  <a href="#">Safety</a>
+  <a href="#">Health</a>
+  <a href="#">Environment</a>
+  <a href="#">Economy</a>
+  <a href="../about/index.html">About</a>
+</nav>
 
 <!-- LEADERBOARD AD -->
 <div class="container">
@@ -217,6 +233,15 @@ img{max-width:100%}
     <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
+</div>
+
+<!-- TECHNICAL DATA BANNER -->
+<div style="background:#1c1c1c;padding:16px 28px;display:flex;justify-content:space-between;align-items:center;gap:20px">
+  <div>
+    <div style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:3px">For Data Scientists &amp; Researchers</div>
+    <div style="font-size:.9rem;color:white">Full regression model, PCA cluster plots, feature importance charts, and complete methodology available.</div>
+  </div>
+  <a href="bird-strikes-data.html" style="flex-shrink:0;padding:9px 18px;background:#b5271f;color:white;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap">View Technical Report →</a>
 </div>
 
 <!-- MAIN CONTENT -->
