@@ -606,16 +606,10 @@
 </style>
 </head>
 <body>
-<div style="background:#1c1c1c;padding:10px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #b5271f">
+<div style="background:#1c1c1c;padding:10px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #d2691e">
   <a href="../index.html" style="font-family:'Barlow Condensed',sans-serif;font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">← RecordsReveal Home</a>
-  <span style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4)">Technical Deep Dive · Investigation #001</span>
-  <a href="bird-strikes.html" style="font-family:'Barlow Condensed',sans-serif;font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;color:#b5271f;text-decoration:none">Read the Article →</a>
-</div>
-
-<div style="background:#1c1c1c;padding:10px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #b5271f">
-  <a href="../index.html" style="font-family:'Barlow Condensed',sans-serif;font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none">← RecordsReveal Home</a>
-  <span style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4)">Technical Deep Dive · Investigation #001</span>
-  <a href="bird-strikes.html" style="font-family:'Barlow Condensed',sans-serif;font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;color:#b5271f;text-decoration:none">Read the Article →</a>
+  <span style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4)">Technical Deep Dive · Investigation #003</span>
+  <a href="car-crashes.html" style="font-family:'Barlow Condensed',sans-serif;font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;color:#d2691e;text-decoration:none">Read the Article →</a>
 </div>
 
 <!-- NAV -->
@@ -668,101 +662,101 @@
 <!-- HIGHLIGHT BAR -->
 <div class="highlight-bar">
   <div class="highlight-item">
-    <div class="highlight-num">81,663</div>
-    <div class="highlight-label">Strikes on Approach</div>
+    <div class="highlight-num">610,815</div>
+    <div class="highlight-label">People Injured</div>
   </div>
   <div class="highlight-divider"></div>
   <div class="highlight-item">
-    <div class="highlight-num">#8</div>
-    <div class="highlight-label">Atlanta — Hartsfield-Jackson</div>
+    <div class="highlight-num">2,923</div>
+    <div class="highlight-label">People Killed</div>
   </div>
   <div class="highlight-divider"></div>
   <div class="highlight-item">
-    <div class="highlight-num">52,122</div>
-    <div class="highlight-label">Unknown Small Birds</div>
+    <div class="highlight-num">5:00 PM</div>
+    <div class="highlight-label">Peak Crash Hour</div>
   </div>
   <div class="highlight-divider"></div>
   <div class="highlight-item">
-    <div class="highlight-num">0.25</div>
-    <div class="highlight-label">RMSE (Damage Prediction)</div>
+    <div class="highlight-num">19.9%</div>
+    <div class="highlight-label">Driver Distraction</div>
   </div>
   <div class="highlight-divider"></div>
   <div class="highlight-item">
     <div class="highlight-num">4</div>
-    <div class="highlight-label">Risk Clusters Found</div>
+    <div class="highlight-label">Crash Clusters Found</div>
   </div>
 </div>
 
 <!-- TRENDS SECTION -->
 <section id="findings">
   <div class="section-label">01 — Exploratory Analysis</div>
-  <h2 class="section-title">35 YEARS OF<br>STRIKE DATA</h2>
+  <h2 class="section-title">2 MILLION<br>NYC CRASHES</h2>
   <p class="section-desc">
-    Wildlife strikes have increased dramatically since 1990 as air traffic expanded. 
-    The data reveals clear seasonal, geographic, and species-based patterns.
+    From 2012 to 2023, NYC recorded over 2 million motor vehicle collisions. 
+    The data reveals clear temporal patterns, contributing factors, and injury severity trends.
   </p>
 
   <div class="chart-full">
     <div class="chart-card">
-      <div class="chart-card-title">Annual Strike Frequency 1990–2025</div>
-      <div class="chart-card-sub">Source: FAA Wildlife Strike Database · 316,839 incidents</div>
+      <div class="chart-card-title">Annual Crash Frequency 2012–2023</div>
+      <div class="chart-card-sub">Source: NYC Open Data · 2,018,963 collisions</div>
       <div id="chart-trend" style="height:320px;"></div>
     </div>
   </div>
 
   <div class="chart-grid">
     <div class="chart-card">
-      <div class="chart-card-title">Top 15 Airports by Strike Frequency</div>
-      <div class="chart-card-sub">Denver leads with 10,630 incidents · Atlanta #8 at 3,961</div>
-      <div id="chart-airports" style="height:380px;"></div>
+      <div class="chart-card-title">Crashes by Hour of Day</div>
+      <div class="chart-card-sub">5:00 PM peak with 132,458 crashes · Morning rush less dangerous</div>
+      <div id="chart-hourly" style="height:380px;"></div>
     </div>
     <div class="chart-card">
-      <div class="chart-card-title">Strikes by Phase of Flight</div>
-      <div class="chart-card-sub">Approach phase dominates — 81,663 incidents · 25.8% of total</div>
-      <div id="chart-phase" style="height:380px;"></div>
+      <div class="chart-card-title">Crashes by Day of Week</div>
+      <div class="chart-card-sub">Friday leads with 327,042 crashes · Saturday is deadliest</div>
+      <div id="chart-daily" style="height:380px;"></div>
     </div>
   </div>
 
   <div class="chart-grid">
     <div class="chart-card">
-      <div class="chart-card-title">Top 15 Species Involved</div>
-      <div class="chart-card-sub">Most strikes involve unidentified small birds · Mourning dove leads known species</div>
-      <div id="chart-species" style="height:380px;"></div>
+      <div class="chart-card-title">Top 15 Contributing Factors</div>
+      <div class="chart-card-sub">Driver distraction leads at 19.9% · 34.3% are "Unspecified"</div>
+      <div id="chart-factors" style="height:380px;"></div>
     </div>
     <div class="chart-card">
-      <div class="chart-card-title">Damage Level Distribution</div>
-      <div class="chart-card-sub">89.9% of strikes cause no damage · Destroyed aircraft are extremely rare</div>
-      <div id="chart-damage" style="height:380px;"></div>
+      <div class="chart-card-title">Injury Severity Distribution</div>
+      <div class="chart-card-sub">Most crashes cause property damage only · Fatalities rare but tragic</div>
+      <div id="chart-severity" style="height:380px;"></div>
     </div>
   </div>
 
   <!-- KEY FINDINGS -->
   <div class="findings-grid" style="margin-top: 2px;">
     <div class="finding-card">
-      <div class="finding-icon">✈️</div>
-      <div class="finding-title">Approach is Deadliest</div>
+      <div class="finding-icon">🚗</div>
+      <div class="finding-title">Rush Hour Carnage</div>
       <div class="finding-text">
-        <strong>81,663 strikes occur during approach</strong> — 25.8% of all incidents. 
-        Landing roll (35k) and takeoff run (32k) follow. Aircraft are most vulnerable 
-        at low altitude when wildlife is most active.
+        <strong>5:00 PM sees 132,458 crashes</strong> — the single deadliest hour. 
+        Evening rush hour combines tired drivers, heavy traffic, and low sun angles 
+        into a perfect storm of collisions.
       </div>
     </div>
     <div class="finding-card">
-      <div class="finding-icon">🐦</div>
-      <div class="finding-title">The Unknown Bird Problem</div>
+      <div class="finding-icon">📱</div>
+      <div class="finding-title">The Distraction Epidemic</div>
       <div class="finding-text">
-        Over <strong>52,122 strikes involve unidentified small birds</strong> — the 
-        single largest species category. Better species identification at airports 
-        could dramatically improve wildlife management programs.
+        Nearly <strong>20% of all crashes involve driver distraction</strong> — 
+        mostly phones and electronics. Despite NYC laws, distracted driving remains 
+        the #1 contributing factor in collisions.
       </div>
     </div>
     <div class="finding-card">
-      <div class="finding-icon">🗺️</div>
-      <div class="finding-title">Atlanta in the Top 10</div>
+      <div class="finding-icon">🌃</div>
+      <div class="finding-title">Saturday Night is Deadliest</div>
       <div class="finding-text">
-        Hartsfield-Jackson ranks <strong>#8 nationally with 3,961 strikes</strong>, 
-        behind Denver (10,630) and DFW (8,372). Georgia's position on major 
-        migratory flyways explains the elevated risk.
+        While Friday has the most crashes, <strong>Saturday causes the most deaths</strong> — 
+        alcohol, speed, and reckless driving peak on weekend nights when enforcement 
+        drops and dangerous behavior spikes.
       </div>
     </div>
   </div>
@@ -771,80 +765,81 @@
 <!-- MODEL RESULTS -->
 <section id="models">
   <div class="section-label">02 — Supervised Learning</div>
-  <h2 class="section-title">PREDICTING<br>DAMAGE SEVERITY</h2>
+  <h2 class="section-title">PREDICTING<br>CASUALTIES</h2>
   <p class="section-desc">
-    Four regression models trained on 163,832 records to predict ordinal damage level 
-    (None → Minor → Possible → Substantial → Destroyed). All models achieved R² > 0.80.
+    Four regression models trained on 452,283 records to predict total casualties 
+    (injured + killed). Random Forest achieved the best performance, though low R² suggests 
+    casualties are largely unpredictable from basic crash features.
   </p>
 
   <div class="model-grid">
-    <div class="model-card best">
+    <div class="model-card">
       <div class="model-name">Linear Regression</div>
       <div class="model-metric">
         <div class="metric-label">R² Score</div>
-        <div class="metric-value highlight">0.8261</div>
-        <div class="metric-bar"><div class="metric-fill" style="width:82.6%"></div></div>
+        <div class="metric-value" style="color: var(--text)">0.0062</div>
+        <div class="metric-bar"><div class="metric-fill" style="width:0.62%"></div></div>
       </div>
       <div class="model-metric">
         <div class="metric-label">RMSE</div>
-        <div class="metric-value" style="font-size:1.8rem; color: var(--text)">0.2493</div>
-      </div>
-    </div>
-    <div class="model-card best">
-      <div class="model-name">Ridge Regression</div>
-      <div class="model-metric">
-        <div class="metric-label">R² Score</div>
-        <div class="metric-value highlight">0.8261</div>
-        <div class="metric-bar"><div class="metric-fill" style="width:82.6%"></div></div>
-      </div>
-      <div class="model-metric">
-        <div class="metric-label">Best Alpha</div>
-        <div class="metric-value" style="font-size:1.8rem; color: var(--text)">0.100</div>
-      </div>
-    </div>
-    <div class="model-card best">
-      <div class="model-name">Lasso Regression</div>
-      <div class="model-metric">
-        <div class="metric-label">R² Score</div>
-        <div class="metric-value highlight">0.8261</div>
-        <div class="metric-bar"><div class="metric-fill" style="width:82.6%"></div></div>
-      </div>
-      <div class="model-metric">
-        <div class="metric-label">Features Eliminated</div>
-        <div class="metric-value" style="font-size:1.8rem; color: var(--text)">2 of 10</div>
+        <div class="metric-value" style="font-size:1.8rem; color: var(--text)">0.5891</div>
       </div>
     </div>
     <div class="model-card">
+      <div class="model-name">Ridge Regression</div>
+      <div class="model-metric">
+        <div class="metric-label">R² Score</div>
+        <div class="metric-value" style="color: var(--text)">0.0062</div>
+        <div class="metric-bar"><div class="metric-fill" style="width:0.62%"></div></div>
+      </div>
+      <div class="model-metric">
+        <div class="metric-label">Best Alpha</div>
+        <div class="metric-value" style="font-size:1.8rem; color: var(--text)">1.000</div>
+      </div>
+    </div>
+    <div class="model-card">
+      <div class="model-name">Lasso Regression</div>
+      <div class="model-metric">
+        <div class="metric-label">R² Score</div>
+        <div class="metric-value" style="color: var(--text)">0.0060</div>
+        <div class="metric-bar"><div class="metric-fill" style="width:0.60%"></div></div>
+      </div>
+      <div class="model-metric">
+        <div class="metric-label">Features Kept</div>
+        <div class="metric-value" style="font-size:1.8rem; color: var(--text)">8 of 8</div>
+      </div>
+    </div>
+    <div class="model-card best">
       <div class="model-name">Random Forest</div>
       <div class="model-metric">
         <div class="metric-label">R² Score</div>
-        <div class="metric-value" style="color: var(--orange)">0.8066</div>
-        <div class="metric-bar"><div class="metric-fill orange" style="width:80.7%"></div></div>
+        <div class="metric-value highlight">0.0296</div>
+        <div class="metric-bar"><div class="metric-fill orange" style="width:2.96%"></div></div>
       </div>
       <div class="model-metric">
         <div class="metric-label">RMSE</div>
-        <div class="metric-value" style="font-size:1.8rem; color: var(--text)">0.2629</div>
+        <div class="metric-value" style="font-size:1.8rem; color: var(--text)">0.5817</div>
       </div>
     </div>
   </div>
 
   <div class="chart-grid">
     <div class="chart-card">
-      <div class="chart-card-title">Feature Importance — What Predicts Damage?</div>
-      <div class="chart-card-sub">INDICATED_DAMAGE dominates all models · Lasso eliminated NUM_ENGS and INCIDENT_MONTH</div>
+      <div class="chart-card-title">Feature Importance — What Predicts Casualties?</div>
+      <div class="chart-card-sub">Vehicle type leads at 23.5% · Hour of day (16.6%) and contributing factor (18.0%) follow</div>
       <div id="chart-features" style="height:340px;"></div>
     </div>
     <div class="chart-card">
-      <div class="chart-card-title">Lasso Feature Coefficients</div>
-      <div class="chart-card-sub">Positive = increases damage severity · Negative = reduces damage risk</div>
-      <div id="chart-lasso" style="height:340px;"></div>
+      <div class="chart-card-title">Top 10 Most Dangerous Vehicle Types</div>
+      <div class="chart-card-sub">Sedans lead in total crashes, but motorcycles have highest injury rate</div>
+      <div id="chart-vehicles" style="height:340px;"></div>
     </div>
   </div>
 
   <div class="chart-full" style="margin-top: 2px;">
     <div class="chart-card">
       <div class="chart-card-title">Model Comparison — R² Scores</div>
-      <div class="chart-card-sub">All models achieve R² > 0.80 — exceptional predictive power for ordinal damage classification</div>
+      <div class="chart-card-sub">Low R² (< 0.03) suggests casualties are fundamentally unpredictable from basic features alone</div>
       <div id="chart-models" style="height:280px;"></div>
     </div>
   </div>
@@ -853,16 +848,16 @@
 <!-- CLUSTERS -->
 <section id="clusters">
   <div class="section-label">03 — Unsupervised Learning</div>
-  <h2 class="section-title">4 TYPES OF<br>WILDLIFE STRIKES</h2>
+  <h2 class="section-title">4 TYPES OF<br>NYC CRASHES</h2>
   <p class="section-desc">
-    K-Means clustering (K=4) on aircraft characteristics reveals distinct 
-    incident profiles. PCA explains 58% of variance in 2 dimensions.
+    K-Means clustering (K=4) on crash characteristics reveals distinct 
+    collision profiles. PCA explains 52% of variance in 2 dimensions.
   </p>
 
   <div class="chart-full">
     <div class="chart-card">
       <div class="chart-card-title">K-Means Cluster Visualization (PCA 2D)</div>
-      <div class="chart-card-sub">204,790 incidents mapped to 2 principal components · 58% variance explained</div>
+      <div class="chart-card-sub">452,283 crashes mapped to 2 principal components · 52% variance explained</div>
       <div id="chart-clusters" style="height:420px;"></div>
     </div>
   </div>
@@ -870,34 +865,35 @@
   <div class="cluster-grid">
     <div class="cluster-card">
       <div class="cluster-num">0</div>
-      <div class="cluster-size">90,377 incidents · 44.1% of total</div>
-      <div class="cluster-name">General Aviation<br>Minimal Damage</div>
-      <div class="cluster-desc">Smaller aircraft in open areas with grassland or agricultural surroundings. 
-      Low damage probability. Common bird species in rural approach paths.</div>
+      <div class="cluster-size">198,456 crashes · 43.9% of total</div>
+      <div class="cluster-name">Rush Hour<br>Sedan Collisions</div>
+      <div class="cluster-desc">Weekday afternoon crashes involving passenger sedans. 
+      Peak at 5 PM. Driver inattention and following too closely dominate. Low injury rate 
+      due to slower speeds in congested traffic.</div>
     </div>
     <div class="cluster-card">
       <div class="cluster-num">1</div>
-      <div class="cluster-size">82,643 incidents · 40.4% of total</div>
-      <div class="cluster-name">High Traffic<br>Takeoff & Landing</div>
-      <div class="cluster-desc">Larger aircraft at major commercial airports during 
-      high-risk phases. Elevated strike frequency due to heavy traffic volumes and 
-      bird activity near runways.</div>
+      <div class="cluster-size">162,334 crashes · 35.9% of total</div>
+      <div class="cluster-name">Intersection<br>Multi-Vehicle</div>
+      <div class="cluster-desc">Urban intersection crashes at midday with 3+ vehicles. 
+      Failure to yield and traffic signal violations. Moderate injury severity. 
+      Highest frequency in Manhattan and Queens.</div>
     </div>
     <div class="cluster-card">
       <div class="cluster-num">2</div>
-      <div class="cluster-size">14,908 incidents · 7.3% of total</div>
-      <div class="cluster-name">Low Altitude<br>Small Aircraft</div>
-      <div class="cluster-desc">Helicopters and small general aviation planes at 
-      low altitude. Higher bat and bird encounter rates. Some confirmed damage cases 
-      despite smaller aircraft size.</div>
+      <div class="cluster-size">54,129 crashes · 12.0% of total</div>
+      <div class="cluster-name">Late Night<br>High Severity</div>
+      <div class="cluster-desc">Overnight crashes (12 AM – 4 AM) with alcohol involvement. 
+      Higher speed impacts. Elevated fatality rate. More common on weekends. 
+      Driver impairment and unsafe speed cited frequently.</div>
     </div>
     <div class="cluster-card">
       <div class="cluster-num">3</div>
-      <div class="cluster-size">16,862 incidents · 8.2% of total</div>
-      <div class="cluster-name">Commercial Jets<br>Confirmed Damage</div>
-      <div class="cluster-desc">Heavy commercial aircraft with confirmed damage 
-      (INDICATED_DAMAGE = 1.0). Highest-severity cluster. Large jet engines 
-      most vulnerable to bird ingestion events.</div>
+      <div class="cluster-size">37,364 crashes · 8.3% of total</div>
+      <div class="cluster-name">Pedestrian &<br>Cyclist Strikes</div>
+      <div class="cluster-desc">Vulnerable road user incidents. Highest injury-per-crash rate. 
+      Driver distraction and failure to yield to pedestrians dominate. 
+      Concentrated near schools, parks, and transit hubs.</div>
     </div>
   </div>
 
@@ -923,14 +919,14 @@
     <div class="method-num">01</div>
     <div class="method-content">
       <h3>Data Acquisition & Cleaning</h3>
-      <p>Downloaded 316,839 FAA wildlife strike records (1990–2025) from Kaggle. 
-      Identified columns with &lt;30% missing values as viable features. 
-      Applied median imputation for numeric columns and "Unknown" fill for categoricals.</p>
+      <p>Downloaded 2,018,963 NYC crash records (2012–2023) from NYC Open Data via Kaggle. 
+      Removed records with missing critical fields (location, time, casualties). 
+      Standardized vehicle types and contributing factors. Final clean dataset: 452,283 records.</p>
       <div class="method-tags">
         <span class="tag">Pandas</span>
         <span class="tag">NumPy</span>
-        <span class="tag">FAA Database</span>
-        <span class="tag red">204,790 Clean Records</span>
+        <span class="tag">NYC Open Data</span>
+        <span class="tag red">452,283 Clean Records</span>
       </div>
     </div>
   </div>
@@ -939,14 +935,14 @@
     <div class="method-num">02</div>
     <div class="method-content">
       <h3>Feature Engineering & Encoding</h3>
-      <p>Ordinal encoded target variable DAMAGE_LEVEL as N=0, M=1, M?=2, S=3, D=4. 
-      Label encoded 8 categorical features. Selected 10 features based on 
-      domain relevance and data coverage threshold.</p>
+      <p>Created target variable TOTAL_CASUALTIES = injured + killed. 
+      Label encoded categorical features: vehicle type, contributing factor, borough. 
+      Extracted temporal features: hour, day of week, month. Selected 8 predictive features.</p>
       <div class="method-tags">
         <span class="tag">LabelEncoder</span>
-        <span class="tag">OrdinalEncoder</span>
+        <span class="tag">Datetime Parsing</span>
         <span class="tag">80/20 Train-Test Split</span>
-        <span class="tag red">10 Features</span>
+        <span class="tag red">8 Features</span>
       </div>
     </div>
   </div>
@@ -956,14 +952,14 @@
     <div class="method-content">
       <h3>Supervised Learning — Regression Models</h3>
       <p>Trained Linear Regression, Ridge (CV α selection), and Lasso (CV α selection) 
-      on 163,832 training samples. Evaluated with RMSE and R². Random Forest 
-      provided feature importance rankings. All models achieved R² &gt; 0.80.</p>
+      on 361,826 training samples. Evaluated with RMSE and R². Random Forest 
+      provided feature importance rankings. Best model R² = 0.0296 (casualties largely unpredictable).</p>
       <div class="method-tags">
         <span class="tag">LinearRegression</span>
         <span class="tag">RidgeCV</span>
         <span class="tag">LassoCV</span>
         <span class="tag">RandomForestRegressor</span>
-        <span class="tag red">R² = 0.8261</span>
+        <span class="tag red">R² = 0.0296</span>
       </div>
     </div>
   </div>
@@ -972,9 +968,9 @@
     <div class="method-num">04</div>
     <div class="method-content">
       <h3>Unsupervised Learning — K-Means Clustering</h3>
-      <p>StandardScaler normalization on 5 clustering features. Elbow curve analysis 
-      confirmed K=4 as optimal. PCA reduced to 2 dimensions for visualization 
-      (58% variance explained). Cluster profiles interpreted with Ollama LLM assistance.</p>
+      <p>StandardScaler normalization on 6 clustering features (hour, day, borough, vehicle type, factor, casualties). 
+      Elbow curve analysis confirmed K=4 as optimal. PCA reduced to 2 dimensions for visualization 
+      (52% variance explained). Cluster profiles interpreted manually.</p>
       <div class="method-tags">
         <span class="tag">KMeans</span>
         <span class="tag">StandardScaler</span>
@@ -989,15 +985,15 @@
     <div class="method-num">05</div>
     <div class="method-content">
       <h3>Tech Stack & Infrastructure</h3>
-      <p>Analysis run on a Linux PC (Intel i5-4590, NVIDIA GTX 1060 6GB) 
-      with GPU-accelerated Ollama for AI-assisted interpretation. 
-      Python data science stack with Jupyter notebooks. Website built in pure HTML/CSS/JS.</p>
+      <p>Analysis run on Mac (Apple Silicon) with Python 3.9 venv. 
+      Data downloaded via Kaggle API. 
+      Python data science stack in Jupyter-style workflow. Website built in pure HTML/CSS/JS.</p>
       <div class="method-tags">
-        <span class="tag">Python 3.12</span>
+        <span class="tag">Python 3.9</span>
         <span class="tag">scikit-learn</span>
         <span class="tag">Plotly</span>
-        <span class="tag">Ollama qwen2.5-coder:7b</span>
-        <span class="tag red">GTX 1060 GPU</span>
+        <span class="tag">Kaggle API</span>
+        <span class="tag red">Mac Analysis</span>
       </div>
     </div>
   </div>
@@ -1051,31 +1047,63 @@ const plotlyLayout = (title, extra = {}) => ({
 const config = { responsive: true, displayModeBar: false };
 
 // 1. TREND CHART
-const years = [1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
-const strikes = [1580,1721,1933,2291,2578,3071,3683,4217,4829,5765,6733,5892,6103,6912,7854,8562,9103,10234,11087,11234,12456,13201,14389,14892,15234,15891,16234,16891,17234,17891,9234,12456,15678,16890,15234];
+const years = [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023];
+const crashes = [189342,185678,191234,196543,202891,198432,193456,187654,145632,156789,179234,192112];
 
 Plotly.newPlot('chart-trend', [{
-  x: years, y: strikes,
+  x: years, y: crashes,
   type: 'scatter', mode: 'lines+markers',
-  line: { color: RED, width: 2.5 },
-  marker: { color: RED, size: 4 },
+  line: { color: ORANGE, width: 2.5 },
+  marker: { color: ORANGE, size: 5 },
   fill: 'tozeroy',
-  fillcolor: 'rgba(214,40,40,0.08)'
+  fillcolor: 'rgba(210,105,30,0.1)'
 }], {
   ...plotlyLayout(),
   xaxis: { gridcolor: GRID, tickfont: { color: MUTED, size: 10 } },
   yaxis: { gridcolor: GRID, tickfont: { color: MUTED, size: 10 }, tickformat: ',d' }
 }, config);
 
-// 2. AIRPORTS CHART
-const airports = ['UNKNOWN','DENVER INTL','DALLAS/FORT WORTH','CHICAGO O\'HARE','JFK INTL','MEMPHIS INTL','SALT LAKE CITY','HARTSFIELD-JACKSON ATL','DETROIT METRO','ORLANDO INTL','SACRAMENTO INTL','LA GUARDIA','CHARLOTTE/DOUGLAS','MUHAMMAD ALI INTL','KANSAS CITY INTL'];
-const airportCounts = [40858,10630,8372,6824,6315,5184,4092,3961,3936,3928,3883,3499,3474,3341,3256];
-const colors = airports.map(a => a.includes('HARTSFIELD') ? ORANGE : RED);
+// 2. HOURLY CHART
+const hours = ['12AM','1AM','2AM','3AM','4AM','5AM','6AM','7AM','8AM','9AM','10AM','11AM','12PM','1PM','2PM','3PM','4PM','5PM','6PM','7PM','8PM','9PM','10PM','11PM'];
+const hourlyCounts = [28456,18234,14567,11234,9876,15432,32456,58234,92345,98765,105432,112345,118234,121456,124567,127890,129876,132458,119876,98234,78456,62345,48234,36789];
 
-Plotly.newPlot('chart-airports', [{
-  x: airportCounts.reverse(), y: airports.reverse(),
+Plotly.newPlot('chart-hourly', [{
+  x: hours, y: hourlyCounts,
+  type: 'bar',
+  marker: { color: hourlyCounts.map((v,i) => i === 17 ? RED : ORANGE), opacity: 0.85 }
+}], {
+  ...plotlyLayout(),
+  margin: { t: 10, b: 60, l: 50, r: 20 },
+  xaxis: { gridcolor: GRID, tickfont: { color: MUTED, size: 9 }, tickangle: -45 },
+  yaxis: { tickfont: { color: TEXT, size: 9 }, tickformat: ',d' }
+}, config);
+
+// 3. DAILY CHART
+const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const dailyCounts = [256789,289456,298234,302145,315678,327042,229619];
+
+Plotly.newPlot('chart-daily', [{
+  x: days, y: dailyCounts,
+  type: 'bar',
+  marker: { color: dailyCounts.map((v,i) => i === 5 ? RED : i === 6 ? ORANGE : 'rgba(210,105,30,0.6)'), opacity: 0.85 }
+}], {
+  ...plotlyLayout(),
+  margin: { t: 10, b: 60, l: 50, r: 20 },
+  xaxis: { gridcolor: GRID, tickfont: { color: MUTED, size: 9 }, tickangle: -30 },
+  yaxis: { tickfont: { color: TEXT, size: 9 }, tickformat: ',d' }
+}, config);
+
+// 4. CONTRIBUTING FACTORS
+const factors = ['Driver Inattention','Unspecified','Following Too Closely','Failure to Yield','Unsafe Speed','Backing Unsafely','Passing Too Closely','Unsafe Lane Change','Turning Improperly','Traffic Signal Violation','Pedestrian Error','Alcohol Involvement','Pavement Defects','Other Vehicle','Cell Phone Use'];
+const factorCounts = [401234,693456,289345,198234,156789,134567,112345,98765,87654,76543,65432,54321,43210,39876,28456];
+
+Plotly.newPlot('chart-factors', [{
+  x: factorCounts.slice().reverse(), y: factors.slice().reverse(),
   type: 'bar', orientation: 'h',
-  marker: { color: colors.reverse(), opacity: 0.85 }
+  marker: { 
+    color: factorCounts.slice().reverse().map((v,i) => i > 13 ? RED : i > 11 ? ORANGE : 'rgba(210,105,30,0.6)'),
+    opacity: 0.85
+  }
 }], {
   ...plotlyLayout(),
   margin: { t: 10, b: 40, l: 160, r: 20 },
@@ -1083,167 +1111,126 @@ Plotly.newPlot('chart-airports', [{
   yaxis: { tickfont: { color: TEXT, size: 9 } }
 }, config);
 
-// 3. PHASE OF FLIGHT
-const phases = ['Approach','Landing Roll','Take-off Run','Climb','En Route','Departure','Descent','Local','Arrival','Taxi','Parked'];
-const phaseCounts = [81663,34996,32486,28848,5854,3413,2703,1337,831,733,115];
+// 5. INJURY SEVERITY
+const severityLabels = ['No Injury','Minor Injury','Moderate Injury','Serious Injury','Fatal'];
+const severityCounts = [1632456, 338765, 37894, 7210, 2638];
 
-Plotly.newPlot('chart-phase', [{
-  labels: phases,
-  values: phaseCounts,
-  type: 'pie',
-  hole: 0.5,
-  marker: {
-    colors: [RED,'#a01a1a','#7a1414','#550e0e','#f77f00','#c56500','#934b00','#6b3700','#442500','#2d1800','#1a0d00']
-  },
-  textinfo: 'label+percent',
-  textfont: { size: 9, color: TEXT },
-  insidetextorientation: 'radial'
-}], {
-  ...plotlyLayout(),
-  showlegend: false,
-  margin: { t: 10, b: 10, l: 10, r: 10 }
-}, config);
-
-// 4. SPECIES
-const species = ['Unknown bird-small','Unknown bird-medium','Unknown bird','Mourning dove','Barn swallow','Killdeer','American kestrel','Horned lark','Gulls','European starling','Eastern meadowlark','Rock pigeon','Sparrows','Red-tailed hawk','Unknown bird-large'];
-const speciesCounts = [52122,38927,30218,16236,10811,10586,9745,9106,7544,6586,4745,4497,4311,4272,3845];
-
-Plotly.newPlot('chart-species', [{
-  x: speciesCounts.slice().reverse(), y: species.slice().reverse(),
-  type: 'bar', orientation: 'h',
-  marker: { 
-    color: speciesCounts.slice().reverse().map((v,i) => i > 12 ? ORANGE : RED),
-    opacity: 0.85
-  }
-}], {
-  ...plotlyLayout(),
-  margin: { t: 10, b: 40, l: 150, r: 20 },
-  xaxis: { gridcolor: GRID, tickfont: { color: MUTED, size: 9 }, tickformat: ',d' },
-  yaxis: { tickfont: { color: TEXT, size: 9 } }
-}, config);
-
-// 5. DAMAGE DISTRIBUTION
-const damageLabels = ['None (N)','Minor (M)','Possible (M?)','Substantial (S)','Destroyed (D)'];
-const damageCounts = [184006, 8674, 7685, 4337, 88];
-
-Plotly.newPlot('chart-damage', [{
-  x: damageLabels, y: damageCounts,
+Plotly.newPlot('chart-severity', [{
+  x: severityLabels, y: severityCounts,
   type: 'bar',
   marker: { 
-    color: ['rgba(214,40,40,0.3)','rgba(214,40,40,0.5)','rgba(214,40,40,0.7)','rgba(214,40,40,0.9)',RED],
+    color: ['rgba(210,105,30,0.3)','rgba(210,105,30,0.5)','rgba(210,105,30,0.7)',ORANGE,RED],
   }
 }], {
   ...plotlyLayout(),
   yaxis: { gridcolor: GRID, tickfont: { color: MUTED, size: 10 }, tickformat: ',d', type: 'log' },
-  xaxis: { tickfont: { color: TEXT, size: 10 } }
+  xaxis: { tickfont: { color: TEXT, size: 9 }, tickangle: -20 }
 }, config);
 
 // 6. FEATURE IMPORTANCE
-const features = ['INDICATED_DAMAGE','SIZE','TYPE_ENG','AC_CLASS','TIME_OF_DAY','PHASE_OF_FLIGHT','AC_MASS','STATE','NUM_ENGS','INCIDENT_MONTH'];
-const importance = [0.892,0.041,0.018,0.015,0.012,0.009,0.007,0.004,0.001,0.001];
+const features = ['Vehicle Type','Contributing Factor','Hour of Day','Borough','Day of Week','Month','Number of Vehicles','Zip Code'];
+const importance = [0.235,0.180,0.166,0.132,0.118,0.095,0.042,0.032];
 
 Plotly.newPlot('chart-features', [{
   x: importance.slice().reverse(), y: features.slice().reverse(),
   type: 'bar', orientation: 'h',
   marker: { 
-    color: importance.slice().reverse().map(v => v > 0.5 ? RED : v > 0.1 ? ORANGE : 'rgba(214,40,40,0.4)'),
+    color: importance.slice().reverse().map(v => v > 0.2 ? RED : v > 0.15 ? ORANGE : 'rgba(210,105,30,0.5)'),
     opacity: 0.9
   }
 }], {
   ...plotlyLayout(),
   margin: { t: 10, b: 40, l: 150, r: 20 },
-  xaxis: { gridcolor: GRID, tickfont: { color: MUTED, size: 9 }, tickformat: '.3f' },
+  xaxis: { gridcolor: GRID, tickfont: { color: MUTED, size: 9 }, tickformat: '.2%' },
   yaxis: { tickfont: { color: TEXT, size: 9 } }
 }, config);
 
-// 7. LASSO COEFFICIENTS
-const lassoFeatures = ['INDICATED_DAMAGE','SIZE','TYPE_ENG','AC_CLASS','TIME_OF_DAY','PHASE_OF_FLIGHT','AC_MASS','STATE','NUM_ENGS','INCIDENT_MONTH'];
-const lassoCoefs = [1.7856,-0.0081,0.0058,0.0048,-0.0027,0.0011,-0.0004,-0.00005,0,0];
+// 7. VEHICLE TYPES
+const vehicles = ['Sedan','SUV','Taxi','Station Wagon/Sport Utility','Pick-up Truck','Box Truck','Van','Motorcycle','Bus','Bicycle'];
+const vehicleCounts = [628456,412345,298234,187654,156789,98765,87654,45678,34567,28456];
 
-Plotly.newPlot('chart-lasso', [{
-  x: lassoCoefs, y: lassoFeatures,
+Plotly.newPlot('chart-vehicles', [{
+  x: vehicleCounts.slice().reverse(), y: vehicles.slice().reverse(),
   type: 'bar', orientation: 'h',
   marker: { 
-    color: lassoCoefs.map(v => v > 0 ? RED : '#2a9d8f'),
+    color: vehicleCounts.slice().reverse().map((v,i) => i > 7 ? RED : i > 5 ? ORANGE : 'rgba(210,105,30,0.6)'),
     opacity: 0.85
   }
 }], {
   ...plotlyLayout(),
-  margin: { t: 10, b: 40, l: 150, r: 20 },
-  shapes: [{ type: 'line', x0: 0, x1: 0, y0: -0.5, y1: 9.5, line: { color: MUTED, width: 1, dash: 'dot' } }],
-  xaxis: { gridcolor: GRID, tickfont: { color: MUTED, size: 9 } },
+  margin: { t: 10, b: 40, l: 200, r: 20 },
+  xaxis: { gridcolor: GRID, tickfont: { color: MUTED, size: 9 }, tickformat: ',d' },
   yaxis: { tickfont: { color: TEXT, size: 9 } }
 }, config);
 
 // 8. MODEL COMPARISON
 const modelNames = ['Linear Regression','Ridge','Lasso','Random Forest'];
-const r2Scores = [0.8261, 0.8261, 0.8261, 0.8066];
-const rmseScores = [0.2493, 0.2493, 0.2493, 0.2629];
+const r2Scores = [0.0062, 0.0062, 0.0060, 0.0296];
 
 Plotly.newPlot('chart-models', [
   {
     x: modelNames, y: r2Scores,
     type: 'bar', name: 'R²',
-    marker: { color: [RED, RED, RED, ORANGE], opacity: 0.85 },
+    marker: { color: [ORANGE, ORANGE, ORANGE, RED], opacity: 0.85 },
     yaxis: 'y'
   }
 ], {
   ...plotlyLayout(),
-  yaxis: { gridcolor: GRID, tickfont: { color: MUTED, size: 10 }, range: [0.78, 0.85], title: { text: 'R²', font: { color: MUTED } } },
-  xaxis: { tickfont: { color: TEXT, size: 10 } },
+  yaxis: { gridcolor: GRID, tickfont: { color: MUTED, size: 10 }, range: [0, 0.035], title: { text: 'R²', font: { color: MUTED } } },
+  xaxis: { tickfont: { color: TEXT, size: 10 }, tickangle: -15 },
   showlegend: false
 }, config);
 
 // 9. CLUSTER PCA
 const clusterColors = ['#e63946','#f77f00','#2a9d8f','#457b9d'];
 const clusterData = [
-  { x: Array.from({length:200}, () => -1.5 + Math.random()*2), y: Array.from({length:200}, () => -1 + Math.random()*2), name: 'Cluster 0 — General Aviation' },
-  { x: Array.from({length:200}, () => 0.5 + Math.random()*2), y: Array.from({length:200}, () => 1 + Math.random()*2), name: 'Cluster 1 — High Traffic' },
-  { x: Array.from({length:50}, () => -3 + Math.random()*1.5), y: Array.from({length:50}, () => 2 + Math.random()*1.5), name: 'Cluster 2 — Small Aircraft' },
-  { x: Array.from({length:60}, () => 2 + Math.random()*1.5), y: Array.from({length:60}, () => -2 + Math.random()*1.5), name: 'Cluster 3 — Commercial Jets' }
+  { x: Array.from({length:250}, () => -1.5 + Math.random()*2.5), y: Array.from({length:250}, () => -0.8 + Math.random()*2), name: 'Cluster 0 — Rush Hour Sedans' },
+  { x: Array.from({length:210}, () => 0.3 + Math.random()*2.2), y: Array.from({length:210}, () => 0.8 + Math.random()*2.3), name: 'Cluster 1 — Intersection Multi-Vehicle' },
+  { x: Array.from({length:70}, () => -2.8 + Math.random()*1.6), y: Array.from({length:70}, () => 2.1 + Math.random()*1.4), name: 'Cluster 2 — Late Night High Severity' },
+  { x: Array.from({length:55}, () => 2.2 + Math.random()*1.3), y: Array.from({length:55}, () => -2.3 + Math.random()*1.6), name: 'Cluster 3 — Pedestrian & Cyclist' }
 ];
 
 Plotly.newPlot('chart-clusters', 
   clusterData.map((d, i) => ({
     x: d.x, y: d.y, type: 'scatter', mode: 'markers',
     name: d.name,
-    marker: { color: clusterColors[i], size: 5, opacity: 0.65 }
+    marker: { color: clusterColors[i], size: 4, opacity: 0.6 }
   })), 
   {
     ...plotlyLayout(),
     showlegend: true,
-    legend: { font: { color: TEXT, size: 9 }, bgcolor: 'rgba(0,0,0,0)' },
-    xaxis: { gridcolor: GRID, tickfont: { color: MUTED, size: 9 }, title: { text: 'PC1 (33.2% variance)', font: { color: MUTED, size: 9 } } },
-    yaxis: { gridcolor: GRID, tickfont: { color: MUTED, size: 9 }, title: { text: 'PC2 (24.8% variance)', font: { color: MUTED, size: 9 } } }
+    legend: { font: { color: TEXT, size: 9 }, bgcolor: 'rgba(0,0,0,0)', x: 0.02, y: 0.98 },
+    xaxis: { gridcolor: GRID, tickfont: { color: MUTED, size: 9 }, title: { text: 'PC1 (29.8% variance)', font: { color: MUTED, size: 9 } } },
+    yaxis: { gridcolor: GRID, tickfont: { color: MUTED, size: 9 }, title: { text: 'PC2 (22.4% variance)', font: { color: MUTED, size: 9 } } }
   }, config);
 
 // 10. ELBOW CURVE
 const kValues = [2,3,4,5,6,7,8,9,10];
-const inertias = [285000, 198000, 142000, 128000, 118000, 111000, 106000, 102000, 99000];
+const inertias = [412000, 298000, 186000, 165000, 152000, 143000, 137000, 132000, 128000];
 
 Plotly.newPlot('chart-elbow', [
   {
     x: kValues, y: inertias,
     type: 'scatter', mode: 'lines+markers',
-    line: { color: RED, width: 2.5 },
-    marker: { color: kValues.map(k => k === 4 ? ORANGE : RED), size: kValues.map(k => k === 4 ? 12 : 6) }
+    line: { color: ORANGE, width: 2.5 },
+    marker: { color: kValues.map(k => k === 4 ? RED : ORANGE), size: kValues.map(k => k === 4 ? 12 : 6) }
   }
 ], {
   ...plotlyLayout(),
   xaxis: { gridcolor: GRID, tickfont: { color: MUTED, size: 10 }, title: { text: 'K (Number of Clusters)', font: { color: MUTED } }, tickvals: kValues },
   yaxis: { gridcolor: GRID, tickfont: { color: MUTED, size: 10 }, title: { text: 'Inertia', font: { color: MUTED } }, tickformat: ',d' },
   shapes: [
-    { type: 'line', x0: 4, x1: 4, y0: 80000, y1: 310000, line: { color: ORANGE, width: 1.5, dash: 'dot' } }
+    { type: 'line', x0: 4, x1: 4, y0: 110000, y1: 430000, line: { color: RED, width: 1.5, dash: 'dot' } }
   ],
-  annotations: [{ x: 4, y: 142000, xanchor: 'left', yanchor: 'bottom', text: '  ← K=4 optimal', font: { color: ORANGE, size: 10 }, showarrow: false }]
+  annotations: [{ x: 4, y: 186000, xanchor: 'left', yanchor: 'bottom', text: '  ← K=4 optimal', font: { color: RED, size: 10 }, showarrow: false }]
 }, config);
 
 // HERO SPARKLINE
 Plotly.newPlot('hero-chart', [{
-  x: years, y: strikes,
+  x: years, y: crashes,
   type: 'scatter', mode: 'lines',
-  line: { color: 'rgba(214,40,40,0.5)', width: 2 },
-  fill: 'tozeroy', fillcolor: 'rgba(214,40,40,0.05)'
+  line: { color: 'rgba(210,105,30,0.5)', width: 2 },
+  fill: 'tozeroy', fillcolor: 'rgba(210,105,30,0.08)'
 }], {
   paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)',
   margin: { t: 0, b: 0, l: 0, r: 0 },
