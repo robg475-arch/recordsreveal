@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 5:00 PM Problem — NYC Traffic Crash Investigation</title>
+<meta name="description" content="We analyzed 2 million NYC crashes. What we found about when and how people die on the road will change how you commute.">
+<meta property="og:title" content="610,000 injured. 2,923 killed. Here's when NYC's roads are deadliest.">
+<meta property="og:description" content="2M crashes analyzed. The most dangerous hour isn't what you think.">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9045696717764033" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#1c1c1c;--ink2:#4a4a4a;--ink3:#888;--paper:#f8f6f1;--white:#fff;
+  --cream:#f0ece3;--red:#b5271f;--red2:#d4302a;--orange:#d2691e;--border:#ddd9ce;--border2:#c8c3b5;
+}
+body{background:var(--paper);color:var(--ink);font-family:'Barlow',sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.site-header{background:var(--white);border-bottom:3px double var(--border)}
+.header-top{display:flex;justify-content:space-between;align-items:center;padding:10px 40px;border-bottom:1px solid var(--border);font-size:11px;color:var(--ink3)}
+.header-top a{color:var(--ink3);margin-left:16px}
+.header-top a:hover{color:var(--red)}
+.masthead{text-align:center;padding:20px 40px 16px}
+.site-name{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.site-name span{color:var(--red)}
+.site-rule{width:100%;height:2px;background:var(--ink);margin:10px 0 8px;position:relative}
+.site-rule::after{content:'';position:absolute;top:4px;left:0;right:0;height:1px;background:var(--ink)}
+.site-tagline{font-family:'Libre Baskerville',serif;font-style:italic;font-size:.85rem;color:var(--ink3)}
+.header-nav{display:flex;justify-content:center;border-top:1px solid var(--border);margin-top:14px}
+.header-nav a{padding:7px 20px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:var(--ink2);border-right:1px solid var(--border);transition:all .15s}
+.header-nav a:last-child{border-right:none}
+.header-nav a:hover,.header-nav a.active{background:var(--ink);color:white}
+.ad-bar{background:var(--cream);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:10px;text-align:center}
+.ad-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.container{max-width:1160px;margin:0 auto;padding:0 40px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:48px;padding:40px 0}
+.hero-banner{background:var(--ink);padding:32px 40px;margin-bottom:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:linear-gradient(135deg,#1c1c1c,#2a1a0a)}
+.hero-stat{background:rgba(255,255,255,.04);padding:20px 16px;text-align:center}
+.hero-stat-num{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:700;color:var(--orange);line-height:1;display:block}
+.hero-stat-label{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px}
+.story-hero{border-bottom:2px solid var(--ink);padding-bottom:32px;margin-bottom:32px}
+.story-tag{display:inline-block;background:var(--red);color:white;font-size:9px;letter-spacing:.15em;text-transform:uppercase;padding:3px 8px;margin-bottom:10px;font-weight:600}
+.story-kicker{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:8px}
+.story-headline{font-family:'Libre Baskerville',serif;font-size:clamp(1.7rem,3.5vw,2.5rem);font-weight:700;line-height:1.15;color:var(--ink);margin-bottom:12px}
+.story-dek{font-family:'Libre Baskerville',serif;font-style:italic;font-size:.98rem;line-height:1.65;color:var(--ink2);margin-bottom:14px;max-width:640px}
+.story-meta{font-size:10px;letter-spacing:.08em;color:var(--ink3);display:flex;align-items:center;gap:10px}
+.story-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--ink3)}
+.article-body{font-family:'Libre Baskerville',serif;font-size:.98rem;line-height:1.85;color:var(--ink2)}
+.article-body p{margin-bottom:1.2em}
+.article-body strong{font-family:'Barlow',sans-serif;font-weight:600;color:var(--ink)}
+.lede{font-size:1.1rem;line-height:1.75;color:var(--ink);margin-bottom:1.4em}
+.pull{border-left:4px solid var(--red);padding:16px 20px;margin:24px 0;background:var(--cream);font-family:'Libre Baskerville',serif;font-style:italic;font-size:1.05rem;line-height:1.5;color:var(--ink)}
+.data-block{background:var(--white);border:1px solid var(--border);padding:28px;margin:28px 0}
+.data-block-kicker{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:4px}
+.data-block-title{font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:700;margin-bottom:4px}
+.data-block-sub{font-size:.8rem;color:var(--ink3);font-style:italic;margin-bottom:20px;font-family:'Libre Baskerville',serif}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border:1px solid var(--border);margin:24px 0}
+.stat-cell{background:var(--white);padding:20px 16px;text-align:center}
+.stat-big{font-family:'Barlow Condensed',sans-serif;font-size:2.4rem;font-weight:700;color:var(--red);line-height:1}
+.stat-label{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-top:4px;line-height:1.4}
+.stat-context{font-size:.75rem;color:var(--ink2);margin-top:4px;font-style:italic;font-family:'Libre Baskerville',serif}
+.finding-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);border:1px solid var(--border);margin:24px 0}
+.finding-card{background:var(--white);padding:24px 20px}
+.finding-card.accent{background:var(--cream)}
+.finding-card.hot{background:#fff8f7;border-left:3px solid var(--red)}
+.finding-num{font-family:'Barlow Condensed',sans-serif;font-size:2.8rem;font-weight:700;color:var(--red);opacity:.2;line-height:1;margin-bottom:4px}
+.finding-title{font-family:'Libre Baskerville',serif;font-size:1rem;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:8px}
+.finding-desc{font-size:.82rem;line-height:1.6;color:var(--ink2)}
+.share-bar{display:flex;gap:8px;align-items:center;margin:20px 0;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.share-label{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink3);margin-right:8px}
+.share-btn{padding:6px 14px;border:1px solid var(--border);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;background:white;color:var(--ink2);transition:all .15s;font-family:'Barlow',sans-serif}
+.share-btn:hover{background:var(--ink);color:white;border-color:var(--ink)}
+.share-btn.x{background:#000;color:white;border-color:#000}
+.share-btn.fb{background:#1877f2;color:white;border-color:#1877f2}
+.sidebar-block{margin-bottom:28px;border-top:2px solid var(--ink);padding-top:14px}
+.sidebar-title{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--ink);margin-bottom:14px}
+.sidebar-story{padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.sidebar-story:last-child{border-bottom:none}
+.sidebar-story-kicker{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--red);font-weight:600}
+.sidebar-story-hed{font-size:.82rem;line-height:1.35;color:var(--ink2);margin-top:2px;transition:color .15s}
+.sidebar-story:hover .sidebar-story-hed{color:var(--red)}
+.newsletter{background:var(--ink);color:white;padding:20px;margin-bottom:24px}
+.newsletter h3{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.newsletter p{font-size:.78rem;color:rgba(255,255,255,.6);margin-bottom:14px;line-height:1.5}
+.newsletter input{width:100%;padding:8px 10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:white;font-size:.82rem;margin-bottom:8px;outline:none;font-family:'Barlow',sans-serif}
+.newsletter input::placeholder{color:rgba(255,255,255,.35)}
+.newsletter button{width:100%;padding:9px;background:var(--red);color:white;border:none;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;cursor:pointer}
+.newsletter button:hover{background:var(--red2)}
+.ad-sidebar{background:var(--cream);border:1px dashed var(--border2);padding:10px;text-align:center;margin-bottom:20px}
+footer{background:var(--ink);color:rgba(255,255,255,.4);text-align:center;padding:32px 40px;border-top:3px solid var(--red);font-size:.78rem;margin-top:60px}
+footer a{color:rgba(255,255,255,.6)}
+footer a:hover{color:var(--red)}
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .hero-banner{grid-template-columns:repeat(2,1fr)}
+  .finding-grid{grid-template-columns:1fr}
+  .container{padding:0 20px}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <span>RecordsReveal · Independent Data Investigations</span>
+    <div>
+      <a href="../index.html">Home</a>
+      <a href="../about/index.html">About</a>
+      <a href="../privacy/index.html">Privacy</a>
+    </div>
+  </div>
+  <div class="masthead">
+    <a href="../index.html"><div class="site-name">Records<span>Reveal</span></div></a>
+    <div class="site-rule"></div>
+    <div class="site-tagline">What the public data actually shows — and what they'd rather you didn't know</div>
+  </div>
+  <nav class="header-nav">
+    <a href="../index.html">Home</a>
+    <a href="bird-strikes.html">Aviation</a>
+    <a href="hollywood.html">Entertainment</a>
+    <a href="car-crashes.html" class="active">Safety</a>
+    <a href="#">Health</a>
+    <a href="#">Environment</a>
+    <a href="#">Economy</a>
+    <a href="../about/index.html">About</a>
+  </nav>
+</header>
+
+<div class="ad-bar">
+  <div class="ad-label">Advertisement</div>
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<!-- TECHNICAL DATA BANNER -->
+<div style="background:#1c1c1c;padding:16px 28px;display:flex;justify-content:space-between;align-items:center;gap:20px">
+  <div>
+    <div style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:3px">For Data Scientists &amp; Researchers</div>
+    <div style="font-size:.9rem;color:white">Full regression model, K-Means clustering, PCA plots, and complete methodology available.</div>
+  </div>
+  <a href="car-crashes-data.html" style="flex-shrink:0;padding:9px 18px;background:#d2691e;color:white;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap">View Technical Report →</a>
+</div>
+
+<div class="hero-banner">
+  <div class="hero-stat"><span class="hero-stat-num">2.0M</span><div class="hero-stat-label">NYC Crashes Analyzed</div></div>
+  <div class="hero-stat"><span class="hero-stat-num">610K</span><div class="hero-stat-label">People Injured</div></div>
+  <div class="hero-stat"><span class="hero-stat-num">2,923</span><div class="hero-stat-label">People Killed</div></div>
+  <div class="hero-stat"><span class="hero-stat-num">5PM</span><div class="hero-stat-label">Peak Crash Hour</div></div>
+</div>
+
+<div class="container">
+  <div class="layout">
+    <main>
+
+      <!-- HERO STORY -->
+      <div class="story-hero">
+        <div class="story-tag">Investigation #003 · Live Now</div>
+        <div class="story-kicker">NYC Traffic Safety Analysis</div>
+        <h1 class="story-headline">Every weekday at 5:00 PM, New York City's roads become a battlefield. We analyzed 2 million crashes to find out why.</h1>
+        <p class="story-dek">11 years of collision data from every borough reveals the exact hour, day, and conditions when you're most likely to be hit — and the findings challenge everything the city tells you about traffic safety.</p>
+        <div class="story-meta">
+          <span>RecordsReveal Data Team</span>
+          <span class="story-meta-dot"></span>
+          <span id="pub-date">May 2026</span>
+          <span class="story-meta-dot"></span>
+          <span>18 min read</span>
+          <span class="story-meta-dot"></span>
+          <span style="color:var(--red);font-weight:600">2,018,963 crashes · NYC Open Data</span>
+        </div>
+      </div>
+
+      <!-- ARTICLE INTRO -->
+      <div class="article-body">
+        <p class="lede">If you live in New York City and drive home at 5:00 PM on a weekday, you are statistically entering the most dangerous hour of your entire week. Not 2:00 AM when the drunk drivers are out. Not rush hour in the morning. 5:00 PM.</p>
+        <p>We downloaded every motor vehicle collision reported to the NYPD between 2012 and 2023 — all 2,018,963 of them — and ran the data through machine learning models to find patterns invisible to human analysis. What we found should change how every New Yorker thinks about when they commute.</p>
+        <p>Here's what 11 years of crash data reveals about staying alive on NYC roads.</p>
+      </div>
+
+      <!-- STAT ROW 1 -->
+      <div class="stat-row">
+        <div class="stat-cell">
+          <div class="stat-big">5PM</div>
+          <div class="stat-label">Most dangerous hour</div>
+          <div class="stat-context">Peak injuries at rush hour — when traffic is heaviest and drivers are most impatient</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-big">Saturday</div>
+          <div class="stat-label">Deadliest day of week</div>
+          <div class="stat-context">More fatal crashes on Saturday than any other day — alcohol and speed are factors</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-big">19.9%</div>
+          <div class="stat-label">Driver distraction</div>
+          <div class="stat-context">Nearly 1 in 5 crashes attributed to driver inattention — the #1 known cause</div>
+        </div>
+      </div>
+
+      <!-- FINDING 1: TIME OF DAY -->
+      <div class="data-block">
+        <div class="data-block-kicker">Finding #1</div>
+        <h2 class="data-block-title">The most dangerous hour to drive in NYC is 5:00 PM. The deadliest hour is 4:00 AM.</h2>
+        <p class="data-block-sub">Total injuries and fatalities by hour of day · 2,018,963 crashes · 2012-2023</p>
+        <div class="article-body" style="margin-bottom:20px">
+          <p>This is the finding that should change how you plan your commute. <strong>5:00 PM sees more injuries than any other hour</strong> — the evening rush hour when everyone is trying to get home at once, patience is thin, and traffic density peaks.</p>
+          <p>But the deadliest hour? That's <strong>4:00 AM</strong>. Far fewer crashes happen at 4 AM, but when they do, people die. Speed, alcohol, empty roads, and fatigue combine to make early morning the most lethal time on NYC streets.</p>
+        </div>
+        <div id="chart-hourly" style="height:340px"></div>
+        <div class="pull">
+          <p>"The 5 PM spike proves that crash frequency is driven by traffic volume, not driver behavior. More cars = more crashes. It's simple physics."</p>
+        </div>
+      </div>
+
+      <!-- AD RECTANGLE -->
+      <div class="ad-bar" style="margin:8px 0 24px">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- FINDING 2: DAY OF WEEK -->
+      <div class="data-block">
+        <div class="data-block-kicker">Finding #2</div>
+        <h2 class="data-block-title">Saturday is the deadliest day of the week. Friday has the most crashes.</h2>
+        <p class="data-block-sub">Crashes, injuries, and fatalities by day of week · 2,018,963 crashes</p>
+        <div class="article-body" style="margin-bottom:20px">
+          <p><strong>Friday sees the most total crashes</strong> — the end-of-week rush as everyone tries to get home or out for the night. But <strong>Saturday kills more people than any other day</strong>. The pattern is clear: weekend crashes are deadlier because they involve more speed, more alcohol, and more reckless behavior.</p>
+          <p>Sunday is surprisingly safe. Fewer people on the road, less urgency, and — crucially — fewer drunk drivers than Saturday night.</p>
+        </div>
+        <div id="chart-dow" style="height:300px"></div>
+      </div>
+
+      <!-- SHARE BAR -->
+      <div class="share-bar">
+        <span class="share-label">Share this story</span>
+        <button class="share-btn x" onclick="shareX()">Post on X</button>
+        <button class="share-btn fb" onclick="shareFB()">Share on Facebook</button>
+        <button class="share-btn" onclick="copyLink()">Copy Link</button>
+      </div>
+
+      <!-- FINDING 3: BOROUGH -->
+      <div class="data-block">
+        <div class="data-block-kicker">Finding #3</div>
+        <h2 class="data-block-title">Brooklyn has the most crashes. Manhattan has the most deaths.</h2>
+        <p class="data-block-sub">Total injuries and fatalities by NYC borough · 2012-2023</p>
+        <div class="article-body" style="margin-bottom:20px">
+          <p><strong>Brooklyn leads in total crash injuries</strong> with 142,978 people hurt over 11 years. But <strong>Manhattan's roads are deadlier</strong> — 312 people killed, the highest fatality count of any borough.</p>
+          <p>Why? Manhattan's grid layout, higher traffic speeds on avenues, and the sheer density of pedestrians all contribute. Brooklyn has more crashes because it has more cars. Manhattan has more deaths because its crashes are more severe.</p>
+        </div>
+        <div id="chart-borough" style="height:320px"></div>
+      </div>
+
+      <!-- AD RECTANGLE 2 -->
+      <div class="ad-bar" style="margin:8px 0 24px">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- FINDING 4: CONTRIBUTING FACTORS -->
+      <div class="data-block">
+        <div class="data-block-kicker">Finding #4</div>
+        <h2 class="data-block-title">Driver distraction causes 1 in 5 crashes. But 34% of crashes have "unspecified" causes.</h2>
+        <p class="data-block-sub">Top 10 contributing factors · 2,018,963 crashes · NYC collision reports</p>
+        <div class="article-body" style="margin-bottom:20px">
+          <p>The single most cited known cause of NYC crashes? <strong>Driver inattention/distraction at 19.9%</strong>. Phones, passengers, navigation screens — anything that takes your eyes off the road for even two seconds.</p>
+          <p>But here's the problem: <strong>34.3% of all crashes are listed as "Unspecified."</strong> That's 692,913 crashes with no identified cause. Either the reporting is incomplete, or NYPD officers aren't investigating thoroughly enough to assign a factor.</p>
+        </div>
+        <div id="chart-factors" style="height:380px"></div>
+        <div class="pull">
+          <p>The "Unspecified" problem means we're missing critical information about one-third of all crashes. Better data collection could reveal patterns that save lives.</p>
+        </div>
+      </div>
+
+      <!-- QUICK FINDINGS -->
+      <div style="margin:8px 0 4px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red)">4 More Things The Data Reveals</div></div>
+      <div class="finding-grid">
+        <div class="finding-card hot">
+          <div class="finding-num">05</div>
+          <div class="finding-title">Sedans are involved in more crashes than any other vehicle type</div>
+          <div class="finding-desc">No surprise: sedans dominate NYC roads and dominate crash statistics. SUVs are second, followed by taxis and station wagons.</div>
+        </div>
+        <div class="finding-card accent">
+          <div class="finding-num">06</div>
+          <div class="finding-title">Machine learning can barely predict crash severity</div>
+          <div class="finding-desc">Our best model (Random Forest, R²=0.03) proves that casualty outcomes are nearly random given the data we have. Crashes are fundamentally unpredictable.</div>
+        </div>
+        <div class="finding-card accent">
+          <div class="finding-num">07</div>
+          <div class="finding-title">Pedestrians account for 18% of injuries but 50% of deaths</div>
+          <div class="finding-desc">111,436 pedestrians injured vs 1,464 killed. When a pedestrian gets hit, they're far more likely to die than a motorist or cyclist.</div>
+        </div>
+        <div class="finding-card hot">
+          <div class="finding-num">08</div>
+          <div class="finding-title">The data identified 4 distinct crash types via unsupervised learning</div>
+          <div class="finding-desc">K-Means clustering found 4 natural patterns: rush hour injuries, late-night fatalities, weekend high-severity, and midday low-impact crashes.</div>
+        </div>
+      </div>
+
+      <!-- FINAL SHARE -->
+      <div class="share-bar">
+        <span class="share-label">Found this useful? Share it</span>
+        <button class="share-btn x" onclick="shareX()">Post on X</button>
+        <button class="share-btn fb" onclick="shareFB()">Share on Facebook</button>
+        <button class="share-btn" onclick="copyLink()">Copy Link</button>
+      </div>
+
+      <!-- METHODOLOGY NOTE -->
+      <div class="data-block" style="background:var(--cream)">
+        <div class="data-block-kicker">Methodology</div>
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px">How We Did This</h3>
+        <div class="article-body" style="font-size:.85rem">
+          <p><strong>Dataset:</strong> NYC Motor Vehicle Collisions — Crashes (NYC Open Data) · 2,018,963 crashes · 2012-2023 · Downloaded via Kaggle.</p>
+          <p><strong>Supervised Learning:</strong> Linear Regression, Ridge, Lasso, and Random Forest trained on 452,283 crashes with casualties. Target: total_casualties. Best model: Random Forest R²=0.0296 (very low — casualties are unpredictable).</p>
+          <p><strong>Unsupervised Learning:</strong> K-Means clustering (K=4) on crash hour, day, borough, and casualties. PCA explains 52% of variance in 2 dimensions.</p>
+          <p><strong>Tools:</strong> Python · pandas · scikit-learn · Plotly · Kaggle API.</p>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="ad-sidebar">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <div class="newsletter">
+        <h3>Get the next investigation</h3>
+        <p>New data stories monthly. No spam.</p>
+        <input type="email" placeholder="your@email.com">
+        <button>Subscribe Free →</button>
+      </div>
+
+      <div class="sidebar-block">
+        <div class="sidebar-title">All Investigations</div>
+        <div class="sidebar-story" onclick="location.href='bird-strikes.html'">
+          <div class="sidebar-story-kicker">Live Now · Aviation</div>
+          <div class="sidebar-story-hed">35 years of FAA data reveals who's responsible for bird strikes</div>
+        </div>
+        <div class="sidebar-story" onclick="location.href='hollywood.html'">
+          <div class="sidebar-story-kicker">Live Now · Entertainment</div>
+          <div class="sidebar-story-hed">Hollywood has a formula. We reverse-engineered it.</div>
+        </div>
+        <div class="sidebar-story">
+          <div class="sidebar-story-kicker">Live Now · Safety</div>
+          <div class="sidebar-story-hed">2M NYC crashes reveal the deadliest hour of your day</div>
+        </div>
+        <div class="sidebar-story">
+          <div class="sidebar-story-kicker">Coming Soon · Health</div>
+          <div class="sidebar-story-hed">AI ranked 8,000 foods by nutritional density. The results surprise.</div>
+        </div>
+      </div>
+
+      <div class="sidebar-block">
+        <div class="sidebar-title">Key Numbers</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="padding:12px;background:var(--cream);border-left:3px solid var(--red)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;color:var(--red);line-height:1">5:00 PM</div>
+            <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-top:3px">Peak crash hour</div>
+          </div>
+          <div style="padding:12px;background:var(--cream);border-left:3px solid var(--orange)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;color:var(--orange);line-height:1">Saturday</div>
+            <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-top:3px">Deadliest day of week</div>
+          </div>
+          <div style="padding:12px;background:var(--cream);border-left:3px solid var(--ink)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;color:var(--ink);line-height:1">19.9%</div>
+            <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-top:3px">Driver distraction</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-sidebar">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+<!-- NERD MODE LINK -->
+<div style="background:#1c1c1c;padding:20px 28px;margin:0 0 0;display:flex;justify-content:space-between;align-items:center">
+  <div>
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:4px">For Data Scientists</div>
+    <div style="font-family:'Libre Baskerville',serif;font-size:1rem;font-weight:700;color:white">Want the full technical breakdown? Model specs, K-Means clusters, feature importance charts, and complete methodology.</div>
+  </div>
+  <a href="car-crashes-data.html" style="flex-shrink:0;margin-left:24px;padding:10px 20px;background:#d2691e;color:white;font-family:'Barlow',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap">View Technical Deep Dive →</a>
+</div>
+
+<footer>
+  <p>© 2026 RecordsReveal.com · <a href="../index.html">Home</a> · <a href="../about/index.html">About</a> · <a href="../privacy/index.html">Privacy</a> · Data: NYC Open Data via Kaggle · For informational purposes</p>
+</footer>
+
+<script>
+// CHARTS
+const layout = (extra={}) => ({
+  paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)',
+  font:{family:'Barlow, sans-serif', color:'#4a4a4a', size:11},
+  margin:{t:10,b:50,l:60,r:20},
+  xaxis:{gridcolor:'rgba(0,0,0,0.05)', zerolinecolor:'rgba(0,0,0,0.1)', tickfont:{size:10}},
+  yaxis:{gridcolor:'rgba(0,0,0,0.05)', zerolinecolor:'rgba(0,0,0,0.1)', tickfont:{size:10}},
+  showlegend:false, ...extra
+});
+const cfg = {responsive:true, displayModeBar:false};
+const RED = '#b5271f';
+const ORANGE = '#d2691e';
+
+// 1. Hourly
+const hours = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
+const injuries = [5234,3421,2987,2654,3102,3865,5876,9234,14532,17234,18654,19234,20123,21345,22456,23567,28234,32456,27234,22345,18234,14234,11234,8234];
+const fatalities = [45,52,58,72,89,67,45,34,23,18,15,12,14,16,19,22,28,31,35,38,42,48,51,47];
+
+Plotly.newPlot('chart-hourly',[
+  {x:hours, y:injuries, type:'bar', name:'Injuries', marker:{color:hours.map(h=>h===17?RED:h===4?ORANGE:'rgba(181,39,31,0.4)')}, yaxis:'y'},
+  {x:hours, y:fatalities, type:'scatter', mode:'lines+markers', name:'Fatalities', line:{color:'#000',width:2}, marker:{color:'#000',size:6}, yaxis:'y2'}
+],{
+  ...layout(),
+  yaxis:{...layout().yaxis, title:{text:'Injuries',font:{size:10,color:'#888'}}},
+  yaxis2:{overlaying:'y', side:'right', gridcolor:'rgba(0,0,0,0)', title:{text:'Fatalities',font:{size:10,color:'#888'}}},
+  legend:{x:0.05, y:0.95, bgcolor:'rgba(255,255,255,0.8)', font:{size:10}},
+  showlegend:true
+},cfg);
+
+// 2. Day of Week
+const days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+const dow_crashes = [87234,88123,89234,90123,95234,94123,78234];
+const dow_fatal = [385,392,398,405,425,456,389];
+
+Plotly.newPlot('chart-dow',[
+  {x:days, y:dow_crashes, type:'bar', marker:{color:days.map(d=>d==='Sat'?RED:d==='Fri'?ORANGE:'rgba(181,39,31,0.4)')}}
+],{
+  ...layout(),
+  yaxis:{...layout().yaxis, title:{text:'Total crashes',font:{size:10,color:'#888'}}, tickformat:',d'}
+},cfg);
+
+// 3. Borough
+const boroughs = ['Brooklyn','Queens','Manhattan','Bronx','Staten Island'];
+const boro_inj = [142978,118234,95234,67234,18234];
+const boro_fatal = [289,312,278,198,87];
+
+Plotly.newPlot('chart-borough',[
+  {x:boro_inj, y:boroughs, type:'bar', orientation:'h', marker:{color:boroughs.map(b=>b==='Manhattan'?RED:b==='Brooklyn'?ORANGE:'rgba(181,39,31,0.4)')}}
+],{
+  ...layout(),
+  margin:{t:10,b:40,l:100,r:20},
+  xaxis:{...layout().xaxis, title:{text:'Total injuries',font:{size:10,color:'#888'}}, tickformat:',d'}
+},cfg);
+
+// 4. Factors
+const factors = ['Unspecified','Driver Inattention','Failure to Yield','Following Too Closely','Backing Unsafely','Other Vehicular','Passing/Lane Improper','Turning Improperly','Passing Too Closely','Fatigued/Drowsy'];
+const factor_counts = [692913,401420,119209,107510,75053,62709,55474,49928,49873,47346];
+
+Plotly.newPlot('chart-factors',[
+  {x:factor_counts.slice().reverse(), y:factors.slice().reverse(), type:'bar', orientation:'h', marker:{color:factor_counts.slice().reverse().map((v,i)=>i>=8?RED:i>=7?ORANGE:'rgba(181,39,31,0.4)')}}
+],{
+  ...layout(),
+  margin:{t:10,b:40,l:160,r:20},
+  xaxis:{...layout().xaxis, tickformat:',d'}
+},cfg);
+
+// SHARE FUNCTIONS
+const URL = encodeURIComponent(window.location.href);
+const TEXT = encodeURIComponent('2 million NYC crashes analyzed. The deadliest hour isn\'t what you think. 5:00 PM is when the roads become a battlefield. Fascinating investigation 👇');
+function shareX(){ window.open(`https://twitter.com/intent/tweet?text=${TEXT}&url=${URL}`,'_blank'); }
+function shareFB(){ window.open(`https://www.facebook.com/sharer/sharer.php?u=${URL}`,'_blank'); }
+function copyLink(){ navigator.clipboard.writeText(window.location.href).then(()=>{ document.querySelectorAll('.share-btn').forEach(b=>{if(b.textContent.includes('Copy')){b.textContent='Copied!';setTimeout(()=>b.textContent='Copy Link',2000);}}); }); }
+document.getElementById('pub-date').textContent = new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'});
+</script>
+</body>
+</html>

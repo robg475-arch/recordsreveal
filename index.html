@@ -182,7 +182,7 @@ footer{background:var(--ink);color:var(--white);padding:48px 40px 24px}
     <a href="index.html" class="active">Home</a>
     <a href="investigations/bird-strikes.html">Aviation</a>
     <a href="investigations/hollywood.html">Entertainment</a>
-    <a href="#">Safety</a>
+    <a href="investigations/car-crashes.html">Safety</a>
     <a href="#">Health</a>
     <a href="#">Environment</a>
     <a href="#">Economy</a>
@@ -193,7 +193,7 @@ footer{background:var(--ink);color:var(--white);padding:48px 40px 24px}
 <!-- DATE BAR -->
 <div class="date-bar">
   <span id="today-date">Loading...</span>
-  <span><strong>2</strong> Investigations Published · <strong>4</strong> In Progress</span>
+  <span><strong>3</strong> Investigations Published · <strong>3</strong> In Progress</span>
 </div>
 
 <!-- LEADERBOARD AD -->
@@ -218,11 +218,11 @@ footer{background:var(--ink);color:var(--white);padding:48px 40px 24px}
     <div class="strip-label">Prediction Accuracy</div>
   </div>
   <div class="stat-strip-item">
-    <span class="strip-num">2</span>
+    <span class="strip-num">3</span>
     <div class="strip-label">Investigations Live</div>
   </div>
   <div class="stat-strip-item">
-    <span class="strip-num">4</span>
+    <span class="strip-num">3</span>
     <div class="strip-label">Coming Soon</div>
   </div>
 </div>
@@ -284,6 +284,21 @@ footer{background:var(--ink);color:var(--white);padding:48px 40px 24px}
         </div>
       </div>
 
+      <!-- INVESTIGATION #003: NYC CRASHES -->
+      <div style="display:grid;grid-template-columns:180px 1fr;gap:24px;border-bottom:2px solid var(--border2);margin-bottom:36px;padding-bottom:28px;align-items:start">
+        <div class="story-card-img" style="height:110px;margin:0;font-size:1.1rem;flex-direction:column;gap:4px;display:flex;align-items:center;justify-content:center">
+          <div>🚗</div>
+          <div>TRAFFIC</div>
+        </div>
+        <div>
+          <div class="hero-tag">Investigation #003 · Live Now</div>
+          <div class="story-card-kicker" style="margin-top:8px">NYC Traffic Safety Analysis</div>
+          <h2 class="story-card-headline" style="font-size:1.15rem;margin-bottom:8px"><a href="investigations/car-crashes.html">Every weekday at 5:00 PM, NYC's roads become a battlefield. We analyzed 2 million crashes to find out why.</a></h2>
+          <p class="story-card-dek">610,815 injured. 2,923 killed. Machine learning reveals the exact hour and conditions when you're most likely to get hit — and the findings challenge everything the city tells you about traffic safety.</p>
+          <div class="story-card-meta">RecordsReveal Data Team · May 2026 · 18 min read · <span style="color:var(--red);font-weight:600">2,018,963 crashes · NYC Open Data</span></div>
+        </div>
+      </div>
+
       <!-- SECTION: COMING INVESTIGATIONS -->
       <div class="section-header">
         <span class="section-label">Next Investigations</span>
@@ -292,11 +307,11 @@ footer{background:var(--ink);color:var(--white);padding:48px 40px 24px}
 
       <div class="story-grid">
         <div class="story-card coming-soon">
-          <div class="story-card-img">CRASH DATA</div>
-          <div class="story-card-kicker">Road Safety</div>
-          <div class="story-card-headline">6 million car crashes analyzed: the exact time and road type most likely to kill you</div>
-          <div class="story-card-dek">NHTSA fatality data reveals patterns in crash severity that contradict conventional road safety wisdom.</div>
-          <div class="story-card-meta">Coming Q3 2026 · NHTSA Database · 6M+ records</div>
+          <div class="story-card-img">FOOD DATA</div>
+          <div class="story-card-kicker">Nutrition</div>
+          <div class="story-card-headline">AI ranked 8,000 foods by actual nutritional density. The results will surprise you.</div>
+          <div class="story-card-dek">The USDA database contains every nutrient in every food. We let machine learning decide what "healthy" actually means.</div>
+          <div class="story-card-meta">Coming Q3 2026 · USDA FoodData Central · 8,000+ foods</div>
         </div>
         <div class="story-card coming-soon">
           <div class="story-card-img">FOOD DATA</div>
@@ -400,9 +415,9 @@ footer{background:var(--ink);color:var(--white);padding:48px 40px 24px}
           <div class="sidebar-story-num">Live Now</div>
           <div class="sidebar-story-headline">Hollywood has a formula. We reverse-engineered it from 4,803 movies.</div>
         </div>
-        <div class="sidebar-story">
-          <div class="sidebar-story-num">Coming Soon</div>
-          <div class="sidebar-story-headline">6M car crashes: the road conditions that actually kill people</div>
+        <div class="sidebar-story" onclick="location.href='investigations/car-crashes.html'">
+          <div class="sidebar-story-num">Live Now</div>
+          <div class="sidebar-story-headline">2M NYC crashes reveal the deadliest hour of your day</div>
         </div>
         <div class="sidebar-story">
           <div class="sidebar-story-num">Coming Soon</div>
@@ -470,7 +485,7 @@ footer{background:var(--ink);color:var(--white);padding:48px 40px 24px}
         <ul class="footer-links">
           <li><a href="investigations/bird-strikes.html">Bird Strikes · Live</a></li>
           <li><a href="investigations/hollywood.html">Hollywood Box Office · Live</a></li>
-          <li><a href="#">Car Crashes · Soon</a></li>
+          <li><a href="investigations/car-crashes.html">NYC Traffic Crashes · Live</a></li>
           <li><a href="#">Food Nutrition · Soon</a></li>
           <li><a href="#">Crime Statistics · Soon</a></li>
           <li><a href="#">Hospital Data · Soon</a></li>
