@@ -1,0 +1,40 @@
+{
+  "name": "analyze-dataset",
+  "version": "1.0.0",
+  "description": "Comprehensive data analysis pipeline: EDA + ML + Clustering + AI Insights",
+  "author": "RecordsReveal",
+  "triggers": [
+    "analyze dataset",
+    "analyze csv",
+    "run analysis on",
+    "investigate dataset"
+  ],
+  "parameters": {
+    "csv_path": {
+      "type": "string",
+      "description": "Path to the CSV file to analyze",
+      "required": true
+    },
+    "output_dir": {
+      "type": "string",
+      "description": "Directory for analysis outputs",
+      "default": "analysis_results"
+    },
+    "use_ollama": {
+      "type": "boolean",
+      "description": "Use Ollama for AI insights (free) vs Claude (paid)",
+      "default": true
+    }
+  },
+  "outputs": {
+    "results_json": "analysis_results/results.json",
+    "chart_data_json": "analysis_results/chart_data.json",
+    "visualizations": "analysis_results/*.html"
+  },
+  "dependencies": [
+    "analyze_v2.py",
+    "enhance_visualizations.py",
+    "export_chart_data.py",
+    "ollama_helper.py"
+  ]
+}

@@ -1,0 +1,915 @@
+#!/usr/bin/env python3
+"""
+RecordsReveal Build HTML Page Skill
+Assembles final HTML with article content and inline charts
+"""
+
+import sys
+import os
+import json
+from datetime import datetime
+from pathlib import Path
+
+def generate_chart_script(chart_type, data, chart_id):
+    """Generate inline JavaScript for a specific chart"""
+    
+    # Color constants
+    RED = '#b5271f'
+    ORANGE = '#d2691e'
+    MUTED = 'rgba(181,39,31,0.4)'
+    
+    if chart_type == "hourly_pattern":
+        hours = data.get('x', [])
+        counts = data.get('y', [])
+        # Color bars by value - highlight peak hours
+        max_count = max(counts) if counts else 0
+        colors = [f"rgba(181,39,31,{0.4 + (c/max_count)*0.6})" if max_count > 0 else MUTED for c in counts]
+        
+        return f"""
+  // Hourly Pattern Bar Chart
+  Plotly.newPlot('{chart_id}', [{{
+    x: {json.dumps(hours)},
+    y: {json.dumps(counts)},
+    type: 'bar',
+    marker: {{color: {json.dumps(colors)}}},
+    hovertemplate: '<b>Hour %{{x}}</b><br>%{{y:,}} records<extra></extra>'
+  }}], {{
+    ...layout(),
+    yaxis: {{...layout().yaxis, title: {{text: 'Records', font: {{size:10, color:'#888'}}}}, tickformat: ',d'}}
+  }}, cfg);
+"""
+    
+    elif chart_type == "day_of_week":
+        days = data.get('x', [])
+        counts = data.get('y', [])
+        # Highlight peak day in RED, adjacent days in ORANGE
+        peak_idx = counts.index(max(counts)) if counts else 0
+        colors = []
+        for i in range(len(counts)):
+            if i == peak_idx:
+                colors.append(RED)
+            elif abs(i - peak_idx) == 1 or (peak_idx == 0 and i == len(counts)-1) or (peak_idx == len(counts)-1 and i == 0):
+                colors.append(ORANGE)
+            else:
+                colors.append(MUTED)
+        
+        return f"""
+  // Day of Week Bar Chart
+  Plotly.newPlot('{chart_id}', [{{
+    x: {json.dumps(days)},
+    y: {json.dumps(counts)},
+    type: 'bar',
+    marker: {{color: {json.dumps(colors)}}},
+    hovertemplate: '<b>%{{x}}</b><br>%{{y:,}} records<extra></extra>'
+  }}], {{
+    ...layout(),
+    yaxis: {{...layout().yaxis, title: {{text: 'Records', font: {{size:10, color:'#888'}}}}, tickformat: ',d'}}
+  }}, cfg);
+"""
+    
+    elif chart_type == "rankings":
+        names = data.get('names', [])
+        counts = data.get('counts', [])
+        colors = [RED if i == 0 else ORANGE if i == 1 else MUTED for i in range(len(names))]
+        
+        return f"""
+  // Rankings Horizontal Bar Chart
+  Plotly.newPlot('{chart_id}', [{{
+    x: {json.dumps(counts[::-1])},
+    y: {json.dumps(names[::-1])},
+    type: 'bar',
+    orientation: 'h',
+    marker: {{color: {json.dumps(colors[::-1])}}},
+    hovertemplate: '<b>%{{y}}</b><br>%{{x:,}} records<extra></extra>'
+  }}], {{
+    ...layout(),
+    margin: {{t:10,b:40,l:120,r:20}},
+    xaxis: {{...layout().xaxis, title: {{text: 'Records', font: {{size:10, color:'#888'}}}}, tickformat: ',d'}}
+  }}, cfg);
+"""
+    
+    elif chart_type == "trend":
+        return f"""
+  // Trend Over Time Line Chart
+  Plotly.newPlot('{chart_id}', [{{
+    x: {json.dumps(data.get('x', []))},
+    y: {json.dumps(data.get('y', []))},
+    type: 'scatter',
+    mode: 'lines',
+    fill: 'tozeroy',
+    line: {{color: '#b5271f', width: 2}},
+    fillcolor: 'rgba(181,39,31,0.3)',
+    hovertemplate: '<b>%{{x}}</b><br>%{{y:,}} records<extra></extra>'
+  }}], {{
+    ...layout(),
+    title: {{text: 'Trend Over Time ({data.get("pct_change", "N/A")}% change)', font: {{size:12, color:'#4a4a4a'}}}},
+    xaxis: {{...layout().xaxis, title: {{text: 'Time Period', font: {{size:10, color:'#888'}}}}}},
+    yaxis: {{...layout().yaxis, title: {{text: 'Count', font: {{size:10, color:'#888'}}}}, tickformat: ',d'}}
+  }}, cfg);
+"""
+    
+    elif chart_type == "distribution":
+        return f"""
+        // Distribution Donut Chart
+        var distributionData = {{
+            labels: {json.dumps(data.get('labels', []))},
+            values: {json.dumps(data.get('counts', []))},
+            type: 'pie',
+            hole: 0.4,
+            marker: {{
+                colors: ['#b5271f', '#d2691e', 'rgba(181,39,31,0.6)', 'rgba(181,39,31,0.4)', 'rgba(181,39,31,0.2)']
+            }}
+        }};
+        
+        var distributionLayout = {{
+            title: 'Category Distribution',
+            font: {{family: 'Barlow, sans-serif'}},
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            showlegend: true
+        }};
+        
+        Plotly.newPlot('{chart_id}', [distributionData], distributionLayout, {{responsive: true}});
+        """
+    
+    elif chart_type == "feature_importance":
+        return f"""
+        // Feature Importance Bar Chart
+        var featureData = {{
+            x: {json.dumps(data.get('importance', []))},
+            y: {json.dumps(data.get('names', []))},
+            type: 'bar',
+            orientation: 'h',
+            marker: {{color: '#b5271f'}}
+        }};
+        
+        var featureLayout = {{
+            title: 'Feature Importance',
+            xaxis: {{title: 'Importance Score'}},
+            font: {{family: 'Barlow, sans-serif'}},
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            yaxis: {{autorange: 'reversed'}}
+        }};
+        
+        Plotly.newPlot('{chart_id}', [featureData], featureLayout, {{responsive: true}});
+        """
+    
+    elif chart_type == "models":
+        return f"""
+        // Model Comparison Bar Chart
+        var modelsData = {{
+            x: {json.dumps(data.get('names', []))},
+            y: {json.dumps(data.get('r2_scores', []))},
+            type: 'bar',
+            marker: {{
+                color: {json.dumps(['#b5271f' if i == 0 else '#d2691e' if i == 1 else 'rgba(181,39,31,0.4)' for i in range(len(data.get('names', [])))])},
+            }}
+        }};
+        
+        var modelsLayout = {{
+            title: 'Model Performance Comparison',
+            yaxis: {{title: 'R² Score'}},
+            font: {{family: 'Barlow, sans-serif'}},
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            paper_bgcolor: 'rgba(0,0,0,0)'
+        }};
+        
+        Plotly.newPlot('{chart_id}', [modelsData], modelsLayout, {{responsive: true}});
+        """
+    
+    elif chart_type == "clusters":
+        return f"""
+        // PCA Clusters Scatter Plot
+        var clustersData = {{
+            x: {json.dumps(data.get('pca_x', []))},
+            y: {json.dumps(data.get('pca_y', []))},
+            mode: 'markers',
+            type: 'scatter',
+            marker: {{
+                color: {json.dumps(data.get('labels', []))},
+                size: 8,
+                colorscale: [
+                    [0, '#b5271f'],
+                    [0.5, '#d2691e'],
+                    [1, 'rgba(181,39,31,0.4)']
+                ],
+                showscale: true
+            }},
+            text: {json.dumps([f'Cluster {{i}}' for i in data.get('labels', [])])},
+        }};
+        
+        var clustersLayout = {{
+            title: 'PCA Cluster Visualization',
+            xaxis: {{title: 'Principal Component 1'}},
+            yaxis: {{title: 'Principal Component 2'}},
+            font: {{family: 'Barlow, sans-serif'}},
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            paper_bgcolor: 'rgba(0,0,0,0)'
+        }};
+        
+        Plotly.newPlot('{chart_id}', [clustersData], clustersLayout, {{responsive: true}});
+        """
+    
+    elif chart_type == "elbow":
+        return f"""
+        // Elbow Curve Line Chart
+        var elbowData = {{
+            x: {json.dumps(data.get('k_values', []))},
+            y: {json.dumps(data.get('inertias', []))},
+            type: 'scatter',
+            mode: 'lines+markers',
+            line: {{color: '#b5271f', width: 3}},
+            marker: {{color: '#b5271f', size: 10}},
+            name: 'Inertia'
+        }};
+        
+        var elbowLayout = {{
+            title: 'Elbow Method for Optimal K',
+            xaxis: {{title: 'Number of Clusters (k)'}},
+            yaxis: {{title: 'Inertia'}},
+            font: {{family: 'Barlow, sans-serif'}},
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            paper_bgcolor: 'rgba(0,0,0,0)'
+        }};
+        
+        Plotly.newPlot('{chart_id}', [elbowData], elbowLayout, {{responsive: true}});
+        """
+    
+    return "// Chart type not implemented"
+
+
+def simple_markdown_to_html(text):
+    """
+    Convert simple markdown formatting to HTML.
+    Handles: **bold**, paragraphs, bullet points
+    """
+    import re
+    
+    # Convert **bold** to <strong>
+    text = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', text)
+    
+    # Split into paragraphs (double newline)
+    paragraphs = text.split('\n\n')
+    html_parts = []
+    
+    for para in paragraphs:
+        para = para.strip()
+        if not para:
+            continue
+        
+        lines = para.split('\n')
+        
+        # Check if this is a list paragraph
+        if all(line.strip().startswith(('- ', '* ')) or not line.strip() for line in lines if line.strip()):
+            list_items = []
+            for line in lines:
+                line = line.strip()
+                if line.startswith(('- ', '* ')):
+                    list_items.append(f'<li style="margin:5px 0">{line[2:]}</li>')
+            if list_items:
+                html_parts.append(f'<ul style="margin:10px 0;padding-left:20px">{"".join(list_items)}</ul>')
+        else:
+            # Regular paragraph - join lines with line breaks
+            content = '<br>'.join(line.strip() for line in lines if line.strip())
+            # Wrap in div instead of p for better control
+            html_parts.append(f'<div style="margin-bottom:12px">{content}</div>')
+    
+    return ''.join(html_parts)
+
+
+def validate_chart_quality(chart_type, chart_data):
+    """
+    Check if a chart has enough data quality to provide value.
+    Returns (is_valid, reason) tuple.
+    """
+    
+    if chart_type == "hourly_pattern":
+        # Need at least some variation in hours
+        y_values = chart_data.get('y', [])
+        if not y_values or len(y_values) < 10:
+            return False, "Insufficient hourly data points"
+        # Check if too concentrated (>80% at one hour)
+        total = sum(y_values)
+        if total > 0 and max(y_values) / total > 0.8:
+            return False, "Data too concentrated in single hour (likely missing time data)"
+        return True, None
+    
+    elif chart_type == "rankings":
+        # Need at least 2 locations
+        names = chart_data.get('names', [])
+        counts = chart_data.get('counts', [])
+        if len(names) < 2 or len(counts) < 2:
+            return False, "Need at least 2 locations for meaningful comparison"
+        # Check if too concentrated (top location >95%)
+        total = sum(counts)
+        if total > 0 and counts[0] / total > 0.95:
+            return False, "One location dominates >95% (not interesting)"
+        return True, None
+    
+    elif chart_type == "trend":
+        # Need at least 4 data points for a meaningful trend
+        x_values = chart_data.get('x', [])
+        y_values = chart_data.get('y', [])
+        if len(x_values) < 4 or len(y_values) < 4:
+            return False, f"Only {len(x_values)} time periods (need at least 4 for trend)"
+        # Check if completely flat (no variation)
+        if len(set(y_values)) == 1:
+            return False, "No variation in values (flat line)"
+        return True, None
+    
+    elif chart_type == "distribution":
+        # Need at least 2 categories
+        labels = chart_data.get('labels', [])
+        counts = chart_data.get('counts', [])
+        if len(labels) < 2 or len(counts) < 2:
+            return False, "Need at least 2 categories for distribution"
+        # Check if too concentrated (one category >90%)
+        total = sum(counts)
+        if total > 0 and max(counts) / total > 0.90:
+            return False, "One category dominates >90% (not interesting)"
+        return True, None
+    
+    elif chart_type == "feature_importance":
+        # Need at least 3 features
+        names = chart_data.get('names', [])
+        if len(names) < 3:
+            return False, "Need at least 3 features for meaningful importance chart"
+        return True, None
+    
+    elif chart_type == "models":
+        # Need at least 2 models
+        names = chart_data.get('names', [])
+        if len(names) < 2:
+            return False, "Need at least 2 models for comparison"
+        return True, None
+    
+    elif chart_type == "clusters":
+        # Need reasonable number of points
+        x_values = chart_data.get('x', [])
+        if len(x_values) < 10:
+            return False, "Too few points for cluster visualization"
+        return True, None
+    
+    elif chart_type == "elbow":
+        # Need at least 5 k values
+        k_values = chart_data.get('k_values', [])
+        if len(k_values) < 5:
+            return False, "Need at least 5 k values for elbow curve"
+        return True, None
+    
+    # Unknown chart type - allow it
+    return True, None
+
+
+def select_hero_kpis(stats):
+    """
+    Select the best 4 KPIs for hero banner.
+    Skips stats with data quality issues or N/A values.
+    Returns list of (value, label) tuples.
+    """
+    kpis = []
+    
+    # Always include total records first
+    if 'total_records' in stats:
+        kpis.append((stats['total_records'], 'Records Analyzed'))
+    
+    # Add peak hour (skip if data quality warning)
+    if 'peak_hour' in stats and not stats.get('peak_hour_warning'):
+        kpis.append((stats['peak_hour'], 'Peak Hour'))
+    
+    # Add top location (skip if None or N/A)
+    if stats.get('top_location') and stats['top_location'] != 'N/A':
+        kpis.append((stats['top_location'], 'Top Location'))
+    
+    # Add majority category
+    if 'majority_pct' in stats and 'majority_category' in stats:
+        label = f"Of incidents are {stats['majority_category'].lower()}"
+        kpis.append((stats['majority_pct'], label))
+    
+    # Add busiest day
+    if 'busiest_day' in stats and len(kpis) < 4:
+        kpis.append((stats['busiest_day'], 'Busiest Day'))
+    
+    # Add best model score
+    if 'best_score' in stats and len(kpis) < 4:
+        kpis.append((stats['best_score'], 'Best Model Accuracy'))
+    
+    # Add valid coords pct
+    if 'valid_coords_pct' in stats and len(kpis) < 4:
+        kpis.append((stats['valid_coords_pct'], 'Data Completeness'))
+    
+    # Ensure we have exactly 4
+    while len(kpis) < 4:
+        kpis.append(('—', 'Analysis'))
+    
+    return kpis[:4]
+
+
+def build_html_page(article_content_path, page_data_path, output_dir="investigations"):
+    """
+    Build complete HTML page with article and charts
+    """
+    print("\n" + "="*70)
+    print("🏗️  RECORDSREVEAL BUILD HTML PAGE")
+    print("="*70)
+    print(f"Article: {article_content_path}")
+    print(f"Page data: {page_data_path}")
+    print("="*70 + "\n")
+    
+    # Create output directory
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Load inputs
+    print(f"📂 Loading inputs...")
+    with open(article_content_path) as f:
+        article = json.load(f)
+    with open(page_data_path) as f:
+        page_data = json.load(f)
+    
+    print(f"✅ Loaded article with {len(article.get('findings', []))} findings\n")
+    
+    # Generate unique ID for this investigation
+    timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+    investigation_id = f"investigation-{timestamp}"
+    output_file = os.path.join(output_dir, f"{investigation_id}.html")
+    
+    # Extract data
+    stats = page_data.get("stats", {})
+    charts = page_data.get("chart_data", {})
+    
+    # Build HTML
+    print("🎨 Building HTML structure...")
+    
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{article.get('headline', 'Investigation')} | RecordsReveal</title>
+<meta name="description" content="{article.get('lede', '')[:150]}">
+<meta property="og:title" content="{article.get('headline', 'Investigation')}">
+<meta property="og:description" content="{article.get('lede', '')[:150]}">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9045696717764033" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{{margin:0;padding:0;box-sizing:border-box}}
+:root{{
+  --ink:#1c1c1c;--ink2:#4a4a4a;--ink3:#888;--paper:#f8f6f1;--white:#fff;
+  --cream:#f0ece3;--red:#b5271f;--red2:#d4302a;--orange:#d2691e;--border:#ddd9ce;--border2:#c8c3b5;
+}}
+body{{background:var(--paper);color:var(--ink);font-family:'Barlow',sans-serif;line-height:1.6}}
+a{{color:inherit;text-decoration:none}}
+.site-header{{background:var(--white);border-bottom:3px double var(--border)}}
+.header-top{{display:flex;justify-content:space-between;align-items:center;padding:10px 40px;border-bottom:1px solid var(--border);font-size:11px;color:var(--ink3)}}
+.header-top a{{color:var(--ink3);margin-left:16px}}
+.header-top a:hover{{color:var(--red)}}
+.masthead{{text-align:center;padding:20px 40px 16px}}
+.site-name{{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:700;letter-spacing:.04em;text-transform:uppercase}}
+.site-name span{{color:var(--red)}}
+.site-rule{{width:100%;height:2px;background:var(--ink);margin:10px 0 8px;position:relative}}
+.site-rule::after{{content:'';position:absolute;top:4px;left:0;right:0;height:1px;background:var(--ink)}}
+.site-tagline{{font-family:'Libre Baskerville',serif;font-style:italic;font-size:.85rem;color:var(--ink3)}}
+.header-nav{{display:flex;justify-content:center;border-top:1px solid var(--border);margin-top:14px}}
+.header-nav a{{padding:7px 20px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:var(--ink2);border-right:1px solid var(--border);transition:all .15s}}
+.header-nav a:last-child{{border-right:none}}
+.header-nav a:hover,.header-nav a.active{{background:var(--ink);color:white}}
+.ad-bar{{background:var(--cream);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:10px;text-align:center}}
+.ad-label{{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}}
+.container{{max-width:1160px;margin:0 auto;padding:0 40px}}
+.layout{{display:grid;grid-template-columns:1fr 300px;gap:48px;padding:40px 0}}
+.hero-banner{{background:var(--ink);padding:32px 40px;margin-bottom:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:linear-gradient(135deg,#1c1c1c,#2a1a0a)}}
+.hero-stat{{background:rgba(255,255,255,.04);padding:20px 16px;text-align:center}}
+.hero-stat-num{{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:700;color:var(--orange);line-height:1;display:block}}
+.hero-stat-label{{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px}}
+.story-hero{{border-bottom:2px solid var(--ink);padding-bottom:32px;margin-bottom:32px}}
+.story-tag{{display:inline-block;background:var(--red);color:white;font-size:9px;letter-spacing:.15em;text-transform:uppercase;padding:3px 8px;margin-bottom:10px;font-weight:600}}
+.story-kicker{{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:8px}}
+.story-headline{{font-family:'Libre Baskerville',serif;font-size:clamp(1.7rem,3.5vw,2.5rem);font-weight:700;line-height:1.15;color:var(--ink);margin-bottom:12px}}
+.story-dek{{font-family:'Libre Baskerville',serif;font-style:italic;font-size:.98rem;line-height:1.65;color:var(--ink2);margin-bottom:14px;max-width:640px}}
+.story-meta{{font-size:10px;letter-spacing:.08em;color:var(--ink3);display:flex;align-items:center;gap:10px}}
+.story-meta-dot{{width:3px;height:3px;border-radius:50%;background:var(--ink3)}}
+.article-body{{font-family:'Libre Baskerville',serif;font-size:.98rem;line-height:1.85;color:var(--ink2)}}
+.article-body p{{margin-bottom:1.2em}}
+.article-body strong{{font-family:'Barlow',sans-serif;font-weight:600;color:var(--ink)}}
+.lede{{font-size:1.1rem;line-height:1.75;color:var(--ink);margin-bottom:1.4em}}
+.pull{{border-left:4px solid var(--red);padding:16px 20px;margin:24px 0;background:var(--cream);font-family:'Libre Baskerville',serif;font-style:italic;font-size:1.05rem;line-height:1.5;color:var(--ink)}}
+.data-block{{background:var(--white);border:1px solid var(--border);padding:28px;margin:28px 0}}
+.data-block-kicker{{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:4px}}
+.data-block-title{{font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:700;margin-bottom:4px}}
+.data-block-sub{{font-size:.8rem;color:var(--ink3);font-style:italic;margin-bottom:20px;font-family:'Libre Baskerville',serif}}
+.stat-row{{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border:1px solid var(--border);margin:24px 0}}
+.stat-cell{{background:var(--white);padding:20px 16px;text-align:center}}
+.stat-big{{font-family:'Barlow Condensed',sans-serif;font-size:2.4rem;font-weight:700;color:var(--red);line-height:1}}
+.stat-label{{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-top:4px;line-height:1.4}}
+.stat-context{{font-size:.75rem;color:var(--ink2);margin-top:4px;font-style:italic;font-family:'Libre Baskerville',serif}}
+.share-bar{{display:flex;gap:8px;align-items:center;margin:20px 0;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}}
+.share-label{{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink3);margin-right:8px}}
+.share-btn{{padding:6px 14px;border:1px solid var(--border);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;background:white;color:var(--ink2);transition:all .15s;font-family:'Barlow',sans-serif}}
+.share-btn:hover{{background:var(--ink);color:white;border-color:var(--ink)}}
+.share-btn.x{{background:#000;color:white;border-color:#000}}
+.share-btn.fb{{background:#1877f2;color:white;border-color:#1877f2}}
+.sidebar-block{{margin-bottom:28px;border-top:2px solid var(--ink);padding-top:14px}}
+.sidebar-title{{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--ink);margin-bottom:14px}}
+.newsletter{{background:var(--ink);color:white;padding:20px;margin-bottom:24px}}
+.newsletter h3{{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}}
+.newsletter p{{font-size:.78rem;color:rgba(255,255,255,.6);margin-bottom:14px;line-height:1.5}}
+.newsletter input{{width:100%;padding:8px 10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:white;font-size:.82rem;margin-bottom:8px;outline:none;font-family:'Barlow',sans-serif}}
+.newsletter input::placeholder{{color:rgba(255,255,255,.35)}}
+.newsletter button{{width:100%;padding:9px;background:var(--red);color:white;border:none;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;cursor:pointer}}
+.newsletter button:hover{{background:var(--red2)}}
+.ad-sidebar{{background:var(--cream);border:1px dashed var(--border2);padding:10px;text-align:center;margin-bottom:20px}}
+footer{{background:var(--ink);padding:60px 40px 40px;border-top:3px solid var(--red);margin-top:60px}}
+.footer-content{{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:60px;max-width:1200px;margin:0 auto 40px}}
+.footer-brand{{max-width:400px}}
+.footer-logo{{font-family:'Libre Baskerville',serif;font-size:1.8rem;font-weight:700;margin-bottom:16px;color:white}}
+.footer-logo span{{color:var(--red)}}
+.footer-tagline{{font-size:0.9rem;line-height:1.6;color:rgba(255,255,255,0.5)}}
+.footer-heading{{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:20px}}
+.footer-links{{list-style:none;padding:0;margin:0}}
+.footer-links li{{margin-bottom:12px}}
+.footer-links a{{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9rem;transition:color 0.2s}}
+.footer-links a:hover{{color:var(--red)}}
+.footer-bottom{{border-top:1px solid rgba(255,255,255,0.1);padding-top:30px;display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;font-size:0.75rem;color:rgba(255,255,255,0.3)}}
+.footer-bottom a{{color:rgba(255,255,255,0.4);text-decoration:none}}
+.footer-bottom a:hover{{color:rgba(255,255,255,0.7)}}
+@media(max-width:900px){{
+  .layout{{grid-template-columns:1fr}}
+  .sidebar{{display:none}}
+  .hero-banner{{grid-template-columns:repeat(2,1fr)}}
+  .container{{padding:0 20px}}
+}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <span>RecordsReveal · Independent Data Investigations</span>
+    <div>
+      <a href="../index.html">Home</a>
+      <a href="../about/index.html">About</a>
+      <a href="../privacy/index.html">Privacy</a>
+    </div>
+  </div>
+  <div class="masthead">
+    <a href="../index.html"><div class="site-name">Records<span>Reveal</span></div></a>
+    <div class="site-rule"></div>
+    <div class="site-tagline">What the public data actually shows — and what they'd rather you didn't know</div>
+  </div>
+  <nav class="header-nav">
+    <a href="../index.html">Home</a>
+    <a href="bird-strikes.html">Aviation</a>
+    <a href="hollywood.html">Entertainment</a>
+    <a href="car-crashes.html" class="active">Safety</a>
+    <a href="#">Health</a>
+    <a href="#">Environment</a>
+    <a href="#">Economy</a>
+    <a href="../about/index.html">About</a>
+  </nav>
+</header>
+
+<div class="ad-bar">
+  <div class="ad-label">Advertisement</div>
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
+</div>
+
+<div class="hero-banner">
+"""
+    
+    # Generate hero KPIs dynamically
+    hero_kpis = select_hero_kpis(stats)
+    for value, label in hero_kpis:
+        html += f"""  <div class="hero-stat"><span class="hero-stat-num">{value}</span><div class="hero-stat-label">{label}</div></div>
+"""
+    
+    html += f"""</div>
+
+
+<div class="container">
+  <div class="layout">
+    <main>
+
+      <!-- HERO STORY -->
+      <div class="story-hero">
+        <div class="story-tag">Investigation · Live Now</div>
+        <div class="story-kicker">Data Investigation</div>
+        <h1 class="story-headline">{article.get('headline', 'Investigation')}</h1>
+        <p class="story-dek">{article.get('lede', '')[:200]}...</p>
+        <div class="story-meta">
+          <span>RecordsReveal Data Team</span>
+          <span class="story-meta-dot"></span>
+          <span id="pub-date">{datetime.now().strftime("%B %Y")}</span>
+          <span class="story-meta-dot"></span>
+          <span>10 min read</span>
+          <span class="story-meta-dot"></span>
+          <span style="color:var(--red);font-weight:600">{stats.get('total_records', 'N/A')} records analyzed</span>
+        </div>
+      </div>
+
+      <!-- ARTICLE INTRO -->
+      <div class="article-body">
+        <p class="lede">{article.get('lede', '')}</p>
+      </div>
+
+      <!-- STAT ROW -->
+      <div class="stat-row">
+        <div class="stat-cell">
+          <div class="stat-big">{stats.get('peak_hour', 'N/A')}</div>
+          <div class="stat-label">Peak Hour</div>
+          <div class="stat-context">Most activity recorded at this time</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-big">{stats.get('top_location', 'N/A')}</div>
+          <div class="stat-label">Top Location</div>
+          <div class="stat-context">Geographic leader with {stats.get('top_hotspot_count', 'N/A')} records</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-big">{stats.get('majority_pct', 'N/A')}</div>
+          <div class="stat-label">{stats.get('majority_category', 'Majority Category')}</div>
+          <div class="stat-context">Dominant category in the dataset</div>
+        </div>
+      </div>
+"""
+    
+    # Pre-validate charts and build valid chart list
+    valid_charts = []
+    for chart_type, chart_data in charts.items():
+        is_valid, reason = validate_chart_quality(chart_type, chart_data)
+        if is_valid:
+            valid_charts.append((chart_type, chart_data))
+    
+    # Add findings with validated charts
+    for i, finding in enumerate(article.get('findings', [])):
+        chart_available = i < len(valid_charts)
+        chart_type, chart_data = valid_charts[i] if chart_available else (None, None)
+        chart_id = f"chart-{i+1}"
+        
+        html += f"""
+      <!-- FINDING #{i+1} -->
+      <div class="data-block">
+        <div class="data-block-kicker">Finding #{i+1}</div>
+        <h2 class="data-block-title">{finding.get('title', f'Finding {i+1}')}</h2>
+        <p class="data-block-sub">Analysis from {stats.get('total_records', 'N/A')} records</p>
+        <div class="article-body" style="margin-bottom:20px">
+          <p>{finding.get('body', '')}</p>
+        </div>
+"""
+        
+        # Add chart div if valid chart available for this finding
+        if chart_available:
+            html += f"""        <div id="{chart_id}" style="height:340px"></div>
+"""
+        
+        html += f"""      </div>
+"""
+        
+        # Add ad after 1st finding
+        if i == 0:
+            html += f"""
+      <!-- AD RECTANGLE -->
+      <div class="ad-bar" style="margin:8px 0 24px">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
+      </div>
+"""
+        
+        # Add share bar after 2nd finding
+        if i == 1:
+            html += f"""
+      <!-- SHARE BAR -->
+      <div class="share-bar">
+        <span class="share-label">Share this story</span>
+        <button class="share-btn x" onclick="shareX()">Post on X</button>
+        <button class="share-btn fb" onclick="shareFB()">Share on Facebook</button>
+        <button class="share-btn" onclick="copyLink()">Copy Link</button>
+      </div>
+"""
+    
+    # Add pull quotes
+    for quote in article.get('pull_quotes', []):
+        html += f"""
+      <div class="pull">
+        <p>"{quote}"</p>
+      </div>
+"""
+    
+    # Add final share bar
+    html += f"""
+      <!-- FINAL SHARE -->
+      <div class="share-bar">
+        <span class="share-label">Found this useful? Share it</span>
+        <button class="share-btn x" onclick="shareX()">Post on X</button>
+        <button class="share-btn fb" onclick="shareFB()">Share on Facebook</button>
+        <button class="share-btn" onclick="copyLink()">Copy Link</button>
+      </div>
+"""
+    
+    # Add methodology (convert markdown to HTML)
+    methodology_html = simple_markdown_to_html(article.get('methodology', ''))
+    html += f"""
+      <!-- METHODOLOGY NOTE -->
+      <div class="data-block" style="background:var(--cream)">
+        <div class="data-block-kicker">Methodology</div>
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px">How We Did This</h3>
+        <div class="article-body" style="font-size:.85rem;line-height:1.7">
+          {methodology_html}
+        </div>
+      </div>
+
+      <!-- TECHNICAL REPORT BANNER -->
+      <div style="background:#1a1a1a;color:#e8e2d6;margin:40px 0;border:1px solid rgba(255,255,255,0.1)">
+        <div style="padding:32px 40px;display:flex;justify-content:space-between;align-items:center;gap:40px">
+          <div style="flex:1">
+            <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#888880;margin-bottom:8px;font-weight:500">For Data Scientists & Researchers</div>
+            <div style="font-size:0.95rem;line-height:1.5;color:#e8e2d6">Full regression model, K-Means clustering, PCA plots, and complete methodology available.</div>
+          </div>
+          <a href="{investigation_id}-technical.html" style="background:#d2691e;color:white;padding:14px 28px;text-decoration:none;font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap;transition:background 0.2s;display:inline-block" onmouseover="this.style.background='#b8541a'" onmouseout="this.style.background='#d2691e'">View Technical Report →</a>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,0.1)">
+          <div style="padding:24px;text-align:center;border-right:1px solid rgba(255,255,255,0.1)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:#d2691e">{stats.get('total_records', 'N/A')}</div>
+            <div style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#888880;margin-top:4px">Records Analyzed</div>
+          </div>
+          <div style="padding:24px;text-align:center;border-right:1px solid rgba(255,255,255,0.1)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:#d2691e">{stats.get('valid_coords_pct', 'N/A')}</div>
+            <div style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#888880;margin-top:4px">Data Completeness</div>
+          </div>
+          <div style="padding:24px;text-align:center;border-right:1px solid rgba(255,255,255,0.1)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:#d2691e">{len(charts)}</div>
+            <div style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#888880;margin-top:4px">Visualizations</div>
+          </div>
+          <div style="padding:24px;text-align:center">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:#d2691e">{stats.get('peak_hour', 'N/A')}</div>
+            <div style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#888880;margin-top:4px">Peak Hour</div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="ad-sidebar">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
+      </div>
+
+      <div class="newsletter">
+        <h3>Get the next investigation</h3>
+        <p>New data stories monthly. No spam.</p>
+        <input type="email" placeholder="your@email.com">
+        <button>Subscribe Free →</button>
+      </div>
+
+      <div class="sidebar-block">
+        <div class="sidebar-title">Key Numbers</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="padding:12px;background:var(--cream);border-left:3px solid var(--red)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;color:var(--red);line-height:1">{stats.get('peak_hour', 'N/A')}</div>
+            <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-top:3px">Peak hour</div>
+          </div>
+          <div style="padding:12px;background:var(--cream);border-left:3px solid var(--orange)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;color:var(--orange);line-height:1">{stats.get('top_location', 'N/A')}</div>
+            <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-top:3px">Top location</div>
+          </div>
+          <div style="padding:12px;background:var(--cream);border-left:3px solid var(--ink)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;color:var(--ink);line-height:1">{stats.get('majority_pct', 'N/A')}</div>
+            <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-top:3px">{stats.get('majority_category', 'Majority category')}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-sidebar">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <div class="footer-logo">RECORDS<span>REVEAL</span></div>
+      <p class="footer-tagline">
+        Data-driven journalism uncovering stories hidden in public records. 
+        Built with machine learning, powered by transparency.
+      </p>
+    </div>
+    
+    <div class="footer-section">
+      <div class="footer-heading">Investigations</div>
+      <ul class="footer-links">
+        <li><a href="../index.html">All Investigations</a></li>
+        <li><a href="../index.html#latest">Latest Reports</a></li>
+        <li><a href="../index.html#trending">Trending</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <div class="footer-heading">About</div>
+      <ul class="footer-links">
+        <li><a href="../methodology.html">Our Methodology</a></li>
+        <li><a href="../sources.html">Data Sources</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <span>© 2026 RecordsReveal · All data from public records · For educational purposes</span>
+    <span>Built with Python · Ollama · Claude · Plotly</span>
+  </div>
+</footer>
+
+<script>
+// PLOTLY HELPERS
+const layout = (extra={{}}) => ({{
+  paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)',
+  font:{{family:'Barlow, sans-serif', color:'#4a4a4a', size:11}},
+  margin:{{t:10,b:50,l:60,r:20}},
+  xaxis:{{gridcolor:'rgba(0,0,0,0.05)', zerolinecolor:'rgba(0,0,0,0.1)', tickfont:{{size:10}}}},
+  yaxis:{{gridcolor:'rgba(0,0,0,0.05)', zerolinecolor:'rgba(0,0,0,0.1)', tickfont:{{size:10}}}},
+  showlegend:false, ...extra
+}});
+const cfg = {{responsive:true, displayModeBar:false}};
+const RED = '#b5271f';
+const ORANGE = '#d2691e';
+const MUTED = 'rgba(181,39,31,0.4)';
+
+// CHARTS
+"""
+    
+    # Add chart scripts for valid charts only
+    print("📊 Generating chart scripts...")
+    skipped_charts = []
+    
+    # First collect all skipped charts for reporting
+    for chart_type, chart_data in charts.items():
+        is_valid, reason = validate_chart_quality(chart_type, chart_data)
+        if not is_valid:
+            skipped_charts.append((chart_type, reason))
+            print(f"  ⚠️  Skipped chart ({chart_type}): {reason}")
+    
+    # Generate scripts for valid charts (matching findings)
+    chart_count = 0
+    for i, (chart_type, chart_data) in enumerate(valid_charts):
+        if i < len(article.get('findings', [])):
+            chart_id = f"chart-{i+1}"
+            chart_script = generate_chart_script(chart_type, chart_data, chart_id)
+            html += chart_script
+            chart_count += 1
+            print(f"  ✅ Chart {i+1}: {chart_type}")
+    
+    # Report skipped charts
+    if skipped_charts:
+        print(f"\n⚠️  {len(skipped_charts)} chart(s) skipped due to insufficient data quality")
+    
+    html += """
+
+// SHARE FUNCTIONS
+const URL = encodeURIComponent(window.location.href);
+const TEXT = encodeURIComponent('{article.get("headline", "Investigation")}');
+function shareX(){{ window.open(`https://twitter.com/intent/tweet?text=${{TEXT}}&url=${{URL}}`,'_blank'); }}
+function shareFB(){{ window.open(`https://www.facebook.com/sharer/sharer.php?u=${{URL}}`,'_blank'); }}
+function copyLink(){{ navigator.clipboard.writeText(window.location.href).then(()=>{{ document.querySelectorAll('.share-btn').forEach(b=>{{if(b.textContent.includes('Copy')){{b.textContent='Copied!';setTimeout(()=>b.textContent='Copy Link',2000);}}}})}}); }}
+</script>
+</body>
+</html>
+"""
+    
+    # Save HTML
+    with open(output_file, 'w') as f:
+        f.write(html)
+    
+    print("\n" + "="*70)
+    print("✅ HTML PAGE BUILD COMPLETE")
+    print("="*70)
+    print(f"\nOutput: {output_file}")
+    print(f"Charts: {chart_count} embedded")
+    print(f"File size: {len(html) // 1024}KB")
+    print(f"\nOpen in browser:")
+    print(f"  open {output_file}\n")
+    
+    return output_file
+
+if __name__ == "__main__":
+    if len(sys.argv) < 3:
+        print("Usage: python build.py <article_content.json> <page_data.json> [output_dir]")
+        sys.exit(1)
+    
+    article_content_path = sys.argv[1]
+    page_data_path = sys.argv[2]
+    output_dir = sys.argv[3] if len(sys.argv) > 3 else "investigations"
+    
+    build_html_page(article_content_path, page_data_path, output_dir)

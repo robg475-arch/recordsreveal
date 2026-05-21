@@ -1,0 +1,34 @@
+{
+  "name": "classification-analysis",
+  "version": "1.0.0",
+  "description": "Trains ML classification models with feature importance and Ollama insights",
+  "author": "RecordsReveal",
+  "triggers": [
+    "train models",
+    "classification analysis",
+    "predict target"
+  ],
+  "parameters": {
+    "csv_path": {
+      "type": "string",
+      "description": "Path to the CSV file",
+      "required": true
+    },
+    "target_column": {
+      "type": "string",
+      "description": "Name of the target column to predict",
+      "required": true
+    },
+    "output_dir": {
+      "type": "string",
+      "description": "Directory for outputs",
+      "default": "analysis_results"
+    }
+  },
+  "outputs": {
+    "classification_insights_json": "analysis_results/classification_insights.json"
+  },
+  "dependencies": [
+    "ollama_helper.py"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "build-html-page",
+  "version": "1.0.0",
+  "description": "Assembles final HTML page with article content and inline JavaScript charts",
+  "author": "RecordsReveal",
+  "triggers": [
+    "build html",
+    "generate html",
+    "create page"
+  ],
+  "parameters": {
+    "article_content_path": {
+      "type": "string",
+      "description": "Path to article_content.json",
+      "required": true
+    },
+    "page_data_path": {
+      "type": "string",
+      "description": "Path to page_data.json",
+      "required": true
+    },
+    "output_dir": {
+      "type": "string",
+      "description": "Directory for outputs",
+      "default": "investigations"
+    }
+  },
+  "outputs": {
+    "html_file": "investigations/investigation-XXX.html"
+  },
+  "dependencies": []
+}

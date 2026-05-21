@@ -1,0 +1,39 @@
+{
+  "name": "geographic-analysis",
+  "version": "1.0.0",
+  "description": "Analyzes location-based patterns in data with Ollama insights",
+  "author": "RecordsReveal",
+  "triggers": [
+    "analyze locations",
+    "geographic analysis",
+    "location patterns"
+  ],
+  "parameters": {
+    "csv_path": {
+      "type": "string",
+      "description": "Path to the CSV file",
+      "required": true
+    },
+    "lat_column": {
+      "type": "string",
+      "description": "Name of the latitude column",
+      "required": true
+    },
+    "lon_column": {
+      "type": "string",
+      "description": "Name of the longitude column",
+      "required": true
+    },
+    "output_dir": {
+      "type": "string",
+      "description": "Directory for outputs",
+      "default": "analysis_results"
+    }
+  },
+  "outputs": {
+    "geographic_insights_json": "analysis_results/geographic_insights.json"
+  },
+  "dependencies": [
+    "ollama_helper.py"
+  ]
+}

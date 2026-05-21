@@ -1,0 +1,29 @@
+{
+  "name": "clustering-analysis",
+  "version": "1.0.0",
+  "description": "K-Means clustering with PCA visualization and Ollama cluster naming",
+  "author": "RecordsReveal",
+  "triggers": [
+    "cluster data",
+    "clustering analysis",
+    "find patterns"
+  ],
+  "parameters": {
+    "csv_path": {
+      "type": "string",
+      "description": "Path to the CSV file",
+      "required": true
+    },
+    "output_dir": {
+      "type": "string",
+      "description": "Directory for outputs",
+      "default": "analysis_results"
+    }
+  },
+  "outputs": {
+    "clustering_insights_json": "analysis_results/clustering_insights.json"
+  },
+  "dependencies": [
+    "ollama_helper.py"
+  ]
+}

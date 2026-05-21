@@ -1,0 +1,34 @@
+{
+  "name": "temporal-analysis",
+  "version": "1.0.0",
+  "description": "Analyzes time-based patterns in data with Ollama insights",
+  "author": "RecordsReveal",
+  "triggers": [
+    "analyze time patterns",
+    "temporal analysis",
+    "time trends"
+  ],
+  "parameters": {
+    "csv_path": {
+      "type": "string",
+      "description": "Path to the CSV file",
+      "required": true
+    },
+    "time_column": {
+      "type": "string",
+      "description": "Name of the time/date column to analyze",
+      "required": true
+    },
+    "output_dir": {
+      "type": "string",
+      "description": "Directory for outputs",
+      "default": "analysis_results"
+    }
+  },
+  "outputs": {
+    "temporal_insights_json": "analysis_results/temporal_insights.json"
+  },
+  "dependencies": [
+    "ollama_helper.py"
+  ]
+}

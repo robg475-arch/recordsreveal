@@ -1,0 +1,39 @@
+{
+  "name": "write-investigation",
+  "version": "1.0.0",
+  "description": "Generates journalism prose from analysis insights using Ollama or Claude",
+  "author": "RecordsReveal",
+  "triggers": [
+    "write article",
+    "write investigation",
+    "generate prose"
+  ],
+  "parameters": {
+    "combined_insights_path": {
+      "type": "string",
+      "description": "Path to combined_insights.json",
+      "required": true
+    },
+    "page_data_path": {
+      "type": "string",
+      "description": "Path to page_data.json",
+      "required": true
+    },
+    "output_dir": {
+      "type": "string",
+      "description": "Directory for outputs",
+      "default": "analysis_results"
+    },
+    "use_claude": {
+      "type": "boolean",
+      "description": "Use Claude API ($0.02) instead of Ollama (free)",
+      "default": false
+    }
+  },
+  "outputs": {
+    "article_content_json": "analysis_results/article_content.json"
+  },
+  "dependencies": [
+    "ollama_helper.py"
+  ]
+}

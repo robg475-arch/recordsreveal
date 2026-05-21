@@ -1,0 +1,34 @@
+{
+  "name": "categorical-analysis",
+  "version": "1.0.0",
+  "description": "Analyzes categorical column distributions with Ollama insights",
+  "author": "RecordsReveal",
+  "triggers": [
+    "analyze categories",
+    "categorical analysis",
+    "distribution analysis"
+  ],
+  "parameters": {
+    "csv_path": {
+      "type": "string",
+      "description": "Path to the CSV file",
+      "required": true
+    },
+    "category_column": {
+      "type": "string",
+      "description": "Name of the categorical column to analyze",
+      "required": true
+    },
+    "output_dir": {
+      "type": "string",
+      "description": "Directory for outputs",
+      "default": "analysis_results"
+    }
+  },
+  "outputs": {
+    "categorical_insights_json": "analysis_results/categorical_insights.json"
+  },
+  "dependencies": [
+    "ollama_helper.py"
+  ]
+}
