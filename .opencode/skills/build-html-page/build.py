@@ -529,7 +529,7 @@ a{{color:inherit;text-decoration:none}}
 .newsletter button:hover{{background:var(--red2)}}
 .ad-sidebar{{background:var(--cream);border:1px dashed var(--border2);padding:10px;text-align:center;margin-bottom:20px}}
 footer{{background:var(--ink);padding:60px 40px 40px;border-top:3px solid var(--red);margin-top:60px}}
-.footer-content{{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:60px;max-width:1200px;margin:0 auto 40px}}
+.footer-content{{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:60px;max-width:1400px;margin:0 auto 40px}}
 .footer-brand{{max-width:400px}}
 .footer-logo{{font-family:'Libre Baskerville',serif;font-size:1.8rem;font-weight:700;margin-bottom:16px;color:white}}
 .footer-logo span{{color:var(--red)}}
@@ -804,34 +804,48 @@ footer{{background:var(--ink);padding:60px 40px 40px;border-top:3px solid var(--
     <div class="footer-brand">
       <div class="footer-logo">RECORDS<span>REVEAL</span></div>
       <p class="footer-tagline">
-        Data-driven journalism uncovering stories hidden in public records. 
-        Built with machine learning, powered by transparency.
+        Independent investigative data journalism. We analyze public government records and publish findings in plain English. Built on Python, machine learning, and a commitment to transparency.
       </p>
     </div>
     
     <div class="footer-section">
-      <div class="footer-heading">Investigations</div>
+      <div class="footer-heading">INVESTIGATIONS</div>
       <ul class="footer-links">
-        <li><a href="../index.html">All Investigations</a></li>
-        <li><a href="../index.html#latest">Latest Reports</a></li>
-        <li><a href="../index.html#trending">Trending</a></li>
+        <li><a href="investigation-20260521-114147.html">Police Use of Force · Live</a></li>
+        <li><a href="car-crashes.html">NYC Traffic Crashes · Live</a></li>
+        <li><a href="hollywood.html">Hollywood Box Office · Live</a></li>
+        <li><a href="bird-strikes.html">Bird Strikes · Live</a></li>
+        <li><a href="#">Food Nutrition · Soon</a></li>
+        <li><a href="#">Crime Statistics · Soon</a></li>
       </ul>
     </div>
     
     <div class="footer-section">
-      <div class="footer-heading">About</div>
+      <div class="footer-heading">PUBLICATION</div>
       <ul class="footer-links">
-        <li><a href="../methodology.html">Our Methodology</a></li>
-        <li><a href="../sources.html">Data Sources</a></li>
-        <li><a href="../contact.html">Contact</a></li>
-        <li><a href="../privacy.html">Privacy Policy</a></li>
+        <li><a href="../about/index.html">About Us</a></li>
+        <li><a href="../about/index.html#methodology">Methodology</a></li>
+        <li><a href="../privacy/index.html">Privacy Policy</a></li>
+        <li><a href="../contact/index.html">Submit a Tip</a></li>
+        <li><a href="../contact/index.html">Advertise</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <div class="footer-heading">DATA SOURCES</div>
+      <ul class="footer-links">
+        <li><a href="https://wildlife.faa.gov/" target="_blank">FAA Wildlife Database</a></li>
+        <li><a href="https://www.nhtsa.gov/research-data/fatality-analysis-reporting-system-fars" target="_blank">NHTSA FARS</a></li>
+        <li><a href="https://fdc.nal.usda.gov/" target="_blank">USDA FoodData</a></li>
+        <li><a href="https://www.fbi.gov/how-we-can-help-you/more-fbi-services-and-information/ucr" target="_blank">FBI Crime Data</a></li>
+        <li><a href="https://data.cms.gov/" target="_blank">CMS Hospital Data</a></li>
       </ul>
     </div>
   </div>
   
   <div class="footer-bottom">
-    <span>© 2026 RecordsReveal · All data from public records · For educational purposes</span>
-    <span>Built with Python · Ollama · Claude · Plotly</span>
+    <span>© 2026 RecordsReveal.com · All data sourced from public government databases · For informational purposes</span>
+    <span>Built with Python · scikit-learn · Plotly</span>
   </div>
 </footer>
 
