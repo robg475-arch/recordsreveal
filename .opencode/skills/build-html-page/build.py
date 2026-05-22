@@ -609,7 +609,7 @@ footer{{background:var(--ink);padding:60px 40px 40px;border-top:3px solid var(--
         <div class="story-meta">
           <span>RecordsReveal Data Team</span>
           <span class="story-meta-dot"></span>
-          <span id="pub-date">{datetime.now().strftime("%B %Y")}</span>
+          <span>Published {datetime.now().strftime("%B %d, %Y")}</span>
           <span class="story-meta-dot"></span>
           <span>10 min read</span>
           <span class="story-meta-dot"></span>
@@ -725,6 +725,10 @@ footer{{background:var(--ink);padding:60px 40px 40px;border-top:3px solid var(--
         <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px">How We Did This</h3>
         <div class="article-body" style="font-size:.85rem;line-height:1.7">
           {methodology_html}
+        </div>
+        <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:0.75rem;color:var(--ink3)">
+          <strong>Published:</strong> {datetime.now().strftime("%B %d, %Y")} · 
+          <strong>Last Updated:</strong> {datetime.now().strftime("%B %d, %Y")}
         </div>
       </div>
 

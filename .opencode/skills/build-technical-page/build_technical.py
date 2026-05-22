@@ -7,6 +7,7 @@ Generates detailed technical analysis page for data scientists
 import sys
 import os
 import json
+from datetime import datetime
 from pathlib import Path
 
 try:
@@ -906,6 +907,9 @@ footer {{
     <p class="hero-sub">
       {hero_content['subtitle']}
     </p>
+    <div style="margin-top:16px;font-size:0.8rem;color:rgba(255,255,255,0.4);letter-spacing:0.05em">
+      Published {datetime.now().strftime("%B %d, %Y")}
+    </div>
     <div class="hero-stats">
       <div class="stat-box">
         <div class="stat-num">{hero_content['stat1_num']}</div>
