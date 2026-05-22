@@ -568,13 +568,8 @@ footer{{background:var(--ink);padding:60px 40px 40px;border-top:3px solid var(--
   </div>
   <nav class="header-nav">
     <a href="../index.html">Home</a>
-    <a href="bird-strikes.html">Aviation</a>
-    <a href="hollywood.html">Entertainment</a>
-    <a href="car-crashes.html" class="active">Safety</a>
-    <a href="#">Health</a>
-    <a href="#">Environment</a>
-    <a href="#">Economy</a>
     <a href="../about/index.html">About</a>
+    <a href="../contact/index.html">Contact</a>
   </nav>
 </header>
 
