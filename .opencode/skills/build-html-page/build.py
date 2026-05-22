@@ -527,6 +527,13 @@ a{{color:inherit;text-decoration:none}}
 .newsletter input::placeholder{{color:rgba(255,255,255,.35)}}
 .newsletter button{{width:100%;padding:9px;background:var(--red);color:white;border:none;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;cursor:pointer}}
 .newsletter button:hover{{background:var(--red2)}}
+.all-investigations{{margin-bottom:24px;border-top:2px solid var(--ink);padding-top:16px}}
+.all-investigations h3{{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--ink);margin-bottom:16px}}
+.investigation-item{{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border2)}}
+.investigation-item:last-child{{border-bottom:none;margin-bottom:0;padding-bottom:0}}
+.investigation-tag{{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:6px}}
+.investigation-link{{font-family:'Barlow',sans-serif;font-size:.88rem;font-weight:500;line-height:1.4;color:var(--ink);transition:color .15s;display:block}}
+.investigation-link:hover{{color:var(--red)}}
 .ad-sidebar{{background:var(--cream);border:1px dashed var(--border2);padding:10px;text-align:center;margin-bottom:20px}}
 footer{{background:var(--ink);padding:60px 40px 40px;border-top:3px solid var(--red);margin-top:60px}}
 .footer-content{{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:60px;max-width:1400px;margin:0 auto 40px}}
@@ -767,6 +774,30 @@ footer{{background:var(--ink);padding:60px 40px 40px;border-top:3px solid var(--
         <p>New data stories monthly. No spam.</p>
         <input type="email" placeholder="your@email.com">
         <button>Subscribe Free →</button>
+      </div>
+
+      <div class="all-investigations">
+        <h3>All Investigations</h3>
+        
+        <div class="investigation-item">
+          <div class="investigation-tag">LIVE NOW · AVIATION</div>
+          <a href="bird-strikes.html" class="investigation-link">35 years of FAA data reveals who's responsible for bird strikes</a>
+        </div>
+        
+        <div class="investigation-item">
+          <div class="investigation-tag">LIVE NOW · ENTERTAINMENT</div>
+          <a href="hollywood.html" class="investigation-link">Hollywood has a formula. We reverse-engineered it.</a>
+        </div>
+        
+        <div class="investigation-item">
+          <div class="investigation-tag">LIVE NOW · SAFETY</div>
+          <a href="car-crashes.html" class="investigation-link">2M NYC crashes reveal the deadliest hour of your day</a>
+        </div>
+        
+        <div class="investigation-item">
+          <div class="investigation-tag">COMING SOON · HEALTH</div>
+          <a href="#" class="investigation-link">AI ranked 8,000 foods by nutritional density. The results surprise.</a>
+        </div>
       </div>
 
       <div class="sidebar-block">
