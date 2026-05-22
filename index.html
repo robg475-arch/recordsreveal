@@ -98,7 +98,8 @@ a{color:inherit;text-decoration:none}
 .story-card-headline:hover{color:var(--red)}
 .story-card-dek{font-size:.85rem;color:var(--ink2);line-height:1.55;margin-bottom:8px}
 .story-card-meta{font-size:10px;color:var(--ink3);letter-spacing:.06em}
-.story-card-img{background:var(--cream);border:1px solid var(--border);height:140px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:2rem;color:var(--border2);font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:1.4rem}
+.story-card-img{background:var(--cream);border:1px solid var(--border);height:140px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:2rem;color:var(--border2);font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:1.4rem;overflow:hidden;position:relative}
+.story-card-img img{width:100%;height:100%;object-fit:cover;object-position:center}
 
 /* COMING SOON CARDS */
 .coming-soon{opacity:.55;position:relative}
@@ -271,9 +272,8 @@ footer{background:var(--ink);color:var(--white);padding:48px 40px 24px}
 
       <!-- INVESTIGATION #003: NYC CRASHES -->
       <div style="display:grid;grid-template-columns:180px 1fr;gap:24px;border-bottom:2px solid var(--border2);margin-bottom:36px;padding-bottom:28px;align-items:start">
-        <div class="story-card-img" style="height:110px;margin:0;font-size:1.1rem;flex-direction:column;gap:4px;display:flex;align-items:center;justify-content:center">
-          <div>🚗</div>
-          <div>TRAFFIC</div>
+        <div class="story-card-img" style="height:110px;margin:0">
+          <img src="images/heroes/traffic-crashes.jpg" alt="NYC Traffic Crashes Data">
         </div>
         <div>
           <div class="hero-tag">Investigation #003 · Live Now</div>
@@ -286,9 +286,8 @@ footer{background:var(--ink);color:var(--white);padding:48px 40px 24px}
 
       <!-- INVESTIGATION #002: HOLLYWOOD -->
       <div style="display:grid;grid-template-columns:180px 1fr;gap:24px;border-bottom:2px solid var(--border2);margin-bottom:36px;padding-bottom:28px;align-items:start">
-        <div class="story-card-img" style="height:110px;margin:0;font-size:1.1rem;flex-direction:column;gap:4px;display:flex;align-items:center;justify-content:center">
-          <div>🎬</div>
-          <div>BOX OFFICE</div>
+        <div class="story-card-img" style="height:110px;margin:0">
+          <img src="images/heroes/hollywood.jpg" alt="Hollywood Box Office Data">
         </div>
         <div>
           <div class="hero-tag">Investigation #002 · Live Now</div>
@@ -301,9 +300,8 @@ footer{background:var(--ink);color:var(--white);padding:48px 40px 24px}
 
       <!-- INVESTIGATION #001: BIRD STRIKES -->
       <div style="display:grid;grid-template-columns:180px 1fr;gap:24px;border-bottom:2px solid var(--border2);margin-bottom:36px;padding-bottom:28px;align-items:start">
-        <div class="story-card-img" style="height:110px;margin:0;font-size:1.1rem;flex-direction:column;gap:4px;display:flex;align-items:center;justify-content:center">
-          <div>✈️</div>
-          <div>AVIATION</div>
+        <div class="story-card-img" style="height:110px;margin:0">
+          <img src="images/heroes/bird-strikes.jpg" alt="Bird Strikes Aviation Data">
         </div>
         <div>
           <div class="hero-tag">Investigation #001 · Live Now</div>
