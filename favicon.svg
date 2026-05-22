@@ -2,20 +2,23 @@
   <!-- Dark background -->
   <rect width="64" height="64" fill="#1c1c1c" rx="8"/>
   
-  <!-- Bold "R" letter - clearly readable -->
-  <g>
+  <!-- Bold "R" letter - ALL WHITE/CREAM -->
+  <g fill="#f8f6f1">
     <!-- Vertical stem -->
-    <rect x="15" y="12" width="8" height="40" fill="#f8f6f1"/>
+    <rect x="15" y="12" width="8" height="40"/>
     
     <!-- Top bowl of R -->
-    <path d="M 23 12 L 36 12 C 42 12 45 15 45 21 C 45 27 42 30 36 30 L 23 30 Z" fill="#f8f6f1"/>
+    <path d="M 23 12 L 36 12 C 42 12 45 15 45 21 C 45 27 42 30 36 30 L 23 30 Z"/>
     
-    <!-- Diagonal leg (RED - the distinctive part) -->
-    <path d="M 30 30 L 45 50 L 38 50 L 25 32 Z" fill="#b5271f"/>
-    
-    <!-- Small data bars in corner -->
-    <rect x="48" y="44" width="3" height="8" fill="#d2691e" rx="1"/>
-    <rect x="52" y="40" width="3" height="12" fill="#d2691e" rx="1"/>
-    <rect x="56" y="37" width="3" height="15" fill="#d2691e" rx="1"/>
+    <!-- Diagonal leg - NOW WHITE -->
+    <path d="M 30 30 L 45 50 L 38 50 L 25 32 Z"/>
   </g>
+  
+  <!-- Small red accent bar at bottom -->
+  <rect x="15" y="54" width="34" height="3" fill="#b5271f" rx="1"/>
+  
+  <!-- Small data bars in corner -->
+  <rect x="48" y="44" width="3" height="8" fill="#d2691e" rx="1"/>
+  <rect x="52" y="40" width="3" height="12" fill="#d2691e" rx="1"/>
+  <rect x="56" y="37" width="3" height="15" fill="#d2691e" rx="1"/>
 </svg>
