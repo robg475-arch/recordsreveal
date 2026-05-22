@@ -558,6 +558,7 @@ footer{{background:var(--ink);padding:60px 40px 40px;border-top:3px solid var(--
     <div>
       <a href="../index.html">Home</a>
       <a href="../about/index.html">About</a>
+      <a href="../contact/index.html">Contact</a>
       <a href="../privacy/index.html">Privacy</a>
     </div>
   </div>
@@ -566,11 +567,6 @@ footer{{background:var(--ink);padding:60px 40px 40px;border-top:3px solid var(--
     <div class="site-rule"></div>
     <div class="site-tagline">What the public data actually shows — and what they'd rather you didn't know</div>
   </div>
-  <nav class="header-nav">
-    <a href="../index.html">Home</a>
-    <a href="../about/index.html">About</a>
-    <a href="../contact/index.html">Contact</a>
-  </nav>
 </header>
 
 <div class="ad-bar">
