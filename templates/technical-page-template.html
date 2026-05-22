@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{INVESTIGATION_TITLE} — Technical Report — RecordsReveal</title>
+<meta name="description" content="Full technical analysis, regression models, feature importance, and clustering results for {INVESTIGATION_TITLE}">
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7B3KBBGVWE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7B3KBBGVWE');
+</script>
+
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9045696717764033" crossorigin="anonymous"></script>
+
+<!-- Plotly for Charts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* CSS Variables - Dark Technical Theme */
+:root {
+  --bg: #0d0d0d;
+  --surface: #1a1a1a;
+  --surface-light: #252525;
+  --text: #e8e2d6;
+  --text-dim: #9a9386;
+  --text-muted: #6a6456;
+  --accent: #D62828;
+  --accent-orange: #F77F00;
+  --border: rgba(255,255,255,0.08);
+  --code-bg: #161616;
+}
+
+/* Base Styles */
+body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; line-height: 1.6; margin: 0; }
+* { box-sizing: border-box; }
+
+/* Navigation */
+nav { background: var(--surface); padding: 16px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.08em; color: var(--text); }
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; }
+.nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+
+/* Hero Section */
+.hero { background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%); padding: 60px 40px; text-align: center; border-bottom: 1px solid var(--border); }
+.hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 0.05em; color: var(--text); line-height: 1.1; margin-bottom: 16px; }
+.hero-subtitle { font-size: 1.1rem; color: var(--text-dim); max-width: 800px; margin: 0 auto 8px; line-height: 1.6; }
+.hero-date { font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--text-muted); margin-top: 20px; }
+
+/* Stats Bar */
+.stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.stat-item { padding: 32px 20px; text-align: center; border-right: 1px solid var(--border); }
+.stat-item:last-child { border-right: none; }
+.stat-value { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--accent-orange); line-height: 1; display: block; }
+.stat-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-top: 8px; }
+
+/* Main Content */
+.container { max-width: 1400px; margin: 0 auto; padding: 60px 40px; }
+
+/* Section */
+.section { margin-bottom: 80px; }
+.section-header { margin-bottom: 40px; }
+.section-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.section-title { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.05em; color: var(--text); margin-bottom: 12px; }
+.section-description { font-size: 1rem; color: var(--text-dim); line-height: 1.7; max-width: 800px; }
+
+/* Chart Container */
+.chart-container { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 32px; margin-bottom: 32px; }
+.chart-header { margin-bottom: 24px; }
+.chart-title { font-family: 'DM Sans', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.chart-subtitle { font-size: 0.9rem; color: var(--text-dim); line-height: 1.5; }
+.chart { width: 100%; height: 500px; }
+
+/* Grid Layout for Charts */
+.chart-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-bottom: 32px; }
+.chart-grid .chart-container { margin-bottom: 0; }
+
+/* Data Table */
+.data-table-wrapper { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 32px; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-family: 'DM Mono', monospace; font-size: 0.85rem; }
+thead { background: var(--surface-light); }
+th { padding: 12px 16px; text-align: left; font-weight: 700; color: var(--text); border-bottom: 2px solid var(--border); text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.75rem; }
+td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-dim); }
+tbody tr:hover { background: var(--surface-light); }
+
+/* Code Block */
+.code-block { background: var(--code-bg); border: 1px solid var(--border); border-radius: 4px; padding: 24px; margin: 24px 0; overflow-x: auto; }
+.code-block code { font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--text); line-height: 1.6; }
+
+/* Methodology Box */
+.methodology-box { background: var(--surface); border-left: 4px solid var(--accent); padding: 32px; margin: 40px 0; }
+.methodology-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.05em; color: var(--text); margin-bottom: 16px; }
+.methodology-box p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 16px; }
+.methodology-box ul { margin-left: 20px; color: var(--text-dim); }
+.methodology-box li { margin-bottom: 8px; }
+
+/* Footer */
+footer { background: var(--surface); border-top: 1px solid var(--border); padding: 40px; text-align: center; margin-top: 80px; }
+.footer-links { display: flex; justify-content: center; gap: 32px; margin-bottom: 20px; }
+.footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--accent); }
+.footer-copyright { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--text-muted); }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .chart-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-logo">RECORDS<span>REVEAL</span></div>
+  <ul class="nav-links">
+    <li><a href="#findings">Findings</a></li>
+    <li><a href="#models">Models</a></li>
+    <li><a href="#clustering">Clusters</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">TECHNICAL REPORT</div>
+  <h1 class="hero-title">{INVESTIGATION_TITLE}</h1>
+  <div class="hero-subtitle">{TECHNICAL_SUBTITLE}</div>
+  <div class="hero-date">Published {PUBLICATION_DATE}</div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-value">{STAT_1_VALUE}</span>
+    <div class="stat-label">{STAT_1_LABEL}</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-value">{STAT_2_VALUE}</span>
+    <div class="stat-label">{STAT_2_LABEL}</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-value">{STAT_3_VALUE}</span>
+    <div class="stat-label">{STAT_3_LABEL}</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-value">{STAT_4_VALUE}</span>
+    <div class="stat-label">{STAT_4_LABEL}</div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+  <!-- FINDINGS SECTION -->
+  <section id="findings" class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">01 · KEY FINDINGS</div>
+      <h2 class="section-title">Executive Summary</h2>
+      <p class="section-description">
+        {EXECUTIVE_SUMMARY_TEXT}
+      </p>
+    </div>
+
+    <!-- Chart 1 -->
+    <div class="chart-container">
+      <div class="chart-header">
+        <div class="chart-title">{CHART_1_TITLE}</div>
+        <div class="chart-subtitle">{CHART_1_DESCRIPTION}</div>
+      </div>
+      <div id="tech-chart-1" class="chart"></div>
+    </div>
+
+    <!-- Chart 2 -->
+    <div class="chart-container">
+      <div class="chart-header">
+        <div class="chart-title">{CHART_2_TITLE}</div>
+        <div class="chart-subtitle">{CHART_2_DESCRIPTION}</div>
+      </div>
+      <div id="tech-chart-2" class="chart"></div>
+    </div>
+  </section>
+
+  <!-- MODELS SECTION -->
+  <section id="models" class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">02 · PREDICTIVE MODELS</div>
+      <h2 class="section-title">Machine Learning Analysis</h2>
+      <p class="section-description">
+        {MODEL_DESCRIPTION_TEXT}
+      </p>
+    </div>
+
+    <!-- Feature Importance Chart -->
+    <div class="chart-container">
+      <div class="chart-header">
+        <div class="chart-title">Feature Importance</div>
+        <div class="chart-subtitle">Top 15 features ranked by predictive power in Random Forest model</div>
+      </div>
+      <div id="tech-chart-feature-importance" class="chart"></div>
+    </div>
+
+    <!-- Model Performance Grid -->
+    <div class="chart-grid">
+      <div class="chart-container">
+        <div class="chart-header">
+          <div class="chart-title">Confusion Matrix</div>
+          <div class="chart-subtitle">Classification accuracy breakdown</div>
+        </div>
+        <div id="tech-chart-confusion" class="chart"></div>
+      </div>
+      
+      <div class="chart-container">
+        <div class="chart-header">
+          <div class="chart-title">ROC Curve</div>
+          <div class="chart-subtitle">Model discrimination ability (AUC: {AUC_SCORE})</div>
+        </div>
+        <div id="tech-chart-roc" class="chart"></div>
+      </div>
+    </div>
+
+    <!-- Model Performance Table -->
+    <div class="data-table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Accuracy</th>
+            <th>Precision</th>
+            <th>Recall</th>
+            <th>F1-Score</th>
+            <th>AUC</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Random Forest</td>
+            <td>0.872</td>
+            <td>0.865</td>
+            <td>0.881</td>
+            <td>0.873</td>
+            <td>0.934</td>
+          </tr>
+          <tr>
+            <td>Gradient Boosting</td>
+            <td>0.868</td>
+            <td>0.859</td>
+            <td>0.878</td>
+            <td>0.868</td>
+            <td>0.929</td>
+          </tr>
+          <tr>
+            <td>Logistic Regression</td>
+            <td>0.792</td>
+            <td>0.784</td>
+            <td>0.801</td>
+            <td>0.792</td>
+            <td>0.863</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CLUSTERING SECTION -->
+  <section id="clustering" class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">03 · CLUSTERING ANALYSIS</div>
+      <h2 class="section-title">Pattern Discovery</h2>
+      <p class="section-description">
+        {CLUSTERING_DESCRIPTION_TEXT}
+      </p>
+    </div>
+
+    <!-- PCA Scatter Plot -->
+    <div class="chart-container">
+      <div class="chart-header">
+        <div class="chart-title">K-Means Clustering (PCA Projection)</div>
+        <div class="chart-subtitle">Data reduced to 2D using Principal Component Analysis. {N_CLUSTERS} distinct clusters identified.</div>
+      </div>
+      <div id="tech-chart-pca" class="chart"></div>
+    </div>
+
+    <!-- Cluster Characteristics Grid -->
+    <div class="chart-grid">
+      <div class="chart-container">
+        <div class="chart-header">
+          <div class="chart-title">Cluster Size Distribution</div>
+          <div class="chart-subtitle">Number of records per cluster</div>
+        </div>
+        <div id="tech-chart-cluster-size" class="chart"></div>
+      </div>
+      
+      <div class="chart-container">
+        <div class="chart-header">
+          <div class="chart-title">Silhouette Score</div>
+          <div class="chart-subtitle">Cluster cohesion and separation (Score: {SILHOUETTE_SCORE})</div>
+        </div>
+        <div id="tech-chart-silhouette" class="chart"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHODOLOGY SECTION -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">04 · METHODOLOGY</div>
+      <h2 class="section-title">Research Methods &amp; Data Sources</h2>
+    </div>
+
+    <div class="methodology-box">
+      <h3>Dataset</h3>
+      <p><strong>Source:</strong> {DATA_SOURCE}</p>
+      <p><strong>Records:</strong> {TOTAL_RECORDS} records spanning {TIME_RANGE}</p>
+      <p><strong>Features:</strong> {N_FEATURES} variables including temporal, geographic, categorical, and continuous attributes</p>
+    </div>
+
+    <div class="methodology-box">
+      <h3>Analysis Pipeline</h3>
+      <ul>
+        <li><strong>Data Cleaning:</strong> Missing value imputation, outlier detection using IQR method, duplicate removal</li>
+        <li><strong>Feature Engineering:</strong> Created {N_ENGINEERED_FEATURES} derived features including time-based patterns, geographic clusters, and interaction terms</li>
+        <li><strong>Model Training:</strong> 80/20 train-test split, 5-fold cross-validation, hyperparameter tuning via RandomizedSearchCV</li>
+        <li><strong>Evaluation:</strong> Accuracy, precision, recall, F1-score, ROC-AUC, confusion matrix analysis</li>
+        <li><strong>Clustering:</strong> K-Means with k={N_CLUSTERS} (optimized using elbow method and silhouette analysis), PCA for dimensionality reduction</li>
+      </ul>
+    </div>
+
+    <div class="methodology-box">
+      <h3>Tools &amp; Libraries</h3>
+      <div class="code-block">
+        <code>
+Python 3.11 · pandas 2.1.3 · scikit-learn 1.3.2 · numpy 1.26.2<br>
+plotly 5.18.0 · matplotlib 3.8.2 · seaborn 0.13.0<br>
+scipy 1.11.4 · GeoPandas 0.14.1 (spatial analysis)
+        </code>
+      </div>
+    </div>
+
+    <div class="methodology-box">
+      <h3>Reproducibility</h3>
+      <p>All analysis code, data preprocessing scripts, and model training notebooks are available in our GitHub repository. Random seeds set to 42 for reproducibility.</p>
+      <p><strong>Contact:</strong> technical@recordsreveal.com for dataset access or methodology questions.</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="{investigation_id}.html">← Read Main Article</a>
+    <a href="../index.html">All Investigations</a>
+    <a href="../about/index.html">About</a>
+    <a href="../contact/index.html">Contact</a>
+  </div>
+  <div class="footer-copyright">
+    © 2026 RecordsReveal.com · Technical Report · For research and educational purposes
+  </div>
+</footer>
+
+<!-- CHART SCRIPTS -->
+<script>
+// Plotly chart configurations for dark theme
+const layoutBase = {
+  paper_bgcolor: 'rgba(0,0,0,0)',
+  plot_bgcolor: '#161616',
+  font: { family: 'DM Sans, sans-serif', color: '#e8e2d6', size: 11 },
+  margin: { t: 20, b: 60, l: 80, r: 40 },
+  xaxis: { gridcolor: 'rgba(255,255,255,0.05)', zerolinecolor: 'rgba(255,255,255,0.1)' },
+  yaxis: { gridcolor: 'rgba(255,255,255,0.05)', zerolinecolor: 'rgba(255,255,255,0.1)' }
+};
+
+// Render charts
+Plotly.newPlot('tech-chart-1', {CHART_1_DATA}, {...layoutBase, ...{CHART_1_LAYOUT}});
+Plotly.newPlot('tech-chart-2', {CHART_2_DATA}, {...layoutBase, ...{CHART_2_LAYOUT}});
+Plotly.newPlot('tech-chart-feature-importance', {FEATURE_IMPORTANCE_DATA}, {...layoutBase, ...{FEATURE_LAYOUT}});
+Plotly.newPlot('tech-chart-confusion', {CONFUSION_MATRIX_DATA}, {...layoutBase, ...{CONFUSION_LAYOUT}});
+Plotly.newPlot('tech-chart-roc', {ROC_CURVE_DATA}, {...layoutBase, ...{ROC_LAYOUT}});
+Plotly.newPlot('tech-chart-pca', {PCA_SCATTER_DATA}, {...layoutBase, ...{PCA_LAYOUT}});
+Plotly.newPlot('tech-chart-cluster-size', {CLUSTER_SIZE_DATA}, {...layoutBase, ...{CLUSTER_SIZE_LAYOUT}});
+Plotly.newPlot('tech-chart-silhouette', {SILHOUETTE_DATA}, {...layoutBase, ...{SILHOUETTE_LAYOUT}});
+</script>
+
+</body>
+</html>
