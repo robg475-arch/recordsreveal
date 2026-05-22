@@ -508,6 +508,8 @@ def build_html_page(article_content_path, page_data_path, output_dir="investigat
 <meta name="description" content="{article.get('lede', '')[:150]}">
 <meta property="og:title" content="{article.get('headline', 'Investigation')}">
 <meta property="og:description" content="{article.get('lede', '')[:150]}">
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7B3KBBGVWE"></script>
 <script>
