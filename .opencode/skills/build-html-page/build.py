@@ -581,6 +581,15 @@ footer{{background:var(--ink);padding:60px 40px 40px;border-top:3px solid var(--
   <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
 </div>
 
+<!-- TECHNICAL DATA BANNER -->
+<div style="background:#1c1c1c;padding:16px 28px;display:flex;justify-content:space-between;align-items:center;gap:20px">
+  <div>
+    <div style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:3px">For Data Scientists &amp; Researchers</div>
+    <div style="font-size:.9rem;color:white">Full regression model, feature importance charts, cluster PCA plots, and complete methodology available.</div>
+  </div>
+  <a href="{investigation_id}-technical.html" style="flex-shrink:0;padding:9px 18px;background:#9a7c2e;color:white;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;text-decoration:none">View Technical Report →</a>
+</div>
+
 <div class="hero-banner">
 """
     
@@ -729,34 +738,7 @@ footer{{background:var(--ink);padding:60px 40px 40px;border-top:3px solid var(--
         </div>
       </div>
 
-      <!-- TECHNICAL REPORT BANNER -->
-      <div style="background:#1a1a1a;color:#e8e2d6;margin:40px 0;border:1px solid rgba(255,255,255,0.1)">
-        <div style="padding:32px 40px;display:flex;justify-content:space-between;align-items:center;gap:40px">
-          <div style="flex:1">
-            <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#888880;margin-bottom:8px;font-weight:500">For Data Scientists & Researchers</div>
-            <div style="font-size:0.95rem;line-height:1.5;color:#e8e2d6">Full regression model, K-Means clustering, PCA plots, and complete methodology available.</div>
-          </div>
-          <a href="{investigation_id}-technical.html" style="background:#d2691e;color:white;padding:14px 28px;text-decoration:none;font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap;transition:background 0.2s;display:inline-block" onmouseover="this.style.background='#b8541a'" onmouseout="this.style.background='#d2691e'">View Technical Report →</a>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,0.1)">
-          <div style="padding:24px;text-align:center;border-right:1px solid rgba(255,255,255,0.1)">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:#d2691e">{stats.get('total_records', 'N/A')}</div>
-            <div style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#888880;margin-top:4px">Records Analyzed</div>
-          </div>
-          <div style="padding:24px;text-align:center;border-right:1px solid rgba(255,255,255,0.1)">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:#d2691e">{stats.get('valid_coords_pct', 'N/A')}</div>
-            <div style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#888880;margin-top:4px">Data Completeness</div>
-          </div>
-          <div style="padding:24px;text-align:center;border-right:1px solid rgba(255,255,255,0.1)">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:#d2691e">{len(charts)}</div>
-            <div style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#888880;margin-top:4px">Visualizations</div>
-          </div>
-          <div style="padding:24px;text-align:center">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:#d2691e">{stats.get('peak_hour', 'N/A')}</div>
-            <div style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#888880;margin-top:4px">Peak Hour</div>
-          </div>
-        </div>
-      </div>
+
 
     </main>
 
