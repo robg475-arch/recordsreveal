@@ -665,6 +665,15 @@ footer {
 }
 </style>
 
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7B3KBBGVWE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7B3KBBGVWE');
+</script>
+
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9045696717764033" crossorigin="anonymous"></script>
 
@@ -675,7 +684,7 @@ footer {
 <div class="top-bar">
   <a href="index.html" class="top-link home">← RecordsReveal Home</a>
   <span class="top-center">Technical Deep Dive</span>
-  <a href="investigation-20260521-114147.html" class="top-link article">Read the Article →</a>
+  <a href="investigation-20260522-083817.html" class="top-link article">Read the Article →</a>
 </div>
 
 <!-- NAV -->
@@ -691,29 +700,32 @@ footer {
 <!-- HERO -->
 <div class="hero">
   <div class="hero-left">
-    <div class="hero-tag">Law Enforcement Data · Public Safety Analytics · 5,000 Incidents</div>
+    <div class="hero-tag">Police Pipeline Data · Force Analytics · 5,000 Incidents</div>
     <h1 class="hero-title">
       WHEN DO<br>
-      POLICE USE OF FORCE<br>
-      <span class="line-red">INCIDENTS</span><br>
-      HAPPEN MOST?<br>
-      
+      POLICE ENCOUNTERS<br>
+      TURN PHYSICAL?<br>
+      A DATA INVESTIGATION INTO<br>
+      USE_OF_FORCE
     </h1>
     <p class="hero-sub">
-      Analysis of 5,000 use of force incidents reveals a striking pattern: <strong>peak activity occurs at midnight</strong>, with nearly half of all encounters classified as hands-on physical contact.
+      Our analysis of 5,000 police incidents reveals <strong>hands-on tactics dominate nearly half of all force encounters</strong>, with a surprising concentration of incidents occurring during late-night hours.
     </p>
+    <div style="margin-top:16px;font-size:0.8rem;color:rgba(255,255,255,0.4);letter-spacing:0.05em">
+      Published May 22, 2026
+    </div>
     <div class="hero-stats">
       <div class="stat-box">
         <div class="stat-num">5.0K</div>
         <div class="stat-label">INCIDENTS ANALYZED</div>
       </div>
       <div class="stat-box">
-        <div class="stat-num">12AM</div>
-        <div class="stat-label">PEAK INCIDENT HOUR</div>
+        <div class="stat-num">45.1%</div>
+        <div class="stat-label">HANDS-ON FORCE</div>
       </div>
       <div class="stat-box">
-        <div class="stat-num">45.1%</div>
-        <div class="stat-label">HANDS-ON CONTACT</div>
+        <div class="stat-num">12AM</div>
+        <div class="stat-label">PEAK INCIDENT HOUR</div>
       </div>
     </div>
   </div>
@@ -1075,7 +1087,7 @@ Plotly.newPlot('chart-models', [{
 
 Plotly.newPlot('chart-elbow', [{
   x: [2, 3, 4, 5, 6, 7, 8, 9, 10],
-  y: [20484.67718089729, 18026.206709139857, 16046.362508422437, 14563.216794693453, 13482.498215398875, 12655.70583743346, 12015.118305291697, 11471.225302991059, 11038.876010974294],
+  y: [20484.67718089729, 18026.206709139857, 16046.362508422437, 14563.216794693453, 13482.498215398875, 12655.70583743346, 12015.118305291695, 11471.225302991059, 11038.876010974294],
   type: 'scatter',
   mode: 'lines+markers',
   line: {color: 'rgba(247,127,0,0.6)', width: 2},
