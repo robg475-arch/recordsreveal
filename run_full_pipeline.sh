@@ -3,6 +3,12 @@
 # RecordsReveal Full Pipeline
 # CSV → Profile → Analyses → Merge → Extract → Write → Build HTML
 #
+# Features:
+# - Google Analytics 4: G-7B3KBBGVWE (automatically included in all pages)
+# - Google AdSense: ca-pub-9045696717764033 (automatically included in all pages)
+# - Geocoding: Nominatim API for location names
+# - Auto-updates: Homepage index.html updated with new investigations
+#
 
 set -e  # Exit on error
 
