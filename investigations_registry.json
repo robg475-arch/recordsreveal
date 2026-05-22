@@ -1,0 +1,64 @@
+{
+  "investigations": [
+    {
+      "id": "investigation-20260521-114147",
+      "title": "Police Use of Force · Live",
+      "headline": "Police use of force patterns reveal troubling disparities",
+      "category": "SAFETY",
+      "status": "LIVE NOW",
+      "url": "investigation-20260521-114147.html",
+      "order": 1,
+      "active": true
+    },
+    {
+      "id": "car-crashes",
+      "title": "NYC Traffic Crashes · Live",
+      "headline": "2M NYC crashes reveal the deadliest hour of your day",
+      "category": "SAFETY",
+      "status": "LIVE NOW",
+      "url": "car-crashes.html",
+      "order": 2,
+      "active": true
+    },
+    {
+      "id": "hollywood",
+      "title": "Hollywood Box Office · Live",
+      "headline": "Hollywood has a formula. We reverse-engineered it.",
+      "category": "ENTERTAINMENT",
+      "status": "LIVE NOW",
+      "url": "hollywood.html",
+      "order": 3,
+      "active": true
+    },
+    {
+      "id": "bird-strikes",
+      "title": "Bird Strikes · Live",
+      "headline": "35 years of FAA data reveals who's responsible for bird strikes",
+      "category": "AVIATION",
+      "status": "LIVE NOW",
+      "url": "bird-strikes.html",
+      "order": 4,
+      "active": true
+    },
+    {
+      "id": "food-nutrition",
+      "title": "Food Nutrition · Soon",
+      "headline": "AI ranked 8,000 foods by nutritional density. The results surprise.",
+      "category": "HEALTH",
+      "status": "COMING SOON",
+      "url": "#",
+      "order": 5,
+      "active": true
+    },
+    {
+      "id": "crime-statistics",
+      "title": "Crime Statistics · Soon",
+      "headline": "Crime data analysis reveals patterns invisible to human analysis",
+      "category": "CRIME",
+      "status": "COMING SOON",
+      "url": "#",
+      "order": 6,
+      "active": true
+    }
+  ]
+}

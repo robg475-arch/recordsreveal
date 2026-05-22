@@ -10,6 +10,59 @@ import json
 from datetime import datetime
 from pathlib import Path
 
+def load_investigations_registry():
+    """Load the investigations registry from JSON file"""
+    registry_path = Path(__file__).parent.parent.parent / "investigations_registry.json"
+    try:
+        with open(registry_path, 'r') as f:
+            data = json.load(f)
+            # Filter active investigations and sort by order
+            investigations = [inv for inv in data['investigations'] if inv.get('active', True)]
+            investigations.sort(key=lambda x: x.get('order', 999))
+            return investigations
+    except Exception as e:
+        print(f"Warning: Could not load investigations registry: {e}")
+        # Return hardcoded fallback
+        return [
+            {"status": "LIVE NOW", "category": "AVIATION", "url": "bird-strikes.html", "headline": "35 years of FAA data reveals who's responsible for bird strikes", "title": "Bird Strikes · Live"},
+            {"status": "LIVE NOW", "category": "ENTERTAINMENT", "url": "hollywood.html", "headline": "Hollywood has a formula. We reverse-engineered it.", "title": "Hollywood Box Office · Live"},
+            {"status": "LIVE NOW", "category": "SAFETY", "url": "car-crashes.html", "headline": "2M NYC crashes reveal the deadliest hour of your day", "title": "NYC Traffic Crashes · Live"},
+            {"status": "COMING SOON", "category": "HEALTH", "url": "#", "headline": "AI ranked 8,000 foods by nutritional density. The results surprise.", "title": "Food Nutrition · Soon"}
+        ]
+
+def generate_investigations_sidebar_html(investigations):
+    """Generate HTML for sidebar All Investigations section"""
+    html = '      <div class="all-investigations">\n'
+    html += '        <h3>All Investigations</h3>\n'
+    html += '        \n'
+    
+    for inv in investigations:
+        status = inv.get('status', 'LIVE NOW')
+        category = inv.get('category', 'DATA')
+        url = inv.get('url', '#')
+        headline = inv.get('headline', inv.get('title', 'Untitled'))
+        
+        html += '        <div class="investigation-item">\n'
+        html += f'          <div class="investigation-tag">{status} · {category}</div>\n'
+        html += f'          <a href="{url}" class="investigation-link">{headline}</a>\n'
+        html += '        </div>\n'
+        html += '        \n'
+    
+    html += '      </div>'
+    return html
+
+def generate_investigations_footer_html(investigations):
+    """Generate HTML for footer Investigations column"""
+    html = '      <ul class="footer-links">\n'
+    
+    for inv in investigations:
+        title = inv.get('title', 'Untitled')
+        url = inv.get('url', '#')
+        html += f'        <li><a href="{url}">{title}</a></li>\n'
+    
+    html += '      </ul>'
+    return html
+
 def generate_chart_script(chart_type, data, chart_id):
     """Generate inline JavaScript for a specific chart"""
     
@@ -429,6 +482,11 @@ def build_html_page(article_content_path, page_data_path, output_dir="investigat
     
     print(f"✅ Loaded article with {len(article.get('findings', []))} findings\n")
     
+    # Load investigations registry
+    print(f"📋 Loading investigations registry...")
+    investigations = load_investigations_registry()
+    print(f"✅ Loaded {len(investigations)} investigations\n")
+    
     # Generate unique ID for this investigation
     timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
     investigation_id = f"investigation-{timestamp}"
@@ -758,29 +816,7 @@ footer{{background:var(--ink);padding:60px 40px 40px;border-top:3px solid var(--
         <button>Subscribe Free →</button>
       </div>
 
-      <div class="all-investigations">
-        <h3>All Investigations</h3>
-        
-        <div class="investigation-item">
-          <div class="investigation-tag">LIVE NOW · AVIATION</div>
-          <a href="bird-strikes.html" class="investigation-link">35 years of FAA data reveals who's responsible for bird strikes</a>
-        </div>
-        
-        <div class="investigation-item">
-          <div class="investigation-tag">LIVE NOW · ENTERTAINMENT</div>
-          <a href="hollywood.html" class="investigation-link">Hollywood has a formula. We reverse-engineered it.</a>
-        </div>
-        
-        <div class="investigation-item">
-          <div class="investigation-tag">LIVE NOW · SAFETY</div>
-          <a href="car-crashes.html" class="investigation-link">2M NYC crashes reveal the deadliest hour of your day</a>
-        </div>
-        
-        <div class="investigation-item">
-          <div class="investigation-tag">COMING SOON · HEALTH</div>
-          <a href="#" class="investigation-link">AI ranked 8,000 foods by nutritional density. The results surprise.</a>
-        </div>
-      </div>
+{generate_investigations_sidebar_html(investigations)}
 
       <div class="sidebar-block">
         <div class="sidebar-title">Key Numbers</div>
@@ -822,14 +858,7 @@ footer{{background:var(--ink);padding:60px 40px 40px;border-top:3px solid var(--
     
     <div class="footer-section">
       <div class="footer-heading">INVESTIGATIONS</div>
-      <ul class="footer-links">
-        <li><a href="investigation-20260521-114147.html">Police Use of Force · Live</a></li>
-        <li><a href="car-crashes.html">NYC Traffic Crashes · Live</a></li>
-        <li><a href="hollywood.html">Hollywood Box Office · Live</a></li>
-        <li><a href="bird-strikes.html">Bird Strikes · Live</a></li>
-        <li><a href="#">Food Nutrition · Soon</a></li>
-        <li><a href="#">Crime Statistics · Soon</a></li>
-      </ul>
+{generate_investigations_footer_html(investigations)}
     </div>
     
     <div class="footer-section">
