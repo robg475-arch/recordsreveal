@@ -1,0 +1,58 @@
+
+╔══════════════════════════════════════════════════════════════════════╗
+║                    PREVIEW READY FOR REVIEW                          ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+Investigation: I cannot write a headline for this dataset because there is no actual data available. All values show "N/A" - there are no records, numbers, locations, or findings to report on.
+Branch: preview/investigation-20260522-230640
+File: investigations/investigation-20260522-230640.html
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 1: REVIEW LOCALLY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Open in your browser:
+  open investigations/investigation-20260522-230640.html
+
+Or view the entire site locally:
+  python3 -m http.server 8000
+  
+Then visit: http://localhost:8000
+
+Review:
+  ✓ Hero image looks good
+  ✓ Article content is accurate
+  ✓ Charts display correctly
+  ✓ Links work
+  ✓ Sidebar shows up
+  ✓ Mobile responsive
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 2A: APPROVE & DEPLOY TO PRODUCTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+If you like it, run:
+  python3 .opencode/skills/deploy-preview/approve.py preview/investigation-20260522-230640
+
+This will:
+  1. Merge preview/investigation-20260522-230640 into main
+  2. Push to production (recordsreveal.com)
+  3. Delete the preview branch
+  4. Clean up
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 2B: REJECT & DISCARD CHANGES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+If you don't like it, run:
+  python3 .opencode/skills/deploy-preview/reject.py preview/investigation-20260522-230640
+
+This will:
+  1. Switch back to main
+  2. Delete the preview branch (local & remote)
+  3. Discard all changes
+  4. Clean up
+
+Nothing will be deployed to production.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

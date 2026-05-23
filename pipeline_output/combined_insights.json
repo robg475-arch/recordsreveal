@@ -815,9 +815,9 @@
         }
       ],
       "cluster_names": [
-        "\"Conservative Strongholds\"",
-        "\"Moderate Swing Voters\"",
-        "\"Liberal Outliers\""
+        "\"Conservative Core\"",
+        "\"Spending Giant\"",
+        "\"Moderate Middle Ground\""
       ]
     },
     "comparative_financial": {
@@ -937,9 +937,9 @@
     }
   },
   "all_ollama_insights": {
-    "clustering": "Here's the analysis:\n\n\u2022 Cluster 0: \"Conservative Strongholds\"\nThis cluster is comprised of highly concentrated conservative support, suggesting strong district-level loyalty among its constituents.\n\n\u2022 Cluster 1: \"Moderate Swing Voters\"\nCluster 1 appears to be made up of moderate voters who may be more susceptible to changing political winds or are more open to different ideologies.\n\n\u2022 Cluster 2: \"Liberal Outliers\"\nThis cluster contains a small number of liberal-leaning districts that stand out from the rest, indicating potentially unique characteristics or demographics not captured by other features.",
-    "comparative_financial": "**Finding:** The Democratic Party has a nearly $75 million net advantage in campaign finance spending, with the majority of this disparity coming from just five entities: CO-08, NY-19, ME-02, WA-03, and OR-05.\n**Implication:** This vast financial gap highlights the significant influence of wealthy donors on the Democratic Party's ability to dominate swing districts, potentially undermining the party's claim to represent the interests of all Americans.\n**Pull Quote:** \"Wealthy donors are fueling a campaign finance firehose that's drowning out the voices of ordinary citizens in critical swing districts.\"",
-    "temporal": "I'm happy to help, but I don't see the dataset you'd like me to analyze. Could you please provide the data so I can assist you with your request?"
+    "clustering": "Here is the list with the requested information:\n\n\u2022 Cluster 0: \"Conservative Core\"\nThis cluster consists of only three samples, suggesting a tight-knit group that may be less diverse in their characteristics.\n\n\u2022 Cluster 1: \"Spending Giant\"\nThe largest cluster, comprising 206 samples, appears to dominate the dataset with its high spending numbers, indicating a potentially significant economic influence at play.\n\n\u2022 Cluster 2: \"Moderate Middle Ground\"\nWith 33 samples and an intermediate silhouette score, this cluster occupies a central position in the analysis, suggesting a more balanced approach that may be less extreme than either of the other two clusters.",
+    "comparative_financial": "**Finding:** The Democratic Party has a significant financial advantage in the top 5 swing districts, with the top entity, CO-08, spending over $24 million more than the Republican Party's top spender, OR-05.\n**Implication:** This disparity suggests that the Democratic Party is heavily investing in these key battleground states to maintain its competitive edge and potentially sway voters' decisions.\n**Pull Quote:** \"In the 2024 election, it seems the Democrats are pouring millions into Colorado's swing districts \u2013 but where is this money coming from?\"",
+    "temporal": "I'm ready to help! However, I don't see the dataset you'd like me to analyze. Please share the data with me, and I'll get started on providing the requested information.\n\nOnce you provide the dataset, I'll be happy to assist you in identifying the most newsworthy time-based finding, interpreting what this pattern suggests about behavior or events, and crafting a compelling pull quote for your article."
   },
   "summary": {
     "total_analyses": 4,

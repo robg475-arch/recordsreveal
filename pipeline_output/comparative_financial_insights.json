@@ -99,5 +99,5 @@
       "max": 20856620.50999999
     }
   },
-  "ollama_insights": "**Finding:** The Democratic Party has a nearly $75 million net advantage in campaign finance spending, with the majority of this disparity coming from just five entities: CO-08, NY-19, ME-02, WA-03, and OR-05.\n**Implication:** This vast financial gap highlights the significant influence of wealthy donors on the Democratic Party's ability to dominate swing districts, potentially undermining the party's claim to represent the interests of all Americans.\n**Pull Quote:** \"Wealthy donors are fueling a campaign finance firehose that's drowning out the voices of ordinary citizens in critical swing districts.\""
+  "ollama_insights": "**Finding:** The Democratic Party has a significant financial advantage in the top 5 swing districts, with the top entity, CO-08, spending over $24 million more than the Republican Party's top spender, OR-05.\n**Implication:** This disparity suggests that the Democratic Party is heavily investing in these key battleground states to maintain its competitive edge and potentially sway voters' decisions.\n**Pull Quote:** \"In the 2024 election, it seems the Democrats are pouring millions into Colorado's swing districts \u2013 but where is this money coming from?\""
 }

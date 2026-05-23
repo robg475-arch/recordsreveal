@@ -809,10 +809,10 @@
       }
     ],
     "cluster_names": [
-      "\"Conservative Strongholds\"",
-      "\"Moderate Swing Voters\"",
-      "\"Liberal Outliers\""
+      "\"Conservative Core\"",
+      "\"Spending Giant\"",
+      "\"Moderate Middle Ground\""
     ]
   },
-  "ollama_insights": "Here's the analysis:\n\n\u2022 Cluster 0: \"Conservative Strongholds\"\nThis cluster is comprised of highly concentrated conservative support, suggesting strong district-level loyalty among its constituents.\n\n\u2022 Cluster 1: \"Moderate Swing Voters\"\nCluster 1 appears to be made up of moderate voters who may be more susceptible to changing political winds or are more open to different ideologies.\n\n\u2022 Cluster 2: \"Liberal Outliers\"\nThis cluster contains a small number of liberal-leaning districts that stand out from the rest, indicating potentially unique characteristics or demographics not captured by other features."
+  "ollama_insights": "Here is the list with the requested information:\n\n\u2022 Cluster 0: \"Conservative Core\"\nThis cluster consists of only three samples, suggesting a tight-knit group that may be less diverse in their characteristics.\n\n\u2022 Cluster 1: \"Spending Giant\"\nThe largest cluster, comprising 206 samples, appears to dominate the dataset with its high spending numbers, indicating a potentially significant economic influence at play.\n\n\u2022 Cluster 2: \"Moderate Middle Ground\"\nWith 33 samples and an intermediate silhouette score, this cluster occupies a central position in the analysis, suggesting a more balanced approach that may be less extreme than either of the other two clusters."
 }
