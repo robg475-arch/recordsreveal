@@ -12,13 +12,27 @@ import glob
 
 def merge_insights(output_dir="analysis_results", output_file="combined_insights.json"):
     """
-    Merge all *_insights.json files in output_dir into one combined file
+    Merge all *_insights.json files in one combined file
     """
     print("\n" + "="*70)
     print("🔗 MERGING ANALYSIS INSIGHTS")
     print("="*70)
     print(f"Directory: {output_dir}")
     print("="*70 + "\n")
+    
+    # Try to get dataset name from profile.json (most reliable source)
+    profile_path = os.path.join(output_dir, "profile.json")
+    dataset_name = None
+    
+    if os.path.exists(profile_path):
+        try:
+            with open(profile_path) as f:
+                profile_data = json.load(f)
+                dataset_name = profile_data.get("dataset")
+                if dataset_name:
+                    print(f"📋 Dataset from profile: {dataset_name}\n")
+        except Exception as e:
+            print(f"⚠️  Could not read profile.json: {e}\n")
     
     # Find all insight files
     insight_files = glob.glob(os.path.join(output_dir, "*_insights.json"))
@@ -34,7 +48,7 @@ def merge_insights(output_dir="analysis_results", output_file="combined_insights
     
     # Load and merge
     combined = {
-        "dataset": None,
+        "dataset": dataset_name,  # Use profile.json dataset name
         "analyses": [],
         "all_patterns": {},
         "all_ollama_insights": {}
@@ -49,9 +63,10 @@ def merge_insights(output_dir="analysis_results", output_file="combined_insights
             
             analysis_type = data.get("analysis_type", "unknown")
             
-            # Store dataset name (use first one found)
+            # Fallback: use dataset from insight file if profile didn't have it
             if not combined["dataset"] and "dataset" in data:
                 combined["dataset"] = data["dataset"]
+                print(f"   ⚠️  Using dataset from insight file (profile.json unavailable)")
             
             # Add to analyses list
             combined["analyses"].append(analysis_type)
