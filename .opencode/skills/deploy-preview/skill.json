@@ -1,0 +1,38 @@
+{
+  "name": "deploy-preview",
+  "version": "1.0.0",
+  "description": "Create preview branch for investigation review before production deployment",
+  "category": "deployment",
+  "author": "RecordsReveal",
+  "created": "2026-05-22",
+  "scripts": {
+    "deploy": {
+      "file": "deploy.py",
+      "description": "Create preview branch and push to GitHub",
+      "usage": "python deploy.py <investigation_html_file>"
+    },
+    "approve": {
+      "file": "approve.py",
+      "description": "Approve preview and deploy to production",
+      "usage": "python approve.py <preview_branch_name>"
+    },
+    "reject": {
+      "file": "reject.py",
+      "description": "Reject preview and discard all changes",
+      "usage": "python reject.py <preview_branch_name>"
+    }
+  },
+  "workflow": [
+    "1. Pipeline generates investigation",
+    "2. deploy.py creates preview branch",
+    "3. Review locally at http://localhost:8000",
+    "4a. approve.py → deploy to production",
+    "4b. reject.py → discard all changes"
+  ],
+  "dependencies": [],
+  "outputs": {
+    "preview_branch": "GitHub branch named preview/{investigation-id}",
+    "instructions": "PREVIEW_{investigation-id}.txt with review steps",
+    "production_url": "https://recordsreveal.com (after approval)"
+  }
+}
