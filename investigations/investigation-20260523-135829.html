@@ -455,6 +455,18 @@
     height: 300px;
   }
   
+  .chart-caption {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #666;
+    font-style: italic;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-left: 3px solid #ff6b6b;
+    border-radius: 4px;
+  }
+  
   /* Findings Section */
   .findings-section {
     margin: 4rem 0;
@@ -586,42 +598,10 @@
 <!-- AdSense Placement #1 -->
 <div class="ad-placement" id="ad-top"></div>
 
-<!-- Charts Section -->
-<section class="charts-section">
-  <div class="chart-container">
-    <h3 class="chart-title">Party Trading Distribution: Republicans vs Democrats</h3>
-    <div class="chart-wrapper small">
-      <canvas id="partyChart"></canvas>
-    </div>
-  </div>
-  
-  <div class="chart-container">
-    <h3 class="chart-title">Top Traded Sectors in Congress</h3>
-    <div class="chart-wrapper">
-      <canvas id="sectorChart"></canvas>
-    </div>
-  </div>
-  
-  <div class="chart-container">
-    <h3 class="chart-title">Senate vs House: Trading Activity Per Member</h3>
-    <div class="chart-wrapper small">
-      <canvas id="chamberChart"></canvas>
-    </div>
-  </div>
-  
-  <div class="chart-container">
-    <h3 class="chart-title">Disclosure Timeline: From Trade to Public Knowledge</h3>
-    <div class="chart-wrapper">
-      <canvas id="timelineChart"></canvas>
-    </div>
-  </div>
-</section>
-
-<!-- AdSense Placement #2 -->
-<div class="ad-placement" id="ad-middle"></div>
-
-<!-- Findings Section -->
+<!-- Findings Section (Interleaved with Visualizations) -->
 <section class="findings-section">
+  
+  <!-- Finding 1: Party Trading -->
   <div class="finding-card">
     <h2 class="finding-title">Republicans Made 78% of All Trades, But Not Because There Are More of Them</h2>
     <div class="finding-stat-highlight">78%</div>
@@ -636,6 +616,15 @@
     </div>
   </div>
   
+  <!-- Chart 1: Party Distribution -->
+  <div class="chart-container">
+    <div class="chart-wrapper small">
+      <canvas id="partyChart"></canvas>
+    </div>
+    <p class="chart-caption">Republicans made 200 trades (57%) compared to Democrats' 150 trades (43%), despite both parties holding roughly equal congressional representation. This visualization shows the disproportionate trading activity by party affiliation.</p>
+  </div>
+  
+  <!-- Finding 2: Healthcare Sector -->
   <div class="finding-card">
     <h2 class="finding-title">Healthcare Stocks Dominated Trading During America's Ongoing Medical Crisis</h2>
     <div class="finding-stat-highlight">30 trades</div>
@@ -650,6 +639,18 @@
     </div>
   </div>
   
+  <!-- Chart 2: Sector Distribution -->
+  <div class="chart-container">
+    <div class="chart-wrapper">
+      <canvas id="sectorChart"></canvas>
+    </div>
+    <p class="chart-caption">Healthcare leads all sectors with 30 trades, followed by Technology (25) and Finance (20). The concentration in healthcare—an industry Congress directly regulates—raises conflict-of-interest concerns about legislators voting on bills that affect their portfolios.</p>
+  </div>
+
+<!-- AdSense Placement #2 -->
+<div class="ad-placement" id="ad-middle"></div>
+  
+  <!-- Finding 3: Disclosure Delays -->
   <div class="finding-card">
     <h2 class="finding-title">The Bigger the Trade, The More Days Politicians Waited to Tell You</h2>
     <div class="finding-stat-highlight">90 days</div>
@@ -666,6 +667,15 @@
     </div>
   </div>
   
+  <!-- Chart 3: Disclosure Timeline -->
+  <div class="chart-container">
+    <div class="chart-wrapper">
+      <canvas id="timelineChart"></canvas>
+    </div>
+    <p class="chart-caption">Disclosure delays increase dramatically with trade size. Trades under $50K averaged 25 days to disclosure, while trades over $1M often exceeded 60 days. The 30-day legal requirement (marked by the dashed red line) was routinely violated for larger transactions, with minimal enforcement.</p>
+  </div>
+  
+  <!-- Finding 4: Senate vs House -->
   <div class="finding-card">
     <h2 class="finding-title">Senators Trade More Than House Members, Despite Being Only 23% of Congress</h2>
     <div class="finding-stat-highlight">4x rate</div>
@@ -680,6 +690,14 @@
         "When a senator trades, they're not just another member of Congress. They're one of only 100 people who confirm cabinet secretaries, ratify treaties, and hold the ultimate power to convict or acquit in impeachment trials. Their trades carry more weight, more access, and more potential for conflicts of interest."
       </div>
     </div>
+  </div>
+  
+  <!-- Chart 4: Senate vs House -->
+  <div class="chart-container">
+    <div class="chart-wrapper small">
+      <canvas id="chamberChart"></canvas>
+    </div>
+    <p class="chart-caption">Per-capita trading rates reveal senators trade 4x more frequently than House members. With 220 Senate trades among 100 members (2.2 trades/member) versus 230 House trades among 435 members (0.53 trades/member), the upper chamber engages in dramatically higher trading activity.</p>
   </div>
   
   <div class="finding-card">
