@@ -322,14 +322,12 @@ def extract_page_numbers(combined_insights_path, output_path="page_data.json"):
     if 'hourly' in temporal:
         page_data["stats"]["total_records"] = f"{temporal['hourly'].get('total_records', 0):,}"
         print(f"   ✓ Total records: {page_data['stats']['total_records']}")
-    elif comparative_financial and 'count' in comparative_financial.get('patterns', {}).get('top_entities', {}):
-        count = comparative_financial['patterns']['top_entities']['count']
-        page_data["stats"]["total_records"] = f"{count:,}"
-        print(f"   ✓ Total records: {page_data['stats']['total_records']}")
-    elif clustering and 'original_shape' in clustering:
-        count = clustering['original_shape'][0]
-        page_data["stats"]["total_records"] = f"{count:,}"
-        print(f"   ✓ Total records: {page_data['stats']['total_records']}")
+    elif clustering:
+        # Get from cluster sizes
+        total_size = sum(clustering.get('cluster_sizes', []))
+        if total_size > 0:
+            page_data["stats"]["total_records"] = f"{total_size:,}"
+            print(f"   ✓ Total records: {page_data['stats']['total_records']}")
     
     # Valid coordinates
     if 'valid_coordinates' in geographic:

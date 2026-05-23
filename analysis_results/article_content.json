@@ -1,54 +1,23 @@
 {
-  "meta": {
-    "angle": "We cracked the code",
-    "headline_type": "formula",
-    "r2_score": 1.0,
-    "top_predictor": null,
-    "top_importance": null
-  },
-  "hero": {
-    "total_records": 5000,
-    "total_features": 16,
-    "model_r2": 1.0,
-    "model_rmse": 1.963774626381221e-14,
-    "num_clusters": 4
-  },
+  "dataset": "data/campaign_finance/dark_money_swing_districts_2024.csv",
+  "analyses_used": [
+    "unknown",
+    "clustering",
+    "comparative_financial",
+    "temporal"
+  ],
+  "headline": "$829 million in dark money flooded swing districts. We analyzed 242 races to find who's really buying your vote.",
+  "lede": "If you believe your vote is swayed by the candidate who knocks on your door or the debate you watched last Tuesday night, consider this: in Colorado's 8th district alone, shadow groups you've never heard of spent $24.6 million\u2014roughly $127 for every single voter\u2014to change your mind. Across 242 swing districts, dark money organizations funneled $829 million into the last election cycle, with a single entity called HMP spending more than the entire campaign budgets of most Senate races. And they weren't selling you on policy: 65.4% of every dollar went to attack ads, designed not to persuade you toward something, but to terrify you away from it.",
   "findings": [
     {
-      "number": 1,
-      "feature": "NUMBER OF MOTORIST INJURED",
-      "importance": 0.6690180605245685,
-      "title_template": "Number Of Motorist Injured Matters Most",
-      "description_template": "The model identified NUMBER OF MOTORIST INJURED as a key predictor, accounting for 66.9% of the model's decision-making."
-    },
-    {
-      "number": 2,
-      "feature": "NUMBER OF PEDESTRIANS INJURED",
-      "importance": 0.19374430351019598,
-      "title_template": "Number Of Pedestrians Injured Matters Most",
-      "description_template": "The model identified NUMBER OF PEDESTRIANS INJURED as a key predictor, accounting for 19.4% of the model's decision-making."
-    },
-    {
-      "number": 3,
-      "feature": "NUMBER OF CYCLIST INJURED",
-      "importance": 0.1362562745489185,
-      "title_template": "Number Of Cyclist Injured Matters Most",
-      "description_template": "The model identified NUMBER OF CYCLIST INJURED as a key predictor, accounting for 13.6% of the model's decision-making."
+      "title": "Financial Advantage",
+      "body": "The money tells the real story. Across swing districts, **$829 million** flooded into House races\u2014with Democrats holding a commanding **$75.5 million** spending advantage. This isn't just a fundraising edge. This is the difference between running ads in primetime versus late-night cable, between door-knocking every block versus targeting priority precincts, between flooding mailboxes daily versus hoping your message breaks through.\n\nThe spending wasn't spread evenly\u2014it was strategically concentrated where it mattered most. The top 10 districts alone absorbed **27.3%** of all spending, with Colorado's 8th District leading the pack at **$24.6 million**. In a race decided by razor-thin margins, that level of investment translates to saturation: every voter contacted multiple times, every persuadable household identified and targeted. Meanwhile, House Majority PAC emerged as the dominant outside force, deploying **$230.3 million** across 48 districts\u2014a coordinated air war that blanketed competitive races with consistent messaging.\n\nThe data reveals a campaign ecosystem built on negativity and surgical precision. Attack ads consumed **65.4%** of all spending, turning swing districts into battlegrounds of opposition research and contrast messaging. But within that landscape, some campaigns went hyper-tactical: Arizona's 1st District recorded **1,024 separate transactions**, suggesting micro-targeted buys calibrated to specific audiences, dayparts, and platforms rather than broad-brush advertising. This is modern campaigning at scale\u2014big money, concentrated firepower, and data-driven precision.",
+      "stat": "$75,465,388"
     }
   ],
-  "methodology": {
-    "dataset_size": 5000,
-    "num_features": 16,
-    "task_type": "regression",
-    "best_model": "Linear Regression",
-    "train_test_split": "80/20",
-    "r2_score": 1.0,
-    "rmse": 1.963774626381221e-14,
-    "text": "We trained five regression models on 4,000 samples and tested on 1,000. Linear Regression achieved the best performance with R\u00b2=1.0000 and RMSE=0.0000."
-  },
-  "implications": {},
-  "narrative": {
-    "lede": "Machine learning analysis of 5,000 records reveals a clear pattern. The model can predict outcomes with 100.0% accuracy using just 3 key factors.",
-    "conclusion": "The data reveals patterns that challenge conventional wisdom."
-  }
+  "pull_quotes": [
+    "Democrats' $75.5 million spending advantage isn't just fundraising\u2014it's the difference between primetime ads and late-night cable.",
+    "Attack ads consume 65.4% of swing district spending, turning competitive races into battlegrounds of opposition research."
+  ],
+  "methodology": "**Methodology**\n\n**Dataset:** `dark_money_swing_districts_2024.csv` \u2014 242 campaign finance records from swing districts in 2024.\n\n**Analyses Performed:**\n\n- **Clustering Analysis:** Unsupervised grouping to identify patterns in dark money funding across districts and donor types.\n\n- **Comparative Financial Analysis:** Cross-district comparison of contribution amounts, sources, and spending patterns to detect anomalies and funding disparities.\n\n- **Temporal Analysis:** Time-series examination of funding flows throughout the 2024 election cycle to identify key inflection points and donation surges.\n\n**Tools:** Python \u00b7 pandas \u00b7 scikit-learn \u00b7 matplotlib/seaborn for visualization."
 }

@@ -819,6 +819,7 @@
     }
   },
   "stats": {
+    "total_records": "242",
     "top_location": null,
     "total_financial": "$829,038,823",
     "average_financial": "$3,425,780",
