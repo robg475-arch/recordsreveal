@@ -1,7 +1,21 @@
 {
   "dataset": "data/campaign_finance/dark_money_swing_districts_2024.csv",
-  "profiled_at": "2026-05-22T22:39:28.010476",
+  "profiled_at": "2026-05-22T23:06:05.110759",
   "recommended_skills": [
+    {
+      "skill": "comparative-financial-analysis",
+      "priority": "high",
+      "reason": "Found 7 financial column(s) with political comparison pattern",
+      "command": "python comparative-financial-analysis/analyze.py data/campaign_finance/dark_money_swing_districts_2024.csv",
+      "estimated_time": "30 seconds",
+      "cost": "$0.00 (Ollama)",
+      "insights_provided": [
+        "top spenders/recipients",
+        "spending distribution",
+        "comparative advantage",
+        "AI-generated insights"
+      ]
+    },
     {
       "skill": "temporal-analysis",
       "priority": "high",

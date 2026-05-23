@@ -1,0 +1,103 @@
+{
+  "analysis_type": "comparative_financial",
+  "dataset": "data/campaign_finance/dark_money_swing_districts_2024.csv",
+  "patterns": {
+    "comparison_type": "political",
+    "comparison_columns": [
+      "dem_candidate",
+      "rep_candidate",
+      "dem_support",
+      "dem_oppose",
+      "rep_support",
+      "rep_oppose",
+      "net_dem_advantage"
+    ],
+    "top_entities": {
+      "column": "total_spending",
+      "entity_column": "district",
+      "top_10": [
+        {
+          "rank": 1,
+          "entity": "CO-08",
+          "amount": 24636157.339999992
+        },
+        {
+          "rank": 2,
+          "entity": "NY-19",
+          "amount": 23223441.870000005
+        },
+        {
+          "rank": 3,
+          "entity": "ME-02",
+          "amount": 23151804.41999999
+        },
+        {
+          "rank": 4,
+          "entity": "WA-03",
+          "amount": 22893138.839999996
+        },
+        {
+          "rank": 5,
+          "entity": "OR-05",
+          "amount": 22353446.15
+        },
+        {
+          "rank": 6,
+          "entity": "AZ-01",
+          "amount": 22217273.080000013
+        },
+        {
+          "rank": 7,
+          "entity": "CA-13",
+          "amount": 22101457.959999997
+        },
+        {
+          "rank": 8,
+          "entity": "NC-01",
+          "amount": 22007182.63
+        },
+        {
+          "rank": 9,
+          "entity": "CA-45",
+          "amount": 21986450.419999987
+        },
+        {
+          "rank": 10,
+          "entity": "MI-07",
+          "amount": 21654750.430000007
+        }
+      ],
+      "total": 829038822.78,
+      "average": 3425780.2594214873,
+      "median": 398395.67000000004
+    },
+    "comparative_advantage": {
+      "dem_total": 179965788.48000002,
+      "rep_total": 104500400.69999999,
+      "net_advantage": 75465387.78000003,
+      "leader": "DEM"
+    },
+    "distribution_total_spending": {
+      "total": 829038822.78,
+      "mean": 3425780.2594214873,
+      "median": 398395.67000000004,
+      "min": 10024.0,
+      "max": 24636157.339999992
+    },
+    "distribution_spending_for": {
+      "total": 286726864.26000005,
+      "mean": 1184821.753140496,
+      "median": 246895.2,
+      "min": 0.0,
+      "max": 9115295.83999999
+    },
+    "distribution_spending_against": {
+      "total": 542311958.52,
+      "mean": 2240958.5062809917,
+      "median": 13836.7,
+      "min": 0.0,
+      "max": 20856620.50999999
+    }
+  },
+  "ollama_insights": "**Finding:** The Democratic Party has a nearly $75 million net advantage in campaign finance spending, with the majority of this disparity coming from just five entities: CO-08, NY-19, ME-02, WA-03, and OR-05.\n**Implication:** This vast financial gap highlights the significant influence of wealthy donors on the Democratic Party's ability to dominate swing districts, potentially undermining the party's claim to represent the interests of all Americans.\n**Pull Quote:** \"Wealthy donors are fueling a campaign finance firehose that's drowning out the voices of ordinary citizens in critical swing districts.\""
+}

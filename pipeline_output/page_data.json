@@ -3,6 +3,7 @@
   "analyses_run": [
     "unknown",
     "clustering",
+    "comparative_financial",
     "temporal"
   ],
   "chart_data": {
@@ -742,9 +743,9 @@
       "variance_1": 60.27898083455149,
       "variance_2": 10.668522152377031,
       "cluster_names": [
-        "\"Outliers' Haven\"",
-        "\"Mainstream Mass\"",
-        "\"Conservative Core\""
+        "\"Conservative Strongholds\"",
+        "\"Moderate Swing Voters\"",
+        "\"Liberal Outliers\""
       ],
       "cluster_profiles": [
         {
@@ -821,8 +822,14 @@
     "top_location": null
   },
   "insights": {
-    "clustering": "Here are the results:\n\n* Cluster 0: \"Outliers' Haven\"\nThis cluster contains samples that are farthest from the overall distribution, making them outliers.\n \n* Cluster 1: \"Mainstream Mass\"\nThis cluster represents the largest group of samples, encompassing a wide range of values for the features used in clustering.\n\n* Cluster 2: \"Conservative Core\"\nThis cluster consists of samples with strong conservative tendencies, characterized by high spending against and lower support for democratic parties.",
-    "temporal": "I'm ready to help. Please provide the dataset and any relevant context or insights you've found so far. I'll analyze the data and generate a summary of the most newsworthy time-based finding, its implications, and a compelling pull quote. Let's get started!"
+    "clustering": "Here's the analysis:\n\n\u2022 Cluster 0: \"Conservative Strongholds\"\nThis cluster is comprised of highly concentrated conservative support, suggesting strong district-level loyalty among its constituents.\n\n\u2022 Cluster 1: \"Moderate Swing Voters\"\nCluster 1 appears to be made up of moderate voters who may be more susceptible to changing political winds or are more open to different ideologies.\n\n\u2022 Cluster 2: \"Liberal Outliers\"\nThis cluster contains a small number of liberal-leaning districts that stand out from the rest, indicating potentially unique characteristics or demographics not captured by other features.",
+    "comparative_financial": "**Finding:** The Democratic Party has a nearly $75 million net advantage in campaign finance spending, with the majority of this disparity coming from just five entities: CO-08, NY-19, ME-02, WA-03, and OR-05.\n**Implication:** This vast financial gap highlights the significant influence of wealthy donors on the Democratic Party's ability to dominate swing districts, potentially undermining the party's claim to represent the interests of all Americans.\n**Pull Quote:** \"Wealthy donors are fueling a campaign finance firehose that's drowning out the voices of ordinary citizens in critical swing districts.\"",
+    "temporal": "I'm happy to help, but I don't see the dataset you'd like me to analyze. Could you please provide the data so I can assist you with your request?"
   },
-  "pull_quotes": []
+  "pull_quotes": [
+    {
+      "text": "Wealthy donors are fueling a campaign finance firehose that's drowning out the voices of ordinary citizens in critical swing districts.",
+      "source": "comparative_financial"
+    }
+  ]
 }

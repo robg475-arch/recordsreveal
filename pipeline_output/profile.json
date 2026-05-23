@@ -206,7 +206,17 @@
       "rep_oppose",
       "net_dem_advantage",
       "num_transactions"
-    ]
+    ],
+    "financial": [
+      "total_spending",
+      "spending_for",
+      "spending_against",
+      "dem_support",
+      "dem_oppose",
+      "rep_support",
+      "rep_oppose"
+    ],
+    "comparative_pattern": "political"
   },
   "summary_stats": {}
 }

@@ -809,10 +809,10 @@
       }
     ],
     "cluster_names": [
-      "\"Outliers' Haven\"",
-      "\"Mainstream Mass\"",
-      "\"Conservative Core\""
+      "\"Conservative Strongholds\"",
+      "\"Moderate Swing Voters\"",
+      "\"Liberal Outliers\""
     ]
   },
-  "ollama_insights": "Here are the results:\n\n* Cluster 0: \"Outliers' Haven\"\nThis cluster contains samples that are farthest from the overall distribution, making them outliers.\n \n* Cluster 1: \"Mainstream Mass\"\nThis cluster represents the largest group of samples, encompassing a wide range of values for the features used in clustering.\n\n* Cluster 2: \"Conservative Core\"\nThis cluster consists of samples with strong conservative tendencies, characterized by high spending against and lower support for democratic parties."
+  "ollama_insights": "Here's the analysis:\n\n\u2022 Cluster 0: \"Conservative Strongholds\"\nThis cluster is comprised of highly concentrated conservative support, suggesting strong district-level loyalty among its constituents.\n\n\u2022 Cluster 1: \"Moderate Swing Voters\"\nCluster 1 appears to be made up of moderate voters who may be more susceptible to changing political winds or are more open to different ideologies.\n\n\u2022 Cluster 2: \"Liberal Outliers\"\nThis cluster contains a small number of liberal-leaning districts that stand out from the rest, indicating potentially unique characteristics or demographics not captured by other features."
 }

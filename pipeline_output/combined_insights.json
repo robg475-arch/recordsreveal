@@ -3,6 +3,7 @@
   "analyses": [
     "unknown",
     "clustering",
+    "comparative_financial",
     "temporal"
   ],
   "all_patterns": {
@@ -814,10 +815,108 @@
         }
       ],
       "cluster_names": [
-        "\"Outliers' Haven\"",
-        "\"Mainstream Mass\"",
-        "\"Conservative Core\""
+        "\"Conservative Strongholds\"",
+        "\"Moderate Swing Voters\"",
+        "\"Liberal Outliers\""
       ]
+    },
+    "comparative_financial": {
+      "comparison_type": "political",
+      "comparison_columns": [
+        "dem_candidate",
+        "rep_candidate",
+        "dem_support",
+        "dem_oppose",
+        "rep_support",
+        "rep_oppose",
+        "net_dem_advantage"
+      ],
+      "top_entities": {
+        "column": "total_spending",
+        "entity_column": "district",
+        "top_10": [
+          {
+            "rank": 1,
+            "entity": "CO-08",
+            "amount": 24636157.339999992
+          },
+          {
+            "rank": 2,
+            "entity": "NY-19",
+            "amount": 23223441.870000005
+          },
+          {
+            "rank": 3,
+            "entity": "ME-02",
+            "amount": 23151804.41999999
+          },
+          {
+            "rank": 4,
+            "entity": "WA-03",
+            "amount": 22893138.839999996
+          },
+          {
+            "rank": 5,
+            "entity": "OR-05",
+            "amount": 22353446.15
+          },
+          {
+            "rank": 6,
+            "entity": "AZ-01",
+            "amount": 22217273.080000013
+          },
+          {
+            "rank": 7,
+            "entity": "CA-13",
+            "amount": 22101457.959999997
+          },
+          {
+            "rank": 8,
+            "entity": "NC-01",
+            "amount": 22007182.63
+          },
+          {
+            "rank": 9,
+            "entity": "CA-45",
+            "amount": 21986450.419999987
+          },
+          {
+            "rank": 10,
+            "entity": "MI-07",
+            "amount": 21654750.430000007
+          }
+        ],
+        "total": 829038822.78,
+        "average": 3425780.2594214873,
+        "median": 398395.67000000004
+      },
+      "comparative_advantage": {
+        "dem_total": 179965788.48000002,
+        "rep_total": 104500400.69999999,
+        "net_advantage": 75465387.78000003,
+        "leader": "DEM"
+      },
+      "distribution_total_spending": {
+        "total": 829038822.78,
+        "mean": 3425780.2594214873,
+        "median": 398395.67000000004,
+        "min": 10024.0,
+        "max": 24636157.339999992
+      },
+      "distribution_spending_for": {
+        "total": 286726864.26000005,
+        "mean": 1184821.753140496,
+        "median": 246895.2,
+        "min": 0.0,
+        "max": 9115295.83999999
+      },
+      "distribution_spending_against": {
+        "total": 542311958.52,
+        "mean": 2240958.5062809917,
+        "median": 13836.7,
+        "min": 0.0,
+        "max": 20856620.50999999
+      }
     },
     "temporal": {
       "time_distribution": {
@@ -838,14 +937,16 @@
     }
   },
   "all_ollama_insights": {
-    "clustering": "Here are the results:\n\n* Cluster 0: \"Outliers' Haven\"\nThis cluster contains samples that are farthest from the overall distribution, making them outliers.\n \n* Cluster 1: \"Mainstream Mass\"\nThis cluster represents the largest group of samples, encompassing a wide range of values for the features used in clustering.\n\n* Cluster 2: \"Conservative Core\"\nThis cluster consists of samples with strong conservative tendencies, characterized by high spending against and lower support for democratic parties.",
-    "temporal": "I'm ready to help. Please provide the dataset and any relevant context or insights you've found so far. I'll analyze the data and generate a summary of the most newsworthy time-based finding, its implications, and a compelling pull quote. Let's get started!"
+    "clustering": "Here's the analysis:\n\n\u2022 Cluster 0: \"Conservative Strongholds\"\nThis cluster is comprised of highly concentrated conservative support, suggesting strong district-level loyalty among its constituents.\n\n\u2022 Cluster 1: \"Moderate Swing Voters\"\nCluster 1 appears to be made up of moderate voters who may be more susceptible to changing political winds or are more open to different ideologies.\n\n\u2022 Cluster 2: \"Liberal Outliers\"\nThis cluster contains a small number of liberal-leaning districts that stand out from the rest, indicating potentially unique characteristics or demographics not captured by other features.",
+    "comparative_financial": "**Finding:** The Democratic Party has a nearly $75 million net advantage in campaign finance spending, with the majority of this disparity coming from just five entities: CO-08, NY-19, ME-02, WA-03, and OR-05.\n**Implication:** This vast financial gap highlights the significant influence of wealthy donors on the Democratic Party's ability to dominate swing districts, potentially undermining the party's claim to represent the interests of all Americans.\n**Pull Quote:** \"Wealthy donors are fueling a campaign finance firehose that's drowning out the voices of ordinary citizens in critical swing districts.\"",
+    "temporal": "I'm happy to help, but I don't see the dataset you'd like me to analyze. Could you please provide the data so I can assist you with your request?"
   },
   "summary": {
-    "total_analyses": 3,
+    "total_analyses": 4,
     "analysis_types": [
       "unknown",
       "clustering",
+      "comparative_financial",
       "temporal"
     ],
     "has_ollama_insights": true
