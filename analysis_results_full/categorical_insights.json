@@ -1,0 +1,48 @@
+{
+  "analysis_type": "categorical",
+  "dataset": "test_dataset_crashes.csv",
+  "category_column": "VEHICLE TYPE CODE 1",
+  "patterns": {
+    "distribution": {
+      "labels": [
+        "Sedan",
+        "Station Wagon/Sport Utility Vehicle",
+        "Taxi",
+        "Pick-up Truck",
+        "Box Truck",
+        "Bus",
+        "Unknown",
+        "Bicycle",
+        "Motorcycle"
+      ],
+      "counts": [
+        1700,
+        1253,
+        624,
+        525,
+        243,
+        200,
+        171,
+        142,
+        142
+      ],
+      "percentages": [
+        34.0,
+        25.1,
+        12.5,
+        10.5,
+        4.9,
+        4.0,
+        3.4,
+        2.8,
+        2.8
+      ],
+      "total_unique": 9,
+      "total_records": 5000,
+      "majority_label": "Sedan",
+      "majority_count": 1700,
+      "majority_pct": 34.0
+    }
+  },
+  "ollama_insights": "Here's my analysis:\n\n**Most newsworthy finding:**\nThe vehicle type code 1 distribution reveals a striking dominance of sedans, accounting for nearly 34% of the total records, with a significant gap between the top two categories.\n\n**What this distribution pattern suggests about the data:**\nThis uneven distribution may indicate a lack of diversity in the population being studied or a specific focus on sedans, potentially hiding other insights that could be lost amidst the majority category.\n\n**Compelling pull quote:**\n\"Sedans reign supreme: 34% of the fleet, but what's behind this dominance?\""
+}

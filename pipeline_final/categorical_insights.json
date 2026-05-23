@@ -1,0 +1,36 @@
+{
+  "analysis_type": "categorical",
+  "dataset": "test_dataset_crashes.csv",
+  "category_column": "BOROUGH",
+  "patterns": {
+    "distribution": {
+      "labels": [
+        "Brooklyn",
+        "Queens",
+        "Manhattan",
+        "Bronx",
+        "Staten Island"
+      ],
+      "counts": [
+        1537,
+        1244,
+        915,
+        802,
+        502
+      ],
+      "percentages": [
+        30.7,
+        24.9,
+        18.3,
+        16.0,
+        10.0
+      ],
+      "total_unique": 5,
+      "total_records": 5000,
+      "majority_label": "Brooklyn",
+      "majority_count": 1537,
+      "majority_pct": 30.7
+    }
+  },
+  "ollama_insights": "Here are my recommendations:\n\n**Most newsworthy finding:**\nThe Brooklyn borough dominates the dataset, accounting for over 30% of records, suggesting that this community may be a crucial focus for further investigation.\n\n**Pattern interpretation:**\nThis skewed distribution indicates that a single category (Brooklyn) heavily influences the overall representation, potentially hiding nuances in other boroughs. \n\n**Compelling pull quote:**\n\"Brooklyn's dominance sparks questions about diversity within NYC neighborhoods.\""
+}

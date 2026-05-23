@@ -1,0 +1,53 @@
+{
+  "analysis_type": "temporal",
+  "dataset": "test_dataset_911calls.csv",
+  "time_column": "call_time",
+  "patterns": {
+    "hourly": {
+      "distribution": {
+        "0": 124,
+        "1": 122,
+        "2": 133,
+        "3": 120,
+        "4": 113,
+        "5": 130,
+        "6": 126,
+        "7": 134,
+        "8": 121,
+        "9": 113,
+        "10": 111,
+        "11": 117,
+        "12": 125,
+        "13": 114,
+        "14": 141,
+        "15": 129,
+        "16": 131,
+        "17": 123,
+        "18": 112,
+        "19": 111,
+        "20": 129,
+        "21": 147,
+        "22": 144,
+        "23": 130
+      },
+      "peak_hour": 21,
+      "peak_count": 147,
+      "total_records": 3000
+    },
+    "day_of_week": {
+      "distribution": {
+        "Wednesday": 3000
+      },
+      "busiest_day": "Wednesday",
+      "busiest_count": 3000
+    },
+    "monthly": {
+      "distribution": {
+        "May": 3000
+      },
+      "busiest_month": "May",
+      "busiest_count": 3000
+    }
+  },
+  "ollama_insights": "Based on the analysis, here are my suggestions:\n\n**Most newsworthy time-based finding:**\nThe dataset reveals a significant spike in bus travel at 9 PM, with Wednesday being the most popular day of the week.\n\n**Behavior or events suggested by the pattern:**\nThis data suggests that evening commutes are particularly busy, and Wednesdays seem to be a day when people rely heavily on public transportation. This could indicate a concentration of work-related activities or social events during this time.\n\n**Compelling pull quote:**\n\"Peak rush hour reveals secrets to the daily grind, where millions converge at 9 PM.\""
+}

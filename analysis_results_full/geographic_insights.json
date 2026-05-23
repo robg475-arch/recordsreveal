@@ -1,0 +1,81 @@
+{
+  "analysis_type": "geographic",
+  "dataset": "test_dataset_crashes.csv",
+  "lat_column": "LATITUDE",
+  "lon_column": "LONGITUDE",
+  "patterns": {
+    "valid_coordinates": {
+      "count": 5000,
+      "total": 5000,
+      "percent": 100.0
+    },
+    "bounds": {
+      "lat_min": 40.50010804894269,
+      "lat_max": 40.89987595095442,
+      "lon_min": -74.29955677668558,
+      "lon_max": -73.7002286629479,
+      "center_lat": 40.69999199994855,
+      "center_lon": -73.99989271981673
+    },
+    "hotspots": [
+      {
+        "lat": 40.60005002444562,
+        "lon": -73.96992631412985,
+        "count": 63,
+        "percent": 1.26
+      },
+      {
+        "lat": 40.520096444043276,
+        "lon": -73.79012788000855,
+        "count": 61,
+        "percent": 1.22
+      },
+      {
+        "lat": 40.83991076565266,
+        "lon": -74.20965755962493,
+        "count": 61,
+        "percent": 1.22
+      },
+      {
+        "lat": 40.60005002444562,
+        "lon": -73.85006069138231,
+        "count": 60,
+        "percent": 1.2
+      },
+      {
+        "lat": 40.83991076565266,
+        "lon": -73.79012788000855,
+        "count": 60,
+        "percent": 1.2
+      }
+    ],
+    "locations": {
+      "BOROUGH": {
+        "top_10": {
+          "Brooklyn": 1537,
+          "Queens": 1244,
+          "Manhattan": 915,
+          "Bronx": 802,
+          "Staten Island": 502
+        },
+        "unique_count": 5
+      },
+      "ZIP CODE": {
+        "top_10": {
+          "10733": 9,
+          "11248": 9,
+          "11525": 9,
+          "10643": 9,
+          "10919": 8,
+          "11559": 8,
+          "10048": 8,
+          "11677": 8,
+          "11420": 8,
+          "10030": 8
+        },
+        "unique_count": 1607
+      }
+    }
+  },
+  "ollama_insights": "Here are my suggestions:\n\n**1. The most newsworthy geographic finding:**\n\nThe top hotspot in the dataset, (40.6001, -73.9699), is an incredibly concentrated area with 63 records, suggesting a unique event or phenomenon occurred at this precise location.\n\n**2. What this spatial pattern suggests about the data:**\n\nThis high concentration of records at a specific point implies that there may be an underlying anomaly or error in the dataset, rather than a genuine geographic variation.\n\n**3. A compelling pull quote:**\n\n\"In a surprising snapshot of urban intensity, a single Brooklyn spot dominates a massive dataset.\""
+}

@@ -1,0 +1,130 @@
+{
+  "analysis_type": "classification",
+  "dataset": "test_dataset_crashes.csv",
+  "target_column": "BOROUGH",
+  "patterns": {
+    "models": {
+      "LogisticRegression": {
+        "accuracy": 0.307,
+        "precision": 0.13017565817867932,
+        "recall": 0.307,
+        "f1": 0.14647146634615385
+      },
+      "RandomForest": {
+        "accuracy": 0.239,
+        "precision": 0.2201348888111174,
+        "recall": 0.239,
+        "f1": 0.2241109447382761
+      },
+      "XGBoost": {
+        "accuracy": 0.263,
+        "precision": 0.24421806427237908,
+        "recall": 0.263,
+        "f1": 0.24674092542091974
+      }
+    },
+    "best_model": "LogisticRegression",
+    "best_accuracy": 0.307,
+    "feature_importance": [
+      {
+        "feature": "LATITUDE",
+        "importance": 0.3089372688021181
+      },
+      {
+        "feature": "LONGITUDE",
+        "importance": 0.30760014560545135
+      },
+      {
+        "feature": "ZIP CODE",
+        "importance": 0.3072372322207052
+      },
+      {
+        "feature": "NUMBER OF PERSONS INJURED",
+        "importance": 0.025169744600628617
+      },
+      {
+        "feature": "NUMBER OF MOTORIST INJURED",
+        "importance": 0.021822278099400395
+      },
+      {
+        "feature": "NUMBER OF PEDESTRIANS INJURED",
+        "importance": 0.014406026304979785
+      },
+      {
+        "feature": "NUMBER OF CYCLIST INJURED",
+        "importance": 0.011985829835867885
+      },
+      {
+        "feature": "NUMBER OF PERSONS KILLED",
+        "importance": 0.0011410050063002334
+      },
+      {
+        "feature": "NUMBER OF PEDESTRIANS KILLED",
+        "importance": 0.0007144819299776083
+      },
+      {
+        "feature": "NUMBER OF MOTORIST KILLED",
+        "importance": 0.0006563126282902
+      },
+      {
+        "feature": "NUMBER OF CYCLIST KILLED",
+        "importance": 0.000329674966280658
+      }
+    ],
+    "top_feature": "LATITUDE",
+    "top_feature_importance": 0.3089372688021181,
+    "lasso_coefficients": [
+      {
+        "feature": "NUMBER OF MOTORIST KILLED",
+        "coefficient": -0.1441631929108999
+      },
+      {
+        "feature": "NUMBER OF CYCLIST KILLED",
+        "coefficient": 0.1042630672986326
+      },
+      {
+        "feature": "NUMBER OF PEDESTRIANS KILLED",
+        "coefficient": 0.06487548576428398
+      },
+      {
+        "feature": "NUMBER OF PEDESTRIANS INJURED",
+        "coefficient": 0.054965238096936535
+      },
+      {
+        "feature": "LONGITUDE",
+        "coefficient": 0.039161470245824684
+      },
+      {
+        "feature": "NUMBER OF PERSONS INJURED",
+        "coefficient": 0.03409920974399392
+      },
+      {
+        "feature": "NUMBER OF CYCLIST INJURED",
+        "coefficient": 0.018211303428532444
+      },
+      {
+        "feature": "LATITUDE",
+        "coefficient": -0.009180463550097316
+      },
+      {
+        "feature": "ZIP CODE",
+        "coefficient": -0.008979357369505803
+      },
+      {
+        "feature": "NUMBER OF PERSONS KILLED",
+        "coefficient": -0.004797743548155741
+      },
+      {
+        "feature": "NUMBER OF MOTORIST INJURED",
+        "coefficient": 0.0032847737793877244
+      }
+    ],
+    "lasso_eliminated": [
+      "LATITUDE",
+      "ZIP CODE",
+      "NUMBER OF PERSONS KILLED",
+      "NUMBER OF MOTORIST INJURED"
+    ]
+  },
+  "ollama_insights": "Here are my answers:\n\n**1. Most newsworthy finding:**\nThe model suggests that understanding a borough's geography can be key to predicting its characteristics, with latitude and longitude emerging as top features.\n\n**2. Feature importance revelation:**\nThe feature importance highlights the crucial role of geographical data in the classification results, indicating that the model is relying on spatial information to make predictions about the target variable (borough characteristics).\n\n**3. Compelling pull quote:**\n\"Geography holds the key to unlocking the secrets of urban development.\""
+}

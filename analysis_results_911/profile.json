@@ -1,0 +1,132 @@
+{
+  "dataset": "test_dataset_911calls.csv",
+  "shape": {
+    "rows": 3000,
+    "columns": 10
+  },
+  "columns": {
+    "call_datetime": {
+      "name": "call_datetime",
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 2978,
+      "pattern": "temporal"
+    },
+    "call_date": {
+      "name": "call_date",
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 180,
+      "pattern": "temporal"
+    },
+    "call_time": {
+      "name": "call_time",
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 1251,
+      "pattern": "temporal"
+    },
+    "call_type": {
+      "name": "call_type",
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 5,
+      "pattern": "categorical",
+      "top_values": {
+        "Medical Emergency": 1541,
+        "Traffic Accident": 598,
+        "Fire": 414
+      }
+    },
+    "neighborhood": {
+      "name": "neighborhood",
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 4,
+      "pattern": "categorical",
+      "top_values": {
+        "Downtown": 1200,
+        "Mission": 878,
+        "Richmond": 586
+      }
+    },
+    "latitude": {
+      "name": "latitude",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 2894,
+      "pattern": "geographic"
+    },
+    "longitude": {
+      "name": "longitude",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 2942,
+      "pattern": "geographic"
+    },
+    "priority": {
+      "name": "priority",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 3,
+      "pattern": "numeric",
+      "stats": {
+        "min": 1.0,
+        "max": 3.0,
+        "mean": 1.4436666666666667,
+        "median": 1.0
+      }
+    },
+    "response_time_minutes": {
+      "name": "response_time_minutes",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 23,
+      "pattern": "temporal"
+    },
+    "units_dispatched": {
+      "name": "units_dispatched",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 4,
+      "pattern": "numeric",
+      "stats": {
+        "min": 1.0,
+        "max": 4.0,
+        "mean": 2.4966666666666666,
+        "median": 3.0
+      }
+    }
+  },
+  "patterns": {
+    "temporal": [
+      "call_datetime",
+      "call_date",
+      "call_time",
+      "response_time_minutes"
+    ],
+    "geographic": [
+      "latitude",
+      "longitude"
+    ],
+    "categorical": [
+      "call_type",
+      "neighborhood"
+    ],
+    "numeric": [
+      "priority",
+      "units_dispatched"
+    ]
+  },
+  "summary_stats": {}
+}

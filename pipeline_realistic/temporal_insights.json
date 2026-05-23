@@ -1,0 +1,87 @@
+{
+  "analysis_type": "temporal",
+  "dataset": "test_dataset_crashes_realistic.csv",
+  "time_column": "CRASH DATE",
+  "patterns": {
+    "hourly": {
+      "distribution": {
+        "0": 30,
+        "1": 23,
+        "2": 22,
+        "3": 22,
+        "4": 47,
+        "5": 100,
+        "6": 211,
+        "7": 328,
+        "8": 403,
+        "9": 257,
+        "10": 175,
+        "11": 212,
+        "12": 234,
+        "13": 229,
+        "14": 255,
+        "15": 296,
+        "16": 366,
+        "17": 461,
+        "18": 418,
+        "19": 309,
+        "20": 219,
+        "21": 172,
+        "22": 142,
+        "23": 69
+      },
+      "peak_hour": 17,
+      "peak_count": 461,
+      "peak_percentage": 9.2,
+      "total_records": 5000,
+      "data_quality_warning": null
+    },
+    "day_of_week": {
+      "distribution": {
+        "Thursday": 750,
+        "Monday": 725,
+        "Saturday": 724,
+        "Wednesday": 719,
+        "Friday": 700,
+        "Tuesday": 695,
+        "Sunday": 687
+      },
+      "busiest_day": "Thursday",
+      "busiest_count": 750
+    },
+    "monthly": {
+      "distribution": {
+        "May": 473,
+        "October": 443,
+        "December": 435,
+        "March": 428,
+        "November": 421,
+        "August": 417,
+        "July": 414,
+        "June": 411,
+        "January": 408,
+        "February": 392,
+        "April": 381,
+        "September": 377
+      },
+      "busiest_month": "May",
+      "busiest_count": 473
+    },
+    "trend_over_time": {
+      "granularity": "yearly",
+      "x": [
+        2023,
+        2024
+      ],
+      "y": [
+        2430,
+        2570
+      ],
+      "peak_period": 2024,
+      "peak_count": 2570,
+      "pct_change": 5.8,
+      "direction": "increase"
+    }
+  },
+  "ollama_insights": "**Most Newsworthy Time-Based Finding:**\n\nThe dataset reveals a striking peak hour of 17:00, which is three hours after lunchtime, indicating that commuters are likely on their way home or have finished work.\n\n**What this pattern suggests about behavior or events:**\n\nThis pattern may suggest that the area's population density peaks later in the day, possibly due to work schedules or daily routines. Alternatively, it could indicate a specific event or activity happening during this time period.\n\n**Compelling Pull Quote:**\n\"Afternoon rush: Uncovering the hidden patterns of [Location]'s busiest hour.\""
+}

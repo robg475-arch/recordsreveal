@@ -1,0 +1,66 @@
+{
+  "analysis_type": "geographic",
+  "dataset": "test_dataset_crashes_realistic.csv",
+  "lat_column": "LATITUDE",
+  "lon_column": "LONGITUDE",
+  "patterns": {
+    "valid_coordinates": {
+      "count": 5000,
+      "total": 5000,
+      "percent": 100.0
+    },
+    "bounds": {
+      "lat_min": 40.5191,
+      "lat_max": 40.9097,
+      "lon_min": -74.209,
+      "lon_max": -73.7397,
+      "center_lat": 40.7144,
+      "center_lon": -73.97435
+    },
+    "hotspots": [
+      {
+        "lat": 40.694869999999995,
+        "lon": -73.950885,
+        "count": 570,
+        "percent": 11.4
+      },
+      {
+        "lat": 40.73393,
+        "lon": -73.810095,
+        "count": 518,
+        "percent": 10.36
+      },
+      {
+        "lat": 40.65581,
+        "lon": -73.950885,
+        "count": 479,
+        "percent": 9.58
+      },
+      {
+        "lat": 40.851110000000006,
+        "lon": -73.857025,
+        "count": 363,
+        "percent": 7.26
+      },
+      {
+        "lat": 40.77299000000001,
+        "lon": -73.950885,
+        "count": 307,
+        "percent": 6.140000000000001
+      }
+    ],
+    "locations": {
+      "BOROUGH": {
+        "top_10": {
+          "Brooklyn": 1563,
+          "Queens": 1204,
+          "Manhattan": 935,
+          "Bronx": 789,
+          "Staten Island": 509
+        },
+        "unique_count": 5
+      }
+    }
+  },
+  "ollama_insights": "Here's my analysis:\n\n**1. The most newsworthy geographic finding:**\nA hotspot in Lower Manhattan, near the East River, has emerged as a critical nexus for data points, with an astonishing 570 records concentrated within a small area.\n\n**2. What this spatial pattern suggests about the data:**\nThis high concentration of data points at a specific location may indicate that there's a particular event, issue, or trend taking place in Lower Manhattan, such as economic activity, population growth, or infrastructure development, warranting further investigation and analysis.\n\n**3. A compelling pull quote:**\n\"Lower Manhattan is the epicenter of our dataset, revealing a complex story waiting to be unraveled.\""
+}

@@ -1,0 +1,381 @@
+{
+  "dataset": "medium_sample.csv",
+  "profile": {
+    "shape": [
+      50000,
+      29
+    ],
+    "columns": [
+      "CRASH DATE",
+      "CRASH TIME",
+      "BOROUGH",
+      "ZIP CODE",
+      "LATITUDE",
+      "LONGITUDE",
+      "LOCATION",
+      "ON STREET NAME",
+      "CROSS STREET NAME",
+      "OFF STREET NAME",
+      "NUMBER OF PERSONS INJURED",
+      "NUMBER OF PERSONS KILLED",
+      "NUMBER OF PEDESTRIANS INJURED",
+      "NUMBER OF PEDESTRIANS KILLED",
+      "NUMBER OF CYCLIST INJURED",
+      "NUMBER OF CYCLIST KILLED",
+      "NUMBER OF MOTORIST INJURED",
+      "NUMBER OF MOTORIST KILLED",
+      "CONTRIBUTING FACTOR VEHICLE 1",
+      "CONTRIBUTING FACTOR VEHICLE 2",
+      "CONTRIBUTING FACTOR VEHICLE 3",
+      "CONTRIBUTING FACTOR VEHICLE 4",
+      "CONTRIBUTING FACTOR VEHICLE 5",
+      "COLLISION_ID",
+      "VEHICLE TYPE CODE 1",
+      "VEHICLE TYPE CODE 2",
+      "VEHICLE TYPE CODE 3",
+      "VEHICLE TYPE CODE 4",
+      "VEHICLE TYPE CODE 5"
+    ],
+    "dtypes": {
+      "CRASH DATE": "object",
+      "CRASH TIME": "object",
+      "BOROUGH": "object",
+      "ZIP CODE": "float64",
+      "LATITUDE": "float64",
+      "LONGITUDE": "float64",
+      "LOCATION": "object",
+      "ON STREET NAME": "object",
+      "CROSS STREET NAME": "object",
+      "OFF STREET NAME": "object",
+      "NUMBER OF PERSONS INJURED": "int64",
+      "NUMBER OF PERSONS KILLED": "int64",
+      "NUMBER OF PEDESTRIANS INJURED": "int64",
+      "NUMBER OF PEDESTRIANS KILLED": "int64",
+      "NUMBER OF CYCLIST INJURED": "int64",
+      "NUMBER OF CYCLIST KILLED": "int64",
+      "NUMBER OF MOTORIST INJURED": "int64",
+      "NUMBER OF MOTORIST KILLED": "int64",
+      "CONTRIBUTING FACTOR VEHICLE 1": "object",
+      "CONTRIBUTING FACTOR VEHICLE 2": "object",
+      "CONTRIBUTING FACTOR VEHICLE 3": "object",
+      "CONTRIBUTING FACTOR VEHICLE 4": "object",
+      "CONTRIBUTING FACTOR VEHICLE 5": "object",
+      "COLLISION_ID": "int64",
+      "VEHICLE TYPE CODE 1": "object",
+      "VEHICLE TYPE CODE 2": "object",
+      "VEHICLE TYPE CODE 3": "object",
+      "VEHICLE TYPE CODE 4": "object",
+      "VEHICLE TYPE CODE 5": "object"
+    },
+    "missing": {
+      "CRASH DATE": 0,
+      "CRASH TIME": 0,
+      "BOROUGH": 17240,
+      "ZIP CODE": 17246,
+      "LATITUDE": 3888,
+      "LONGITUDE": 3888,
+      "LOCATION": 3888,
+      "ON STREET NAME": 13586,
+      "CROSS STREET NAME": 26900,
+      "OFF STREET NAME": 36415,
+      "NUMBER OF PERSONS INJURED": 0,
+      "NUMBER OF PERSONS KILLED": 0,
+      "NUMBER OF PEDESTRIANS INJURED": 0,
+      "NUMBER OF PEDESTRIANS KILLED": 0,
+      "NUMBER OF CYCLIST INJURED": 0,
+      "NUMBER OF CYCLIST KILLED": 0,
+      "NUMBER OF MOTORIST INJURED": 0,
+      "NUMBER OF MOTORIST KILLED": 0,
+      "CONTRIBUTING FACTOR VEHICLE 1": 249,
+      "CONTRIBUTING FACTOR VEHICLE 2": 11191,
+      "CONTRIBUTING FACTOR VEHICLE 3": 44694,
+      "CONTRIBUTING FACTOR VEHICLE 4": 48559,
+      "CONTRIBUTING FACTOR VEHICLE 5": 49579,
+      "COLLISION_ID": 0,
+      "VEHICLE TYPE CODE 1": 600,
+      "VEHICLE TYPE CODE 2": 16476,
+      "VEHICLE TYPE CODE 3": 45079,
+      "VEHICLE TYPE CODE 4": 48636,
+      "VEHICLE TYPE CODE 5": 49595
+    },
+    "missing_percent": {
+      "CRASH DATE": 0.0,
+      "CRASH TIME": 0.0,
+      "BOROUGH": 34.48,
+      "ZIP CODE": 34.492,
+      "LATITUDE": 7.776,
+      "LONGITUDE": 7.776,
+      "LOCATION": 7.776,
+      "ON STREET NAME": 27.172,
+      "CROSS STREET NAME": 53.800000000000004,
+      "OFF STREET NAME": 72.83,
+      "NUMBER OF PERSONS INJURED": 0.0,
+      "NUMBER OF PERSONS KILLED": 0.0,
+      "NUMBER OF PEDESTRIANS INJURED": 0.0,
+      "NUMBER OF PEDESTRIANS KILLED": 0.0,
+      "NUMBER OF CYCLIST INJURED": 0.0,
+      "NUMBER OF CYCLIST KILLED": 0.0,
+      "NUMBER OF MOTORIST INJURED": 0.0,
+      "NUMBER OF MOTORIST KILLED": 0.0,
+      "CONTRIBUTING FACTOR VEHICLE 1": 0.498,
+      "CONTRIBUTING FACTOR VEHICLE 2": 22.381999999999998,
+      "CONTRIBUTING FACTOR VEHICLE 3": 89.388,
+      "CONTRIBUTING FACTOR VEHICLE 4": 97.11800000000001,
+      "CONTRIBUTING FACTOR VEHICLE 5": 99.158,
+      "COLLISION_ID": 0.0,
+      "VEHICLE TYPE CODE 1": 1.2,
+      "VEHICLE TYPE CODE 2": 32.952,
+      "VEHICLE TYPE CODE 3": 90.158,
+      "VEHICLE TYPE CODE 4": 97.272,
+      "VEHICLE TYPE CODE 5": 99.19
+    },
+    "numeric_cols": [
+      "ZIP CODE",
+      "LATITUDE",
+      "LONGITUDE",
+      "NUMBER OF PERSONS INJURED",
+      "NUMBER OF PERSONS KILLED",
+      "NUMBER OF PEDESTRIANS INJURED",
+      "NUMBER OF PEDESTRIANS KILLED",
+      "NUMBER OF CYCLIST INJURED",
+      "NUMBER OF CYCLIST KILLED",
+      "NUMBER OF MOTORIST INJURED",
+      "NUMBER OF MOTORIST KILLED",
+      "COLLISION_ID"
+    ],
+    "categorical_cols": [
+      "CRASH DATE",
+      "CRASH TIME",
+      "BOROUGH",
+      "LOCATION",
+      "ON STREET NAME",
+      "CROSS STREET NAME",
+      "OFF STREET NAME",
+      "CONTRIBUTING FACTOR VEHICLE 1",
+      "CONTRIBUTING FACTOR VEHICLE 2",
+      "CONTRIBUTING FACTOR VEHICLE 3",
+      "CONTRIBUTING FACTOR VEHICLE 4",
+      "CONTRIBUTING FACTOR VEHICLE 5",
+      "VEHICLE TYPE CODE 1",
+      "VEHICLE TYPE CODE 2",
+      "VEHICLE TYPE CODE 3",
+      "VEHICLE TYPE CODE 4",
+      "VEHICLE TYPE CODE 5"
+    ],
+    "datetime_cols": [
+      "CRASH DATE",
+      "CRASH TIME"
+    ],
+    "coordinate_cols": [
+      "LATITUDE",
+      "LONGITUDE"
+    ],
+    "text_cols": [],
+    "target_type": "regression"
+  },
+  "eda": {
+    "basic_stats": {
+      "ZIP CODE": {
+        "count": 32754.0,
+        "mean": 10895.668254259022,
+        "std": 521.9097864127907,
+        "min": 10000.0,
+        "25%": 10457.0,
+        "50%": 11208.0,
+        "75%": 11238.0,
+        "max": 11697.0
+      },
+      "LATITUDE": {
+        "count": 46112.0,
+        "mean": 40.486351742323045,
+        "std": 3.1024400304652184,
+        "min": 0.0,
+        "25%": 40.66554325,
+        "50%": 40.712755,
+        "75%": 40.7834895,
+        "max": 40.912827
+      },
+      "LONGITUDE": {
+        "count": 46112.0,
+        "mean": -73.4846967110687,
+        "std": 5.62974667978153,
+        "min": -74.25184,
+        "25%": -73.961975,
+        "50%": -73.919695,
+        "75%": -73.86723,
+        "max": 0.0
+      },
+      "NUMBER OF PERSONS INJURED": {
+        "count": 50000.0,
+        "mean": 0.47316,
+        "std": 0.7971777243792534,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 1.0,
+        "max": 18.0
+      },
+      "NUMBER OF PERSONS KILLED": {
+        "count": 50000.0,
+        "mean": 0.00284,
+        "std": 0.05578527260785591,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 0.0,
+        "max": 3.0
+      },
+      "NUMBER OF PEDESTRIANS INJURED": {
+        "count": 50000.0,
+        "mean": 0.06984,
+        "std": 0.26751412238630234,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 0.0,
+        "max": 6.0
+      },
+      "NUMBER OF PEDESTRIANS KILLED": {
+        "count": 50000.0,
+        "mean": 0.00112,
+        "std": 0.03344798910785979,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 0.0,
+        "max": 1.0
+      },
+      "NUMBER OF CYCLIST INJURED": {
+        "count": 50000.0,
+        "mean": 0.04638,
+        "std": 0.2137985261787273,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 0.0,
+        "max": 3.0
+      },
+      "NUMBER OF CYCLIST KILLED": {
+        "count": 50000.0,
+        "mean": 0.00022,
+        "std": 0.014830913630656152,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 0.0,
+        "max": 1.0
+      },
+      "NUMBER OF MOTORIST INJURED": {
+        "count": 50000.0,
+        "mean": 0.3415,
+        "std": 0.7701750537327652,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 0.0,
+        "max": 18.0
+      },
+      "NUMBER OF MOTORIST KILLED": {
+        "count": 50000.0,
+        "mean": 0.00136,
+        "std": 0.03997727308918498,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 0.0,
+        "max": 3.0
+      },
+      "COLLISION_ID": {
+        "count": 50000.0,
+        "mean": 4452066.551,
+        "std": 38545.513930663874,
+        "min": 3456194.0,
+        "25%": 4420088.75,
+        "50%": 4432803.5,
+        "75%": 4487567.25,
+        "max": 4573583.0
+      }
+    }
+  },
+  "models": {
+    "regression": {
+      "Linear Regression": {
+        "r2_score": 0.9725734882808064,
+        "rmse": 0.13019069955774948,
+        "mae": 0.031609229614823355
+      },
+      "Ridge Regression": {
+        "r2_score": 0.9725735335679344,
+        "rmse": 0.13019059207114345,
+        "mae": 0.031657196898252776
+      },
+      "Lasso Regression": {
+        "r2_score": 0.7777632957002741,
+        "rmse": 0.3705975699201816,
+        "mae": 0.27488533971927037
+      },
+      "Random Forest": {
+        "r2_score": 0.970664933103752,
+        "rmse": 0.13464437499340332,
+        "mae": 0.0308650051196551,
+        "feature_importance": {
+          "ZIP CODE": 0.0009345453675443132,
+          "LATITUDE": 0.0007169710716207426,
+          "LONGITUDE": 0.0006496994836293695,
+          "NUMBER OF PERSONS KILLED": 1.4909604589278078e-06,
+          "NUMBER OF PEDESTRIANS INJURED": 0.09732884407455968,
+          "NUMBER OF PEDESTRIANS KILLED": 0.0,
+          "NUMBER OF CYCLIST INJURED": 0.06998644711729503,
+          "NUMBER OF CYCLIST KILLED": 0.0,
+          "NUMBER OF MOTORIST INJURED": 0.8293946895899322,
+          "NUMBER OF MOTORIST KILLED": 4.935709637687444e-06,
+          "COLLISION_ID": 0.0009823766253220603
+        }
+      },
+      "XGBoost": {
+        "r2_score": 0.9668363332748413,
+        "rmse": 0.14316135159328902,
+        "mae": 0.032094210386276245,
+        "feature_importance": {
+          "ZIP CODE": 0.0006447787745855749,
+          "LATITUDE": 0.0005400474765338004,
+          "LONGITUDE": 0.0005939510883763433,
+          "NUMBER OF PERSONS KILLED": 3.6719615309266374e-05,
+          "NUMBER OF PEDESTRIANS INJURED": 0.10516243427991867,
+          "NUMBER OF PEDESTRIANS KILLED": 0.0,
+          "NUMBER OF CYCLIST INJURED": 0.10150022804737091,
+          "NUMBER OF CYCLIST KILLED": 0.0,
+          "NUMBER OF MOTORIST INJURED": 0.790797770023346,
+          "NUMBER OF MOTORIST KILLED": 3.523333361954428e-05,
+          "COLLISION_ID": 0.0006888334173709154
+        }
+      }
+    },
+    "best_model": "Ridge Regression"
+  },
+  "clustering": {
+    "optimal_k": 4,
+    "inertias": {
+      "2": 450017.6387728702,
+      "3": 379573.67589058273,
+      "4": 312307.9909577055,
+      "5": 259950.54521753843,
+      "6": 212141.19462111994,
+      "7": 167802.91408314684,
+      "8": 124118.89181737395,
+      "9": 95102.46135614917,
+      "10": 72769.32539425573
+    },
+    "pca_variance_explained": {
+      "pc1": 0.18188323886674665,
+      "pc2": 0.18092433554432932,
+      "total": 0.362807574411076
+    },
+    "cluster_sizes": {
+      "0": 49613,
+      "1": 56,
+      "2": 63,
+      "3": 268
+    }
+  }
+}

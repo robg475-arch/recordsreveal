@@ -1,0 +1,142 @@
+{
+  "dataset": "test_dataset_crashes.csv",
+  "analyses": [
+    "geographic",
+    "temporal"
+  ],
+  "all_patterns": {
+    "geographic": {
+      "valid_coordinates": {
+        "count": 5000,
+        "total": 5000,
+        "percent": 100.0
+      },
+      "bounds": {
+        "lat_min": 40.50010804894269,
+        "lat_max": 40.89987595095442,
+        "lon_min": -74.29955677668558,
+        "lon_max": -73.7002286629479,
+        "center_lat": 40.69999199994855,
+        "center_lon": -73.99989271981673
+      },
+      "hotspots": [
+        {
+          "lat": 40.60005002444562,
+          "lon": -73.96992631412985,
+          "count": 63,
+          "percent": 1.26
+        },
+        {
+          "lat": 40.520096444043276,
+          "lon": -73.79012788000855,
+          "count": 61,
+          "percent": 1.22
+        },
+        {
+          "lat": 40.83991076565266,
+          "lon": -74.20965755962493,
+          "count": 61,
+          "percent": 1.22
+        },
+        {
+          "lat": 40.60005002444562,
+          "lon": -73.85006069138231,
+          "count": 60,
+          "percent": 1.2
+        },
+        {
+          "lat": 40.83991076565266,
+          "lon": -73.79012788000855,
+          "count": 60,
+          "percent": 1.2
+        }
+      ],
+      "locations": {
+        "BOROUGH": {
+          "top_10": {
+            "Brooklyn": 1537,
+            "Queens": 1244,
+            "Manhattan": 915,
+            "Bronx": 802,
+            "Staten Island": 502
+          },
+          "unique_count": 5
+        },
+        "ZIP CODE": {
+          "top_10": {
+            "10733": 9,
+            "11248": 9,
+            "11525": 9,
+            "10643": 9,
+            "10919": 8,
+            "11559": 8,
+            "10048": 8,
+            "11677": 8,
+            "11420": 8,
+            "10030": 8
+          },
+          "unique_count": 1607
+        }
+      }
+    },
+    "temporal": {
+      "hourly": {
+        "distribution": {
+          "0": 113,
+          "1": 45,
+          "2": 52,
+          "3": 39,
+          "4": 107,
+          "5": 137,
+          "6": 221,
+          "7": 209,
+          "8": 268,
+          "9": 251,
+          "10": 224,
+          "11": 195,
+          "12": 145,
+          "13": 242,
+          "14": 277,
+          "15": 322,
+          "16": 363,
+          "17": 608,
+          "18": 388,
+          "19": 304,
+          "20": 189,
+          "21": 127,
+          "22": 71,
+          "23": 103
+        },
+        "peak_hour": 17,
+        "peak_count": 608,
+        "total_records": 5000
+      },
+      "day_of_week": {
+        "distribution": {
+          "Wednesday": 5000
+        },
+        "busiest_day": "Wednesday",
+        "busiest_count": 5000
+      },
+      "monthly": {
+        "distribution": {
+          "May": 5000
+        },
+        "busiest_month": "May",
+        "busiest_count": 5000
+      }
+    }
+  },
+  "all_ollama_insights": {
+    "geographic": "Here are my analysis and suggestions:\n\n**Most newsworthy geographic finding:**\nA hotspot in Manhattan with an unusually high concentration of records has been identified, sparking further investigation into the nature of these data points.\n\n**What this spatial pattern suggests about the data:**\nThis concentration of records at a single location may indicate a flaw or anomaly in the dataset, such as incorrect or duplicate entries, that warrants further examination to ensure data accuracy and reliability.\n\n**Compelling pull quote:**\n\"In the heart of Manhattan, a tiny pinpoint holds the key to unlocking a larger mystery.\"",
+    "temporal": "Here are my analysis findings:\n\n**Most newsworthy time-based finding:**\nThe dataset reveals a striking peak in busyness at 17:00, with over 600 records, suggesting a significant surge in activity during the late afternoon.\n\n**What this pattern suggests about behavior or events:**\nThis temporal pattern may indicate that people are finishing work and commuting home to popular areas around 17:00, causing a rush-hour phenomenon. The high volume of busyness on Wednesdays could be attributed to regular office hours or social events during the day.\n\n**Compelling pull quote:**\n\"People's daily routines reveal secrets about our cities' rhythms and needs.\""
+  },
+  "summary": {
+    "total_analyses": 2,
+    "analysis_types": [
+      "geographic",
+      "temporal"
+    ],
+    "has_ollama_insights": true
+  }
+}

@@ -1,0 +1,313 @@
+{
+  "dataset": "test_dataset_crashes.csv",
+  "profile": {
+    "shape": [
+      5000,
+      16
+    ],
+    "columns": [
+      "CRASH DATE",
+      "CRASH TIME",
+      "BOROUGH",
+      "ZIP CODE",
+      "LATITUDE",
+      "LONGITUDE",
+      "CONTRIBUTING FACTOR VEHICLE 1",
+      "VEHICLE TYPE CODE 1",
+      "NUMBER OF PERSONS INJURED",
+      "NUMBER OF PERSONS KILLED",
+      "NUMBER OF PEDESTRIANS INJURED",
+      "NUMBER OF PEDESTRIANS KILLED",
+      "NUMBER OF CYCLIST INJURED",
+      "NUMBER OF CYCLIST KILLED",
+      "NUMBER OF MOTORIST INJURED",
+      "NUMBER OF MOTORIST KILLED"
+    ],
+    "dtypes": {
+      "CRASH DATE": "object",
+      "CRASH TIME": "object",
+      "BOROUGH": "object",
+      "ZIP CODE": "int64",
+      "LATITUDE": "float64",
+      "LONGITUDE": "float64",
+      "CONTRIBUTING FACTOR VEHICLE 1": "object",
+      "VEHICLE TYPE CODE 1": "object",
+      "NUMBER OF PERSONS INJURED": "int64",
+      "NUMBER OF PERSONS KILLED": "int64",
+      "NUMBER OF PEDESTRIANS INJURED": "int64",
+      "NUMBER OF PEDESTRIANS KILLED": "int64",
+      "NUMBER OF CYCLIST INJURED": "int64",
+      "NUMBER OF CYCLIST KILLED": "int64",
+      "NUMBER OF MOTORIST INJURED": "int64",
+      "NUMBER OF MOTORIST KILLED": "int64"
+    },
+    "missing": {
+      "CRASH DATE": 0,
+      "CRASH TIME": 0,
+      "BOROUGH": 0,
+      "ZIP CODE": 0,
+      "LATITUDE": 0,
+      "LONGITUDE": 0,
+      "CONTRIBUTING FACTOR VEHICLE 1": 0,
+      "VEHICLE TYPE CODE 1": 0,
+      "NUMBER OF PERSONS INJURED": 0,
+      "NUMBER OF PERSONS KILLED": 0,
+      "NUMBER OF PEDESTRIANS INJURED": 0,
+      "NUMBER OF PEDESTRIANS KILLED": 0,
+      "NUMBER OF CYCLIST INJURED": 0,
+      "NUMBER OF CYCLIST KILLED": 0,
+      "NUMBER OF MOTORIST INJURED": 0,
+      "NUMBER OF MOTORIST KILLED": 0
+    },
+    "missing_percent": {
+      "CRASH DATE": 0.0,
+      "CRASH TIME": 0.0,
+      "BOROUGH": 0.0,
+      "ZIP CODE": 0.0,
+      "LATITUDE": 0.0,
+      "LONGITUDE": 0.0,
+      "CONTRIBUTING FACTOR VEHICLE 1": 0.0,
+      "VEHICLE TYPE CODE 1": 0.0,
+      "NUMBER OF PERSONS INJURED": 0.0,
+      "NUMBER OF PERSONS KILLED": 0.0,
+      "NUMBER OF PEDESTRIANS INJURED": 0.0,
+      "NUMBER OF PEDESTRIANS KILLED": 0.0,
+      "NUMBER OF CYCLIST INJURED": 0.0,
+      "NUMBER OF CYCLIST KILLED": 0.0,
+      "NUMBER OF MOTORIST INJURED": 0.0,
+      "NUMBER OF MOTORIST KILLED": 0.0
+    },
+    "numeric_cols": [
+      "ZIP CODE",
+      "LATITUDE",
+      "LONGITUDE",
+      "NUMBER OF PERSONS INJURED",
+      "NUMBER OF PERSONS KILLED",
+      "NUMBER OF PEDESTRIANS INJURED",
+      "NUMBER OF PEDESTRIANS KILLED",
+      "NUMBER OF CYCLIST INJURED",
+      "NUMBER OF CYCLIST KILLED",
+      "NUMBER OF MOTORIST INJURED",
+      "NUMBER OF MOTORIST KILLED"
+    ],
+    "categorical_cols": [
+      "CRASH DATE",
+      "CRASH TIME",
+      "BOROUGH",
+      "CONTRIBUTING FACTOR VEHICLE 1",
+      "VEHICLE TYPE CODE 1"
+    ],
+    "datetime_cols": [
+      "CRASH DATE",
+      "CRASH TIME"
+    ],
+    "coordinate_cols": [
+      "LATITUDE",
+      "LONGITUDE"
+    ],
+    "text_cols": [],
+    "target_type": "regression"
+  },
+  "eda": {
+    "basic_stats": {
+      "ZIP CODE": {
+        "count": 5000.0,
+        "mean": 10839.5246,
+        "std": 490.3933451031165,
+        "min": 10001.0,
+        "25%": 10418.0,
+        "50%": 10837.5,
+        "75%": 11261.25,
+        "max": 11696.0
+      },
+      "LATITUDE": {
+        "count": 5000.0,
+        "mean": 40.6987488919717,
+        "std": 0.11550249804552871,
+        "min": 40.50010804894269,
+        "25%": 40.60038352969406,
+        "50%": 40.69527966832602,
+        "75%": 40.79982812171893,
+        "max": 40.89987595095442
+      },
+      "LONGITUDE": {
+        "count": 5000.0,
+        "mean": -73.9993278992756,
+        "std": 0.17220817791159035,
+        "min": -74.29955677668558,
+        "25%": -74.14819486057027,
+        "50%": -73.99442715047697,
+        "75%": -73.84907860807868,
+        "max": -73.7002286629479
+      },
+      "NUMBER OF PERSONS INJURED": {
+        "count": 5000.0,
+        "mean": 0.8364,
+        "std": 1.0114542243372093,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 1.0,
+        "75%": 1.0,
+        "max": 6.0
+      },
+      "NUMBER OF PERSONS KILLED": {
+        "count": 5000.0,
+        "mean": 0.0056,
+        "std": 0.0746307842032372,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 0.0,
+        "max": 1.0
+      },
+      "NUMBER OF PEDESTRIANS INJURED": {
+        "count": 5000.0,
+        "mean": 0.1978,
+        "std": 0.44756588681959325,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 0.0,
+        "max": 2.0
+      },
+      "NUMBER OF PEDESTRIANS KILLED": {
+        "count": 5000.0,
+        "mean": 0.002,
+        "std": 0.04468108413921904,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 0.0,
+        "max": 1.0
+      },
+      "NUMBER OF CYCLIST INJURED": {
+        "count": 5000.0,
+        "mean": 0.1364,
+        "std": 0.3739291438239606,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 0.0,
+        "max": 2.0
+      },
+      "NUMBER OF CYCLIST KILLED": {
+        "count": 5000.0,
+        "mean": 0.0012,
+        "std": 0.03462368784447998,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 0.0,
+        "max": 1.0
+      },
+      "NUMBER OF MOTORIST INJURED": {
+        "count": 5000.0,
+        "mean": 0.5022,
+        "std": 0.8259125778902168,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 1.0,
+        "max": 4.0
+      },
+      "NUMBER OF MOTORIST KILLED": {
+        "count": 5000.0,
+        "mean": 0.0024,
+        "std": 0.04893586561805929,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 0.0,
+        "max": 1.0
+      }
+    }
+  },
+  "models": {
+    "regression": {
+      "Linear Regression": {
+        "r2_score": 1.0,
+        "rmse": 1.963774626381221e-14,
+        "mae": 1.699359133143547e-14
+      },
+      "Ridge Regression": {
+        "r2_score": 0.9999991671180327,
+        "rmse": 0.00091886475576718,
+        "mae": 0.000743906133781829
+      },
+      "Lasso Regression": {
+        "r2_score": 0.8664536293461618,
+        "rmse": 0.3679390724626721,
+        "mae": 0.297843108446094
+      },
+      "Random Forest": {
+        "r2_score": 0.9978484281717707,
+        "rmse": 0.04670224833988188,
+        "mae": 0.003509999999999997,
+        "feature_importance": {
+          "ZIP CODE": 0.00039540320715438654,
+          "LATITUDE": 0.0001946856322571095,
+          "LONGITUDE": 0.0003912725769054033,
+          "NUMBER OF PERSONS KILLED": 0.0,
+          "NUMBER OF PEDESTRIANS INJURED": 0.19374430351019598,
+          "NUMBER OF PEDESTRIANS KILLED": 0.0,
+          "NUMBER OF CYCLIST INJURED": 0.1362562745489185,
+          "NUMBER OF CYCLIST KILLED": 0.0,
+          "NUMBER OF MOTORIST INJURED": 0.6690180605245685,
+          "NUMBER OF MOTORIST KILLED": 0.0
+        }
+      },
+      "XGBoost": {
+        "r2_score": 0.9990938305854797,
+        "rmse": 0.030308030729328733,
+        "mae": 0.0015093404799699783,
+        "feature_importance": {
+          "ZIP CODE": 0.0006649289280176163,
+          "LATITUDE": 0.0002648770168889314,
+          "LONGITUDE": 0.0006827703909948468,
+          "NUMBER OF PERSONS KILLED": 0.0,
+          "NUMBER OF PEDESTRIANS INJURED": 0.1878599375486374,
+          "NUMBER OF PEDESTRIANS KILLED": 0.0,
+          "NUMBER OF CYCLIST INJURED": 0.11053751409053802,
+          "NUMBER OF CYCLIST KILLED": 0.0,
+          "NUMBER OF MOTORIST INJURED": 0.6999899744987488,
+          "NUMBER OF MOTORIST KILLED": 0.0
+        }
+      }
+    },
+    "best_model": "Linear Regression"
+  },
+  "clustering": {
+    "optimal_k": 4,
+    "inertias": {
+      "2": 42856.749410326855,
+      "3": 35491.055366144676,
+      "4": 29983.902967004844,
+      "5": 26251.687989300248,
+      "6": 21285.363625312333,
+      "7": 18598.664004685783,
+      "8": 16298.37478531218,
+      "9": 14763.85211868728,
+      "10": 13676.055090541153
+    },
+    "pca_variance_explained": {
+      "pc1": 0.19990286085812137,
+      "pc2": 0.10614742227328795,
+      "total": 0.3060502831314093
+    },
+    "cluster_sizes": {
+      "0": 4972,
+      "1": 12,
+      "2": 10,
+      "3": 6
+    }
+  },
+  "domain_visualizations": {
+    "target_distribution": "analysis_results/visualizations/target_distribution.html",
+    "hourly_pattern": "analysis_results/visualizations/hourly_pattern.html",
+    "day_of_week": "analysis_results/visualizations/day_of_week.html",
+    "geographic_breakdown": "analysis_results/visualizations/geographic_breakdown.html",
+    "category_breakdown_1": "analysis_results/visualizations/category_breakdown_1.html",
+    "category_breakdown_2": "analysis_results/visualizations/category_breakdown_2.html",
+    "metric_comparison": "analysis_results/visualizations/metric_comparison.html"
+  }
+}

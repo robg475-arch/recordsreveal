@@ -1,0 +1,116 @@
+{
+  "dataset": "test_dataset_crashes.csv",
+  "analyses_run": [
+    "geographic",
+    "categorical",
+    "temporal"
+  ],
+  "chart_data": {
+    "hourly_pattern": {
+      "x": [
+        0
+      ],
+      "y": [
+        5000
+      ],
+      "peak_hour": 0,
+      "peak_count": 5000
+    },
+    "rankings": {
+      "names": [
+        "Brooklyn",
+        "Queens",
+        "Manhattan",
+        "Bronx",
+        "Staten Island"
+      ],
+      "counts": [
+        1537,
+        1244,
+        915,
+        802,
+        502
+      ],
+      "type": "BOROUGH",
+      "top_name": "Brooklyn",
+      "top_count": 1537
+    },
+    "trend": {
+      "x": [
+        2023,
+        2024
+      ],
+      "y": [
+        2473,
+        2527
+      ],
+      "granularity": "yearly",
+      "peak_period": 2024,
+      "peak_count": 2527,
+      "pct_change": 2.2,
+      "direction": "increase"
+    },
+    "distribution": {
+      "labels": [
+        "Sedan",
+        "Station Wagon/Sport Utility Vehicle",
+        "Taxi",
+        "Pick-up Truck",
+        "Box Truck",
+        "Bus",
+        "Unknown",
+        "Bicycle",
+        "Motorcycle"
+      ],
+      "counts": [
+        1700,
+        1253,
+        624,
+        525,
+        243,
+        200,
+        171,
+        142,
+        142
+      ],
+      "percentages": [
+        34.0,
+        25.1,
+        12.5,
+        10.5,
+        4.9,
+        4.0,
+        3.4,
+        2.8,
+        2.8
+      ],
+      "majority_label": "Sedan",
+      "majority_pct": 34.0
+    }
+  },
+  "stats": {
+    "peak_hour": "0:00",
+    "peak_hour_count": "5,000",
+    "top_location": "Brooklyn",
+    "top_location_count": "1,537",
+    "trend_pct_change": "2.2%",
+    "trend_direction": "increase",
+    "majority_category": "Sedan",
+    "majority_pct": "34.0%",
+    "total_records": "5,000",
+    "valid_coordinates": "5,000",
+    "valid_coords_pct": "100.0%",
+    "center_lat": "40.7000",
+    "center_lon": "-73.9999",
+    "top_hotspot_count": "63",
+    "top_hotspot_pct": "1.3%",
+    "busiest_day": "Saturday",
+    "busiest_day_count": "766"
+  },
+  "insights": {
+    "geographic": "Here are my responses:\n\n**1. Most newsworthy geographic finding:**\nA high concentration of records lies within a relatively small area, suggesting that this region is a hub for activity or events.\n\n**2. Insights into the spatial pattern:**\nThis pattern may indicate that certain areas have more appeal or functionality, potentially related to urban planning, economic development, or public interest, but further investigation is needed to confirm this hypothesis.\n\n**3. Compelling pull quote:**\n\"Brooklyn's uncharted heart beats strong, as a hotspot of activity pulls in thousands.\"",
+    "categorical": "Here's my analysis:\n\n**Most newsworthy finding:**\nThe top two categories, Sedan and Station Wagon/Sport Utility Vehicle, account for more than half of the total records, indicating a strong preference among 5,000 vehicle owners.\n\n**What this distribution pattern suggests about the data:**\nThis skewed distribution implies that there may be some biases or influences at play in the dataset, such as geographic location, age range, or socio-economic factors, which are driving the dominance of these two categories.\n\n**Compelling pull quote:**\n\"Sedans and SUVs dominate local roads, but what's behind this vehicle preference?\"",
+    "temporal": "**Most newsworthy time-based finding:**\nThe dataset reveals a stark peak in busyness at exactly 0:00 hours, suggesting that commuters are hitting the roads as soon as they can after midnight.\n\n**What this pattern suggests about behavior or events:**\nThis anomaly may indicate that people are leaving work or school immediately after the stroke of midnight, potentially driven by social, economic, or cultural factors.\n\n**Pull quote:**\n\"Midnight rush hour: A staggering 5000 commuters take to the roads at the stroke of dawn.\""
+  },
+  "pull_quotes": []
+}

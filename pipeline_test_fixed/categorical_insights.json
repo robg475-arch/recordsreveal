@@ -1,0 +1,54 @@
+{
+  "analysis_type": "categorical",
+  "dataset": "test_dataset_crashes.csv",
+  "category_column": "CONTRIBUTING FACTOR VEHICLE 1",
+  "patterns": {
+    "distribution": {
+      "labels": [
+        "Driver Inattention/Distraction",
+        "Failure to Yield Right-of-Way",
+        "Following Too Closely",
+        "Unspecified",
+        "Backing Unsafely",
+        "Passing or Lane Usage Improper",
+        "Traffic Control Disregarded",
+        "Unsafe Speed",
+        "Turning Improperly",
+        "Passing Too Closely",
+        "Fatigued/Drowsy"
+      ],
+      "counts": [
+        934,
+        727,
+        606,
+        531,
+        502,
+        426,
+        375,
+        314,
+        243,
+        188,
+        154
+      ],
+      "percentages": [
+        18.7,
+        14.5,
+        12.1,
+        10.6,
+        10.0,
+        8.5,
+        7.5,
+        6.3,
+        4.9,
+        3.8,
+        3.1
+      ],
+      "total_unique": 11,
+      "total_records": 5000,
+      "majority_label": "Driver Inattention/Distraction",
+      "majority_count": 934,
+      "majority_pct": 18.7
+    }
+  },
+  "ollama_insights": "Here are my analysis and recommendations:\n\n**Most newsworthy finding:**\nThe data reveals a significant contributor to accidents on our roads is driver inattention/distraction, affecting nearly 19% of all crashes.\n\n**What this distribution pattern suggests about the data:**\nThis distribution highlights the need for increased awareness and regulation around reckless driving behaviors that can lead to devastating consequences.\n\n**Compelling pull quote:**\n\"Driver distraction: a silent killer on our roads.\""
+}

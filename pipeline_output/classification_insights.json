@@ -1,0 +1,77 @@
+{
+  "analysis_type": "classification",
+  "dataset": "pipeline_police/police_use_of_force_data.csv",
+  "target_column": "force_type",
+  "patterns": {
+    "models": {
+      "LogisticRegression": {
+        "accuracy": 0.451,
+        "precision": 0.203401,
+        "recall": 0.451,
+        "f1": 0.2803597518952447
+      },
+      "RandomForest": {
+        "accuracy": 0.417,
+        "precision": 0.30870986107294474,
+        "recall": 0.417,
+        "f1": 0.32773714824835465
+      },
+      "XGBoost": {
+        "accuracy": 0.384,
+        "precision": 0.3040039574575955,
+        "recall": 0.384,
+        "f1": 0.324492417396097
+      }
+    },
+    "best_model": "LogisticRegression",
+    "best_accuracy": 0.451,
+    "feature_importance": [
+      {
+        "feature": "longitude",
+        "importance": 0.24623161502250876
+      },
+      {
+        "feature": "latitude",
+        "importance": 0.2445136410846375
+      },
+      {
+        "feature": "subject_age",
+        "importance": 0.18788419791635577
+      },
+      {
+        "feature": "officer_age",
+        "importance": 0.1652501101009928
+      },
+      {
+        "feature": "officer_years_experience",
+        "importance": 0.1561204358755052
+      }
+    ],
+    "top_feature": "longitude",
+    "top_feature_importance": 0.24623161502250876,
+    "lasso_coefficients": [
+      {
+        "feature": "officer_age",
+        "coefficient": 0.11443910975614854
+      },
+      {
+        "feature": "longitude",
+        "coefficient": -0.08226189250575769
+      },
+      {
+        "feature": "officer_years_experience",
+        "coefficient": 0.028577617877631408
+      },
+      {
+        "feature": "latitude",
+        "coefficient": -0.019303476056369086
+      },
+      {
+        "feature": "subject_age",
+        "coefficient": 0.011978264309252543
+      }
+    ],
+    "lasso_eliminated": []
+  },
+  "ollama_insights": "Here are my findings:\n\n**Most newsworthy finding:**\nThe most surprising result is that a simple LogisticRegression model outperforms more complex machine learning models like RandomForest and XGBoost, with a significant accuracy of 45.1%. This suggests that the underlying data may not require extensive feature engineering or advanced modeling techniques to achieve good results.\n\n**Feature importance reveals about the data:**\nThe top three features - longitude, latitude, and subject_age - reveal that geographical location and demographic information have a strong impact on predicting force type. This implies that spatial patterns and individual characteristics play a significant role in determining the severity of force used.\n\n**Compelling pull quote:**\n\"Geography and age may hold the key to understanding force dynamics.\""
+}

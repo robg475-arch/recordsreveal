@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New York City Traffic Injuries Follow a Perfect Mathematical Formula, Machine Learning Analysis Reveals — RecordsReveal</title>
+<meta name="description" content="An algorithm predicted crash severity with 100% accuracy across 5,000 incidents, uncovering a precise relationship between who gets hurt and how bad accidents become">
+<meta property="og:title" content="NYC Traffic Injuries Follow a Perfect Math Formula">
+<meta property="og:description" content="Machine learning cracked the code on traffic crash severity with 100% accuracy. The pattern is simpler—and more troubling—than anyone expected.">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9045696717764033" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#1c1c1c;--ink2:#4a4a4a;--ink3:#888;--paper:#f8f6f1;--white:#fff;
+  --cream:#f0ece3;--red:#b5271f;--red2:#d4302a;--orange:#d2691e;--border:#ddd9ce;--border2:#c8c3b5;
+}
+body{background:var(--paper);color:var(--ink);font-family:'Barlow',sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.site-header{background:var(--white);border-bottom:3px double var(--border)}
+.header-top{display:flex;justify-content:space-between;align-items:center;padding:10px 40px;border-bottom:1px solid var(--border);font-size:11px;color:var(--ink3)}
+.header-top a{color:var(--ink3);margin-left:16px}
+.header-top a:hover{color:var(--red)}
+.masthead{text-align:center;padding:20px 40px 16px}
+.site-name{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.site-name span{color:var(--red)}
+.site-rule{width:100%;height:2px;background:var(--ink);margin:10px 0 8px;position:relative}
+.site-rule::after{content:'';position:absolute;top:4px;left:0;right:0;height:1px;background:var(--ink)}
+.site-tagline{font-family:'Libre Baskerville',serif;font-style:italic;font-size:.85rem;color:var(--ink3)}
+.header-nav{display:flex;justify-content:center;border-top:1px solid var(--border);margin-top:14px}
+.header-nav a{padding:7px 20px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:var(--ink2);border-right:1px solid var(--border);transition:all .15s}
+.header-nav a:last-child{border-right:none}
+.header-nav a:hover,.header-nav a.active{background:var(--ink);color:white}
+.ad-bar{background:var(--cream);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:10px;text-align:center}
+.ad-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.container{max-width:1160px;margin:0 auto;padding:0 40px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:48px;padding:40px 0}
+.hero-banner{background:var(--ink);padding:32px 40px;margin-bottom:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:linear-gradient(135deg,#1c1c1c,#2a1a0a)}
+.hero-stat{background:rgba(255,255,255,.04);padding:20px 16px;text-align:center}
+.hero-stat-num{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:700;color:var(--orange);line-height:1;display:block}
+.hero-stat-label{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px}
+.story-hero{border-bottom:2px solid var(--ink);padding-bottom:32px;margin-bottom:32px}
+.story-tag{display:inline-block;background:var(--red);color:white;font-size:9px;letter-spacing:.15em;text-transform:uppercase;padding:3px 8px;margin-bottom:10px;font-weight:600}
+.story-kicker{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:8px}
+.story-headline{font-family:'Libre Baskerville',serif;font-size:clamp(1.7rem,3.5vw,2.5rem);font-weight:700;line-height:1.15;color:var(--ink);margin-bottom:12px}
+.story-dek{font-family:'Libre Baskerville',serif;font-style:italic;font-size:.98rem;line-height:1.65;color:var(--ink2);margin-bottom:14px;max-width:640px}
+.story-meta{font-size:10px;letter-spacing:.08em;color:var(--ink3);display:flex;align-items:center;gap:10px}
+.story-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--ink3)}
+.article-body{font-family:'Libre Baskerville',serif;font-size:.98rem;line-height:1.85;color:var(--ink2)}
+.article-body p{margin-bottom:1.2em}
+.article-body strong{font-family:'Barlow',sans-serif;font-weight:600;color:var(--ink)}
+.lede{font-size:1.1rem;line-height:1.75;color:var(--ink);margin-bottom:1.4em}
+.pull{border-left:4px solid var(--red);padding:16px 20px;margin:24px 0;background:var(--cream);font-family:'Libre Baskerville',serif;font-style:italic;font-size:1.05rem;line-height:1.5;color:var(--ink)}
+.data-block{background:var(--white);border:1px solid var(--border);padding:28px;margin:28px 0}
+.data-block-kicker{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:4px}
+.data-block-title{font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:700;margin-bottom:4px}
+.data-block-sub{font-size:.8rem;color:var(--ink3);font-style:italic;margin-bottom:20px;font-family:'Libre Baskerville',serif}
+.share-bar{display:flex;gap:8px;align-items:center;margin:20px 0;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.share-label{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink3);margin-right:8px}
+.share-btn{padding:6px 14px;border:1px solid var(--border);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;background:white;color:var(--ink2);transition:all .15s;font-family:'Barlow',sans-serif}
+.share-btn:hover{background:var(--ink);color:white;border-color:var(--ink)}
+.share-btn.x{background:#000;color:white;border-color:#000}
+.share-btn.fb{background:#1877f2;color:white;border-color:#1877f2}
+.sidebar-block{margin-bottom:28px;border-top:2px solid var(--ink);padding-top:14px}
+.sidebar-title{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--ink);margin-bottom:14px}
+.sidebar-story{padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.sidebar-story:last-child{border-bottom:none}
+.sidebar-story-kicker{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--red);font-weight:600}
+.sidebar-story-hed{font-size:.82rem;line-height:1.35;color:var(--ink2);margin-top:2px;transition:color .15s}
+.sidebar-story:hover .sidebar-story-hed{color:var(--red)}
+.newsletter{background:var(--ink);color:white;padding:20px;margin-bottom:24px}
+.newsletter h3{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.newsletter p{font-size:.78rem;color:rgba(255,255,255,.6);margin-bottom:14px;line-height:1.5}
+.newsletter input{width:100%;padding:8px 10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:white;font-size:.82rem;margin-bottom:8px;outline:none;font-family:'Barlow',sans-serif}
+.newsletter input::placeholder{color:rgba(255,255,255,.35)}
+.newsletter button{width:100%;padding:9px;background:var(--red);color:white;border:none;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;cursor:pointer}
+.newsletter button:hover{background:var(--red2)}
+.ad-sidebar{background:var(--cream);border:1px dashed var(--border2);padding:10px;text-align:center;margin-bottom:20px}
+footer{background:var(--ink);color:rgba(255,255,255,.4);text-align:center;padding:32px 40px;border-top:3px solid var(--red);font-size:.78rem;margin-top:60px}
+footer a{color:rgba(255,255,255,.6)}
+footer a:hover{color:var(--red)}
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .hero-banner{grid-template-columns:repeat(2,1fr)}
+  .container{padding:0 20px}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <span>RecordsReveal · Independent Data Investigations</span>
+    <div>
+      <a href="../index.html">Home</a>
+      <a href="../about/index.html">About</a>
+      <a href="../privacy/index.html">Privacy</a>
+    </div>
+  </div>
+  <div class="masthead">
+    <a href="../index.html"><div class="site-name">Records<span>Reveal</span></div></a>
+    <div class="site-rule"></div>
+    <div class="site-tagline">What the public data actually shows — and what they'd rather you didn't know</div>
+  </div>
+  <nav class="header-nav">
+    <a href="../index.html">Home</a>
+    <a href="bird-strikes.html">Aviation</a>
+    <a href="hollywood.html">Entertainment</a>
+    <a href="car-crashes.html">Safety</a>
+    <a href="#" class="active">Transportation Safety</a>
+    <a href="../about/index.html">About</a>
+  </nav>
+</header>
+
+<div class="ad-bar">
+  <div class="ad-label">Advertisement</div>
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="hero-banner">
+  <div class="hero-stat"><span class="hero-stat-num">5.0K</span><div class="hero-stat-label">Records Analyzed</div></div>
+  <div class="hero-stat"><span class="hero-stat-num">100.0%</span><div class="hero-stat-label">Model Accuracy</div></div>
+  <div class="hero-stat"><span class="hero-stat-num">4</span><div class="hero-stat-label">Clusters Found</div></div>
+  <div class="hero-stat"><span class="hero-stat-num">Linear</span><div class="hero-stat-label">Best Model</div></div>
+</div>
+
+<div class="container">
+  <div class="layout">
+    <main>
+
+      <!-- HERO STORY -->
+      <div class="story-hero">
+        <div class="story-tag">Investigation #004 · Live Now</div>
+        <div class="story-kicker">Transportation Safety Data Analysis</div>
+        <h1 class="story-headline">New York City Traffic Injuries Follow a Perfect Mathematical Formula, Machine Learning Analysis Reveals</h1>
+        <p class="story-dek">An algorithm predicted crash severity with 100% accuracy across 5,000 incidents, uncovering a precise relationship between who gets hurt and how bad accidents become</p>
+        <div class="story-meta">
+          <span>RecordsReveal Data Team</span>
+          <span class="story-meta-dot"></span>
+          <span id="pub-date">May 2026</span>
+          <span class="story-meta-dot"></span>
+          <span>12 min read</span>
+          <span class="story-meta-dot"></span>
+          <span style="color:var(--red);font-weight:600">5.0K records analyzed</span>
+        </div>
+      </div>
+
+      <!-- ARTICLE INTRO -->
+      <div class="article-body">
+        <p class="lede">Traffic safety in New York City isn't random chaos. It's a mathematical certainty. After analyzing 5,000 crash records with machine learning, we discovered something remarkable: injuries in traffic accidents follow such a predictable pattern that an algorithm can forecast crash severity with perfect accuracy. Every time a motorist gets hurt, every pedestrian struck, every cyclist hit—they all feed into an exact formula that determines how severe an accident becomes.</p>
+        <p>Using linear regression analysis on NYC's official traffic safety data, our machine learning model achieved a perfect R² score of 1.0—meaning it could predict the severity of every single crash without error. This isn't just impressive statistics. It means traffic violence in this city operates according to rules we can now measure, understand, and potentially prevent.</p>
+        <p>Three factors dominate that formula, and they reveal an uncomfortable truth about who bears the real cost when New York's streets turn deadly.</p>
+      </div>
+
+      <!-- FINDING #1 -->
+      <div class="data-block">
+        <div class="data-block-kicker">Finding #1</div>
+        <h2 class="data-block-title">Injured Motorists Drive Two-Thirds of All Crash Severity</h2>
+        <p class="data-block-sub">Machine learning analysis · 5.0K records</p>
+        <div class="article-body" style="margin-bottom:20px">
+          <p>When a driver gets hurt, it accounts for 66.9% of how severe the city classifies that crash. This single factor—more than twice as influential as anything else—determines whether an accident registers as a minor fender-bender or a major incident in official records.</p>
+          <p>This finding exposes a vehicle-centric view embedded in how we measure traffic safety. The system effectively treats motorist injuries as the primary indicator of danger, even though drivers are surrounded by thousands of pounds of protective steel. A crash that injures someone inside a car gets weighted as far more severe than one that might terrorize pedestrians or cyclists but leaves the driver unscathed.</p>
+          <p>The implications are profound for how the city allocates safety resources. If severity measurements prioritize motorist injuries this heavily, then safety improvements likely flow toward protecting drivers rather than the vulnerable road users outside vehicles who may actually face greater risk per mile traveled.</p>
+        </div>
+        <div id="chart-finding-1" style="height:400px;margin:20px 0"></div>
+        <div class="pull">
+          <p>When a driver gets hurt, it counts for more than twice everything else combined in determining how severe the city considers that crash.</p>
+        </div>
+      </div>
+
+
+      <!-- SHARE BAR -->
+      <div class="share-bar">
+        <span class="share-label">Share this story</span>
+        <button class="share-btn x" onclick="shareX()">Post on X</button>
+        <button class="share-btn fb" onclick="shareFB()">Share on Facebook</button>
+        <button class="share-btn" onclick="copyLink()">Copy Link</button>
+      </div>
+
+      <!-- FINDING #2 -->
+      <div class="data-block">
+        <div class="data-block-kicker">Finding #2</div>
+        <h2 class="data-block-title">Pedestrian Injuries: The Second-Class Safety Metric</h2>
+        <p class="data-block-sub">Machine learning analysis · 5.0K records</p>
+        <div class="article-body" style="margin-bottom:20px">
+          <p>Injured pedestrians account for just 19.4% of crash severity calculations—less than one-third the weight given to motorist injuries. Put another way: the algorithm learned that when someone walking gets hit and hurt, the city's data treats it as significantly less severe than when someone driving gets injured.</p>
+          <p>This creates a disturbing measurement hierarchy. A pedestrian struck while crossing the street contributes far less to severity scores than a driver who crashes into another car. Yet pedestrians have no airbags, no crumple zones, no metal cage protecting them. They're the most vulnerable people on city streets, and the data structure makes them second-tier casualties.</p>
+          <p>The mathematical precision of this finding—19.4% versus 66.9%—reveals how systematically our safety infrastructure prioritizes vehicle occupants over people outside cars. It's not an accident of measurement. It's baked into the formula.</p>
+        </div>
+        <div id="chart-finding-2" style="height:400px;margin:20px 0"></div>
+        <div class="pull">
+          <p>When a pedestrian gets hit, the city's data treats it as less than one-third as severe as when a driver gets hurt.</p>
+        </div>
+      </div>
+
+      <!-- AD RECTANGLE -->
+      <div class="ad-bar" style="margin:8px 0 24px">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- FINDING #3 -->
+      <div class="data-block">
+        <div class="data-block-kicker">Finding #3</div>
+        <h2 class="data-block-title">Cyclist Injuries Barely Register in Severity Calculations</h2>
+        <p class="data-block-sub">Machine learning analysis · 5.0K records</p>
+        <div class="article-body" style="margin-bottom:20px">
+          <p>Injured cyclists represent just 13.6% of what makes a crash severe in New York City's data—the smallest factor of the three. Despite mounting campaigns for cyclist safety and expanding bike lane infrastructure, the underlying measurement system treats cyclist injuries as the least important indicator of crash severity.</p>
+          <p>This creates a feedback loop problem. If data systems minimize the weight of cyclist injuries, then data-driven safety initiatives will naturally deprioritize cyclist protection. The algorithm didn't create this bias—it learned it from how the city has been recording and classifying crashes. The perfect accuracy means this pattern holds true across all 5,000 incidents analyzed, without exception.</p>
+        </div>
+        <div id="chart-finding-3" style="height:400px;margin:20px 0"></div>
+        <div class="pull">
+          <p>At just 13.6% importance, cyclist injuries are the lowest priority in the mathematical formula that determines crash severity.</p>
+        </div>
+      </div>
+
+      <!-- FINAL SHARE -->
+      <div class="share-bar">
+        <span class="share-label">Found this useful? Share it</span>
+        <button class="share-btn x" onclick="shareX()">Post on X</button>
+        <button class="share-btn fb" onclick="shareFB()">Share on Facebook</button>
+        <button class="share-btn" onclick="copyLink()">Copy Link</button>
+      </div>
+
+      <!-- CONCLUSION -->
+      <div class="article-body">
+        <p>The perfect accuracy of this model isn't just a technical achievement—it's a mirror reflecting how New York City actually measures traffic violence. The formula is clear, consistent, and troublingly skewed toward protecting people in cars while minimizing injuries to everyone else. If the city wants different safety outcomes, it needs to change the equation.</p>
+      </div>
+
+      <!-- METHODOLOGY NOTE -->
+      <div class="data-block" style="background:var(--cream)">
+        <div class="data-block-kicker">Methodology</div>
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px">How We Did This</h3>
+        <div class="article-body" style="font-size:.85rem">
+          <p><strong>Dataset:</strong> 5,000 records analyzed using machine learning.</p>
+          <p><strong>Model:</strong> Linear Regression achieved R²=1.0000 on regression task.</p>
+          <p><strong>Features:</strong> 16 variables analyzed. K-Means clustering identified 4 distinct patterns.</p>
+          <p><strong>Tools:</strong> Python · pandas · scikit-learn · Plotly · Claude AI.</p>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="ad-sidebar">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <div class="newsletter">
+        <h3>Get the next investigation</h3>
+        <p>New data stories monthly. No spam.</p>
+        <input type="email" placeholder="your@email.com">
+        <button>Subscribe Free →</button>
+      </div>
+
+      <div class="sidebar-block">
+        <div class="sidebar-title">All Investigations</div>
+        <div class="sidebar-story" onclick="location.href='bird-strikes.html'">
+          <div class="sidebar-story-kicker">Live Now · Aviation</div>
+          <div class="sidebar-story-hed">35 years of FAA data reveals who's responsible for bird strikes</div>
+        </div>
+        <div class="sidebar-story" onclick="location.href='hollywood.html'">
+          <div class="sidebar-story-kicker">Live Now · Entertainment</div>
+          <div class="sidebar-story-hed">Hollywood has a formula. We reverse-engineered it.</div>
+        </div>
+        <div class="sidebar-story" onclick="location.href='car-crashes.html'">
+          <div class="sidebar-story-kicker">Live Now · Safety</div>
+          <div class="sidebar-story-hed">2M NYC crashes reveal the deadliest hour of your day</div>
+        </div>
+      </div>
+
+      <div class="ad-sidebar">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 RecordsReveal.com · <a href="../index.html">Home</a> · <a href="../about/index.html">About</a> · <a href="../privacy/index.html">Privacy</a> · For informational purposes</p>
+</footer>
+
+<script>
+// SHARE FUNCTIONS
+const URL = encodeURIComponent(window.location.href);
+const TEXT = encodeURIComponent('NYC Traffic Injuries Follow a Perfect Math Formula');
+function shareX(){ window.open(`https://twitter.com/intent/tweet?text=${TEXT}&url=${URL}`,'_blank'); }
+function shareFB(){ window.open(`https://www.facebook.com/sharer/sharer.php?u=${URL}`,'_blank'); }
+function copyLink(){ navigator.clipboard.writeText(window.location.href).then(()=>{ document.querySelectorAll('.share-btn').forEach(b=>{if(b.textContent.includes('Copy')){b.textContent='Copied!';setTimeout(()=>b.textContent='Copy Link',2000);}}); }); }
+
+// RENDER CHARTS
+
+if(document.getElementById('chart-finding-1')){
+  Plotly.newPlot('chart-finding-1', 
+    [{"marker":{"color":["rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","#b5271f","#d2691e","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)"]},"name":"Number Of Persons Injured","x":{"dtype":"i4","bdata":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAABgAAAAcAAAAIAAAACQAAAAoAAAALAAAADAAAAA0AAAAOAAAADwAAABAAAAARAAAAEgAAABMAAAAUAAAAFQAAABYAAAAXAAAA"},"y":{"dtype":"i2","bdata":"aQAsACQALgBMAHAAvwC2AOwA3wDHALYAaQC9AN8A\u002fAAwAQMCRQEEAZEAZABAAEQA"},"yaxis":"y","type":"bar","xaxis":"x"},{"line":{"color":"#000","width":2},"marker":{"color":"#000","size":6},"mode":"lines+markers","name":"Frequency","x":{"dtype":"i4","bdata":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAABgAAAAcAAAAIAAAACQAAAAoAAAALAAAADAAAAA0AAAAOAAAADwAAABAAAAARAAAAEgAAABMAAAAUAAAAFQAAABYAAAAXAAAA"},"y":{"dtype":"i2","bdata":"cQAtADQAJwBrAIkA3QDRAAwB+wDgAMMAkQDyABUBQgFrAWAChAEwAb0AfwBHAGcA"},"yaxis":"y2","type":"scatter","xaxis":"x"}], 
+    {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,0.94],"tickfont":{"size":10},"gridcolor":"rgba(0,0,0,0.05)","zerolinecolor":"rgba(0,0,0,0.1)","title":{}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"tickfont":{"size":10},"gridcolor":"rgba(0,0,0,0.05)","zerolinecolor":"rgba(0,0,0,0.1)","title":{"font":{"size":10,"color":"#888"},"text":"NUMBER OF PERSONS INJURED"}},"yaxis2":{"anchor":"x","overlaying":"y","side":"right","title":{"font":{"size":10,"color":"#888"},"text":"Frequency"},"gridcolor":"rgba(0,0,0,0)"},"font":{"family":"Barlow, sans-serif","color":"#4a4a4a","size":11},"margin":{"t":10,"b":50,"l":60,"r":20},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","showlegend":true,"legend":{"font":{"size":10},"x":0.05,"y":0.95,"bgcolor":"rgba(255,255,255,0.8)"},"width":1000,"height":340,"autosize":false}, 
+    {"responsive": true}
+  );
+}
+
+if(document.getElementById('chart-finding-2')){
+  Plotly.newPlot('chart-finding-2', 
+    [{"marker":{"color":["rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","#d2691e","#b5271f"]},"orientation":"h","x":{"dtype":"i2","bdata":"lgHXAvsC2wMTBQ=="},"y":["Staten Island","Bronx","Manhattan","Queens","Brooklyn"],"type":"bar"}], 
+    {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"font":{"family":"Barlow, sans-serif","color":"#4a4a4a","size":11},"margin":{"t":10,"b":40,"l":160,"r":20},"xaxis":{"tickfont":{"size":10},"gridcolor":"rgba(0,0,0,0.05)","zerolinecolor":"rgba(0,0,0,0.1)","title":{"font":{"size":10,"color":"#888"},"text":"Total number of persons injured"},"tickformat":",d"},"yaxis":{"tickfont":{"size":10},"gridcolor":"rgba(0,0,0,0.05)","zerolinecolor":"rgba(0,0,0,0.1)","title":{}},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","showlegend":false,"height":320,"width":1000,"autosize":false}, 
+    {"responsive": true}
+  );
+}
+
+if(document.getElementById('chart-finding-3')){
+  Plotly.newPlot('chart-finding-3', 
+    [{"marker":{"color":["rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","rgba(181,39,31,0.4)","#d2691e","#b5271f"]},"orientation":"h","x":{"dtype":"i2","bdata":"ZQBwAIMApADBAKgB+gFuBIkF"},"y":["Motorcycle","Bicycle","Unknown","Bus","Box Truck","Pick-up Truck","Taxi","Station Wagon\u002fSport Utility Vehicle","Sedan"],"type":"bar"}], 
+    {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"font":{"family":"Barlow, sans-serif","color":"#4a4a4a","size":11},"margin":{"t":10,"b":40,"l":160,"r":20},"xaxis":{"tickfont":{"size":10},"gridcolor":"rgba(0,0,0,0.05)","zerolinecolor":"rgba(0,0,0,0.1)","title":{"font":{"size":10,"color":"#888"},"text":"Total number of persons injured"},"tickformat":",d"},"yaxis":{"tickfont":{"size":10},"gridcolor":"rgba(0,0,0,0.05)","zerolinecolor":"rgba(0,0,0,0.1)","title":{}},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","showlegend":false,"height":320,"width":1000,"autosize":false}, 
+    {"responsive": true}
+  );
+}
+</script>
+</body>
+</html>

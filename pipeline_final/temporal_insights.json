@@ -1,0 +1,85 @@
+{
+  "analysis_type": "temporal",
+  "dataset": "test_dataset_crashes.csv",
+  "time_column": "CRASH DATE",
+  "patterns": {
+    "hourly": {
+      "distribution": {
+        "0": 5000,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0,
+        "21": 0,
+        "22": 0,
+        "23": 0
+      },
+      "peak_hour": 0,
+      "peak_count": 5000,
+      "total_records": 5000
+    },
+    "day_of_week": {
+      "distribution": {
+        "Saturday": 766,
+        "Sunday": 761,
+        "Monday": 716,
+        "Thursday": 706,
+        "Friday": 696,
+        "Wednesday": 691,
+        "Tuesday": 664
+      },
+      "busiest_day": "Saturday",
+      "busiest_count": 766
+    },
+    "monthly": {
+      "distribution": {
+        "October": 462,
+        "July": 450,
+        "May": 435,
+        "January": 426,
+        "March": 418,
+        "August": 412,
+        "April": 410,
+        "November": 405,
+        "September": 402,
+        "December": 399,
+        "June": 392,
+        "February": 389
+      },
+      "busiest_month": "October",
+      "busiest_count": 462
+    },
+    "trend_over_time": {
+      "granularity": "yearly",
+      "x": [
+        2023,
+        2024
+      ],
+      "y": [
+        2473,
+        2527
+      ],
+      "peak_period": 2024,
+      "peak_count": 2527,
+      "pct_change": 2.2,
+      "direction": "increase"
+    }
+  },
+  "ollama_insights": "**Most Newsworthy Time-Based Finding:**\n\nThe most significant temporal pattern in the dataset is that Saturday has the highest number of records, with a whopping 766 entries, indicating a surge in activity or events on this day.\n\n**What This Pattern Suggests About Behavior or Events:**\n\nThis data suggests that there may be an increase in social or recreational activities, appointments, or daily routines that occur exclusively on Saturdays. It could also imply that certain businesses or services have a high demand on this day, such as retail sales, entertainment, or healthcare.\n\n**Compelling Pull Quote:**\n\n\"Saturdays prove to be the busiest days of the week, revealing hidden patterns in our daily habits.\""
+}

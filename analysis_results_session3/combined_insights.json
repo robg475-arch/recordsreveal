@@ -1,0 +1,196 @@
+{
+  "dataset": "test_dataset_crashes.csv",
+  "analyses": [
+    "geographic",
+    "categorical",
+    "temporal"
+  ],
+  "all_patterns": {
+    "geographic": {
+      "valid_coordinates": {
+        "count": 5000,
+        "total": 5000,
+        "percent": 100.0
+      },
+      "bounds": {
+        "lat_min": 40.50010804894269,
+        "lat_max": 40.89987595095442,
+        "lon_min": -74.29955677668558,
+        "lon_max": -73.7002286629479,
+        "center_lat": 40.69999199994855,
+        "center_lon": -73.99989271981673
+      },
+      "hotspots": [
+        {
+          "lat": 40.60005002444562,
+          "lon": -73.96992631412985,
+          "count": 63,
+          "percent": 1.26
+        },
+        {
+          "lat": 40.520096444043276,
+          "lon": -73.79012788000855,
+          "count": 61,
+          "percent": 1.22
+        },
+        {
+          "lat": 40.83991076565266,
+          "lon": -74.20965755962493,
+          "count": 61,
+          "percent": 1.22
+        },
+        {
+          "lat": 40.60005002444562,
+          "lon": -73.85006069138231,
+          "count": 60,
+          "percent": 1.2
+        },
+        {
+          "lat": 40.83991076565266,
+          "lon": -73.79012788000855,
+          "count": 60,
+          "percent": 1.2
+        }
+      ],
+      "locations": {
+        "BOROUGH": {
+          "top_10": {
+            "Brooklyn": 1537,
+            "Queens": 1244,
+            "Manhattan": 915,
+            "Bronx": 802,
+            "Staten Island": 502
+          },
+          "unique_count": 5
+        },
+        "ZIP CODE": {
+          "top_10": {
+            "10733": 9,
+            "11248": 9,
+            "11525": 9,
+            "10643": 9,
+            "10919": 8,
+            "11559": 8,
+            "10048": 8,
+            "11677": 8,
+            "11420": 8,
+            "10030": 8
+          },
+          "unique_count": 1607
+        }
+      }
+    },
+    "categorical": {
+      "distribution": {
+        "labels": [
+          "Sedan",
+          "Station Wagon/Sport Utility Vehicle",
+          "Taxi",
+          "Pick-up Truck",
+          "Box Truck",
+          "Bus",
+          "Unknown",
+          "Bicycle",
+          "Motorcycle"
+        ],
+        "counts": [
+          1700,
+          1253,
+          624,
+          525,
+          243,
+          200,
+          171,
+          142,
+          142
+        ],
+        "percentages": [
+          34.0,
+          25.1,
+          12.5,
+          10.5,
+          4.9,
+          4.0,
+          3.4,
+          2.8,
+          2.8
+        ],
+        "total_unique": 9,
+        "total_records": 5000,
+        "majority_label": "Sedan",
+        "majority_count": 1700,
+        "majority_pct": 34.0
+      }
+    },
+    "temporal": {
+      "hourly": {
+        "distribution": {
+          "0": 5000
+        },
+        "peak_hour": 0,
+        "peak_count": 5000,
+        "total_records": 5000
+      },
+      "day_of_week": {
+        "distribution": {
+          "Saturday": 766,
+          "Sunday": 761,
+          "Monday": 716,
+          "Thursday": 706,
+          "Friday": 696,
+          "Wednesday": 691,
+          "Tuesday": 664
+        },
+        "busiest_day": "Saturday",
+        "busiest_count": 766
+      },
+      "monthly": {
+        "distribution": {
+          "October": 462,
+          "July": 450,
+          "May": 435,
+          "January": 426,
+          "March": 418,
+          "August": 412,
+          "April": 410,
+          "November": 405,
+          "September": 402,
+          "December": 399,
+          "June": 392,
+          "February": 389
+        },
+        "busiest_month": "October",
+        "busiest_count": 462
+      },
+      "trend_over_time": {
+        "granularity": "yearly",
+        "x": [
+          2023,
+          2024
+        ],
+        "y": [
+          2473,
+          2527
+        ],
+        "peak_period": 2024,
+        "peak_count": 2527,
+        "pct_change": 2.2,
+        "direction": "increase"
+      }
+    }
+  },
+  "all_ollama_insights": {
+    "geographic": "Here are my responses:\n\n**1. Most newsworthy geographic finding:**\nA high concentration of records lies within a relatively small area, suggesting that this region is a hub for activity or events.\n\n**2. Insights into the spatial pattern:**\nThis pattern may indicate that certain areas have more appeal or functionality, potentially related to urban planning, economic development, or public interest, but further investigation is needed to confirm this hypothesis.\n\n**3. Compelling pull quote:**\n\"Brooklyn's uncharted heart beats strong, as a hotspot of activity pulls in thousands.\"",
+    "categorical": "Here's my analysis:\n\n**Most newsworthy finding:**\nThe top two categories, Sedan and Station Wagon/Sport Utility Vehicle, account for more than half of the total records, indicating a strong preference among 5,000 vehicle owners.\n\n**What this distribution pattern suggests about the data:**\nThis skewed distribution implies that there may be some biases or influences at play in the dataset, such as geographic location, age range, or socio-economic factors, which are driving the dominance of these two categories.\n\n**Compelling pull quote:**\n\"Sedans and SUVs dominate local roads, but what's behind this vehicle preference?\"",
+    "temporal": "**Most newsworthy time-based finding:**\nThe dataset reveals a stark peak in busyness at exactly 0:00 hours, suggesting that commuters are hitting the roads as soon as they can after midnight.\n\n**What this pattern suggests about behavior or events:**\nThis anomaly may indicate that people are leaving work or school immediately after the stroke of midnight, potentially driven by social, economic, or cultural factors.\n\n**Pull quote:**\n\"Midnight rush hour: A staggering 5000 commuters take to the roads at the stroke of dawn.\""
+  },
+  "summary": {
+    "total_analyses": 3,
+    "analysis_types": [
+      "geographic",
+      "categorical",
+      "temporal"
+    ],
+    "has_ollama_insights": true
+  }
+}

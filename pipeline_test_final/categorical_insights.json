@@ -1,0 +1,51 @@
+{
+  "analysis_type": "categorical",
+  "dataset": "test_dataset_crashes_realistic.csv",
+  "category_column": "CONTRIBUTING FACTOR VEHICLE 1",
+  "patterns": {
+    "distribution": {
+      "labels": [
+        "Driver Inattention/Distraction",
+        "Failure to Yield Right-of-Way",
+        "Following Too Closely",
+        "Backing Unsafely",
+        "Other Vehicular",
+        "Passing or Lane Usage Improper",
+        "Unsafe Speed",
+        "Unspecified",
+        "Traffic Control Disregarded",
+        "Turning Improperly"
+      ],
+      "counts": [
+        929,
+        740,
+        609,
+        549,
+        480,
+        404,
+        397,
+        344,
+        303,
+        245
+      ],
+      "percentages": [
+        18.6,
+        14.8,
+        12.2,
+        11.0,
+        9.6,
+        8.1,
+        7.9,
+        6.9,
+        6.1,
+        4.9
+      ],
+      "total_unique": 10,
+      "total_records": 5000,
+      "majority_label": "Driver Inattention/Distraction",
+      "majority_count": 929,
+      "majority_pct": 18.6
+    }
+  },
+  "ollama_insights": "Here's my analysis:\n\n**Most newsworthy finding:**\nThe most striking revelation is that Driver Inattention/Distraction accounts for nearly 19% of all contributing factor vehicle crashes, highlighting a significant safety concern on our roads.\n\n**What this distribution pattern suggests about the data:**\nThis skew towards driver inattention/distraction suggests that the data may be biased towards more severe or fatal accidents, potentially due to factors like road design or enforcement, which could have varying impacts on different contributing factors.\n\n**Compelling pull quote:**\n\"'19% of crashes caused by inattentive drivers' - a staggering revelation on our nation's roads.\""
+}

@@ -1,0 +1,103 @@
+
+============================================================
+🚀 RECORDSREVEAL ENHANCED ANALYSIS v2.0
+============================================================
+
+============================================================
+🔍 ANALYZING DATASET CHARACTERISTICS
+============================================================
+   📅 Detected datetime column: CRASH DATE
+   📅 Detected datetime column: CRASH TIME
+
+📊 Dataset Shape: (5000, 16)
+   Numeric columns: 11
+   Categorical columns: 5
+   Datetime columns: 2
+   Coordinate columns: 2
+   Text columns: 0
+
+🎯 Target Variable: NUMBER OF PERSONS INJURED
+   Unique values: 7
+   Data type: int64
+   ✓ Detected: REGRESSION (count variable: 7 values)
+
+============================================================
+📊 EXPLORATORY DATA ANALYSIS
+============================================================
+   ✓ Generated correlation heatmap
+   ✓ Generated target distribution plot
+
+============================================================
+🤖 REGRESSION MODELS
+============================================================
+
+   Training Linear Regression...
+      R² = 1.0000, RMSE = 0.0000, MAE = 0.0000
+
+   Training Ridge Regression...
+      R² = 1.0000, RMSE = 0.0009, MAE = 0.0007
+
+   Training Lasso Regression...
+      R² = 0.8665, RMSE = 0.3679, MAE = 0.2978
+
+   Training Random Forest...
+      R² = 0.9978, RMSE = 0.0467, MAE = 0.0035
+
+   Training XGBoost...
+      R² = 0.9991, RMSE = 0.0303, MAE = 0.0015
+
+   🏆 Best Model: Linear Regression (R² = 1.0000)
+
+============================================================
+🔍 CLUSTERING ANALYSIS
+============================================================
+   ✓ Optimal K = 4
+   ✓ PCA explains 30.6% variance
+      Cluster 0: 4972 samples (99.4%)
+      Cluster 1: 12 samples (0.2%)
+      Cluster 2: 10 samples (0.2%)
+      Cluster 3: 6 samples (0.1%)
+
+============================================================
+📊 GENERATING DOMAIN-SPECIFIC VISUALIZATIONS
+============================================================
+Traceback (most recent call last):
+  File "/Users/robgonzalez/Documents/Claude/Projects/recordsreveal-site/analyze_v2.py", line 710, in <module>
+    main()
+  File "/Users/robgonzalez/Documents/Claude/Projects/recordsreveal-site/analyze_v2.py", line 706, in main
+    analyzer.run()
+  File "/Users/robgonzalez/Documents/Claude/Projects/recordsreveal-site/analyze_v2.py", line 254, in run
+    domain_viz = generate_domain_visualizations(
+  File "/Users/robgonzalez/Documents/Claude/Projects/recordsreveal-site/enhance_visualizations.py", line 429, in generate_domain_visualizations
+    viz_dir.mkdir(exist_ok=True)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py", line 1313, in mkdir
+    self._accessor.mkdir(self, mode)
+FileNotFoundError: [Errno 2] No such file or directory: 'analysis_results/visualizations'
+
+============================================================
+🚀 RECORDSREVEAL INVESTIGATION BUILDER
+============================================================
+
+📊 Dataset: test_dataset_crashes.csv
+🎯 Target: NUMBER OF PERSONS INJURED
+📰 Name: NYC Traffic Safety Test
+🏷️  Category: Transportation Safety
+🔢 Investigation #: 004
+
+============================================================
+STEP: 1/5: DATA ANALYSIS
+============================================================
+📝 Running ML analysis, generating visualizations...
+🔧 Command: python3 analyze_v2.py test_dataset_crashes.csv NUMBER OF PERSONS INJURED
+
+
+❌ 1/5: DATA ANALYSIS failed after 3.2s
+   Error code: 1
+
+============================================================
+❌ PIPELINE ABORTED
+============================================================
+
+💥 Reason: Data analysis failed
+
+📁 Partial results may be in: analysis_results

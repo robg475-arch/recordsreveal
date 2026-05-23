@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debug Sidebar</title>
+<style>
+body { font-family: monospace; padding: 20px; }
+#output { background: #f0f0f0; padding: 20px; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+
+<h1>Sidebar Debug Inspector</h1>
+<button onclick="inspect()">Inspect Sidebar</button>
+<div id="output"></div>
+
+<script>
+function inspect() {
+  const output = document.getElementById('output');
+  let report = 'SIDEBAR DEBUG REPORT\n';
+  report += '===================\n\n';
+  
+  // Get the sidebar element
+  const sidebar = document.querySelector('.sidebar');
+  
+  if (!sidebar) {
+    report += 'ERROR: .sidebar element not found!\n';
+    output.textContent = report;
+    return;
+  }
+  
+  report += 'Sidebar element found: YES\n\n';
+  
+  // Get computed styles
+  const computed = window.getComputedStyle(sidebar);
+  
+  report += 'COMPUTED STYLES:\n';
+  report += '----------------\n';
+  report += `display: ${computed.display}\n`;
+  report += `visibility: ${computed.visibility}\n`;
+  report += `opacity: ${computed.opacity}\n`;
+  report += `width: ${computed.width}\n`;
+  report += `height: ${computed.height}\n`;
+  report += `position: ${computed.position}\n`;
+  report += `z-index: ${computed.zIndex}\n`;
+  report += `grid-column: ${computed.gridColumn}\n`;
+  report += `grid-row: ${computed.gridRow}\n\n`;
+  
+  // Get parent layout
+  const layout = sidebar.parentElement;
+  report += 'PARENT (.layout) STYLES:\n';
+  report += '------------------------\n';
+  if (layout) {
+    const layoutComputed = window.getComputedStyle(layout);
+    report += `display: ${layoutComputed.display}\n`;
+    report += `grid-template-columns: ${layoutComputed.gridTemplateColumns}\n`;
+    report += `gap: ${layoutComputed.gap}\n`;
+    report += `width: ${layoutComputed.width}\n\n`;
+  }
+  
+  // Get bounding box
+  const rect = sidebar.getBoundingClientRect();
+  report += 'BOUNDING BOX:\n';
+  report += '-------------\n';
+  report += `top: ${rect.top}px\n`;
+  report += `left: ${rect.left}px\n`;
+  report += `width: ${rect.width}px\n`;
+  report += `height: ${rect.height}px\n`;
+  report += `right: ${rect.right}px\n`;
+  report += `bottom: ${rect.bottom}px\n\n`;
+  
+  // Check if visible in viewport
+  const isVisible = rect.width > 0 && rect.height > 0;
+  report += `IS VISIBLE: ${isVisible ? 'YES' : 'NO'}\n\n`;
+  
+  // Get all applied CSS rules
+  report += 'CSS RULES APPLIED:\n';
+  report += '------------------\n';
+  const rules = document.styleSheets[0].cssRules;
+  for (let rule of rules) {
+    if (rule.selectorText && rule.selectorText.includes('.sidebar')) {
+      report += `${rule.selectorText} {\n`;
+      report += `  ${rule.style.cssText}\n`;
+      report += `}\n\n`;
+    }
+  }
+  
+  output.textContent = report;
+}
+</script>
+
+</body>
+</html>

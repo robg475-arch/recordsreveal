@@ -1,0 +1,115 @@
+{
+  "dataset": "test_dataset_911calls.csv",
+  "analyses": [
+    "geographic",
+    "temporal"
+  ],
+  "all_patterns": {
+    "geographic": {
+      "valid_coordinates": {
+        "count": 3000,
+        "total": 3000,
+        "percent": 100.0
+      },
+      "bounds": {
+        "lat_min": 37.72449,
+        "lat_max": 37.807719,
+        "lon_min": -122.527708,
+        "lon_max": -122.383396,
+        "center_lat": 37.7661045,
+        "center_lon": -122.45555200000001
+      },
+      "hotspots": [
+        {
+          "lat": 37.770265949999995,
+          "lon": -122.41947400000001,
+          "count": 258,
+          "percent": 8.6
+        },
+        {
+          "lat": 37.778588850000006,
+          "lon": -122.41947400000001,
+          "count": 243,
+          "percent": 8.1
+        },
+        {
+          "lat": 37.76194305,
+          "lon": -122.41947400000001,
+          "count": 230,
+          "percent": 7.666666666666666
+        },
+        {
+          "lat": 37.75362015,
+          "lon": -122.41947400000001,
+          "count": 152,
+          "percent": 5.066666666666666
+        },
+        {
+          "lat": 37.770265949999995,
+          "lon": -122.4050428,
+          "count": 148,
+          "percent": 4.933333333333334
+        }
+      ]
+    },
+    "temporal": {
+      "hourly": {
+        "distribution": {
+          "0": 124,
+          "1": 122,
+          "2": 133,
+          "3": 120,
+          "4": 113,
+          "5": 130,
+          "6": 126,
+          "7": 134,
+          "8": 121,
+          "9": 113,
+          "10": 111,
+          "11": 117,
+          "12": 125,
+          "13": 114,
+          "14": 141,
+          "15": 129,
+          "16": 131,
+          "17": 123,
+          "18": 112,
+          "19": 111,
+          "20": 129,
+          "21": 147,
+          "22": 144,
+          "23": 130
+        },
+        "peak_hour": 21,
+        "peak_count": 147,
+        "total_records": 3000
+      },
+      "day_of_week": {
+        "distribution": {
+          "Wednesday": 3000
+        },
+        "busiest_day": "Wednesday",
+        "busiest_count": 3000
+      },
+      "monthly": {
+        "distribution": {
+          "May": 3000
+        },
+        "busiest_month": "May",
+        "busiest_count": 3000
+      }
+    }
+  },
+  "all_ollama_insights": {
+    "geographic": "Here's my analysis:\n\n**1. The most newsworthy geographic finding:**\n\nA single hotspot at (37.7703, -122.4195) captures nearly a quarter of all records in the dataset, revealing an unusually concentrated activity pattern in San Francisco.\n\n**2. What this spatial pattern suggests about the data:**\n\nThis extreme clustering implies that our dataset is likely to be biased towards specific locations or individuals, potentially masking broader trends or patterns in the data.\n\n**3. Compelling pull quote:**\n\n\"San Francisco's epicenter reveals a mystery of concentrated activity, sparking questions about data accuracy and geographic scope.\"",
+    "temporal": "Based on the analysis, here are my suggestions:\n\n**Most newsworthy time-based finding:**\nThe dataset reveals a significant spike in bus travel at 9 PM, with Wednesday being the most popular day of the week.\n\n**Behavior or events suggested by the pattern:**\nThis data suggests that evening commutes are particularly busy, and Wednesdays seem to be a day when people rely heavily on public transportation. This could indicate a concentration of work-related activities or social events during this time.\n\n**Compelling pull quote:**\n\"Peak rush hour reveals secrets to the daily grind, where millions converge at 9 PM.\""
+  },
+  "summary": {
+    "total_analyses": 2,
+    "analysis_types": [
+      "geographic",
+      "temporal"
+    ],
+    "has_ollama_insights": true
+  }
+}

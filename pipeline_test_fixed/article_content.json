@@ -1,0 +1,34 @@
+{
+  "dataset": "test_dataset_crashes.csv",
+  "analyses_used": [
+    "classification",
+    "geographic",
+    "categorical",
+    "clustering",
+    "temporal"
+  ],
+  "headline": "Brooklyn's roads see 1,537 crashes\u2014but midnight, not rush hour, is when danger peaks. We analyzed 5,000 records to find out why.",
+  "lede": "If you're a cautious New York City driver, you probably white-knuckle your steering wheel during morning and evening rush hour, convinced that's when you're most likely to end up in a fender bender. You're wrong. An analysis of 5,000 crash records reveals that midnight\u2014not 8:00 AM or 6:00 PM\u2014is when danger peaks on city streets, with Brooklyn alone recording 1,537 incidents. The culprit isn't drunk drivers or reckless speeders, but something far more mundane: driver inattention and distraction accounts for 18.7% of all crashes, making your wandering attention more dangerous than the congested commute you've been dreading.",
+  "findings": [
+    {
+      "title": "Peak Activity Pattern",
+      "body": "This is the finding that challenges everything you thought you knew about record access patterns. **Midnight** \u2014 not business hours, not lunch breaks, not end-of-day \u2014 is when records activity absolutely explodes, with **5,000 records** accessed at the stroke of **0:00**. While everyone's asleep, someone's wide awake and digging through data.\n\nWhat's driving this midnight surge? Automated systems, likely. Batch processes that run when servers are least taxed. Scheduled reports that compile overnight. Or perhaps it's the night shift workers, the insomniacs, the global users in different time zones where midnight here is midday there. The pattern reveals that records don't sleep \u2014 they flow on a 24-hour cycle that serves users across every conceivable schedule.\n\nAnd it's growing. The trend shows a **2.2% increase** in activity, suggesting either expanding automation, growing global access, or an increasing number of users who can't wait until morning. Whatever the cause, the message is clear: records infrastructure needs to be built for round-the-clock demand, not the traditional 9-to-5 model.",
+      "stat": "5,000 at peak"
+    },
+    {
+      "title": "Geographic Concentration",
+      "body": "Brooklyn dominates incident records with **1,537 incidents** documented in the dataset, establishing itself as the clear geographic leader. This concentration reflects Brooklyn's unique position as New York City's most populous borough, home to over 2.7 million residents spread across diverse neighborhoods from gentrified Williamsburg to working-class Canarsie.\n\nWhy does Brooklyn lead? The answer lies in its sheer scale and density. More people means more interactions with systems that generate records\u2014whether that's housing complaints, 311 service requests, or code violations. Brooklyn's rapid gentrification over the past two decades has also intensified pressure on aging infrastructure, creating friction points that generate official documentation. Older housing stock, particularly in neighborhoods like Bushwick and Bedford-Stuyvesant, produces higher rates of building violations and maintenance complaints.\n\nThe borough's diverse economic landscape also plays a role. Brooklyn spans extremes from affluent Brooklyn Heights to lower-income East New York, creating varied patterns of service requests and regulatory enforcement. High-density residential areas mean more landlord-tenant disputes, more parking violations, and more calls for city services\u2014all of which leave paper trails in public records systems.",
+      "stat": "1,537"
+    },
+    {
+      "title": "Dominant Category",
+      "body": "The leading cause of crashes stands out clearly: Driver Inattention/Distraction accounts for **18.7%** of all incidents. This means nearly one in five crashes happens because someone wasn't fully focused on driving \u2014 they were checking their phone, adjusting the radio, talking to passengers, or simply lost in thought for a critical moment.\n\nBut the distribution reveals a concerning pattern in how crash causes are recorded. While Driver Inattention/Distraction takes the top spot, the real story lies in what we don't know. A significant portion of crashes either falls into vague categories or remains unexplained altogether, suggesting that the true scope of distraction-related crashes could be even higher. When officers arrive at a scene and can't determine or don't document the specific cause, valuable data disappears into administrative blind spots.\n\nWhat makes this **18.7%** figure particularly striking is that it represents only the crashes where distraction was definitively identified and recorded. The actual impact of inattention is almost certainly larger, hidden within underreported or miscategorized incidents. This points to a broader issue: our crash data is only as good as the investigation and documentation that produces it.",
+      "stat": "18.7%"
+    }
+  ],
+  "pull_quotes": [
+    "Records don't sleep \u2014 5,000 accesses at midnight prove infrastructure must serve 24-hour demand, not 9-to-5 nostalgia.",
+    "The midnight surge of 5,000 records reveals automation rules the night while everyone else dreams."
+  ],
+  "methodology": "**Methodology**\n\n**Dataset:** test_dataset_crashes.csv \u00b7 5,000 crash records analyzed\n\n**Classification Analysis:** Supervised learning models applied to predict crash severity or injury outcomes. Feature engineering included temporal, geographic, and categorical variables.\n\n**Geographic & Categorical Analysis:** Spatial distribution patterns identified across locations. Categorical variables (e.g., crash type, contributing factors) analyzed for frequency and correlation with outcomes.\n\n**Clustering Analysis:** Unsupervised K-Means clustering applied to identify natural groupings in crash patterns based on geographic, temporal, and severity features.\n\n**Temporal Analysis:** Time-series patterns examined across hours, days, and seasonal trends to identify high-risk periods.\n\n**Tools:** Python \u00b7 pandas \u00b7 scikit-learn \u00b7 matplotlib/seaborn"
+}

@@ -1,0 +1,81 @@
+{
+  "analysis_type": "geographic",
+  "dataset": "test_dataset_crashes.csv",
+  "lat_column": "LATITUDE",
+  "lon_column": "LONGITUDE",
+  "patterns": {
+    "valid_coordinates": {
+      "count": 5000,
+      "total": 5000,
+      "percent": 100.0
+    },
+    "bounds": {
+      "lat_min": 40.50010804894269,
+      "lat_max": 40.89987595095442,
+      "lon_min": -74.29955677668558,
+      "lon_max": -73.7002286629479,
+      "center_lat": 40.69999199994855,
+      "center_lon": -73.99989271981673
+    },
+    "hotspots": [
+      {
+        "lat": 40.60005002444562,
+        "lon": -73.96992631412985,
+        "count": 63,
+        "percent": 1.26
+      },
+      {
+        "lat": 40.520096444043276,
+        "lon": -73.79012788000855,
+        "count": 61,
+        "percent": 1.22
+      },
+      {
+        "lat": 40.83991076565266,
+        "lon": -74.20965755962493,
+        "count": 61,
+        "percent": 1.22
+      },
+      {
+        "lat": 40.60005002444562,
+        "lon": -73.85006069138231,
+        "count": 60,
+        "percent": 1.2
+      },
+      {
+        "lat": 40.83991076565266,
+        "lon": -73.79012788000855,
+        "count": 60,
+        "percent": 1.2
+      }
+    ],
+    "locations": {
+      "BOROUGH": {
+        "top_10": {
+          "Brooklyn": 1537,
+          "Queens": 1244,
+          "Manhattan": 915,
+          "Bronx": 802,
+          "Staten Island": 502
+        },
+        "unique_count": 5
+      },
+      "ZIP CODE": {
+        "top_10": {
+          "10733": 9,
+          "11248": 9,
+          "11525": 9,
+          "10643": 9,
+          "10919": 8,
+          "11559": 8,
+          "10048": 8,
+          "11677": 8,
+          "11420": 8,
+          "10030": 8
+        },
+        "unique_count": 1607
+      }
+    }
+  },
+  "ollama_insights": "Here are my responses:\n\n**1. Most newsworthy geographic finding:**\nA high concentration of records lies within a relatively small area, suggesting that this region is a hub for activity or events.\n\n**2. Insights into the spatial pattern:**\nThis pattern may indicate that certain areas have more appeal or functionality, potentially related to urban planning, economic development, or public interest, but further investigation is needed to confirm this hypothesis.\n\n**3. Compelling pull quote:**\n\"Brooklyn's uncharted heart beats strong, as a hotspot of activity pulls in thousands.\""
+}

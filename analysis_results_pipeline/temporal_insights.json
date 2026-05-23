@@ -1,0 +1,53 @@
+{
+  "analysis_type": "temporal",
+  "dataset": "test_dataset_crashes.csv",
+  "time_column": "CRASH TIME",
+  "patterns": {
+    "hourly": {
+      "distribution": {
+        "0": 113,
+        "1": 45,
+        "2": 52,
+        "3": 39,
+        "4": 107,
+        "5": 137,
+        "6": 221,
+        "7": 209,
+        "8": 268,
+        "9": 251,
+        "10": 224,
+        "11": 195,
+        "12": 145,
+        "13": 242,
+        "14": 277,
+        "15": 322,
+        "16": 363,
+        "17": 608,
+        "18": 388,
+        "19": 304,
+        "20": 189,
+        "21": 127,
+        "22": 71,
+        "23": 103
+      },
+      "peak_hour": 17,
+      "peak_count": 608,
+      "total_records": 5000
+    },
+    "day_of_week": {
+      "distribution": {
+        "Wednesday": 5000
+      },
+      "busiest_day": "Wednesday",
+      "busiest_count": 5000
+    },
+    "monthly": {
+      "distribution": {
+        "May": 5000
+      },
+      "busiest_month": "May",
+      "busiest_count": 5000
+    }
+  },
+  "ollama_insights": "Here are my analysis findings:\n\n**Most newsworthy time-based finding:**\nThe dataset reveals a striking peak in busyness at 17:00, with over 600 records, suggesting a significant surge in activity during the late afternoon.\n\n**What this pattern suggests about behavior or events:**\nThis temporal pattern may indicate that people are finishing work and commuting home to popular areas around 17:00, causing a rush-hour phenomenon. The high volume of busyness on Wednesdays could be attributed to regular office hours or social events during the day.\n\n**Compelling pull quote:**\n\"People's daily routines reveal secrets about our cities' rhythms and needs.\""
+}

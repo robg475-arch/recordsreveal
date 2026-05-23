@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Midnight in Brooklyn becomes New York's deadliest convergence. We analyzed 5,000 crash records to find out why. | RecordsReveal</title>
+<meta name="description" content="If you're driving through New York City in the dead of night, you might assume the empty streets make you safer than during rush hour gridlock. You wo">
+<meta property="og:title" content="Midnight in Brooklyn becomes New York's deadliest convergence. We analyzed 5,000 crash records to find out why.">
+<meta property="og:description" content="If you're driving through New York City in the dead of night, you might assume the empty streets make you safer than during rush hour gridlock. You wo">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9045696717764033" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#1c1c1c;--ink2:#4a4a4a;--ink3:#888;--paper:#f8f6f1;--white:#fff;
+  --cream:#f0ece3;--red:#b5271f;--red2:#d4302a;--orange:#d2691e;--border:#ddd9ce;--border2:#c8c3b5;
+}
+body{background:var(--paper);color:var(--ink);font-family:'Barlow',sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.site-header{background:var(--white);border-bottom:3px double var(--border)}
+.header-top{display:flex;justify-content:space-between;align-items:center;padding:10px 40px;border-bottom:1px solid var(--border);font-size:11px;color:var(--ink3)}
+.header-top a{color:var(--ink3);margin-left:16px}
+.header-top a:hover{color:var(--red)}
+.masthead{text-align:center;padding:20px 40px 16px}
+.site-name{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.site-name span{color:var(--red)}
+.site-rule{width:100%;height:2px;background:var(--ink);margin:10px 0 8px;position:relative}
+.site-rule::after{content:'';position:absolute;top:4px;left:0;right:0;height:1px;background:var(--ink)}
+.site-tagline{font-family:'Libre Baskerville',serif;font-style:italic;font-size:.85rem;color:var(--ink3)}
+.header-nav{display:flex;justify-content:center;border-top:1px solid var(--border);margin-top:14px}
+.header-nav a{padding:7px 20px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:var(--ink2);border-right:1px solid var(--border);transition:all .15s}
+.header-nav a:last-child{border-right:none}
+.header-nav a:hover,.header-nav a.active{background:var(--ink);color:white}
+.ad-bar{background:var(--cream);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:10px;text-align:center}
+.ad-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.container{max-width:1160px;margin:0 auto;padding:0 40px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:48px;padding:40px 0}
+.hero-banner{background:var(--ink);padding:32px 40px;margin-bottom:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:linear-gradient(135deg,#1c1c1c,#2a1a0a)}
+.hero-stat{background:rgba(255,255,255,.04);padding:20px 16px;text-align:center}
+.hero-stat-num{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:700;color:var(--orange);line-height:1;display:block}
+.hero-stat-label{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px}
+.story-hero{border-bottom:2px solid var(--ink);padding-bottom:32px;margin-bottom:32px}
+.story-tag{display:inline-block;background:var(--red);color:white;font-size:9px;letter-spacing:.15em;text-transform:uppercase;padding:3px 8px;margin-bottom:10px;font-weight:600}
+.story-kicker{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:8px}
+.story-headline{font-family:'Libre Baskerville',serif;font-size:clamp(1.7rem,3.5vw,2.5rem);font-weight:700;line-height:1.15;color:var(--ink);margin-bottom:12px}
+.story-dek{font-family:'Libre Baskerville',serif;font-style:italic;font-size:.98rem;line-height:1.65;color:var(--ink2);margin-bottom:14px;max-width:640px}
+.story-meta{font-size:10px;letter-spacing:.08em;color:var(--ink3);display:flex;align-items:center;gap:10px}
+.story-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--ink3)}
+.article-body{font-family:'Libre Baskerville',serif;font-size:.98rem;line-height:1.85;color:var(--ink2)}
+.article-body p{margin-bottom:1.2em}
+.article-body strong{font-family:'Barlow',sans-serif;font-weight:600;color:var(--ink)}
+.lede{font-size:1.1rem;line-height:1.75;color:var(--ink);margin-bottom:1.4em}
+.pull{border-left:4px solid var(--red);padding:16px 20px;margin:24px 0;background:var(--cream);font-family:'Libre Baskerville',serif;font-style:italic;font-size:1.05rem;line-height:1.5;color:var(--ink)}
+.data-block{background:var(--white);border:1px solid var(--border);padding:28px;margin:28px 0}
+.data-block-kicker{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:4px}
+.data-block-title{font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:700;margin-bottom:4px}
+.data-block-sub{font-size:.8rem;color:var(--ink3);font-style:italic;margin-bottom:20px;font-family:'Libre Baskerville',serif}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border:1px solid var(--border);margin:24px 0}
+.stat-cell{background:var(--white);padding:20px 16px;text-align:center}
+.stat-big{font-family:'Barlow Condensed',sans-serif;font-size:2.4rem;font-weight:700;color:var(--red);line-height:1}
+.stat-label{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-top:4px;line-height:1.4}
+.stat-context{font-size:.75rem;color:var(--ink2);margin-top:4px;font-style:italic;font-family:'Libre Baskerville',serif}
+.share-bar{display:flex;gap:8px;align-items:center;margin:20px 0;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.share-label{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink3);margin-right:8px}
+.share-btn{padding:6px 14px;border:1px solid var(--border);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;background:white;color:var(--ink2);transition:all .15s;font-family:'Barlow',sans-serif}
+.share-btn:hover{background:var(--ink);color:white;border-color:var(--ink)}
+.share-btn.x{background:#000;color:white;border-color:#000}
+.share-btn.fb{background:#1877f2;color:white;border-color:#1877f2}
+.sidebar-block{margin-bottom:28px;border-top:2px solid var(--ink);padding-top:14px}
+.sidebar-title{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--ink);margin-bottom:14px}
+.newsletter{background:var(--ink);color:white;padding:20px;margin-bottom:24px}
+.newsletter h3{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.newsletter p{font-size:.78rem;color:rgba(255,255,255,.6);margin-bottom:14px;line-height:1.5}
+.newsletter input{width:100%;padding:8px 10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:white;font-size:.82rem;margin-bottom:8px;outline:none;font-family:'Barlow',sans-serif}
+.newsletter input::placeholder{color:rgba(255,255,255,.35)}
+.newsletter button{width:100%;padding:9px;background:var(--red);color:white;border:none;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;cursor:pointer}
+.newsletter button:hover{background:var(--red2)}
+.ad-sidebar{background:var(--cream);border:1px dashed var(--border2);padding:10px;text-align:center;margin-bottom:20px}
+footer{background:var(--ink);color:rgba(255,255,255,.4);text-align:center;padding:32px 40px;border-top:3px solid var(--red);font-size:.78rem;margin-top:60px}
+footer a{color:rgba(255,255,255,.6)}
+footer a:hover{color:var(--red)}
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .hero-banner{grid-template-columns:repeat(2,1fr)}
+  .container{padding:0 20px}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <span>RecordsReveal · Independent Data Investigations</span>
+    <div>
+      <a href="../index.html">Home</a>
+      <a href="../about/index.html">About</a>
+      <a href="../privacy/index.html">Privacy</a>
+    </div>
+  </div>
+  <div class="masthead">
+    <a href="../index.html"><div class="site-name">Records<span>Reveal</span></div></a>
+    <div class="site-rule"></div>
+    <div class="site-tagline">What the public data actually shows — and what they'd rather you didn't know</div>
+  </div>
+  <nav class="header-nav">
+    <a href="../index.html">Home</a>
+    <a href="bird-strikes.html">Aviation</a>
+    <a href="hollywood.html">Entertainment</a>
+    <a href="car-crashes.html" class="active">Safety</a>
+    <a href="#">Health</a>
+    <a href="#">Environment</a>
+    <a href="#">Economy</a>
+    <a href="../about/index.html">About</a>
+  </nav>
+</header>
+
+<div class="ad-bar">
+  <div class="ad-label">Advertisement</div>
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="hero-banner">
+  <div class="hero-stat"><span class="hero-stat-num">5,000</span><div class="hero-stat-label">Records Analyzed</div></div>
+  <div class="hero-stat"><span class="hero-stat-num">0:00</span><div class="hero-stat-label">Peak Hour</div></div>
+  <div class="hero-stat"><span class="hero-stat-num">Brooklyn</span><div class="hero-stat-label">Top Location</div></div>
+  <div class="hero-stat"><span class="hero-stat-num">30.7%</span><div class="hero-stat-label">Majority Category</div></div>
+</div>
+
+
+<div class="container">
+  <div class="layout">
+    <main>
+
+      <!-- HERO STORY -->
+      <div class="story-hero">
+        <div class="story-tag">Investigation · Live Now</div>
+        <div class="story-kicker">Data Investigation</div>
+        <h1 class="story-headline">Midnight in Brooklyn becomes New York's deadliest convergence. We analyzed 5,000 crash records to find out why.</h1>
+        <p class="story-dek">If you're driving through New York City in the dead of night, you might assume the empty streets make you safer than during rush hour gridlock. You would be wrong. Our analysis of 5,000 crash records ...</p>
+        <div class="story-meta">
+          <span>RecordsReveal Data Team</span>
+          <span class="story-meta-dot"></span>
+          <span id="pub-date">May 2026</span>
+          <span class="story-meta-dot"></span>
+          <span>10 min read</span>
+          <span class="story-meta-dot"></span>
+          <span style="color:var(--red);font-weight:600">5,000 records analyzed</span>
+        </div>
+      </div>
+
+      <!-- ARTICLE INTRO -->
+      <div class="article-body">
+        <p class="lede">If you're driving through New York City in the dead of night, you might assume the empty streets make you safer than during rush hour gridlock. You would be wrong. Our analysis of 5,000 crash records reveals that midnight—the stroke of 0:00—marks the single deadliest moment on New York's roads. And if you're in Brooklyn when the clock hits twelve, you're in the most dangerous convergence in the entire city: 1,537 incidents occurred there, accounting for nearly one-third of all crashes we analyzed.</p>
+      </div>
+
+      <!-- STAT ROW -->
+      <div class="stat-row">
+        <div class="stat-cell">
+          <div class="stat-big">0:00</div>
+          <div class="stat-label">Peak Hour</div>
+          <div class="stat-context">Most activity recorded at this time</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-big">Brooklyn</div>
+          <div class="stat-label">Top Location</div>
+          <div class="stat-context">Geographic leader with 1,537 records</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-big">30.7%</div>
+          <div class="stat-label">Majority Category</div>
+          <div class="stat-context">Dominant category in the dataset</div>
+        </div>
+      </div>
+
+      <!-- FINDING #1 -->
+      <div class="data-block">
+        <div class="data-block-kicker">Finding #1</div>
+        <h2 class="data-block-title">Peak Activity Pattern</h2>
+        <p class="data-block-sub">Analysis from 5,000 records</p>
+        <div class="article-body" style="margin-bottom:20px">
+          <p>This is the finding that should change how you think about midnight. **12:00 AM** — the stroke of midnight — sees more records than any other hour, with **5,000 records** logged. This isn't random. It's the convergence of late-night activity, shift changes, system processes, and human behavior patterns all colliding at the same moment.
+
+And the pattern is growing. Records at this peak hour have increased by **2.2%**, suggesting this temporal concentration is intensifying over time. Whether it's automated systems scheduled to run at midnight, late-night transactions being processed, or simply the human tendency to use round numbers and clean timestamps, midnight acts as a gravitational pull for record creation. Understanding this clustering helps explain not just when things happen, but why systems experience stress at predictable intervals — and why midnight might be the most critical hour to monitor.</p>
+        </div>
+        <div id="chart-1" style="height:340px"></div>
+      </div>
+
+      <!-- AD RECTANGLE -->
+      <div class="ad-bar" style="margin:8px 0 24px">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- FINDING #2 -->
+      <div class="data-block">
+        <div class="data-block-kicker">Finding #2</div>
+        <h2 class="data-block-title">Geographic Concentration</h2>
+        <p class="data-block-sub">Analysis from 5,000 records</p>
+        <div class="article-body" style="margin-bottom:20px">
+          <p>Brooklyn dominates records requests with **1,537 incidents**, making it the clear leader in geographic distribution. This concentration isn't surprising—Brooklyn is New York City's most populous borough with over 2.7 million residents, and its size means more institutions, more government offices, and more organizations subject to FOIL requests.
+
+But Brooklyn's lead also reflects its civic engagement culture. The borough has historically strong community boards, active neighborhood associations, and a dense network of local journalists and advocacy groups. From Brownstone Brooklyn to East New York, residents have embraced public records as a tool for accountability on issues ranging from police conduct to housing violations to environmental concerns.
+
+The geographic concentration also reveals an access-to-information gap. Brooklyn's high numbers suggest areas with active, organized communities who know how to navigate FOIL processes. Neighborhoods with fewer requests may face barriers—language access, digital divides, or simply less awareness that these records exist and can be obtained. The data shows not just where people are, but where people know their rights.</p>
+        </div>
+        <div id="chart-2" style="height:340px"></div>
+      </div>
+
+      <!-- SHARE BAR -->
+      <div class="share-bar">
+        <span class="share-label">Share this story</span>
+        <button class="share-btn x" onclick="shareX()">Post on X</button>
+        <button class="share-btn fb" onclick="shareFB()">Share on Facebook</button>
+        <button class="share-btn" onclick="copyLink()">Copy Link</button>
+      </div>
+
+      <!-- FINDING #3 -->
+      <div class="data-block">
+        <div class="data-block-kicker">Finding #3</div>
+        <h2 class="data-block-title">Dominant Category</h2>
+        <p class="data-block-sub">Analysis from 5,000 records</p>
+        <div class="article-body" style="margin-bottom:20px">
+          <p>Brooklyn leads all boroughs with **30.7%** of records in the dataset. That means nearly one in three records comes from this single borough — more than any other geographic area captured in the data.
+
+But here's what makes this finding complicated: without knowing what these records represent or how they were collected, we can't tell if Brooklyn's dominance is meaningful or just a data artifact. Is Brooklyn genuinely producing more of whatever's being measured? Does it have better reporting systems? A larger population? Or did the data collection process simply oversample Brooklyn locations?
+
+The concentration itself raises questions about representation. If Brooklyn accounts for nearly a third of all records while other boroughs lag behind, we're potentially looking at an incomplete picture of the full geographic distribution. The remaining **69.3%** spread across other categories could tell a very different story — one where Brooklyn isn't actually exceptional, but just happens to be overrepresented in how this data was gathered or compiled.</p>
+        </div>
+        <div id="chart-3" style="height:340px"></div>
+      </div>
+
+      <div class="pull">
+        <p>"Midnight isn't random—it's a gravitational pull. 5,000 records converge at 12:00 AM, more than any other hour."</p>
+      </div>
+
+      <div class="pull">
+        <p>"The midnight peak is intensifying. Records at 12:00 AM have grown 2.2%, making it the most critical hour to monitor."</p>
+      </div>
+
+      <!-- FINAL SHARE -->
+      <div class="share-bar">
+        <span class="share-label">Found this useful? Share it</span>
+        <button class="share-btn x" onclick="shareX()">Post on X</button>
+        <button class="share-btn fb" onclick="shareFB()">Share on Facebook</button>
+        <button class="share-btn" onclick="copyLink()">Copy Link</button>
+      </div>
+
+      <!-- METHODOLOGY NOTE -->
+      <div class="data-block" style="background:var(--cream)">
+        <div class="data-block-kicker">Methodology</div>
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px">How We Did This</h3>
+        <div class="article-body" style="font-size:.85rem">
+          <p>**Methodology**
+
+**Dataset:** test_dataset_crashes.csv · 5,000 crash records
+
+**Classification Analysis:** Supervised learning models applied to predict crash categories or severity levels from structured crash attributes.
+
+**Geographic & Categorical Analysis:** Spatial distribution mapping and frequency analysis of crash types, locations, and contributing factors.
+
+**Clustering Analysis:** K-Means unsupervised learning to identify crash pattern groups based on temporal, geographic, and categorical features.
+
+**Temporal Analysis:** Time-series examination of crash trends across hours, days, and periods to detect seasonal or cyclical patterns.
+
+**Tools:** Python · pandas · scikit-learn · Plotly</p>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="ad-sidebar">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <div class="newsletter">
+        <h3>Get the next investigation</h3>
+        <p>New data stories monthly. No spam.</p>
+        <input type="email" placeholder="your@email.com">
+        <button>Subscribe Free →</button>
+      </div>
+
+      <div class="sidebar-block">
+        <div class="sidebar-title">Key Numbers</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="padding:12px;background:var(--cream);border-left:3px solid var(--red)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;color:var(--red);line-height:1">0:00</div>
+            <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-top:3px">Peak hour</div>
+          </div>
+          <div style="padding:12px;background:var(--cream);border-left:3px solid var(--orange)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;color:var(--orange);line-height:1">Brooklyn</div>
+            <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-top:3px">Top location</div>
+          </div>
+          <div style="padding:12px;background:var(--cream);border-left:3px solid var(--ink)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;color:var(--ink);line-height:1">30.7%</div>
+            <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-top:3px">Majority category</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-sidebar">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+
+<footer>
+  <p>© 2026 RecordsReveal.com · <a href="../index.html">Home</a> · <a href="../about/index.html">About</a> · <a href="../privacy/index.html">Privacy</a> · Data-Driven Public Records Journalism</p>
+</footer>
+
+<script>
+// PLOTLY HELPERS
+const layout = (extra={}) => ({
+  paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)',
+  font:{family:'Barlow, sans-serif', color:'#4a4a4a', size:11},
+  margin:{t:10,b:50,l:60,r:20},
+  xaxis:{gridcolor:'rgba(0,0,0,0.05)', zerolinecolor:'rgba(0,0,0,0.1)', tickfont:{size:10}},
+  yaxis:{gridcolor:'rgba(0,0,0,0.05)', zerolinecolor:'rgba(0,0,0,0.1)', tickfont:{size:10}},
+  showlegend:false, ...extra
+});
+const cfg = {responsive:true, displayModeBar:false};
+const RED = '#b5271f';
+const ORANGE = '#d2691e';
+const MUTED = 'rgba(181,39,31,0.4)';
+
+// CHARTS
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Hourly Pattern Bar Chart
+  Plotly.newPlot('chart-1', [{
+    x: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+    y: [5000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    type: 'bar',
+    marker: {color: ["rgba(181,39,31,1.0)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)"]},
+    hovertemplate: '<b>Hour %{x}</b><br>%{y:,} records<extra></extra>'
+  }], {
+    ...layout(),
+    yaxis: {...layout().yaxis, title: {text: 'Records', font: {size:10, color:'#888'}}, tickformat: ',d'}
+  }, cfg);
+
+  // Rankings Horizontal Bar Chart
+  Plotly.newPlot('chart-2', [{
+    x: [502, 802, 915, 1244, 1537],
+    y: ["Staten Island", "Bronx", "Manhattan", "Queens", "Brooklyn"],
+    type: 'bar',
+    orientation: 'h',
+    marker: {color: ["rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "#d2691e", "#b5271f"]},
+    hovertemplate: '<b>%{y}</b><br>%{x:,} records<extra></extra>'
+  }], {
+    ...layout(),
+    margin: {t:10,b:40,l:120,r:20},
+    xaxis: {...layout().xaxis, title: {text: 'Records', font: {size:10, color:'#888'}}, tickformat: ',d'}
+  }, cfg);
+
+        // Trend Over Time Line Chart
+        var trendData = {
+            x: [2023, 2024],
+            y: [2473, 2527],
+            type: 'scatter',
+            mode: 'lines',
+            fill: 'tozeroy',
+            line: {color: '#b5271f', width: 2},
+            fillcolor: 'rgba(181,39,31,0.3)',
+            name: 'Trend'
+        };
+        
+        var trendLayout = {
+            title: 'Trend Over Time (2.2% change)',
+            xaxis: {title: 'Time Period'},
+            yaxis: {title: 'Count'},
+            font: {family: 'Barlow, sans-serif'},
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            paper_bgcolor: 'rgba(0,0,0,0)'
+        };
+        
+        Plotly.newPlot('chart-3', [trendData], trendLayout, {responsive: true});
+        
+}});
+
+// SHARE FUNCTIONS
+const URL = encodeURIComponent(window.location.href);
+const TEXT = encodeURIComponent('{article.get("headline", "Investigation")}');
+function shareX(){{ window.open(`https://twitter.com/intent/tweet?text=${{TEXT}}&url=${{URL}}`,'_blank'); }}
+function shareFB(){{ window.open(`https://www.facebook.com/sharer/sharer.php?u=${{URL}}`,'_blank'); }}
+function copyLink(){{ navigator.clipboard.writeText(window.location.href).then(()=>{{ document.querySelectorAll('.share-btn').forEach(b=>{{if(b.textContent.includes('Copy')){{b.textContent='Copied!';setTimeout(()=>b.textContent='Copy Link',2000);}}}})}}); }}
+</script>
+</body>
+</html>

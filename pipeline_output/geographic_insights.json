@@ -1,0 +1,54 @@
+{
+  "analysis_type": "geographic",
+  "dataset": "pipeline_police/police_use_of_force_data.csv",
+  "lat_column": "latitude",
+  "lon_column": "longitude",
+  "patterns": {
+    "valid_coordinates": {
+      "count": 5000,
+      "total": 5000,
+      "percent": 100.0
+    },
+    "bounds": {
+      "lat_min": 30.087276,
+      "lat_max": 30.44371,
+      "lon_min": -97.91412,
+      "lon_max": -97.573728,
+      "center_lat": 30.265493,
+      "center_lon": -97.74392399999999
+    },
+    "hotspots": [
+      {
+        "lat": 30.2476713,
+        "lon": -97.7269044,
+        "count": 258,
+        "percent": 5.16
+      },
+      {
+        "lat": 30.2476713,
+        "lon": -97.76094359999999,
+        "count": 257,
+        "percent": 5.140000000000001
+      },
+      {
+        "lat": 30.2833147,
+        "lon": -97.76094359999999,
+        "count": 255,
+        "percent": 5.1
+      },
+      {
+        "lat": 30.2833147,
+        "lon": -97.7269044,
+        "count": 241,
+        "percent": 4.82
+      },
+      {
+        "lat": 30.3189581,
+        "lon": -97.658826,
+        "count": 178,
+        "percent": 3.56
+      }
+    ]
+  },
+  "ollama_insights": "Here are my analysis and recommendations:\n\n**Most newsworthy geographic finding:**\nThe dataset reveals a striking concentration of activity at a specific point in rural Texas, highlighting an unexpected hotspot that warrants further investigation.\n\n**What this spatial pattern suggests about the data:**\nThis geographic pattern suggests that our dataset may be biased towards a particular region or demographic, which could have implications for the accuracy and representativeness of the data as a whole.\n\n**Compelling pull quote:**\n\"In rural Texas, a surprising hub of activity has been uncovered - but what's behind it?\""
+}

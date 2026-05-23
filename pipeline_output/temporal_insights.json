@@ -1,0 +1,23 @@
+{
+  "analysis_type": "temporal",
+  "dataset": "data/campaign_finance/dark_money_swing_districts_2024.csv",
+  "time_column": "dem_candidate",
+  "patterns": {
+    "time_distribution": {
+      "top_10": {
+        "LATIMER, GEORGE": 3,
+        "ALTMAN, SUSAN COPIUS": 3,
+        "SUOZZI, THOMAS": 2,
+        "ROSEN, JACKY": 2,
+        "EHASZ, ASHLEY": 2,
+        "GALLEGO, RUBEN": 2,
+        "GRAY, ADAM C.": 2,
+        "STELSON, JANELLE": 2,
+        "MORALES, EDUARDO": 2,
+        "HOULAHAN, CHRISSY": 1
+      },
+      "unique_values": 149
+    }
+  },
+  "ollama_insights": "I'd be happy to help you analyze your data! However, I don't see any data provided from you. Please share the dataset with me, and I'll do my best to provide the requested analysis.\n\nOnce I have access to the data, I can assist you in:\n\n1. Identifying the most newsworthy time-based finding\n2. Interpreting what this pattern suggests about behavior or events\n3. Crafting a compelling pull quote for an article"
+}

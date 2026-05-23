@@ -1,0 +1,54 @@
+{
+  "analysis_type": "geographic",
+  "dataset": "test_dataset_911calls.csv",
+  "lat_column": "latitude",
+  "lon_column": "longitude",
+  "patterns": {
+    "valid_coordinates": {
+      "count": 3000,
+      "total": 3000,
+      "percent": 100.0
+    },
+    "bounds": {
+      "lat_min": 37.72449,
+      "lat_max": 37.807719,
+      "lon_min": -122.527708,
+      "lon_max": -122.383396,
+      "center_lat": 37.7661045,
+      "center_lon": -122.45555200000001
+    },
+    "hotspots": [
+      {
+        "lat": 37.770265949999995,
+        "lon": -122.41947400000001,
+        "count": 258,
+        "percent": 8.6
+      },
+      {
+        "lat": 37.778588850000006,
+        "lon": -122.41947400000001,
+        "count": 243,
+        "percent": 8.1
+      },
+      {
+        "lat": 37.76194305,
+        "lon": -122.41947400000001,
+        "count": 230,
+        "percent": 7.666666666666666
+      },
+      {
+        "lat": 37.75362015,
+        "lon": -122.41947400000001,
+        "count": 152,
+        "percent": 5.066666666666666
+      },
+      {
+        "lat": 37.770265949999995,
+        "lon": -122.4050428,
+        "count": 148,
+        "percent": 4.933333333333334
+      }
+    ]
+  },
+  "ollama_insights": "Here's my analysis:\n\n**1. The most newsworthy geographic finding:**\n\nA single hotspot at (37.7703, -122.4195) captures nearly a quarter of all records in the dataset, revealing an unusually concentrated activity pattern in San Francisco.\n\n**2. What this spatial pattern suggests about the data:**\n\nThis extreme clustering implies that our dataset is likely to be biased towards specific locations or individuals, potentially masking broader trends or patterns in the data.\n\n**3. Compelling pull quote:**\n\n\"San Francisco's epicenter reveals a mystery of concentrated activity, sparking questions about data accuracy and geographic scope.\""
+}

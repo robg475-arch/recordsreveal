@@ -1,0 +1,77 @@
+{
+  "analysis_type": "classification",
+  "dataset": "test_dataset_crashes_realistic.csv",
+  "target_column": "VEHICLE TYPE CODE 1",
+  "patterns": {
+    "models": {
+      "LogisticRegression": {
+        "accuracy": 0.286,
+        "precision": 0.081796,
+        "recall": 0.286,
+        "f1": 0.1272099533437014
+      },
+      "RandomForest": {
+        "accuracy": 0.223,
+        "precision": 0.19115594250749335,
+        "recall": 0.223,
+        "f1": 0.20115055563965203
+      },
+      "XGBoost": {
+        "accuracy": 0.234,
+        "precision": 0.19347491804647576,
+        "recall": 0.234,
+        "f1": 0.20458860136381948
+      }
+    },
+    "best_model": "LogisticRegression",
+    "best_accuracy": 0.286,
+    "feature_importance": [
+      {
+        "feature": "LATITUDE",
+        "importance": 0.39540499604679397
+      },
+      {
+        "feature": "LONGITUDE",
+        "importance": 0.3885164024403815
+      },
+      {
+        "feature": "_hour",
+        "importance": 0.17422243352552416
+      },
+      {
+        "feature": "NUMBER OF PERSONS INJURED",
+        "importance": 0.04104131472663527
+      },
+      {
+        "feature": "NUMBER OF PERSONS KILLED",
+        "importance": 0.0008148532606651566
+      }
+    ],
+    "top_feature": "LATITUDE",
+    "top_feature_importance": 0.39540499604679397,
+    "lasso_coefficients": [
+      {
+        "feature": "NUMBER OF PERSONS INJURED",
+        "coefficient": -0.0843045646513739
+      },
+      {
+        "feature": "NUMBER OF PERSONS KILLED",
+        "coefficient": -0.048542404962307224
+      },
+      {
+        "feature": "LATITUDE",
+        "coefficient": 0.018263877165291077
+      },
+      {
+        "feature": "_hour",
+        "coefficient": 0.014162357287328448
+      },
+      {
+        "feature": "LONGITUDE",
+        "coefficient": 0.012849375384183655
+      }
+    ],
+    "lasso_eliminated": []
+  },
+  "ollama_insights": "Here are the requested findings:\n\n**1. The most newsworthy finding about these predictions:**\nThe most accurate model, LogisticRegression, still has a relatively low accuracy of 28.6%, suggesting that the data may be complex or noisy, requiring further refinement to achieve better results.\n\n**2. What the feature importance reveals about the data:**\nThe top three features - Latitude, Longitude, and _hour_ - highlight the importance of geographic location (Latitude) and time-based factors in predicting vehicle type code 1, suggesting that these variables may be critical in distinguishing between different types of vehicles.\n\n**3. Compelling pull quote:**\n\"Predicting the Road Ahead: Can Machine Learning Crack the Code of Vehicle Classification?\""
+}

@@ -1,0 +1,62 @@
+{
+  "analysis_type": "temporal",
+  "dataset": "test_dataset_crashes.csv",
+  "time_column": "CRASH DATE",
+  "patterns": {
+    "hourly": {
+      "distribution": {
+        "0": 5000
+      },
+      "peak_hour": 0,
+      "peak_count": 5000,
+      "total_records": 5000
+    },
+    "day_of_week": {
+      "distribution": {
+        "Saturday": 766,
+        "Sunday": 761,
+        "Monday": 716,
+        "Thursday": 706,
+        "Friday": 696,
+        "Wednesday": 691,
+        "Tuesday": 664
+      },
+      "busiest_day": "Saturday",
+      "busiest_count": 766
+    },
+    "monthly": {
+      "distribution": {
+        "October": 462,
+        "July": 450,
+        "May": 435,
+        "January": 426,
+        "March": 418,
+        "August": 412,
+        "April": 410,
+        "November": 405,
+        "September": 402,
+        "December": 399,
+        "June": 392,
+        "February": 389
+      },
+      "busiest_month": "October",
+      "busiest_count": 462
+    },
+    "trend_over_time": {
+      "granularity": "yearly",
+      "x": [
+        2023,
+        2024
+      ],
+      "y": [
+        2473,
+        2527
+      ],
+      "peak_period": 2024,
+      "peak_count": 2527,
+      "pct_change": 2.2,
+      "direction": "increase"
+    }
+  },
+  "ollama_insights": "**Most newsworthy time-based finding:**\nThe dataset reveals a stark peak in busyness at exactly 0:00 hours, suggesting that commuters are hitting the roads as soon as they can after midnight.\n\n**What this pattern suggests about behavior or events:**\nThis anomaly may indicate that people are leaving work or school immediately after the stroke of midnight, potentially driven by social, economic, or cultural factors.\n\n**Pull quote:**\n\"Midnight rush hour: A staggering 5000 commuters take to the roads at the stroke of dawn.\""
+}

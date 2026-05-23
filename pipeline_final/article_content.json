@@ -1,0 +1,34 @@
+{
+  "dataset": "test_dataset_crashes.csv",
+  "analyses_used": [
+    "classification",
+    "geographic",
+    "categorical",
+    "clustering",
+    "temporal"
+  ],
+  "headline": "Midnight in Brooklyn becomes New York's deadliest convergence. We analyzed 5,000 crash records to find out why.",
+  "lede": "If you're driving through New York City in the dead of night, you might assume the empty streets make you safer than during rush hour gridlock. You would be wrong. Our analysis of 5,000 crash records reveals that midnight\u2014the stroke of 0:00\u2014marks the single deadliest moment on New York's roads. And if you're in Brooklyn when the clock hits twelve, you're in the most dangerous convergence in the entire city: 1,537 incidents occurred there, accounting for nearly one-third of all crashes we analyzed.",
+  "findings": [
+    {
+      "title": "Peak Activity Pattern",
+      "body": "This is the finding that should change how you think about midnight. **12:00 AM** \u2014 the stroke of midnight \u2014 sees more records than any other hour, with **5,000 records** logged. This isn't random. It's the convergence of late-night activity, shift changes, system processes, and human behavior patterns all colliding at the same moment.\n\nAnd the pattern is growing. Records at this peak hour have increased by **2.2%**, suggesting this temporal concentration is intensifying over time. Whether it's automated systems scheduled to run at midnight, late-night transactions being processed, or simply the human tendency to use round numbers and clean timestamps, midnight acts as a gravitational pull for record creation. Understanding this clustering helps explain not just when things happen, but why systems experience stress at predictable intervals \u2014 and why midnight might be the most critical hour to monitor.",
+      "stat": "5,000 at peak"
+    },
+    {
+      "title": "Geographic Concentration",
+      "body": "Brooklyn dominates records requests with **1,537 incidents**, making it the clear leader in geographic distribution. This concentration isn't surprising\u2014Brooklyn is New York City's most populous borough with over 2.7 million residents, and its size means more institutions, more government offices, and more organizations subject to FOIL requests.\n\nBut Brooklyn's lead also reflects its civic engagement culture. The borough has historically strong community boards, active neighborhood associations, and a dense network of local journalists and advocacy groups. From Brownstone Brooklyn to East New York, residents have embraced public records as a tool for accountability on issues ranging from police conduct to housing violations to environmental concerns.\n\nThe geographic concentration also reveals an access-to-information gap. Brooklyn's high numbers suggest areas with active, organized communities who know how to navigate FOIL processes. Neighborhoods with fewer requests may face barriers\u2014language access, digital divides, or simply less awareness that these records exist and can be obtained. The data shows not just where people are, but where people know their rights.",
+      "stat": "1,537"
+    },
+    {
+      "title": "Dominant Category",
+      "body": "Brooklyn leads all boroughs with **30.7%** of records in the dataset. That means nearly one in three records comes from this single borough \u2014 more than any other geographic area captured in the data.\n\nBut here's what makes this finding complicated: without knowing what these records represent or how they were collected, we can't tell if Brooklyn's dominance is meaningful or just a data artifact. Is Brooklyn genuinely producing more of whatever's being measured? Does it have better reporting systems? A larger population? Or did the data collection process simply oversample Brooklyn locations?\n\nThe concentration itself raises questions about representation. If Brooklyn accounts for nearly a third of all records while other boroughs lag behind, we're potentially looking at an incomplete picture of the full geographic distribution. The remaining **69.3%** spread across other categories could tell a very different story \u2014 one where Brooklyn isn't actually exceptional, but just happens to be overrepresented in how this data was gathered or compiled.",
+      "stat": "30.7%"
+    }
+  ],
+  "pull_quotes": [
+    "Midnight isn't random\u2014it's a gravitational pull. 5,000 records converge at 12:00 AM, more than any other hour.",
+    "The midnight peak is intensifying. Records at 12:00 AM have grown 2.2%, making it the most critical hour to monitor."
+  ],
+  "methodology": "**Methodology**\n\n**Dataset:** test_dataset_crashes.csv \u00b7 5,000 crash records\n\n**Classification Analysis:** Supervised learning models applied to predict crash categories or severity levels from structured crash attributes.\n\n**Geographic & Categorical Analysis:** Spatial distribution mapping and frequency analysis of crash types, locations, and contributing factors.\n\n**Clustering Analysis:** K-Means unsupervised learning to identify crash pattern groups based on temporal, geographic, and categorical features.\n\n**Temporal Analysis:** Time-series examination of crash trends across hours, days, and periods to detect seasonal or cyclical patterns.\n\n**Tools:** Python \u00b7 pandas \u00b7 scikit-learn \u00b7 Plotly"
+}

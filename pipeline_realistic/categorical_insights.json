@@ -1,0 +1,51 @@
+{
+  "analysis_type": "categorical",
+  "dataset": "test_dataset_crashes_realistic.csv",
+  "category_column": "CONTRIBUTING FACTOR VEHICLE 1",
+  "patterns": {
+    "distribution": {
+      "labels": [
+        "Driver Inattention/Distraction",
+        "Failure to Yield Right-of-Way",
+        "Following Too Closely",
+        "Backing Unsafely",
+        "Other Vehicular",
+        "Passing or Lane Usage Improper",
+        "Unsafe Speed",
+        "Unspecified",
+        "Traffic Control Disregarded",
+        "Turning Improperly"
+      ],
+      "counts": [
+        929,
+        740,
+        609,
+        549,
+        480,
+        404,
+        397,
+        344,
+        303,
+        245
+      ],
+      "percentages": [
+        18.6,
+        14.8,
+        12.2,
+        11.0,
+        9.6,
+        8.1,
+        7.9,
+        6.9,
+        6.1,
+        4.9
+      ],
+      "total_unique": 10,
+      "total_records": 5000,
+      "majority_label": "Driver Inattention/Distraction",
+      "majority_count": 929,
+      "majority_pct": 18.6
+    }
+  },
+  "ollama_insights": "Here are my analysis and recommendations:\n\n**Most newsworthy finding:**\nThe most striking discovery is that Driver Inattention/Distraction accounts for nearly 19% of all crashes, far exceeding the general public's perception of this factor as a relatively minor contributor to accidents.\n\n**What this distribution pattern suggests about the data:**\nThis categorical distribution highlights the significant role of human error in vehicle crashes, underscoring the importance of addressing driver distraction and attention on our roads. The dominance of Driver Inattention/Distraction also raises questions about the effectiveness of current countermeasures against distracted driving.\n\n**Compelling pull quote:**\n\"Distracted drivers are the leading cause of crashes, putting lives at risk every time they get behind the wheel.\""
+}

@@ -1,0 +1,183 @@
+{
+  "hourly_pattern": {
+    "type": "hourly",
+    "hours": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "totals": [
+      105,
+      44,
+      36,
+      46,
+      76,
+      112,
+      191,
+      182,
+      236,
+      223,
+      199,
+      182,
+      105,
+      189,
+      223,
+      252,
+      304,
+      515,
+      325,
+      260,
+      145,
+      100,
+      64,
+      68
+    ],
+    "counts": [
+      113,
+      45,
+      52,
+      39,
+      107,
+      137,
+      221,
+      209,
+      268,
+      251,
+      224,
+      195,
+      145,
+      242,
+      277,
+      322,
+      363,
+      608,
+      388,
+      304,
+      189,
+      127,
+      71,
+      103
+    ],
+    "peak_hour": 17,
+    "second_hour": 18
+  },
+  "day_of_week": {
+    "type": "day_of_week",
+    "days": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat",
+      "Sun"
+    ],
+    "totals": [
+      638,
+      576,
+      549,
+      631,
+      597,
+      595,
+      596
+    ],
+    "peak_day": "Mon",
+    "second_day": "Thu"
+  },
+  "geographic": {
+    "type": "geographic",
+    "locations": [
+      "Staten Island",
+      "Bronx",
+      "Manhattan",
+      "Queens",
+      "Brooklyn"
+    ],
+    "totals": [
+      406,
+      727,
+      763,
+      987,
+      1299
+    ],
+    "peak_location": "Brooklyn",
+    "second_location": "Queens"
+  },
+  "category_1": {
+    "type": "category",
+    "categories": [
+      "Passing Too Closely",
+      "Turning Improperly",
+      "Unsafe Speed",
+      "Traffic Control Disregarded",
+      "Passing or Lane Usage Improper",
+      "Unspecified",
+      "Backing Unsafely",
+      "Following Too Closely",
+      "Failure to Yield Right-of-Way",
+      "Driver Inattention/Distraction"
+    ],
+    "totals": [
+      137,
+      192,
+      238,
+      315,
+      367,
+      416,
+      441,
+      515,
+      628,
+      819
+    ],
+    "peak_category": "Driver Inattention/Distraction",
+    "second_category": "Failure to Yield Right-of-Way"
+  },
+  "category_2": {
+    "type": "category",
+    "categories": [
+      "Motorcycle",
+      "Bicycle",
+      "Unknown",
+      "Bus",
+      "Box Truck",
+      "Pick-up Truck",
+      "Taxi",
+      "Station Wagon/Sport Utility Vehicle",
+      "Sedan"
+    ],
+    "totals": [
+      101,
+      112,
+      131,
+      164,
+      193,
+      424,
+      506,
+      1134,
+      1417
+    ],
+    "peak_category": "Sedan",
+    "second_category": "Station Wagon/Sport Utility Vehicle"
+  }
+}

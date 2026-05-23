@@ -1,0 +1,222 @@
+{
+  "dataset": "test_dataset_crashes.csv",
+  "shape": {
+    "rows": 5000,
+    "columns": 16
+  },
+  "columns": {
+    "CRASH DATE": {
+      "name": "CRASH DATE",
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 730,
+      "pattern": "temporal"
+    },
+    "CRASH TIME": {
+      "name": "CRASH TIME",
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 1267,
+      "pattern": "temporal"
+    },
+    "BOROUGH": {
+      "name": "BOROUGH",
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 5,
+      "pattern": "geographic"
+    },
+    "ZIP CODE": {
+      "name": "ZIP CODE",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 1607,
+      "pattern": "geographic"
+    },
+    "LATITUDE": {
+      "name": "LATITUDE",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 5000,
+      "pattern": "geographic"
+    },
+    "LONGITUDE": {
+      "name": "LONGITUDE",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 5000,
+      "pattern": "geographic"
+    },
+    "CONTRIBUTING FACTOR VEHICLE 1": {
+      "name": "CONTRIBUTING FACTOR VEHICLE 1",
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 11,
+      "pattern": "categorical",
+      "top_values": {
+        "Driver Inattention/Distraction": 934,
+        "Failure to Yield Right-of-Way": 727,
+        "Following Too Closely": 606
+      }
+    },
+    "VEHICLE TYPE CODE 1": {
+      "name": "VEHICLE TYPE CODE 1",
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 9,
+      "pattern": "categorical",
+      "top_values": {
+        "Sedan": 1700,
+        "Station Wagon/Sport Utility Vehicle": 1253,
+        "Taxi": 624
+      }
+    },
+    "NUMBER OF PERSONS INJURED": {
+      "name": "NUMBER OF PERSONS INJURED",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 7,
+      "pattern": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 6.0,
+        "mean": 0.8364,
+        "median": 1.0
+      }
+    },
+    "NUMBER OF PERSONS KILLED": {
+      "name": "NUMBER OF PERSONS KILLED",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 2,
+      "pattern": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.0056,
+        "median": 0.0
+      }
+    },
+    "NUMBER OF PEDESTRIANS INJURED": {
+      "name": "NUMBER OF PEDESTRIANS INJURED",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 3,
+      "pattern": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 2.0,
+        "mean": 0.1978,
+        "median": 0.0
+      }
+    },
+    "NUMBER OF PEDESTRIANS KILLED": {
+      "name": "NUMBER OF PEDESTRIANS KILLED",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 2,
+      "pattern": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.002,
+        "median": 0.0
+      }
+    },
+    "NUMBER OF CYCLIST INJURED": {
+      "name": "NUMBER OF CYCLIST INJURED",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 3,
+      "pattern": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 2.0,
+        "mean": 0.1364,
+        "median": 0.0
+      }
+    },
+    "NUMBER OF CYCLIST KILLED": {
+      "name": "NUMBER OF CYCLIST KILLED",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 2,
+      "pattern": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.0012,
+        "median": 0.0
+      }
+    },
+    "NUMBER OF MOTORIST INJURED": {
+      "name": "NUMBER OF MOTORIST INJURED",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 5,
+      "pattern": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 4.0,
+        "mean": 0.5022,
+        "median": 0.0
+      }
+    },
+    "NUMBER OF MOTORIST KILLED": {
+      "name": "NUMBER OF MOTORIST KILLED",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 2,
+      "pattern": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.0024,
+        "median": 0.0
+      }
+    }
+  },
+  "patterns": {
+    "temporal": [
+      "CRASH DATE",
+      "CRASH TIME"
+    ],
+    "geographic": [
+      "BOROUGH",
+      "ZIP CODE",
+      "LATITUDE",
+      "LONGITUDE"
+    ],
+    "categorical": [
+      "CONTRIBUTING FACTOR VEHICLE 1",
+      "VEHICLE TYPE CODE 1"
+    ],
+    "numeric": [
+      "NUMBER OF PERSONS INJURED",
+      "NUMBER OF PERSONS KILLED",
+      "NUMBER OF PEDESTRIANS INJURED",
+      "NUMBER OF PEDESTRIANS KILLED",
+      "NUMBER OF CYCLIST INJURED",
+      "NUMBER OF CYCLIST KILLED",
+      "NUMBER OF MOTORIST INJURED",
+      "NUMBER OF MOTORIST KILLED"
+    ]
+  },
+  "summary_stats": {}
+}

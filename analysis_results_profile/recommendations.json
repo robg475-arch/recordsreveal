@@ -1,0 +1,72 @@
+{
+  "dataset": "test_dataset_crashes.csv",
+  "profiled_at": "2026-05-20T10:03:17.295237",
+  "recommended_skills": [
+    {
+      "skill": "temporal-analysis",
+      "priority": "high",
+      "reason": "Found 2 temporal column(s): CRASH DATE, CRASH TIME",
+      "command": "python temporal-analysis/analyze.py test_dataset_crashes.csv CRASH DATE",
+      "estimated_time": "30 seconds",
+      "cost": "$0.00 (Ollama)",
+      "insights_provided": [
+        "hourly patterns",
+        "day of week patterns",
+        "peak times",
+        "temporal trends"
+      ]
+    },
+    {
+      "skill": "geographic-analysis",
+      "priority": "high",
+      "reason": "Found coordinate columns: LATITUDE, LONGITUDE",
+      "command": "python geographic-analysis/analyze.py test_dataset_crashes.csv LATITUDE LONGITUDE",
+      "estimated_time": "45 seconds",
+      "cost": "$0.00 (Ollama)",
+      "insights_provided": [
+        "geographic hotspots",
+        "location clustering",
+        "spatial patterns"
+      ]
+    },
+    {
+      "skill": "classification-analysis",
+      "priority": "medium",
+      "reason": "Found potential classification target: CONTRIBUTING FACTOR VEHICLE 1 (11 classes)",
+      "command": "python classification-analysis/analyze.py test_dataset_crashes.csv \"CONTRIBUTING FACTOR VEHICLE 1\"",
+      "estimated_time": "90 seconds",
+      "cost": "$0.00 (Ollama)",
+      "insights_provided": [
+        "ML predictions",
+        "feature importance",
+        "accuracy metrics"
+      ]
+    },
+    {
+      "skill": "clustering-analysis",
+      "priority": "medium",
+      "reason": "Dataset has 5,000 rows with 8 numeric features - good for pattern discovery",
+      "command": "python clustering-analysis/analyze.py test_dataset_crashes.csv",
+      "estimated_time": "60 seconds",
+      "cost": "$0.00 (Ollama)",
+      "insights_provided": [
+        "hidden patterns",
+        "record groupings",
+        "cluster profiles"
+      ]
+    },
+    {
+      "skill": "categorical-analysis",
+      "priority": "low",
+      "reason": "Found 2 categorical column(s) for breakdown analysis",
+      "command": "python categorical-analysis/analyze.py test_dataset_crashes.csv CONTRIBUTING FACTOR VEHICLE 1",
+      "estimated_time": "20 seconds",
+      "cost": "$0.00 (Ollama)",
+      "insights_provided": [
+        "category distributions",
+        "top categories",
+        "breakdowns"
+      ]
+    }
+  ]
+}

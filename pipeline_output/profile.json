@@ -1,0 +1,212 @@
+{
+  "dataset": "data/campaign_finance/dark_money_swing_districts_2024.csv",
+  "shape": {
+    "rows": 242,
+    "columns": 15
+  },
+  "columns": {
+    "district": {
+      "name": "district",
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 242,
+      "pattern": "text"
+    },
+    "state": {
+      "name": "state",
+      "dtype": "object",
+      "missing_count": 2,
+      "missing_percent": 0.8264462809917356,
+      "unique_values": 49,
+      "pattern": "geographic"
+    },
+    "district_num": {
+      "name": "district_num",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 41,
+      "pattern": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 50.0,
+        "mean": 9.347107438016529,
+        "median": 6.0
+      }
+    },
+    "dem_candidate": {
+      "name": "dem_candidate",
+      "dtype": "object",
+      "missing_count": 82,
+      "missing_percent": 33.88429752066116,
+      "unique_values": 149,
+      "pattern": "temporal"
+    },
+    "rep_candidate": {
+      "name": "rep_candidate",
+      "dtype": "object",
+      "missing_count": 68,
+      "missing_percent": 28.09917355371901,
+      "unique_values": 165,
+      "pattern": "temporal"
+    },
+    "total_spending": {
+      "name": "total_spending",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 239,
+      "pattern": "numeric",
+      "stats": {
+        "min": 10024.0,
+        "max": 24636157.339999992,
+        "mean": 3425780.2594214873,
+        "median": 398395.67000000004
+      }
+    },
+    "spending_for": {
+      "name": "spending_for",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 236,
+      "pattern": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 9115295.83999999,
+        "mean": 1184821.753140496,
+        "median": 246895.2
+      }
+    },
+    "spending_against": {
+      "name": "spending_against",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 135,
+      "pattern": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 20856620.50999999,
+        "mean": 2240958.5062809917,
+        "median": 13836.7
+      }
+    },
+    "dem_support": {
+      "name": "dem_support",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 153,
+      "pattern": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 7620462.8599999985,
+        "mean": 743660.2829752067,
+        "median": 29335.9
+      }
+    },
+    "dem_oppose": {
+      "name": "dem_oppose",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 87,
+      "pattern": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 13238737.310000006,
+        "mean": 493888.39756198344,
+        "median": 0.0
+      }
+    },
+    "rep_support": {
+      "name": "rep_support",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 165,
+      "pattern": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 4180924.0700000008,
+        "mean": 431819.83760330576,
+        "median": 42991.024999999994
+      }
+    },
+    "rep_oppose": {
+      "name": "rep_oppose",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 105,
+      "pattern": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 16707593.900000006,
+        "mean": 1746760.4396280989,
+        "median": 0.0
+      }
+    },
+    "net_dem_advantage": {
+      "name": "net_dem_advantage",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 238,
+      "pattern": "numeric",
+      "stats": {
+        "min": -5630284.020000004,
+        "max": 18157092.909999996,
+        "mean": 1564712.4874380163,
+        "median": 29230.480000000003
+      }
+    },
+    "num_transactions": {
+      "name": "num_transactions",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 122,
+      "pattern": "numeric",
+      "stats": {
+        "min": 1.0,
+        "max": 1024.0,
+        "mean": 104.76446280991736,
+        "median": 25.0
+      }
+    },
+    "top_spenders": {
+      "name": "top_spenders",
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 241,
+      "pattern": "text"
+    }
+  },
+  "patterns": {
+    "temporal": [
+      "dem_candidate",
+      "rep_candidate"
+    ],
+    "geographic": [
+      "state"
+    ],
+    "categorical": [],
+    "numeric": [
+      "district_num",
+      "total_spending",
+      "spending_for",
+      "spending_against",
+      "dem_support",
+      "dem_oppose",
+      "rep_support",
+      "rep_oppose",
+      "net_dem_advantage",
+      "num_transactions"
+    ]
+  },
+  "summary_stats": {}
+}

@@ -1,0 +1,123 @@
+{
+  "dataset": "test_dataset_crashes_realistic.csv",
+  "shape": {
+    "rows": 5000,
+    "columns": 9
+  },
+  "columns": {
+    "CRASH DATE": {
+      "name": "CRASH DATE",
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 4983,
+      "pattern": "temporal"
+    },
+    "BOROUGH": {
+      "name": "BOROUGH",
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 5,
+      "pattern": "geographic"
+    },
+    "LATITUDE": {
+      "name": "LATITUDE",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 2354,
+      "pattern": "geographic"
+    },
+    "LONGITUDE": {
+      "name": "LONGITUDE",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 2318,
+      "pattern": "geographic"
+    },
+    "CONTRIBUTING FACTOR VEHICLE 1": {
+      "name": "CONTRIBUTING FACTOR VEHICLE 1",
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 10,
+      "pattern": "categorical",
+      "top_values": {
+        "Driver Inattention/Distraction": 929,
+        "Failure to Yield Right-of-Way": 740,
+        "Following Too Closely": 609
+      }
+    },
+    "VEHICLE TYPE CODE 1": {
+      "name": "VEHICLE TYPE CODE 1",
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 9,
+      "pattern": "categorical",
+      "top_values": {
+        "Sedan": 1430,
+        "Station Wagon/Sport Utility Vehicle": 1038,
+        "Taxi": 765
+      }
+    },
+    "NUMBER OF PERSONS INJURED": {
+      "name": "NUMBER OF PERSONS INJURED",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 4,
+      "pattern": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 3.0,
+        "mean": 0.434,
+        "median": 0.0
+      }
+    },
+    "NUMBER OF PERSONS KILLED": {
+      "name": "NUMBER OF PERSONS KILLED",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 2,
+      "pattern": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.0014,
+        "median": 0.0
+      }
+    },
+    "_hour": {
+      "name": "_hour",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_values": 24,
+      "pattern": "temporal"
+    }
+  },
+  "patterns": {
+    "temporal": [
+      "CRASH DATE",
+      "_hour"
+    ],
+    "geographic": [
+      "BOROUGH",
+      "LATITUDE",
+      "LONGITUDE"
+    ],
+    "categorical": [
+      "CONTRIBUTING FACTOR VEHICLE 1",
+      "VEHICLE TYPE CODE 1"
+    ],
+    "numeric": [
+      "NUMBER OF PERSONS INJURED",
+      "NUMBER OF PERSONS KILLED"
+    ]
+  },
+  "summary_stats": {}
+}

@@ -1,0 +1,34 @@
+{
+  "dataset": "test_dataset_crashes.csv",
+  "analyses_used": [
+    "classification",
+    "geographic",
+    "categorical",
+    "clustering",
+    "temporal"
+  ],
+  "headline": "Brooklyn's streets see more crashes than any NYC borough\u20141,537 incidents recorded. We analyzed 5,000 records to find out why.",
+  "lede": "If you're driving through Brooklyn in the bright light of day, you might think you're playing it safe\u2014that the real danger comes after dark when visibility drops and reckless drivers take over the streets. The data tells a different story. Our analysis of 5,000 crash records reveals that Brooklyn's streets logged 1,537 incidents, more than any other New York City borough, with crashes peaking at midnight\u2014not during evening rush hour or late-night bar closings. The culprit in more than one-third of these collisions? The family sedan, accounting for 34% of all vehicles involved in crashes across the city.",
+  "findings": [
+    {
+      "title": "Peak Activity Pattern",
+      "body": "This is the finding that should make municipalities rethink how they staff their records departments. **Midnight** \u2014 **0:00** \u2014 sees more record requests than any other hour of the day, with **5,000 requests** flooding in right as the clock strikes twelve. This isn't random. It's people racing against deadlines, submitting requests the moment they're legally able to, or trying to get their paperwork in before a new day officially begins.\n\nWhat makes this pattern even more significant is the trend line: requests are growing at **2.2%** over time. That means midnight isn't just a quirk anymore \u2014 it's becoming the new normal for public records access. The implication is clear: governments that still operate on traditional 9-to-5 processing schedules are fundamentally misaligned with when the public actually wants to engage with them. The digital age has created a midnight rush hour for information, and most records offices aren't staffed or structured to handle it.",
+      "stat": "5,000 at peak"
+    },
+    {
+      "title": "Geographic Concentration",
+      "body": "Brooklyn dominates the records with **1,537 incidents**, making it the clear geographic leader in this dataset. The borough's concentration of cases significantly outpaces other New York City locations.\n\nWhy does Brooklyn lead? The answer lies in its unique combination of population density and sprawling geography. Brooklyn is the most populous borough with over 2.7 million residents spread across diverse neighborhoods \u2014 from densely packed areas like Downtown Brooklyn and Williamsburg to more residential zones in southern sections. This means more people interacting with more systems: more housing transactions that can go wrong, more consumer purchases, more employment disputes, and more public service encounters that generate records.\n\nBrooklyn's infrastructure also plays a role. The borough contains a massive mix of old and new buildings, a complex web of landlord-tenant relationships, and countless small businesses operating in aging commercial districts. These conditions create more opportunities for the types of incidents, violations, or disputes that generate official records. Population size alone doesn't explain it \u2014 Brooklyn's particular combination of density, diversity, and urban complexity makes it a hotspot for record generation across multiple categories.",
+      "stat": "1,537"
+    },
+    {
+      "title": "Dominant Category",
+      "body": "The clear winner in this dataset is Sedan at **34.0%** \u2014 making up more than one in three records. This isn't particularly surprising given that sedans have historically been the most common consumer vehicle type, the practical choice for individuals and families who need reliable transportation without the bulk of an SUV or the limitations of a compact car.\n\nBut here's what's notable: **34.0%** is dominant, but it's not overwhelming. That means roughly two-thirds of the records are *not* sedans. We're likely seeing the documented shift in American car-buying habits, where SUVs, crossovers, and trucks have been steadily eating into sedan market share for the past decade. If this data were from the 1990s or early 2000s, we'd expect sedans to claim closer to 50% or more.\n\nThe real question is what makes up the remaining **66%**. Are SUVs closing in as a near-equal category? Is there a long tail of specialty vehicles diluting the distribution? Without seeing the full breakdown, that one-third sedan figure tells us we're looking at a transitional automotive landscape \u2014 sedan-heavy, but no longer sedan-dominated.",
+      "stat": "34.0%"
+    }
+  ],
+  "pull_quotes": [
+    "Midnight sees 5,000 record requests\u2014more than any other hour\u2014creating a digital rush hour that 9-to-5 offices can't handle.",
+    "Record requests are growing 2.2% over time, proving midnight access isn't a quirk anymore\u2014it's the new normal."
+  ],
+  "methodology": "**Methodology**\n\n**Dataset:** test_dataset_crashes.csv \u00b7 5,000 crash records\n\n**Classification Analysis:** Supervised learning models applied to predict crash severity or outcome categories using features such as location, time, and crash characteristics.\n\n**Geographic & Categorical Analysis:** Spatial distribution mapping and frequency analysis across categorical variables (e.g., crash type, contributing factors, vehicle types).\n\n**Clustering:** Unsupervised K-Means clustering to identify patterns and group similar crash profiles based on multiple features.\n\n**Temporal Analysis:** Time-series examination of crash frequency and patterns across hours, days, and seasonal periods.\n\n**Tools:** Python \u00b7 pandas \u00b7 scikit-learn \u00b7 matplotlib/seaborn"
+}

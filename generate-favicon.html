@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Generate Favicon</title>
+</head>
+<body style="background: #111; color: #fff; font-family: monospace; padding: 40px;">
+<h2>RecordsReveal Favicon Generator</h2>
+<p>Right-click each canvas and "Save Image As..." with the name shown below it.</p>
+
+<div style="margin: 20px 0;">
+  <canvas id="favicon32" width="32" height="32" style="border: 2px solid #555; image-rendering: pixelated;"></canvas>
+  <br><strong>Save as: favicon-32x32.png</strong>
+</div>
+
+<div style="margin: 20px 0;">
+  <canvas id="favicon16" width="16" height="16" style="border: 2px solid #555; image-rendering: pixelated;"></canvas>
+  <br><strong>Save as: favicon-16x16.png</strong>
+</div>
+
+<div style="margin: 20px 0;">
+  <canvas id="appleicon" width="180" height="180" style="border: 2px solid #555; width: 100px; height: 100px;"></canvas>
+  <br><strong>Save as: apple-touch-icon.png</strong>
+</div>
+
+<script>
+function drawFavicon(canvas, size) {
+  const ctx = canvas.getContext('2d');
+  const scale = size / 64;
+  
+  // Dark background with rounded corners
+  ctx.fillStyle = '#1c1c1c';
+  ctx.fillRect(0, 0, size, size);
+  
+  // Scale for drawing
+  ctx.scale(scale, scale);
+  
+  // Main R shape in cream
+  ctx.fillStyle = '#f8f6f1';
+  ctx.beginPath();
+  ctx.moveTo(16, 14);
+  ctx.lineTo(16, 50);
+  ctx.lineTo(24, 50);
+  ctx.lineTo(24, 36);
+  ctx.lineTo(32, 36);
+  ctx.bezierCurveTo(38, 36, 42, 32, 42, 26);
+  ctx.bezierCurveTo(42, 20, 38, 14, 32, 14);
+  ctx.closePath();
+  ctx.fill();
+  
+  // R top part (rectangle for simplicity)
+  ctx.fillRect(24, 20, 8, 10);
+  ctx.fillRect(24, 20, 12, 6);
+  
+  // R leg extension (red accent)
+  ctx.fillStyle = '#b5271f';
+  ctx.beginPath();
+  ctx.moveTo(32, 36);
+  ctx.lineTo(42, 50);
+  ctx.lineTo(48, 50);
+  ctx.lineTo(36, 34);
+  ctx.closePath();
+  ctx.fill();
+  
+  // Data visualization bars
+  ctx.fillStyle = '#d2691e';
+  ctx.fillRect(38, 42, 4, 8);
+  ctx.fillRect(44, 38, 4, 12);
+  ctx.fillRect(50, 35, 4, 15);
+  
+  // Magnifying glass symbol
+  ctx.strokeStyle = '#d2691e';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.arc(52, 18, 6, 0, 2 * Math.PI);
+  ctx.stroke();
+  
+  ctx.lineCap = 'round';
+  ctx.beginPath();
+  ctx.moveTo(56, 22);
+  ctx.lineTo(59, 25);
+  ctx.stroke();
+}
+
+// Draw 32x32 favicon
+drawFavicon(document.getElementById('favicon32'), 32);
+
+// Draw 16x16 favicon
+const canvas16 = document.getElementById('favicon16');
+const ctx16 = canvas16.getContext('2d');
+
+// For 16x16, use a simpler design
+ctx16.fillStyle = '#1c1c1c';
+ctx16.fillRect(0, 0, 16, 16);
+
+// Bold R
+ctx16.fillStyle = '#f8f6f1';
+ctx16.fillRect(3, 2, 7, 2);
+ctx16.fillRect(3, 2, 2, 12);
+ctx16.fillRect(3, 7, 5, 2);
+ctx16.fillRect(10, 2, 2, 5);
+
+// Red accent
+ctx16.fillStyle = '#b5271f';
+ctx16.beginPath();
+ctx16.moveTo(8, 9);
+ctx16.lineTo(12, 14);
+ctx16.lineTo(10, 14);
+ctx16.lineTo(7, 10);
+ctx16.fill();
+
+// Orange bars
+ctx16.fillStyle = '#d2691e';
+ctx16.fillRect(11, 11, 1, 3);
+ctx16.fillRect(13, 9, 1, 5);
+
+// Draw 180x180 apple touch icon
+drawFavicon(document.getElementById('appleicon'), 180);
+</script>
+
+<hr style="margin: 40px 0;">
+<h3>Instructions:</h3>
+<ol>
+  <li>Right-click each canvas above</li>
+  <li>Select "Save Image As..."</li>
+  <li>Save with the exact filename shown below each canvas</li>
+  <li>Save all three files to the project root directory</li>
+</ol>
+
+</body>
+</html>

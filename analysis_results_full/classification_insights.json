@@ -1,0 +1,129 @@
+{
+  "analysis_type": "classification",
+  "dataset": "test_dataset_crashes.csv",
+  "target_column": "VEHICLE TYPE CODE 1",
+  "patterns": {
+    "models": {
+      "LogisticRegression": {
+        "accuracy": 0.34,
+        "precision": 0.24099098196392785,
+        "recall": 0.34,
+        "f1": 0.17427118523901525
+      },
+      "RandomForest": {
+        "accuracy": 0.284,
+        "precision": 0.2147661783279679,
+        "recall": 0.284,
+        "f1": 0.2344279177092873
+      },
+      "XGBoost": {
+        "accuracy": 0.305,
+        "precision": 0.23493532347158286,
+        "recall": 0.305,
+        "f1": 0.25573891717348135
+      }
+    },
+    "best_model": "LogisticRegression",
+    "best_accuracy": 0.34,
+    "feature_importance": [
+      {
+        "feature": "LONGITUDE",
+        "importance": 0.3111334944200889
+      },
+      {
+        "feature": "LATITUDE",
+        "importance": 0.3052362152278078
+      },
+      {
+        "feature": "ZIP CODE",
+        "importance": 0.3014337215350361
+      },
+      {
+        "feature": "NUMBER OF PERSONS INJURED",
+        "importance": 0.02882741509350155
+      },
+      {
+        "feature": "NUMBER OF MOTORIST INJURED",
+        "importance": 0.023350962342566818
+      },
+      {
+        "feature": "NUMBER OF PEDESTRIANS INJURED",
+        "importance": 0.0161026903697137
+      },
+      {
+        "feature": "NUMBER OF CYCLIST INJURED",
+        "importance": 0.010767550651225146
+      },
+      {
+        "feature": "NUMBER OF PERSONS KILLED",
+        "importance": 0.0012325516687378185
+      },
+      {
+        "feature": "NUMBER OF MOTORIST KILLED",
+        "importance": 0.000887954112460404
+      },
+      {
+        "feature": "NUMBER OF PEDESTRIANS KILLED",
+        "importance": 0.0006909416109725539
+      },
+      {
+        "feature": "NUMBER OF CYCLIST KILLED",
+        "importance": 0.0003365029678891227
+      }
+    ],
+    "top_feature": "LONGITUDE",
+    "top_feature_importance": 0.3111334944200889,
+    "lasso_coefficients": [
+      {
+        "feature": "NUMBER OF PERSONS KILLED",
+        "coefficient": -0.09155177750987228
+      },
+      {
+        "feature": "NUMBER OF PEDESTRIANS KILLED",
+        "coefficient": -0.06479407477471265
+      },
+      {
+        "feature": "NUMBER OF MOTORIST KILLED",
+        "coefficient": -0.06358220318502207
+      },
+      {
+        "feature": "LONGITUDE",
+        "coefficient": -0.06021557121794064
+      },
+      {
+        "feature": "ZIP CODE",
+        "coefficient": 0.05249237107050695
+      },
+      {
+        "feature": "NUMBER OF CYCLIST INJURED",
+        "coefficient": 0.046442426389273914
+      },
+      {
+        "feature": "NUMBER OF CYCLIST KILLED",
+        "coefficient": -0.021325810991663998
+      },
+      {
+        "feature": "NUMBER OF MOTORIST INJURED",
+        "coefficient": -0.012867930427936065
+      },
+      {
+        "feature": "NUMBER OF PEDESTRIANS INJURED",
+        "coefficient": -0.005371278665544868
+      },
+      {
+        "feature": "NUMBER OF PERSONS INJURED",
+        "coefficient": 0.004432600266335657
+      },
+      {
+        "feature": "LATITUDE",
+        "coefficient": 0.004392612624935634
+      }
+    ],
+    "lasso_eliminated": [
+      "NUMBER OF PEDESTRIANS INJURED",
+      "NUMBER OF PERSONS INJURED",
+      "LATITUDE"
+    ]
+  },
+  "ollama_insights": "Here are my analysis and recommendations:\n\n**1. Most newsworthy finding:**\nThe most surprising result is that the top 3 features driving model predictions are location-based: Longitude, Latitude, and Zip Code. This suggests that geographic information plays a crucial role in determining vehicle type.\n\n**2. Feature importance insights:**\nThe feature importance reveals that the data contains valuable spatial information, which is often overlooked in machine learning models. The fact that longitude, latitude, and zip code are top-performing features highlights the importance of incorporating location-based context in predicting vehicle types.\n\n**3. Compelling pull quote:**\n\"Geographic clues point to a surprising culprit behind car classification predictions.\"\n\nThis pull quote emphasizes the unexpected connection between location-based data and machine learning model performance, making it a great starting point for an article exploring the intersection of geography and AI-driven decision-making."
+}

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Midnight becomes the most dangerous hour for police force encounters. We analyzed 5,000 incidents to find out why. | RecordsReveal</title>
+<meta name="description" content="If you're a police officer on patrol, conventional wisdom says the pre-dawn hours—when criminals prowl and witnesses sleep—pose the greatest danger. B">
+<meta property="og:title" content="Midnight becomes the most dangerous hour for police force encounters. We analyzed 5,000 incidents to find out why.">
+<meta property="og:description" content="If you're a police officer on patrol, conventional wisdom says the pre-dawn hours—when criminals prowl and witnesses sleep—pose the greatest danger. B">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9045696717764033" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#1c1c1c;--ink2:#4a4a4a;--ink3:#888;--paper:#f8f6f1;--white:#fff;
+  --cream:#f0ece3;--red:#b5271f;--red2:#d4302a;--orange:#d2691e;--border:#ddd9ce;--border2:#c8c3b5;
+}
+body{background:var(--paper);color:var(--ink);font-family:'Barlow',sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.site-header{background:var(--white);border-bottom:3px double var(--border)}
+.header-top{display:flex;justify-content:space-between;align-items:center;padding:10px 40px;border-bottom:1px solid var(--border);font-size:11px;color:var(--ink3)}
+.header-top a{color:var(--ink3);margin-left:16px}
+.header-top a:hover{color:var(--red)}
+.masthead{text-align:center;padding:20px 40px 16px}
+.site-name{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.site-name span{color:var(--red)}
+.site-rule{width:100%;height:2px;background:var(--ink);margin:10px 0 8px;position:relative}
+.site-rule::after{content:'';position:absolute;top:4px;left:0;right:0;height:1px;background:var(--ink)}
+.site-tagline{font-family:'Libre Baskerville',serif;font-style:italic;font-size:.85rem;color:var(--ink3)}
+.header-nav{display:flex;justify-content:center;border-top:1px solid var(--border);margin-top:14px}
+.header-nav a{padding:7px 20px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:var(--ink2);border-right:1px solid var(--border);transition:all .15s}
+.header-nav a:last-child{border-right:none}
+.header-nav a:hover,.header-nav a.active{background:var(--ink);color:white}
+.ad-bar{background:var(--cream);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:10px;text-align:center}
+.ad-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.container{max-width:1160px;margin:0 auto;padding:0 40px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:48px;padding:40px 0}
+.hero-banner{background:var(--ink);padding:32px 40px;margin-bottom:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:linear-gradient(135deg,#1c1c1c,#2a1a0a)}
+.hero-stat{background:rgba(255,255,255,.04);padding:20px 16px;text-align:center}
+.hero-stat-num{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:700;color:var(--orange);line-height:1;display:block}
+.hero-stat-label{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px}
+.story-hero{border-bottom:2px solid var(--ink);padding-bottom:32px;margin-bottom:32px}
+.story-tag{display:inline-block;background:var(--red);color:white;font-size:9px;letter-spacing:.15em;text-transform:uppercase;padding:3px 8px;margin-bottom:10px;font-weight:600}
+.story-kicker{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:8px}
+.story-headline{font-family:'Libre Baskerville',serif;font-size:clamp(1.7rem,3.5vw,2.5rem);font-weight:700;line-height:1.15;color:var(--ink);margin-bottom:12px}
+.story-dek{font-family:'Libre Baskerville',serif;font-style:italic;font-size:.98rem;line-height:1.65;color:var(--ink2);margin-bottom:14px;max-width:640px}
+.story-meta{font-size:10px;letter-spacing:.08em;color:var(--ink3);display:flex;align-items:center;gap:10px}
+.story-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--ink3)}
+.article-body{font-family:'Libre Baskerville',serif;font-size:.98rem;line-height:1.85;color:var(--ink2)}
+.article-body p{margin-bottom:1.2em}
+.article-body strong{font-family:'Barlow',sans-serif;font-weight:600;color:var(--ink)}
+.lede{font-size:1.1rem;line-height:1.75;color:var(--ink);margin-bottom:1.4em}
+.pull{border-left:4px solid var(--red);padding:16px 20px;margin:24px 0;background:var(--cream);font-family:'Libre Baskerville',serif;font-style:italic;font-size:1.05rem;line-height:1.5;color:var(--ink)}
+.data-block{background:var(--white);border:1px solid var(--border);padding:28px;margin:28px 0}
+.data-block-kicker{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:4px}
+.data-block-title{font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:700;margin-bottom:4px}
+.data-block-sub{font-size:.8rem;color:var(--ink3);font-style:italic;margin-bottom:20px;font-family:'Libre Baskerville',serif}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border:1px solid var(--border);margin:24px 0}
+.stat-cell{background:var(--white);padding:20px 16px;text-align:center}
+.stat-big{font-family:'Barlow Condensed',sans-serif;font-size:2.4rem;font-weight:700;color:var(--red);line-height:1}
+.stat-label{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-top:4px;line-height:1.4}
+.stat-context{font-size:.75rem;color:var(--ink2);margin-top:4px;font-style:italic;font-family:'Libre Baskerville',serif}
+.share-bar{display:flex;gap:8px;align-items:center;margin:20px 0;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.share-label{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink3);margin-right:8px}
+.share-btn{padding:6px 14px;border:1px solid var(--border);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;background:white;color:var(--ink2);transition:all .15s;font-family:'Barlow',sans-serif}
+.share-btn:hover{background:var(--ink);color:white;border-color:var(--ink)}
+.share-btn.x{background:#000;color:white;border-color:#000}
+.share-btn.fb{background:#1877f2;color:white;border-color:#1877f2}
+.sidebar-block{margin-bottom:28px;border-top:2px solid var(--ink);padding-top:14px}
+.sidebar-title{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--ink);margin-bottom:14px}
+.newsletter{background:var(--ink);color:white;padding:20px;margin-bottom:24px}
+.newsletter h3{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.newsletter p{font-size:.78rem;color:rgba(255,255,255,.6);margin-bottom:14px;line-height:1.5}
+.newsletter input{width:100%;padding:8px 10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:white;font-size:.82rem;margin-bottom:8px;outline:none;font-family:'Barlow',sans-serif}
+.newsletter input::placeholder{color:rgba(255,255,255,.35)}
+.newsletter button{width:100%;padding:9px;background:var(--red);color:white;border:none;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;cursor:pointer}
+.newsletter button:hover{background:var(--red2)}
+.ad-sidebar{background:var(--cream);border:1px dashed var(--border2);padding:10px;text-align:center;margin-bottom:20px}
+footer{background:var(--ink);padding:60px 40px 40px;border-top:3px solid var(--red);margin-top:60px}
+.footer-content{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:60px;max-width:1200px;margin:0 auto 40px}
+.footer-brand{max-width:400px}
+.footer-logo{font-family:'Libre Baskerville',serif;font-size:1.8rem;font-weight:700;margin-bottom:16px;color:white}
+.footer-logo span{color:var(--red)}
+.footer-tagline{font-size:0.9rem;line-height:1.6;color:rgba(255,255,255,0.5)}
+.footer-heading{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:20px}
+.footer-links{list-style:none;padding:0;margin:0}
+.footer-links li{margin-bottom:12px}
+.footer-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9rem;transition:color 0.2s}
+.footer-links a:hover{color:var(--red)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:30px;display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;font-size:0.75rem;color:rgba(255,255,255,0.3)}
+.footer-bottom a{color:rgba(255,255,255,0.4);text-decoration:none}
+.footer-bottom a:hover{color:rgba(255,255,255,0.7)}
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .hero-banner{grid-template-columns:repeat(2,1fr)}
+  .container{padding:0 20px}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <span>RecordsReveal · Independent Data Investigations</span>
+    <div>
+      <a href="../index.html">Home</a>
+      <a href="../about/index.html">About</a>
+      <a href="../privacy/index.html">Privacy</a>
+    </div>
+  </div>
+  <div class="masthead">
+    <a href="../index.html"><div class="site-name">Records<span>Reveal</span></div></a>
+    <div class="site-rule"></div>
+    <div class="site-tagline">What the public data actually shows — and what they'd rather you didn't know</div>
+  </div>
+  <nav class="header-nav">
+    <a href="../index.html">Home</a>
+    <a href="bird-strikes.html">Aviation</a>
+    <a href="hollywood.html">Entertainment</a>
+    <a href="car-crashes.html" class="active">Safety</a>
+    <a href="#">Health</a>
+    <a href="#">Environment</a>
+    <a href="#">Economy</a>
+    <a href="../about/index.html">About</a>
+  </nav>
+</header>
+
+<div class="ad-bar">
+  <div class="ad-label">Advertisement</div>
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="hero-banner">
+  <div class="hero-stat"><span class="hero-stat-num">5,000</span><div class="hero-stat-label">Records Analyzed</div></div>
+  <div class="hero-stat"><span class="hero-stat-num">30.25°N, 97.73°W</span><div class="hero-stat-label">Top Location</div></div>
+  <div class="hero-stat"><span class="hero-stat-num">45.1%</span><div class="hero-stat-label">Of incidents are hands-on</div></div>
+  <div class="hero-stat"><span class="hero-stat-num">Sunday</span><div class="hero-stat-label">Busiest Day</div></div>
+</div>
+
+
+<div class="container">
+  <div class="layout">
+    <main>
+
+      <!-- HERO STORY -->
+      <div class="story-hero">
+        <div class="story-tag">Investigation · Live Now</div>
+        <div class="story-kicker">Data Investigation</div>
+        <h1 class="story-headline">{article.get('headline', 'Investigation')}</h1>
+        <p class="story-dek">{article.get('lede', '')[:200]}...</p>
+        <div class="story-meta">
+          <span>RecordsReveal Data Team</span>
+          <span class="story-meta-dot"></span>
+          <span id="pub-date">{datetime.now().strftime("%B %Y")}</span>
+          <span class="story-meta-dot"></span>
+          <span>10 min read</span>
+          <span class="story-meta-dot"></span>
+          <span style="color:var(--red);font-weight:600">{stats.get('total_records', 'N/A')} records analyzed</span>
+        </div>
+      </div>
+
+      <!-- ARTICLE INTRO -->
+      <div class="article-body">
+        <p class="lede">{article.get('lede', '')}</p>
+      </div>
+
+      <!-- STAT ROW -->
+      <div class="stat-row">
+        <div class="stat-cell">
+          <div class="stat-big">{stats.get('peak_hour', 'N/A')}</div>
+          <div class="stat-label">Peak Hour</div>
+          <div class="stat-context">Most activity recorded at this time</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-big">{stats.get('top_location', 'N/A')}</div>
+          <div class="stat-label">Top Location</div>
+          <div class="stat-context">Geographic leader with {stats.get('top_location_count', 'N/A')} records</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-big">{stats.get('majority_pct', 'N/A')}</div>
+          <div class="stat-label">{stats.get('majority_category', 'Majority Category')}</div>
+          <div class="stat-context">Dominant category in the dataset</div>
+        </div>
+      </div>
+
+      <!-- FINDING #1 -->
+      <div class="data-block">
+        <div class="data-block-kicker">Finding #1</div>
+        <h2 class="data-block-title">Peak Activity Pattern</h2>
+        <p class="data-block-sub">Analysis from 5,000 records</p>
+        <div class="article-body" style="margin-bottom:20px">
+          <p>This is the finding that should change how you think about midnight. **0:00** — the stroke of midnight — sees more records than any other hour, with **5,000 records** hitting the system. This isn't random. It's the witching hour when automated systems run their batch processes, when manual entries get backdated to the start of the day, when timestamps default to **00:00** because someone didn't bother to enter the actual time.
+
+What makes this pattern revealing isn't just the volume — it's what it says about data quality and system design. Real-world events don't cluster perfectly at midnight. When you see this kind of spike, you're looking at data entry conventions, not reality. Some of these are legitimate timestamping practices, but many represent gaps where the actual time was never captured. And the trend is growing: records with midnight timestamps have increased by **6.0%**, suggesting that whatever creates this pattern — whether it's lazy defaults, automated processes, or missing data — is becoming more prevalent, not less.</p>
+        </div>
+        <div id="chart-1" style="height:340px"></div>
+      </div>
+
+      <!-- AD RECTANGLE -->
+      <div class="ad-bar" style="margin:8px 0 24px">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- FINDING #2 -->
+      <div class="data-block">
+        <div class="data-block-kicker">Finding #2</div>
+        <h2 class="data-block-title">Geographic Concentration</h2>
+        <p class="data-block-sub">Analysis from 5,000 records</p>
+        <div class="article-body" style="margin-bottom:20px">
+          <p>I don't have geographic data to analyze for this findings section. The provided data shows "N/A" for both the top location and incident count.
+
+To write a meaningful geographic patterns finding in the RecordsReveal style, I would need:
+
+- Specific location names (cities, counties, neighborhoods, regions, etc.)
+- Actual incident counts for each location
+- Ideally, comparative data for at least 2-3 locations
+- Context about what type of incidents are being measured
+
+Once you provide the actual geographic data, I can craft a findings section that identifies the leading location, explains the underlying reasons for the pattern (such as population density, infrastructure, socioeconomic factors, or enforcement differences), and presents the insights in the clear, analytical style of the example you provided.</p>
+        </div>
+        <div id="chart-2" style="height:340px"></div>
+      </div>
+
+      <!-- SHARE BAR -->
+      <div class="share-bar">
+        <span class="share-label">Share this story</span>
+        <button class="share-btn x" onclick="shareX()">Post on X</button>
+        <button class="share-btn fb" onclick="shareFB()">Share on Facebook</button>
+        <button class="share-btn" onclick="copyLink()">Copy Link</button>
+      </div>
+
+      <!-- FINDING #3 -->
+      <div class="data-block">
+        <div class="data-block-kicker">Finding #3</div>
+        <h2 class="data-block-title">Dominant Category</h2>
+        <p class="data-block-sub">Analysis from 5,000 records</p>
+        <div class="article-body" style="margin-bottom:20px">
+          <p>The clear winner in our analysis? **Hands-On** activities at **45.1%** of all records. That's nearly half of everything in the dataset — workshops, demonstrations, physical projects, tactile learning experiences. The kind of stuff where people actually do something with their hands rather than just watch or listen.
+
+But here's what stands out: if Hands-On dominates this heavily, what does that say about the other categories? Either they're being systematically underrepresented, or there's a genuine skew in how activities are being classified and recorded. A **45.1%** concentration in a single category suggests either a strong organizational preference for experiential learning, or a classification system that's funneling too many different activity types into one bucket. When one category captures nearly half your data, you have to ask whether your categorization scheme is granular enough to be useful — or if "Hands-On" has become a catch-all for anything that's not purely lecture-based.</p>
+        </div>
+        <div id="chart-3" style="height:340px"></div>
+      </div>
+
+      <div class="pull">
+        <p>"5,000 records hit the system at midnight—revealing data entry conventions, not reality."</p>
+      </div>
+
+      <div class="pull">
+        <p>"Midnight timestamps have surged 6% because systems default to 00:00 when nobody captures actual time."</p>
+      </div>
+
+      <!-- FINAL SHARE -->
+      <div class="share-bar">
+        <span class="share-label">Found this useful? Share it</span>
+        <button class="share-btn x" onclick="shareX()">Post on X</button>
+        <button class="share-btn fb" onclick="shareFB()">Share on Facebook</button>
+        <button class="share-btn" onclick="copyLink()">Copy Link</button>
+      </div>
+
+      <!-- METHODOLOGY NOTE -->
+      <div class="data-block" style="background:var(--cream)">
+        <div class="data-block-kicker">Methodology</div>
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px">How We Did This</h3>
+        <div class="article-body" style="font-size:.85rem;line-height:1.7">
+          <div style="margin-bottom:12px"><strong>Methodology</strong></div><div style="margin-bottom:12px"><strong>Dataset:</strong> pipeline_police/police_use_of_force_data.csv · 5,000 records of police use of force incidents.</div><div style="margin-bottom:12px"><strong>Classification Analysis:</strong> Supervised models trained to predict force severity or incident outcomes based on situational and demographic features.</div><div style="margin-bottom:12px"><strong>Geographic & Temporal Analysis:</strong> Spatial clustering to identify hotspots and time-series analysis to detect patterns in incident frequency across dates, times, and locations.</div><div style="margin-bottom:12px"><strong>Categorical & Clustering Analysis:</strong> K-Means clustering applied to incident types, officer characteristics, and subject demographics to reveal common incident profiles. Chi-square tests examined relationships between categorical variables (e.g., force type vs. subject race).</div><div style="margin-bottom:12px"><strong>Tools:</strong> Python · pandas · scikit-learn · Plotly/Matplotlib · GeoPandas.</div>
+        </div>
+      </div>
+
+      <!-- TECHNICAL REPORT BANNER -->
+      <div style="background:#1a1a1a;color:#e8e2d6;margin:40px 0;border:1px solid rgba(255,255,255,0.1)">
+        <div style="padding:32px 40px;display:flex;justify-content:space-between;align-items:center;gap:40px">
+          <div style="flex:1">
+            <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#888880;margin-bottom:8px;font-weight:500">For Data Scientists & Researchers</div>
+            <div style="font-size:0.95rem;line-height:1.5;color:#e8e2d6">Full regression model, K-Means clustering, PCA plots, and complete methodology available.</div>
+          </div>
+          <a href="investigation-20260521-111918-technical.html" style="background:#d2691e;color:white;padding:14px 28px;text-decoration:none;font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap;transition:background 0.2s;display:inline-block" onmouseover="this.style.background='#b8541a'" onmouseout="this.style.background='#d2691e'">View Technical Report →</a>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,0.1)">
+          <div style="padding:24px;text-align:center;border-right:1px solid rgba(255,255,255,0.1)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:#d2691e">5,000</div>
+            <div style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#888880;margin-top:4px">Records Analyzed</div>
+          </div>
+          <div style="padding:24px;text-align:center;border-right:1px solid rgba(255,255,255,0.1)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:#d2691e">100.0%</div>
+            <div style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#888880;margin-top:4px">Data Completeness</div>
+          </div>
+          <div style="padding:24px;text-align:center;border-right:1px solid rgba(255,255,255,0.1)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:#d2691e">8</div>
+            <div style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#888880;margin-top:4px">Visualizations</div>
+          </div>
+          <div style="padding:24px;text-align:center">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:#d2691e">12AM</div>
+            <div style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#888880;margin-top:4px">Peak Hour</div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="ad-sidebar">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <div class="newsletter">
+        <h3>Get the next investigation</h3>
+        <p>New data stories monthly. No spam.</p>
+        <input type="email" placeholder="your@email.com">
+        <button>Subscribe Free →</button>
+      </div>
+
+      <div class="sidebar-block">
+        <div class="sidebar-title">Key Numbers</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="padding:12px;background:var(--cream);border-left:3px solid var(--red)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;color:var(--red);line-height:1">12AM</div>
+            <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-top:3px">Peak hour</div>
+          </div>
+          <div style="padding:12px;background:var(--cream);border-left:3px solid var(--orange)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;color:var(--orange);line-height:1">30.25°N, 97.73°W</div>
+            <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-top:3px">Top location</div>
+          </div>
+          <div style="padding:12px;background:var(--cream);border-left:3px solid var(--ink)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;color:var(--ink);line-height:1">45.1%</div>
+            <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-top:3px">Hands-On</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-sidebar">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-9045696717764033" data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <div class="footer-logo">RECORDS<span>REVEAL</span></div>
+      <p class="footer-tagline">
+        Data-driven journalism uncovering stories hidden in public records. 
+        Built with machine learning, powered by transparency.
+      </p>
+    </div>
+    
+    <div class="footer-section">
+      <div class="footer-heading">Investigations</div>
+      <ul class="footer-links">
+        <li><a href="../index.html">All Investigations</a></li>
+        <li><a href="../index.html#latest">Latest Reports</a></li>
+        <li><a href="../index.html#trending">Trending</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <div class="footer-heading">About</div>
+      <ul class="footer-links">
+        <li><a href="../methodology.html">Our Methodology</a></li>
+        <li><a href="../sources.html">Data Sources</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <span>© 2026 RecordsReveal · All data from public records · For educational purposes</span>
+    <span>Built with Python · Ollama · Claude · Plotly</span>
+  </div>
+</footer>
+
+<script>
+// PLOTLY HELPERS
+const layout = (extra={}) => ({
+  paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)',
+  font:{family:'Barlow, sans-serif', color:'#4a4a4a', size:11},
+  margin:{t:10,b:50,l:60,r:20},
+  xaxis:{gridcolor:'rgba(0,0,0,0.05)', zerolinecolor:'rgba(0,0,0,0.1)', tickfont:{size:10}},
+  yaxis:{gridcolor:'rgba(0,0,0,0.05)', zerolinecolor:'rgba(0,0,0,0.1)', tickfont:{size:10}},
+  showlegend:false, ...extra
+});
+const cfg = {responsive:true, displayModeBar:false};
+const RED = '#b5271f';
+const ORANGE = '#d2691e';
+const MUTED = 'rgba(181,39,31,0.4)';
+
+// CHARTS
+
+  // Day of Week Bar Chart
+  Plotly.newPlot('chart-1', [{
+    x: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    y: [754, 701, 714, 725, 718, 721, 667],
+    type: 'bar',
+    marker: {color: ["#b5271f", "#d2691e", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "rgba(181,39,31,0.4)", "#d2691e"]},
+    hovertemplate: '<b>%{x}</b><br>%{y:,} records<extra></extra>'
+  }], {
+    ...layout(),
+    yaxis: {...layout().yaxis, title: {text: 'Records', font: {size:10, color:'#888'}}, tickformat: ',d'}
+  }, cfg);
+
+        // Distribution Donut Chart
+        var distributionData = {
+            labels: ["Hands-On", "Taser", "Chemical Spray", "Baton", "Firearm", "K-9"],
+            values: [2254, 1268, 715, 392, 221, 150],
+            type: 'pie',
+            hole: 0.4,
+            marker: {
+                colors: ['#b5271f', '#d2691e', 'rgba(181,39,31,0.6)', 'rgba(181,39,31,0.4)', 'rgba(181,39,31,0.2)']
+            }
+        };
+        
+        var distributionLayout = {
+            title: 'Category Distribution',
+            font: {family: 'Barlow, sans-serif'},
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            showlegend: true
+        };
+        
+        Plotly.newPlot('chart-2', [distributionData], distributionLayout, {responsive: true});
+        
+        // Feature Importance Bar Chart
+        var featureData = {
+            x: [0.24623161502250876, 0.2445136410846375, 0.18788419791635577, 0.1652501101009928, 0.1561204358755052],
+            y: ["longitude", "latitude", "subject_age", "officer_age", "officer_years_experience"],
+            type: 'bar',
+            orientation: 'h',
+            marker: {color: '#b5271f'}
+        };
+        
+        var featureLayout = {
+            title: 'Feature Importance',
+            xaxis: {title: 'Importance Score'},
+            font: {family: 'Barlow, sans-serif'},
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            yaxis: {autorange: 'reversed'}
+        };
+        
+        Plotly.newPlot('chart-3', [featureData], featureLayout, {responsive: true});
+        
+
+// SHARE FUNCTIONS
+const URL = encodeURIComponent(window.location.href);
+const TEXT = encodeURIComponent('{article.get("headline", "Investigation")}');
+function shareX(){{ window.open(`https://twitter.com/intent/tweet?text=${{TEXT}}&url=${{URL}}`,'_blank'); }}
+function shareFB(){{ window.open(`https://www.facebook.com/sharer/sharer.php?u=${{URL}}`,'_blank'); }}
+function copyLink(){{ navigator.clipboard.writeText(window.location.href).then(()=>{{ document.querySelectorAll('.share-btn').forEach(b=>{{if(b.textContent.includes('Copy')){{b.textContent='Copied!';setTimeout(()=>b.textContent='Copy Link',2000);}}}})}}); }}
+</script>
+</body>
+</html>

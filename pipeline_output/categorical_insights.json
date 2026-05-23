@@ -1,0 +1,39 @@
+{
+  "analysis_type": "categorical",
+  "dataset": "pipeline_police/police_use_of_force_data.csv",
+  "category_column": "force_type",
+  "patterns": {
+    "distribution": {
+      "labels": [
+        "Hands-On",
+        "Taser",
+        "Chemical Spray",
+        "Baton",
+        "Firearm",
+        "K-9"
+      ],
+      "counts": [
+        2254,
+        1268,
+        715,
+        392,
+        221,
+        150
+      ],
+      "percentages": [
+        45.1,
+        25.4,
+        14.3,
+        7.8,
+        4.4,
+        3.0
+      ],
+      "total_unique": 6,
+      "total_records": 5000,
+      "majority_label": "Hands-On",
+      "majority_count": 2254,
+      "majority_pct": 45.1
+    }
+  },
+  "ollama_insights": "Here are my analysis:\n\n**Most newsworthy finding:**\nThe majority category, \"Hands-On\", accounts for nearly half of all records (45.1%), suggesting that hands-on methods are the most widely used force type in this dataset.\n\n**What this distribution pattern suggests about the data:**\nThis distribution implies a lack of standardization or regulation within the dataset, as multiple force types are represented with varying frequencies, potentially highlighting inconsistent application practices.\n\n**Compelling pull quote:**\n\"Taser tactics dominate, with hands-on methods claiming nearly half of all records.\""
+}

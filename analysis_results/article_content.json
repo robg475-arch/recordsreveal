@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "angle": "We cracked the code",
+    "headline_type": "formula",
+    "r2_score": 1.0,
+    "top_predictor": null,
+    "top_importance": null
+  },
+  "hero": {
+    "total_records": 5000,
+    "total_features": 16,
+    "model_r2": 1.0,
+    "model_rmse": 1.963774626381221e-14,
+    "num_clusters": 4
+  },
+  "findings": [
+    {
+      "number": 1,
+      "feature": "NUMBER OF MOTORIST INJURED",
+      "importance": 0.6690180605245685,
+      "title_template": "Number Of Motorist Injured Matters Most",
+      "description_template": "The model identified NUMBER OF MOTORIST INJURED as a key predictor, accounting for 66.9% of the model's decision-making."
+    },
+    {
+      "number": 2,
+      "feature": "NUMBER OF PEDESTRIANS INJURED",
+      "importance": 0.19374430351019598,
+      "title_template": "Number Of Pedestrians Injured Matters Most",
+      "description_template": "The model identified NUMBER OF PEDESTRIANS INJURED as a key predictor, accounting for 19.4% of the model's decision-making."
+    },
+    {
+      "number": 3,
+      "feature": "NUMBER OF CYCLIST INJURED",
+      "importance": 0.1362562745489185,
+      "title_template": "Number Of Cyclist Injured Matters Most",
+      "description_template": "The model identified NUMBER OF CYCLIST INJURED as a key predictor, accounting for 13.6% of the model's decision-making."
+    }
+  ],
+  "methodology": {
+    "dataset_size": 5000,
+    "num_features": 16,
+    "task_type": "regression",
+    "best_model": "Linear Regression",
+    "train_test_split": "80/20",
+    "r2_score": 1.0,
+    "rmse": 1.963774626381221e-14,
+    "text": "We trained five regression models on 4,000 samples and tested on 1,000. Linear Regression achieved the best performance with R\u00b2=1.0000 and RMSE=0.0000."
+  },
+  "implications": {},
+  "narrative": {
+    "lede": "Machine learning analysis of 5,000 records reveals a clear pattern. The model can predict outcomes with 100.0% accuracy using just 3 key factors.",
+    "conclusion": "The data reveals patterns that challenge conventional wisdom."
+  }
+}

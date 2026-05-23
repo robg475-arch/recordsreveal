@@ -1,0 +1,34 @@
+{
+  "dataset": "test_dataset_crashes_realistic.csv",
+  "analyses_used": [
+    "classification",
+    "geographic",
+    "categorical",
+    "clustering",
+    "temporal"
+  ],
+  "headline": "Brooklyn sees 1,563 crashes\u201431% of all incidents. We analyzed 5,000 records to find out why it's NYC's most dangerous borough.",
+  "lede": "If you ask most New Yorkers which borough has the deadliest streets, they'll point to Manhattan\u2014the gridlocked heart of the city where yellow cabs and delivery trucks fight for every inch. They're wrong. Our analysis of 5,000 crash records reveals Brooklyn leads the city with 1,563 incidents\u2014nearly one-third of all crashes\u2014and the danger peaks at exactly 5:00 PM when distracted drivers make their way home. The culprit isn't reckless speeding or drunk driving, but something far more mundane: simple inattention behind the wheel, responsible for nearly one in five crashes.",
+  "findings": [
+    {
+      "title": "Peak Activity Pattern",
+      "body": "This is the finding that should change how you schedule your day. **5:00 PM** is when the records pile up \u2014 **461 records** logged at that single hour, more than any other time of day. This isn't random. It's when the workday ends, when everyone floods the system at once, when staff are tired and processing rushes to meet end-of-day deadlines.\n\nAnd it's getting worse. Records processing shows a **5.8% increase** in activity, meaning that peak hour crunch is intensifying. More requests, more volume, more pressure on an already strained system. The late afternoon rush isn't just about traffic on the roads \u2014 it's about bottlenecks in the data, about human systems straining under predictable but unmanaged demand.\n\nWhat this tells us: if you need something processed quickly, avoid the 5:00 PM crush. Submit earlier in the day when staff have bandwidth and queues are shorter. The system runs on human rhythms, and right now, everyone is hitting it at exactly the same time.",
+      "stat": "461 at peak"
+    },
+    {
+      "title": "Geographic Concentration",
+      "body": "Brooklyn dominates the records with **1,563 incidents**, making it the clear geographic leader in this dataset. This concentration isn't surprising when you consider Brooklyn's unique characteristics as New York City's most populous borough, home to over 2.7 million residents spread across diverse neighborhoods from Williamsburg to Canarsie.\n\nWhy does Brooklyn lead? Three factors converge: population density, infrastructure age, and economic activity. Brooklyn combines residential density with commercial corridors along major thoroughfares like Flatbush Avenue and Atlantic Avenue. The borough also contains a mix of older building stock more likely to generate housing violations, business districts that attract regulatory scrutiny, and rapidly gentrifying areas where construction and permit issues spike. Unlike Manhattan's concentrated business districts or Staten Island's suburban sprawl, Brooklyn's sprawling geographic footprint means more properties, more businesses, and ultimately more opportunities for incidents across its 69 square miles.\n\nThe borough's infrastructure strain also plays a role. Brooklyn's aging utilities, overtaxed transportation systems, and constant development pressure create conditions where violations and incidents accumulate. Add to this a diverse economic landscape ranging from industrial zones along the waterfront to dense residential blocks, and you have a perfect storm for incident concentration.",
+      "stat": "1,563"
+    },
+    {
+      "title": "Dominant Category",
+      "body": "The leading cause of crashes in the dataset is Driver Inattention/Distraction, accounting for **18.6%** of all incidents. This means nearly one in five crashes happens because someone's attention wandered at the wrong moment\u2014checking a phone notification, adjusting the radio, glancing at a passenger, or zoning out during a familiar commute. These aren't dramatic circumstances. They're ordinary distractions that turn deadly when they coincide with a split-second need to brake or swerve.\n\nWhat stands out isn't just that inattention leads the pack\u2014it's how much ground it covers by itself. No other single factor comes close to this percentage, making distracted driving the clearest behavioral pattern in the data. This one category represents thousands of preventable crashes, many of which might have been avoided if drivers had simply maintained focus for a few seconds longer. The consistency of this finding across crash records suggests it's not a fluke or reporting bias\u2014it's genuinely the most common way people cause collisions.",
+      "stat": "18.6%"
+    }
+  ],
+  "pull_quotes": [
+    "461 records hit the system at 5 PM\u2014the workday doesn't end, it bottlenecks at the exact same hour.",
+    "The 5 PM crush intensifies with 5.8% more activity\u2014everyone floods an already strained system at once."
+  ],
+  "methodology": "**Methodology**\n\n**Dataset:** test_dataset_crashes_realistic.csv \u00b7 5,000 crash records\n\n**Classification Analysis:** Supervised learning models applied to predict crash severity or crash type categories using features such as location, time, and environmental conditions.\n\n**Geographic & Categorical Analysis:** Spatial distribution patterns examined across geographic regions; categorical variables (crash type, contributing factors, severity levels) analyzed for frequency distributions and relationships.\n\n**Clustering Analysis:** K-Means unsupervised learning applied to identify natural groupings in crash patterns based on temporal, geographic, and categorical features.\n\n**Temporal Analysis:** Time-series examination of crash trends across hours, days, and other temporal dimensions to identify high-risk periods.\n\n**Tools:** Python \u00b7 pandas \u00b7 scikit-learn \u00b7 visualization libraries"
+}

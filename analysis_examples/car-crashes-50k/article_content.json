@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "angle": "We cracked the code",
+    "headline_type": "formula",
+    "r2_score": 0.9725735335679344,
+    "top_predictor": null,
+    "top_importance": null
+  },
+  "hero": {
+    "total_records": 50000,
+    "total_features": 29,
+    "model_r2": 0.9725735335679344,
+    "model_rmse": 0.13019059207114345,
+    "num_clusters": 4
+  },
+  "findings": [
+    {
+      "number": 1,
+      "feature": "NUMBER OF MOTORIST INJURED",
+      "importance": 0.8293946895899322,
+      "title_template": "Number Of Motorist Injured Matters Most",
+      "description_template": "The model identified NUMBER OF MOTORIST INJURED as a key predictor, accounting for 82.9% of the model's decision-making."
+    },
+    {
+      "number": 2,
+      "feature": "NUMBER OF PEDESTRIANS INJURED",
+      "importance": 0.09732884407455968,
+      "title_template": "Number Of Pedestrians Injured Matters Most",
+      "description_template": "The model identified NUMBER OF PEDESTRIANS INJURED as a key predictor, accounting for 9.7% of the model's decision-making."
+    },
+    {
+      "number": 3,
+      "feature": "NUMBER OF CYCLIST INJURED",
+      "importance": 0.06998644711729503,
+      "title_template": "Number Of Cyclist Injured Matters Most",
+      "description_template": "The model identified NUMBER OF CYCLIST INJURED as a key predictor, accounting for 7.0% of the model's decision-making."
+    }
+  ],
+  "methodology": {
+    "dataset_size": 50000,
+    "num_features": 29,
+    "task_type": "regression",
+    "best_model": "Ridge Regression",
+    "train_test_split": "80/20",
+    "r2_score": 0.9725735335679344,
+    "rmse": 0.13019059207114345,
+    "text": "We trained five regression models on 40,000 samples and tested on 10,000. Ridge Regression achieved the best performance with R\u00b2=0.9726 and RMSE=0.1302."
+  },
+  "implications": {},
+  "narrative": {
+    "lede": "Machine learning analysis of 50,000 records reveals a clear pattern. The model can predict outcomes with 97.3% accuracy using just 3 key factors.",
+    "conclusion": "The data reveals patterns that challenge conventional wisdom."
+  }
+}
