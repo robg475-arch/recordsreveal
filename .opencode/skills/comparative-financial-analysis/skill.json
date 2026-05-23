@@ -1,0 +1,60 @@
+{
+  "name": "comparative-financial-analysis",
+  "version": "1.0.0",
+  "description": "Analyzes financial data with A vs B comparisons (spending, donations, budgets)",
+  "category": "financial",
+  "author": "RecordsReveal",
+  "created": "2026-05-22",
+  "capabilities": [
+    "Detects financial columns (spending, revenue, costs, donations)",
+    "Identifies comparative patterns (dem/rep, before/after, support/oppose)",
+    "Calculates top entities by financial totals",
+    "Analyzes spending distribution (total, mean, median, range)",
+    "Computes comparative advantage (A vs B)",
+    "Generates AI insights via Ollama"
+  ],
+  "input": {
+    "format": "CSV",
+    "requirements": [
+      "At least one numeric column with financial data",
+      "Optional: Comparative columns (A vs B pattern)"
+    ]
+  },
+  "output": {
+    "file": "comparative_financial_insights.json",
+    "contains": [
+      "Top entities by financial amount",
+      "Spending distribution statistics",
+      "Comparative advantage analysis (if applicable)",
+      "AI-generated insights"
+    ]
+  },
+  "detection_criteria": {
+    "financial_keywords": [
+      "spend", "cost", "price", "revenue", "budget",
+      "donation", "contribution", "support", "oppose",
+      "money", "dollar", "amount", "total", "payment"
+    ],
+    "comparative_keywords": {
+      "political": ["dem", "rep", "democrat", "republican"],
+      "temporal": ["before", "after", "pre", "post"],
+      "binary": ["yes", "no", "for", "against", "support", "oppose"]
+    }
+  },
+  "use_cases": [
+    "Campaign finance analysis (donations, spending)",
+    "Budget comparisons (department budgets, year-over-year)",
+    "Sales analysis (product revenue, regional sales)",
+    "Salary analysis (pay equity, department budgets)",
+    "Cost analysis (operational costs, vendor spending)"
+  ],
+  "cost": "$0.00 (uses Ollama)",
+  "dependencies": ["pandas", "numpy", "ollama_helper"],
+  "example_datasets": [
+    "Campaign finance (FEC data)",
+    "Municipal budgets",
+    "Corporate spending",
+    "Donation records",
+    "Sales transactions"
+  ]
+}

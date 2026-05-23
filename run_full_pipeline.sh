@@ -66,13 +66,14 @@ echo "will be SKIPPED. Without this cleanup, old files from previous datasets"
 echo "would remain and pollute the merge step with wrong data."
 echo ""
 
-# Delete the 5 multidimensional analysis insight files to prevent stale data
+# Delete all multidimensional analysis insight files to prevent stale data
 # If an analysis doesn't run on the new dataset, it will simply be absent from the merge
 rm -f "$OUTPUT_DIR/categorical_insights.json"
 rm -f "$OUTPUT_DIR/classification_insights.json"
 rm -f "$OUTPUT_DIR/clustering_insights.json"
 rm -f "$OUTPUT_DIR/geographic_insights.json"
 rm -f "$OUTPUT_DIR/temporal_insights.json"
+rm -f "$OUTPUT_DIR/comparative_financial_insights.json"
 
 echo "✅ Clean slate ready - only NEW analyses will be included"
 
@@ -93,6 +94,10 @@ for i in $(seq 0 $((SKILL_COUNT - 1))); do
     echo "🔄 Running: $SKILL_NAME"
     
     case $SKILL_NAME in
+        comparative-financial-analysis)
+            # Run financial analysis (no parameters needed - auto-detects columns)
+            python3 .opencode/skills/comparative-financial-analysis/analyze.py "$CSV_FILE" "$OUTPUT_DIR"
+            ;;
         temporal-analysis)
             # Auto-detect temporal column
             TIME_COL=$(python3 -c "import pandas as pd; df = pd.read_csv('$CSV_FILE'); cols = [c for c in df.columns if 'date' in c.lower() or 'time' in c.lower()]; print(cols[0] if cols else '')")

@@ -100,12 +100,41 @@ def profile_dataset(csv_path, output_dir="analysis_results"):
         
         profile["columns"][col] = col_profile
     
+    # Detect financial columns and comparative patterns
+    financial_cols = []
+    comparative_pattern = None
+    
+    # Financial keywords
+    financial_keywords = ['spend', 'cost', 'price', 'revenue', 'budget', 'donation', 
+                         'contribution', 'support', 'oppose', 'money', 'dollar', 
+                         'amount', 'total', 'payment', 'fee', 'salary']
+    
+    for col in numeric_cols:
+        col_lower = col.lower()
+        if any(keyword in col_lower for keyword in financial_keywords):
+            financial_cols.append(col)
+    
+    # Detect comparative patterns (A vs B)
+    comparative_keywords = {
+        'political': ['dem', 'rep', 'democrat', 'republican'],
+        'temporal': ['before', 'after', 'pre', 'post'],
+        'binary': ['yes', 'no', 'for', 'against', 'support', 'oppose']
+    }
+    
+    for pattern_type, keywords in comparative_keywords.items():
+        matching_cols = [c for c in df.columns if any(kw in c.lower() for kw in keywords)]
+        if len(matching_cols) >= 2:
+            comparative_pattern = pattern_type
+            break
+    
     # Store detected patterns
     profile["patterns"] = {
         "temporal": temporal_cols,
         "geographic": geographic_cols,
         "categorical": categorical_cols,
-        "numeric": numeric_cols
+        "numeric": numeric_cols,
+        "financial": financial_cols,
+        "comparative_pattern": comparative_pattern
     }
     
     # Generate recommendations
@@ -118,6 +147,26 @@ def profile_dataset(csv_path, output_dir="analysis_results"):
         "profiled_at": pd.Timestamp.now().isoformat(),
         "recommended_skills": []
     }
+    
+    # Recommend comparative-financial-analysis (NEW!)
+    if financial_cols and len(financial_cols) >= 2:
+        rec = {
+            "skill": "comparative-financial-analysis",
+            "priority": "high",
+            "reason": f"Found {len(financial_cols)} financial column(s)" + 
+                     (f" with {comparative_pattern} comparison pattern" if comparative_pattern else ""),
+            "command": f"python comparative-financial-analysis/analyze.py {csv_path}",
+            "estimated_time": "30 seconds",
+            "cost": "$0.00 (Ollama)",
+            "insights_provided": ["top spenders/recipients", "spending distribution", 
+                                 "comparative advantage" if comparative_pattern else "financial totals", 
+                                 "AI-generated insights"]
+        }
+        recommendations["recommended_skills"].append(rec)
+        print(f"✓ {rec['skill']}")
+        print(f"  Reason: {rec['reason']}")
+        print(f"  Command: {rec['command']}")
+        print()
     
     # Recommend temporal-analysis
     if temporal_cols:
