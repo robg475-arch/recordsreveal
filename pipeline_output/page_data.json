@@ -1,78 +1,11 @@
 {
-  "dataset": "pipeline_police/police_use_of_force_data.csv",
+  "dataset": "data/campaign_finance/dark_money_swing_districts_2024.csv",
   "analyses_run": [
-    "classification",
-    "geographic",
     "unknown",
-    "categorical",
     "clustering",
     "temporal"
   ],
   "chart_data": {
-    "distribution": {
-      "labels": [
-        "Hands-On",
-        "Taser",
-        "Chemical Spray",
-        "Baton",
-        "Firearm",
-        "K-9"
-      ],
-      "counts": [
-        2254,
-        1268,
-        715,
-        392,
-        221,
-        150
-      ],
-      "percentages": [
-        45.1,
-        25.4,
-        14.3,
-        7.8,
-        4.4,
-        3.0
-      ],
-      "majority_label": "Hands-On",
-      "majority_pct": 45.1
-    },
-    "feature_importance": {
-      "names": [
-        "longitude",
-        "latitude",
-        "subject_age",
-        "officer_age",
-        "officer_years_experience"
-      ],
-      "importance": [
-        0.24623161502250876,
-        0.2445136410846375,
-        0.18788419791635577,
-        0.1652501101009928,
-        0.1561204358755052
-      ],
-      "top_feature": "longitude",
-      "top_importance": 0.24623161502250876
-    },
-    "models": {
-      "names": [
-        "LogisticRegression",
-        "RandomForest",
-        "XGBoost"
-      ],
-      "r2_scores": [
-        0,
-        0,
-        0
-      ],
-      "accuracies": [
-        0.451,
-        0.417,
-        0.384
-      ],
-      "best_model": "LogisticRegression"
-    },
     "clusters": {
       "pca_x": [
         8.454730980520619,
@@ -809,9 +742,9 @@
       "variance_1": 60.27898083455149,
       "variance_2": 10.668522152377031,
       "cluster_names": [
-        "\"Outliers\"**",
-        "\"Mainstream America\"**",
-        "\"Devout Support\"**"
+        "\"Outliers' Haven\"",
+        "\"Mainstream Mass\"",
+        "\"Conservative Core\""
       ],
       "cluster_profiles": [
         {
@@ -885,24 +818,11 @@
     }
   },
   "stats": {
-    "majority_category": "Hands-On",
-    "majority_pct": "45.1%",
-    "best_model": "LogisticRegression",
-    "best_score": "45.1%",
-    "valid_coordinates": "5,000",
-    "valid_coords_pct": "100.0%",
-    "center_lat": "30.2655",
-    "center_lon": "-97.7439",
-    "top_hotspot_count": "258",
-    "top_hotspot_pct": "5.2%",
-    "top_location": "Austin"
+    "top_location": null
   },
   "insights": {
-    "classification": "Here are my findings:\n\n**Most newsworthy finding:**\nThe most surprising result is that a simple LogisticRegression model outperforms more complex machine learning models like RandomForest and XGBoost, with a significant accuracy of 45.1%. This suggests that the underlying data may not require extensive feature engineering or advanced modeling techniques to achieve good results.\n\n**Feature importance reveals about the data:**\nThe top three features - longitude, latitude, and subject_age - reveal that geographical location and demographic information have a strong impact on predicting force type. This implies that spatial patterns and individual characteristics play a significant role in determining the severity of force used.\n\n**Compelling pull quote:**\n\"Geography and age may hold the key to understanding force dynamics.\"",
-    "geographic": "Here are my analysis and recommendations:\n\n**Most newsworthy geographic finding:**\nThe dataset reveals a striking concentration of activity at a specific point in rural Texas, highlighting an unexpected hotspot that warrants further investigation.\n\n**What this spatial pattern suggests about the data:**\nThis geographic pattern suggests that our dataset may be biased towards a particular region or demographic, which could have implications for the accuracy and representativeness of the data as a whole.\n\n**Compelling pull quote:**\n\"In rural Texas, a surprising hub of activity has been uncovered - but what's behind it?\"",
-    "categorical": "Here are my analysis:\n\n**Most newsworthy finding:**\nThe majority category, \"Hands-On\", accounts for nearly half of all records (45.1%), suggesting that hands-on methods are the most widely used force type in this dataset.\n\n**What this distribution pattern suggests about the data:**\nThis distribution implies a lack of standardization or regulation within the dataset, as multiple force types are represented with varying frequencies, potentially highlighting inconsistent application practices.\n\n**Compelling pull quote:**\n\"Taser tactics dominate, with hands-on methods claiming nearly half of all records.\"",
-    "clustering": "Here's the analysis:\n\n\u2022 **Cluster 0: \"Outliers\"**\nThis cluster contains samples with unusual or extreme values in their features, such as unusually high or low spending patterns.\n\n\u2022 **Cluster 1: \"Mainstream America\"**\nThis cluster includes a vast majority of samples, representing the more common and typical characteristics of district spending patterns.\n\n\u2022 **Cluster 2: \"Devout Support\"**\nThis cluster consists of districts that show strong support for Democratic candidates, likely driven by factors like high spending on pro-Dem campaigns or other related attributes.",
-    "temporal": "I'd be happy to help you analyze your data! However, I don't see any data provided from you. Please share the dataset with me, and I'll do my best to provide the requested analysis.\n\nOnce I have access to the data, I can assist you in:\n\n1. Identifying the most newsworthy time-based finding\n2. Interpreting what this pattern suggests about behavior or events\n3. Crafting a compelling pull quote for an article"
+    "clustering": "Here are the results:\n\n* Cluster 0: \"Outliers' Haven\"\nThis cluster contains samples that are farthest from the overall distribution, making them outliers.\n \n* Cluster 1: \"Mainstream Mass\"\nThis cluster represents the largest group of samples, encompassing a wide range of values for the features used in clustering.\n\n* Cluster 2: \"Conservative Core\"\nThis cluster consists of samples with strong conservative tendencies, characterized by high spending against and lower support for democratic parties.",
+    "temporal": "I'm ready to help. Please provide the dataset and any relevant context or insights you've found so far. I'll analyze the data and generate a summary of the most newsworthy time-based finding, its implications, and a compelling pull quote. Let's get started!"
   },
   "pull_quotes": []
 }

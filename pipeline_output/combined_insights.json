@@ -1,165 +1,11 @@
 {
-  "dataset": "pipeline_police/police_use_of_force_data.csv",
+  "dataset": "data/campaign_finance/dark_money_swing_districts_2024.csv",
   "analyses": [
-    "classification",
-    "geographic",
     "unknown",
-    "categorical",
     "clustering",
     "temporal"
   ],
   "all_patterns": {
-    "classification": {
-      "models": {
-        "LogisticRegression": {
-          "accuracy": 0.451,
-          "precision": 0.203401,
-          "recall": 0.451,
-          "f1": 0.2803597518952447
-        },
-        "RandomForest": {
-          "accuracy": 0.417,
-          "precision": 0.30870986107294474,
-          "recall": 0.417,
-          "f1": 0.32773714824835465
-        },
-        "XGBoost": {
-          "accuracy": 0.384,
-          "precision": 0.3040039574575955,
-          "recall": 0.384,
-          "f1": 0.324492417396097
-        }
-      },
-      "best_model": "LogisticRegression",
-      "best_accuracy": 0.451,
-      "feature_importance": [
-        {
-          "feature": "longitude",
-          "importance": 0.24623161502250876
-        },
-        {
-          "feature": "latitude",
-          "importance": 0.2445136410846375
-        },
-        {
-          "feature": "subject_age",
-          "importance": 0.18788419791635577
-        },
-        {
-          "feature": "officer_age",
-          "importance": 0.1652501101009928
-        },
-        {
-          "feature": "officer_years_experience",
-          "importance": 0.1561204358755052
-        }
-      ],
-      "top_feature": "longitude",
-      "top_feature_importance": 0.24623161502250876,
-      "lasso_coefficients": [
-        {
-          "feature": "officer_age",
-          "coefficient": 0.11443910975614854
-        },
-        {
-          "feature": "longitude",
-          "coefficient": -0.08226189250575769
-        },
-        {
-          "feature": "officer_years_experience",
-          "coefficient": 0.028577617877631408
-        },
-        {
-          "feature": "latitude",
-          "coefficient": -0.019303476056369086
-        },
-        {
-          "feature": "subject_age",
-          "coefficient": 0.011978264309252543
-        }
-      ],
-      "lasso_eliminated": []
-    },
-    "geographic": {
-      "valid_coordinates": {
-        "count": 5000,
-        "total": 5000,
-        "percent": 100.0
-      },
-      "bounds": {
-        "lat_min": 30.087276,
-        "lat_max": 30.44371,
-        "lon_min": -97.91412,
-        "lon_max": -97.573728,
-        "center_lat": 30.265493,
-        "center_lon": -97.74392399999999
-      },
-      "hotspots": [
-        {
-          "lat": 30.2476713,
-          "lon": -97.7269044,
-          "count": 258,
-          "percent": 5.16
-        },
-        {
-          "lat": 30.2476713,
-          "lon": -97.76094359999999,
-          "count": 257,
-          "percent": 5.140000000000001
-        },
-        {
-          "lat": 30.2833147,
-          "lon": -97.76094359999999,
-          "count": 255,
-          "percent": 5.1
-        },
-        {
-          "lat": 30.2833147,
-          "lon": -97.7269044,
-          "count": 241,
-          "percent": 4.82
-        },
-        {
-          "lat": 30.3189581,
-          "lon": -97.658826,
-          "count": 178,
-          "percent": 3.56
-        }
-      ]
-    },
-    "categorical": {
-      "distribution": {
-        "labels": [
-          "Hands-On",
-          "Taser",
-          "Chemical Spray",
-          "Baton",
-          "Firearm",
-          "K-9"
-        ],
-        "counts": [
-          2254,
-          1268,
-          715,
-          392,
-          221,
-          150
-        ],
-        "percentages": [
-          45.1,
-          25.4,
-          14.3,
-          7.8,
-          4.4,
-          3.0
-        ],
-        "total_unique": 6,
-        "total_records": 5000,
-        "majority_label": "Hands-On",
-        "majority_count": 2254,
-        "majority_pct": 45.1
-      }
-    },
     "clustering": {
       "elbow": {
         "k_values": [
@@ -968,9 +814,9 @@
         }
       ],
       "cluster_names": [
-        "\"Outliers\"**",
-        "\"Mainstream America\"**",
-        "\"Devout Support\"**"
+        "\"Outliers' Haven\"",
+        "\"Mainstream Mass\"",
+        "\"Conservative Core\""
       ]
     },
     "temporal": {
@@ -992,19 +838,13 @@
     }
   },
   "all_ollama_insights": {
-    "classification": "Here are my findings:\n\n**Most newsworthy finding:**\nThe most surprising result is that a simple LogisticRegression model outperforms more complex machine learning models like RandomForest and XGBoost, with a significant accuracy of 45.1%. This suggests that the underlying data may not require extensive feature engineering or advanced modeling techniques to achieve good results.\n\n**Feature importance reveals about the data:**\nThe top three features - longitude, latitude, and subject_age - reveal that geographical location and demographic information have a strong impact on predicting force type. This implies that spatial patterns and individual characteristics play a significant role in determining the severity of force used.\n\n**Compelling pull quote:**\n\"Geography and age may hold the key to understanding force dynamics.\"",
-    "geographic": "Here are my analysis and recommendations:\n\n**Most newsworthy geographic finding:**\nThe dataset reveals a striking concentration of activity at a specific point in rural Texas, highlighting an unexpected hotspot that warrants further investigation.\n\n**What this spatial pattern suggests about the data:**\nThis geographic pattern suggests that our dataset may be biased towards a particular region or demographic, which could have implications for the accuracy and representativeness of the data as a whole.\n\n**Compelling pull quote:**\n\"In rural Texas, a surprising hub of activity has been uncovered - but what's behind it?\"",
-    "categorical": "Here are my analysis:\n\n**Most newsworthy finding:**\nThe majority category, \"Hands-On\", accounts for nearly half of all records (45.1%), suggesting that hands-on methods are the most widely used force type in this dataset.\n\n**What this distribution pattern suggests about the data:**\nThis distribution implies a lack of standardization or regulation within the dataset, as multiple force types are represented with varying frequencies, potentially highlighting inconsistent application practices.\n\n**Compelling pull quote:**\n\"Taser tactics dominate, with hands-on methods claiming nearly half of all records.\"",
-    "clustering": "Here's the analysis:\n\n\u2022 **Cluster 0: \"Outliers\"**\nThis cluster contains samples with unusual or extreme values in their features, such as unusually high or low spending patterns.\n\n\u2022 **Cluster 1: \"Mainstream America\"**\nThis cluster includes a vast majority of samples, representing the more common and typical characteristics of district spending patterns.\n\n\u2022 **Cluster 2: \"Devout Support\"**\nThis cluster consists of districts that show strong support for Democratic candidates, likely driven by factors like high spending on pro-Dem campaigns or other related attributes.",
-    "temporal": "I'd be happy to help you analyze your data! However, I don't see any data provided from you. Please share the dataset with me, and I'll do my best to provide the requested analysis.\n\nOnce I have access to the data, I can assist you in:\n\n1. Identifying the most newsworthy time-based finding\n2. Interpreting what this pattern suggests about behavior or events\n3. Crafting a compelling pull quote for an article"
+    "clustering": "Here are the results:\n\n* Cluster 0: \"Outliers' Haven\"\nThis cluster contains samples that are farthest from the overall distribution, making them outliers.\n \n* Cluster 1: \"Mainstream Mass\"\nThis cluster represents the largest group of samples, encompassing a wide range of values for the features used in clustering.\n\n* Cluster 2: \"Conservative Core\"\nThis cluster consists of samples with strong conservative tendencies, characterized by high spending against and lower support for democratic parties.",
+    "temporal": "I'm ready to help. Please provide the dataset and any relevant context or insights you've found so far. I'll analyze the data and generate a summary of the most newsworthy time-based finding, its implications, and a compelling pull quote. Let's get started!"
   },
   "summary": {
-    "total_analyses": 6,
+    "total_analyses": 3,
     "analysis_types": [
-      "classification",
-      "geographic",
       "unknown",
-      "categorical",
       "clustering",
       "temporal"
     ],

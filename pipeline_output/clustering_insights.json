@@ -809,10 +809,10 @@
       }
     ],
     "cluster_names": [
-      "\"Outliers\"**",
-      "\"Mainstream America\"**",
-      "\"Devout Support\"**"
+      "\"Outliers' Haven\"",
+      "\"Mainstream Mass\"",
+      "\"Conservative Core\""
     ]
   },
-  "ollama_insights": "Here's the analysis:\n\n\u2022 **Cluster 0: \"Outliers\"**\nThis cluster contains samples with unusual or extreme values in their features, such as unusually high or low spending patterns.\n\n\u2022 **Cluster 1: \"Mainstream America\"**\nThis cluster includes a vast majority of samples, representing the more common and typical characteristics of district spending patterns.\n\n\u2022 **Cluster 2: \"Devout Support\"**\nThis cluster consists of districts that show strong support for Democratic candidates, likely driven by factors like high spending on pro-Dem campaigns or other related attributes."
+  "ollama_insights": "Here are the results:\n\n* Cluster 0: \"Outliers' Haven\"\nThis cluster contains samples that are farthest from the overall distribution, making them outliers.\n \n* Cluster 1: \"Mainstream Mass\"\nThis cluster represents the largest group of samples, encompassing a wide range of values for the features used in clustering.\n\n* Cluster 2: \"Conservative Core\"\nThis cluster consists of samples with strong conservative tendencies, characterized by high spending against and lower support for democratic parties."
 }
