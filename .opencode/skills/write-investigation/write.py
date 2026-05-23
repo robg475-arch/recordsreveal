@@ -126,6 +126,9 @@ Key findings:
 - Peak time: {stats.get('peak_hour', 'N/A')}
 - Top location: {stats.get('top_location', 'N/A')} ({stats.get('top_location_count', 'N/A')} records)
 - Majority category: {stats.get('majority_category', 'N/A')} ({stats.get('majority_pct', 'N/A')})
+- Top entity: {stats.get('top_entity', 'N/A')} ({stats.get('top_entity_amount', 'N/A')})
+- Total financial: {stats.get('total_financial', 'N/A')}
+- Comparative advantage: {stats.get('comparative_advantage', 'N/A')} ({stats.get('comparative_leader', 'N/A')})
 
 Write a compelling headline using one of these proven formulas:
 
@@ -168,6 +171,9 @@ Key findings:
 - Peak pattern: {stats.get('peak_hour', 'N/A')}
 - Geographic leader: {stats.get('top_location', 'N/A')} with {stats.get('top_location_count', 'N/A')} incidents
 - Dominant category: {stats.get('majority_category', 'N/A')} at {stats.get('majority_pct', 'N/A')}
+- Top entity: {stats.get('top_entity', 'N/A')} ({stats.get('top_entity_amount', 'N/A')})
+- Total financial: {stats.get('total_financial', 'N/A')}
+- Comparative advantage: {stats.get('comparative_advantage', 'N/A')} ({stats.get('comparative_leader', 'N/A')})
 
 Write a lede using the INVESTIGATION_PLAYBOOK formula:
 [Setup conventional assumption] → [Reveal data contradicts it] → [State finding]
@@ -297,6 +303,42 @@ Return ONLY the text, no title."""
                 "stat": stats.get('majority_pct', 'N/A')
             })
             print(f"✅ Finding 3 complete\n")
+    
+    # Finding 4: Financial pattern (if available)
+    if 'comparative_financial' in combined.get('analyses', []):
+        print("Writing Finding 4: Financial Pattern...")
+        finding_prompt = f"""Write a findings section for RecordsReveal about financial patterns.
+
+Data:
+- Top entity: {stats.get('top_entity', 'N/A')}
+- Amount: {stats.get('top_entity_amount', 'N/A')}
+- Total financial: {stats.get('total_financial', 'N/A')}
+- Comparative advantage: {stats.get('comparative_advantage', 'N/A')} ({stats.get('comparative_leader', 'N/A')})
+
+EXAMPLE OF GOOD RECORDSREVEAL FINANCIAL FINDING:
+"The money tells the real story. Democrats hold a **$76 million** financial advantage across swing districts—outspending Republicans by 73%. That's not just a fundraising edge. That's an air war, ground game, and digital dominance all rolled into one number.
+
+The top district for total spending? Colorado's 8th, where **$24.6 million** poured in from both sides. That's $101 per voter. In a district that flipped by just 2,500 votes in 2022, every dollar mattered—and one side had a lot more dollars."
+
+Requirements:
+- Start with "The money tells the real story" or similar financial framing
+- Use specific dollar amounts from the data
+- Explain what this spending means in human terms (per voter, per household, etc.)
+- Include competitive context (margins, swing districts, etc.)
+- 2-3 paragraphs
+- Bold key dollar amounts (use **$amount**)
+- Present tense
+
+Return ONLY the text, no title."""
+        
+        finding = ask_claude(finding_prompt)
+        if finding:
+            findings.append({
+                "title": "Financial Advantage",
+                "body": finding.strip(),
+                "stat": stats.get('comparative_advantage', 'N/A')
+            })
+            print(f"✅ Finding 4 complete\n")
     
     article["findings"] = findings
     
