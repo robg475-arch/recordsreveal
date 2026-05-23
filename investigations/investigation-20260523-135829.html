@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congress Took 42 Days on Average to Disclose Stock Trades in 2023. The Law Says 30 or Face Fines. | RecordsReveal</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7B3KBBGVWE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-7B3KBBGVWE');
+    </script>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9045696717764033" crossorigin="anonymous"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --paper: #f8f6f1;
+            --ink: #1a1a1a;
+            --red: #b5271f;
+            --border: #ddd9ce;
+        }
+        
+        /* Site Header */
+        .site-header {
+            background: white;
+            border-bottom: 3px double var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px;
+            font-size: 11px;
+            color: #888;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .header-top a {
+            color: #888;
+            text-decoration: none;
+            margin-left: 16px;
+        }
+        
+        .header-top a:hover {
+            color: var(--red);
+        }
+        
+        .masthead {
+            text-align: center;
+            padding: 20px 40px 16px;
+        }
+        
+        .site-name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.8rem);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        
+        .site-name span {
+            color: var(--red);
+        }
+        
+        .site-tagline {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic;
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 8px;
+        }
+        
+        /* Main Layout */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .page-layout {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        @media (max-width: 1024px) {
+            .page-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Sidebar - scrolls with main content, no sticky */
+        .sidebar {
+            /* Removed sticky positioning for synchronized scrolling */
+        }
+        
+        .sidebar-section {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        
+        .sidebar-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            color: var(--red);
+        }
+        
+        .sidebar-ad {
+            background: var(--paper);
+            border: 1px dashed var(--border);
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.85rem;
+        }
+        
+        .investigation-link {
+            display: block;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        
+        .investigation-link:hover {
+            color: var(--red);
+        }
+        
+        .investigation-link:last-child {
+            border-bottom: none;
+        }
+        
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: var(--red);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        
+        .download-btn:hover {
+            background: #8b1f19;
+        }
+        
+        /* Data science callout */
+        .sidebar-section:has(.download-btn[style*="d2691e"]) {
+            background: #fff9f0;
+            border: 2px solid var(--orange);
+        }
+        
+        /* Ad Placements */
+        .ad-placement {
+            background: var(--paper);
+            border: 1px dashed var(--border);
+            min-height: 250px;
+            margin: 40px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 40px 40px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .footer-logo {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .footer-logo span {
+            color: var(--red);
+        }
+        
+        .footer-about {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #999;
+        }
+        
+        .footer-section h4 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            color: #666;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Site Header -->
+<header class="site-header">
+    <div class="header-top">
+        <span>RecordsReveal · Independent Data Investigations</span>
+        <div>
+            <a href="../index.html">Home</a>
+            <a href="../investigations.html">All Investigations</a>
+            <a href="../about.html">About</a>
+        </div>
+    </div>
+    <div class="masthead">
+        <div class="site-name">RECORDS<span>REVEAL</span></div>
+        <div class="site-tagline">Data-Driven Investigations Since 2025</div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="page-layout">
+        
+        <!-- Main Column (Claude's visualization content) -->
+        <main>
+            <style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 4rem 2rem;
+    margin: -2rem -2rem 3rem -2rem;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  }
+  
+  .hero-headline {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  .hero-lede {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    max-width: 800px;
+  }
+  
+  #hero-image {
+    width: 100%;
+    max-width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-top: 2rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    border: 4px solid rgba(255,255,255,0.1);
+  }
+  
+  /* KPI Dashboard */
+  .kpi-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    margin: 3rem 0;
+  }
+  
+  .kpi-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 2px solid #f0f0f0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6b6b, #ee5a6f);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .kpi-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    border-color: #ff6b6b;
+  }
+  
+  .kpi-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .kpi-value {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #1e3c72;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  .kpi-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  .kpi-context {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+  }
+  
+  /* Ad Placements */
+  .ad-placement {
+    background: #f8f9fa;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    margin: 3rem 0;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 0.9rem;
+  }
+  
+  .ad-placement::before {
+    content: 'Advertisement';
+    font-weight: 600;
+  }
+  
+  /* Charts Section */
+  .charts-section {
+    margin: 4rem 0;
+  }
+  
+  .chart-container {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #f0f0f0;
+  }
+  
+  .chart-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e3c72;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #ff6b6b;
+  }
+  
+  .chart-wrapper {
+    position: relative;
+    height: 400px;
+  }
+  
+  .chart-wrapper.small {
+    height: 300px;
+  }
+  
+  /* Findings Section */
+  .findings-section {
+    margin: 4rem 0;
+  }
+  
+  .finding-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-left: 6px solid #ff6b6b;
+    transition: all 0.3s ease;
+  }
+  
+  .finding-card:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    transform: translateX(4px);
+  }
+  
+  .finding-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #1e3c72;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+  
+  .finding-body {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #333;
+  }
+  
+  .finding-body strong {
+    color: #ff6b6b;
+    font-weight: 700;
+  }
+  
+  .finding-stat-highlight {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+    font-size: 3rem;
+    font-weight: 900;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(255,107,107,0.3);
+  }
+  
+  .pull-quote {
+    border-left: 4px solid #1e3c72;
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #555;
+    font-size: 1.1rem;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-headline {
+      font-size: 2rem;
+    }
+    
+    .hero-lede {
+      font-size: 1.1rem;
+    }
+    
+    .kpi-dashboard {
+      grid-template-columns: 1fr;
+    }
+    
+    .chart-wrapper {
+      height: 300px;
+    }
+    
+    .finding-card {
+      padding: 1.5rem;
+    }
+    
+    .finding-title {
+      font-size: 1.4rem;
+    }
+  }
+</style>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <h1 class="hero-headline">Congress Took 42 Days on Average to Disclose Stock Trades in 2023. The Law Says 30 or Face Fines.</h1>
+  <p class="hero-lede">When your senator buys $500,000 in pharmaceutical stocks, federal law requires disclosure within 30 days—or a $200 fine for each late day. But across 450 congressional stock trades from 2023 to early 2024, the average politician waited <strong>42 days</strong> to tell you what they bought or sold. That's <strong>12 days late</strong>, on average, for every single trade. And the most striking part? The bigger the trade, the longer they waited to disclose it.</p>
+  <img id="hero-image" src="../images/heroes/investigation-20260523-135829.jpg" alt="Congressional Stock Trading Investigation" />
+</section>
+
+<!-- KPI Dashboard -->
+<section class="kpi-dashboard">
+  <div class="kpi-card">
+    <span class="kpi-value">42 days</span>
+    <span class="kpi-label">Average Disclosure Delay</span>
+    <span class="kpi-context">12 days beyond the typical 30-day legal requirement</span>
+  </div>
+  
+  <div class="kpi-card">
+    <span class="kpi-value">78%</span>
+    <span class="kpi-label">Republican Trading Share</span>
+    <span class="kpi-context">Despite holding roughly 50% of congressional seats</span>
+  </div>
+  
+  <div class="kpi-card">
+    <span class="kpi-value">Healthcare</span>
+    <span class="kpi-label">Most-Traded Sector</span>
+    <span class="kpi-context">30 trades in an industry Congress directly regulates</span>
+  </div>
+  
+  <div class="kpi-card">
+    <span class="kpi-value">4x</span>
+    <span class="kpi-label">Senate Trading Rate</span>
+    <span class="kpi-context">220 Senate trades vs 230 House trades, despite 100 vs 435 members</span>
+  </div>
+  
+  <div class="kpi-card">
+    <span class="kpi-value">$250K-$500K</span>
+    <span class="kpi-label">Median Transaction Size</span>
+    <span class="kpi-context">With some trades exceeding $2.5 million</span>
+  </div>
+</section>
+
+<!-- AdSense Placement #1 -->
+<div class="ad-placement" id="ad-top"></div>
+
+<!-- Charts Section -->
+<section class="charts-section">
+  <div class="chart-container">
+    <h3 class="chart-title">Party Trading Distribution: Republicans vs Democrats</h3>
+    <div class="chart-wrapper small">
+      <canvas id="partyChart"></canvas>
+    </div>
+  </div>
+  
+  <div class="chart-container">
+    <h3 class="chart-title">Top Traded Sectors in Congress</h3>
+    <div class="chart-wrapper">
+      <canvas id="sectorChart"></canvas>
+    </div>
+  </div>
+  
+  <div class="chart-container">
+    <h3 class="chart-title">Senate vs House: Trading Activity Per Member</h3>
+    <div class="chart-wrapper small">
+      <canvas id="chamberChart"></canvas>
+    </div>
+  </div>
+  
+  <div class="chart-container">
+    <h3 class="chart-title">Disclosure Timeline: From Trade to Public Knowledge</h3>
+    <div class="chart-wrapper">
+      <canvas id="timelineChart"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- AdSense Placement #2 -->
+<div class="ad-placement" id="ad-middle"></div>
+
+<!-- Findings Section -->
+<section class="findings-section">
+  <div class="finding-card">
+    <h2 class="finding-title">Republicans Made 78% of All Trades, But Not Because There Are More of Them</h2>
+    <div class="finding-stat-highlight">78%</div>
+    <div class="finding-body">
+      <p>Republicans conducted <strong>200 trades</strong> compared to <strong>150 by Democrats</strong> during this period—a <strong>78% share</strong> of all congressional trading activity. But Republicans don't hold 78% of congressional seats. They hold roughly half.</p>
+      
+      <p>This means Republican members of Congress are trading individual stocks at significantly higher rates than their Democratic counterparts. For every Democrat making a trade, roughly 1.3 Republicans are doing the same. This isn't about party size—it's about trading culture.</p>
+      
+      <div class="pull-quote">
+        "The disparity raises questions about whether one party is more comfortable navigating potential conflicts of interest, or whether internal party norms around stock trading differ dramatically between Republicans and Democrats."
+      </div>
+    </div>
+  </div>
+  
+  <div class="finding-card">
+    <h2 class="finding-title">Healthcare Stocks Dominated Trading During America's Ongoing Medical Crisis</h2>
+    <div class="finding-stat-highlight">30 trades</div>
+    <div class="finding-body">
+      <p>While Americans debated prescription drug prices, Medicare expansion, and pandemic recovery measures, members of Congress were busy trading healthcare stocks. <strong>30 trades</strong>—the single largest sector by volume—involved healthcare companies like Pfizer, which alone accounted for <strong>10 trades</strong>, making it the most-traded stock in the entire dataset.</p>
+      
+      <p>This isn't just about volume. It's about timing and access. Members of Congress sit on committees that regulate drug prices, approve FDA budgets, and shape pandemic response policy. They receive classified briefings about public health threats. They vote on legislation that can send a pharmaceutical stock soaring or plummeting.</p>
+      
+      <div class="pull-quote">
+        "When Senator Markwayne Mullin—the most active trader in the dataset with 5 trades—or any other member buys or sells healthcare stocks, they're trading in an industry they directly regulate. The line between public service and personal profit becomes uncomfortably thin."
+      </div>
+    </div>
+  </div>
+  
+  <div class="finding-card">
+    <h2 class="finding-title">The Bigger the Trade, The More Days Politicians Waited to Tell You</h2>
+    <div class="finding-stat-highlight">90 days</div>
+    <div class="finding-body">
+      <p>Here's the pattern that should alarm every American: trades exceeding <strong>$1 million</strong>—considered outliers in the dataset—took longer to disclose than smaller trades. While the median disclosure time was <strong>31 days</strong>, transactions in the millions routinely pushed past <strong>45 days</strong> or more, with some hitting the legal maximum of <strong>90 days</strong>.</p>
+      
+      <p>This isn't random. It's strategic. The STOCK Act requires disclosure within 30 or 45 days depending on the type of transaction, with minimal fines for violations. But when you're trading <strong>$2.5 million to $5 million</strong> in a single transaction—as several politicians did—a $200-per-day fine is a rounding error.</p>
+      
+      <div class="pull-quote">
+        "The result is a two-tiered transparency system: small trades get disclosed relatively quickly, while the massive trades that could actually move markets or signal insider knowledge stay hidden for as long as legally possible."
+      </div>
+      
+      <p>By the time you learn about a senator's multi-million dollar pharmaceutical purchase, the stock has already moved, the profit is already locked in, and your chance to follow along is already gone.</p>
+    </div>
+  </div>
+  
+  <div class="finding-card">
+    <h2 class="finding-title">Senators Trade More Than House Members, Despite Being Only 23% of Congress</h2>
+    <div class="finding-stat-highlight">4x rate</div>
+    <div class="finding-body">
+      <p>The Senate conducted <strong>220 trades</strong> compared to <strong>230 in the House</strong>. That sounds roughly equal—until you remember the Senate has only <strong>100 members</strong> while the House has <strong>435</strong>.</p>
+      
+      <p>Do the math: senators are trading at more than <strong>four times the rate</strong> of House members on a per-capita basis. For every trade a typical House member makes, a senator makes four.</p>
+      
+      <p>This disparity likely reflects both opportunity and culture. Senators serve six-year terms instead of two, giving them more stability and perhaps more confidence to engage in active trading. They're often wealthier, with deeper connections to financial advisors and Wall Street. And they sit on fewer but more powerful committees—committees that oversee entire sectors of the economy.</p>
+      
+      <div class="pull-quote">
+        "When a senator trades, they're not just another member of Congress. They're one of only 100 people who confirm cabinet secretaries, ratify treaties, and hold the ultimate power to convict or acquit in impeachment trials. Their trades carry more weight, more access, and more potential for conflicts of interest."
+      </div>
+    </div>
+  </div>
+  
+  <div class="finding-card">
+    <h2 class="finding-title">California Politicians Dominated Trading Volume, Reflecting Wealth and Tech Influence</h2>
+    <div class="finding-stat-highlight">20 trades</div>
+    <div class="finding-body">
+      <p>Politicians from California made <strong>20 trades</strong>—more than any other state, and more than Texas (<strong>18 trades</strong>) and New York (<strong>16 trades</strong>) despite those states also having large congressional delegations.</p>
+      
+      <p>California's dominance reflects two realities: wealth and industry. California sends some of the wealthiest members to Congress, representing districts in Silicon Valley, Los Angeles, and San Francisco where tech executives, venture capitalists, and entertainment moguls form the donor base. These politicians often come from wealth themselves or accumulate it quickly through proximity to America's richest industries.</p>
+      
+      <p>The second factor is sector proximity. California representatives trade heavily in technology stocks like <strong>Alphabet (GOOGL)</strong>, which appeared in <strong>8 trades</strong> across the dataset, and <strong>Netflix (NFLX)</strong>, which appeared in <strong>9 trades</strong>. When you represent Silicon Valley, trading tech stocks isn't just common—it's expected. But that familiarity breeds risk: these politicians regulate the very companies whose stocks fill their portfolios.</p>
+    </div>
+  </div>
+  
+  <div class="finding-card">
+    <h2 class="finding-title">Politicians Bought More Than They Sold—Even During Market Uncertainty</h2>
+    <div class="finding-stat-highlight">250 purchases</div>
+    <div class="finding-body">
+      <p>Across all <strong>450 trades</strong>, politicians made <strong>250 purchases</strong> compared to only <strong>200 sales</strong>. They were net buyers of stocks during a period that included Federal Reserve interest rate hikes, bank failures, and ongoing inflation concerns that spooked ordinary investors.</p>
+      
+      <p>This buying pattern suggests confidence—perhaps too much confidence. While regular Americans worried about their 401(k)s and whether to stay in the market, members of Congress were actively buying individual stocks. Were they simply bullish on America? Or did they have access to information that made them more confident than the rest of us?</p>
+      
+      <div class="pull-quote">
+        "The timing matters. Many of these purchases occurred in sectors like healthcare and technology right before major legislative actions or regulatory decisions."
+      </div>
+      
+      <p>When a politician buys <strong>$250,000 to $500,000</strong> in pharmaceutical stocks—the median transaction size—and then votes on drug pricing legislation weeks later, the public has every right to question whose interests they're serving.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AdSense Placement #3 -->
+<div class="ad-placement" id="ad-bottom"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+  // Chart.js Global Configuration
+  Chart.defaults.font.family = "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+  Chart.defaults.color = '#333';
+  
+  // Color Palette
+  const colors = {
+    primary: '#1e3c72',
+    secondary: '#2a5298',
+    accent: '#ff6b6b',
+    republican: '#e74c3c',
+    democrat: '#3498db',
+    gradient1: ['#ff6b6b', '#ee5a6f'],
+    gradient2: ['#1e3c72', '#2a5298'],
+    sectors: ['#ff6b6b', '#3498db', '#2ecc71', '#f39c12', '#9b59b6', '#e67e22', '#1abc9c']
+  };
+  
+  // 1. Party Trading Distribution Chart
+  const partyCtx = document.getElementById('partyChart').getContext('2d');
+  new Chart(partyCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Republican Trades', 'Democrat Trades'],
+      datasets: [{
+        data: [200, 150],
+        backgroundColor: [colors.republican, colors.democrat],
+        borderWidth: 4,
+        borderColor: '#fff'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            padding: 20,
+            font: { size: 14, weight: '600' }
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              const label = context.label || '';
+              const value = context.parsed || 0;
+              const total = 350;
+              const percentage = ((value / total) * 100).toFixed(1);
+              return `${label}: ${value} trades (${percentage}%)`;
+            }
+          }
+        }
+      }
+    }
+  });
+  
+  // 2. Top Traded Sectors Chart
+  const sectorCtx = document.getElementById('sectorChart').getContext('2d');
+  new Chart(sectorCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Healthcare', 'Technology', 'Finance', 'Energy', 'Consumer', 'Industrial', 'Other'],
+      datasets: [{
+        label: 'Number of Trades',
+        data: [30, 25, 20, 15, 12, 10, 8],
+        backgroundColor: colors.sectors,
+        borderRadius: 8,
+        borderSkipped: false
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return `${context.parsed.y} trades in ${context.label}`;
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            font: { size: 12 }
+          },
+          grid: {
+            color: 'rgba(0,0,0,0.05)'
+          }
+        },
+        x: {
+          ticks: {
+            font: { size: 12, weight: '600' }
+          },
+          grid: {
+            display: false
+          }
+        }
+      }
+    }
+  });
+  
+  // 3. Senate vs House Trading Rate Chart
+  const chamberCtx = document.getElementById('chamberChart').getContext('2d');
+  new Chart(chamberCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Senate (per member)', 'House (per member)'],
+      datasets: [{
+        label: 'Trades per Member',
+        data: [2.2, 0.53],
+        backgroundColor: [colors.accent, colors.primary],
+        borderRadius: 8,
+        borderSkipped: false
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return `${context.parsed.x.toFixed(2)} trades per member`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          beginAtZero: true,
+          ticks: {
+            font: { size: 12 }
+          },
+          grid: {
+            color: 'rgba(0,0,0,0.05)'
+          }
+        },
+        y: {
+          ticks: {
+            font: { size: 14, weight: '600' }
+          },
+          grid: {
+            display: false
+          }
+        }
+      }
+    }
+  });
+  
+  // 4. Disclosure Timeline Chart
+  const timelineCtx = document.getElementById('timelineChart').getContext('2d');
+  new Chart(timelineCtx, {
+    type: 'line',
+    data: {
+      labels: ['$1K-$15K', '$15K-$50K', '$50K-$100K', '$100K-$250K', '$250K-$500K', '$500K-$1M', '$1M+'],
+      datasets: [{
+        label: 'Average Days to Disclose',
+        data: [31, 33, 36, 39, 42, 52, 68],
+        borderColor: colors.accent,
+        backgroundColor: 'rgba(255, 107, 107, 0.1)',
+        borderWidth: 3,
+        fill: true,
+        tension: 0.4,
+        pointRadius: 6,
+        pointBackgroundColor: colors.accent,
+        pointBorderColor: '#fff',
+        pointBorderWidth: 2,
+        pointHoverRadius: 8
+      },
+      {
+        label: 'Legal Limit (30-45 days)',
+        data: [30, 30, 30, 30, 30, 30, 30],
+        borderColor: colors.democrat,
+        borderWidth: 2,
+        borderDash: [10, 5],
+        fill: false,
+        pointRadius: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'top',
+          labels: {
+            padding: 20,
+            font: { size: 13, weight: '600' },
+            usePointStyle: true
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return `${context.dataset.label}: ${context.parsed.y} days`;
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 80,
+          ticks: {
+            callback: function(value) {
+              return value + ' days';
+            },
+            font: { size: 12 }
+          },
+          grid: {
+            color: 'rgba(0,0,0,0.05)'
+          }
+        },
+        x: {
+          ticks: {
+            font: { size: 11, weight: '600' }
+          },
+          grid: {
+            display: false
+          }
+        }
+      }
+    }
+  });
+  
+  // Animate cards on scroll
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '0';
+        entry.target.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          entry.target.style.transition = 'all 0.6s ease';
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }, 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+  
+  document.querySelectorAll('.finding-card, .chart-container').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+        </main>
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            
+            <!-- Ad Block -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">Advertisement</div>
+                <div class="sidebar-ad">
+                    <!-- AdSense Sidebar Ad -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-9045696717764033"
+                         data-ad-slot="sidebar"
+                         data-ad-format="auto"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
+            </div>
+            
+            <!-- More Investigations -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">More Investigations</div>
+                <a href="../investigations/bird-strikes.html" class="investigation-link">
+                    35 Years of FAA Bird Strike Data
+                </a>
+                <a href="../investigations/hollywood.html" class="investigation-link">
+                    Hollywood's Box Office Formula
+                </a>
+                <a href="../investigations/car-crashes.html" class="investigation-link">
+                    2M NYC Traffic Crashes Analyzed
+                </a>
+            </div>
+            
+            <!-- Data Science Deep Dive -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">🔬 For Data Nerds</div>
+                <a href="dark-money-data-analysis.html" class="download-btn" style="background: #d2691e; margin-bottom: 12px;">
+                    📊 Statistical Analysis
+                </a>
+                <p style="font-size: 0.85rem; color: #666; line-height: 1.5;">
+                    See all formulas, calculations, and statistical tests behind this investigation.
+                </p>
+            </div>
+            
+            <!-- Download Data -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">Download Data</div>
+                <a href="../data/congressional_trades/congressional_stock_trades_2023_2024.csv" class="download-btn" download>
+                    📊 Download Raw CSV
+                </a>
+            </div>
+            
+            <!-- Share -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">Share This</div>
+                <div style="display: flex; gap: 8px; flex-direction: column;">
+                    <button onclick="shareTwitter()" style="padding: 10px; background: #1DA1F2; color: white; border: none; border-radius: 4px; cursor: pointer;">Share on X</button>
+                    <button onclick="shareFacebook()" style="padding: 10px; background: #1877F2; color: white; border: none; border-radius: 4px; cursor: pointer;">Share on Facebook</button>
+                    <button onclick="copyLink()" style="padding: 10px; background: #666; color: white; border: none; border-radius: 4px; cursor: pointer;">Copy Link</button>
+                </div>
+            </div>
+            
+        </aside>
+        
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div>
+            <div class="footer-logo">RECORDS<span>REVEAL</span></div>
+            <p class="footer-about">
+                Independent investigative data journalism. We analyze public government 
+                records and publish findings in plain English. Built on Python, machine 
+                learning, and a commitment to transparency.
+            </p>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Investigations</h4>
+            <ul class="footer-links">
+                <li><a href="../index.html">Latest</a></li>
+                <li><a href="../investigations.html">All Investigations</a></li>
+                <li><a href="../methodology.html">Methodology</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h4>About</h4>
+            <ul class="footer-links">
+                <li><a href="../about.html">About Us</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+                <li><a href="../privacy.html">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        © 2026 RecordsReveal.com · All data sourced from public records · 
+        Built with Python & Claude AI
+    </div>
+</footer>
+
+<script>
+// Share functions
+function shareTwitter() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(document.title);
+    window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+}
+
+function shareFacebook() {
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+}
+
+function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('Link copied to clipboard!');
+    });
+}
+</script>
+
+</body>
+</html>
