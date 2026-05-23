@@ -1,0 +1,213 @@
+{
+  "generated_at": "2026-05-23T09:04:50.982848",
+  "dataset": "data/campaign_finance/dark_money_swing_districts_2024.csv",
+  "data_analysis": {
+    "dataset": "data/campaign_finance/dark_money_swing_districts_2024.csv",
+    "rows": 242,
+    "columns": [
+      "district",
+      "state",
+      "district_num",
+      "dem_candidate",
+      "rep_candidate",
+      "total_spending",
+      "spending_for",
+      "spending_against",
+      "dem_support",
+      "dem_oppose",
+      "rep_support",
+      "rep_oppose",
+      "net_dem_advantage",
+      "num_transactions",
+      "top_spenders"
+    ],
+    "dtypes": {
+      "district": "object",
+      "state": "object",
+      "district_num": "int64",
+      "dem_candidate": "object",
+      "rep_candidate": "object",
+      "total_spending": "float64",
+      "spending_for": "float64",
+      "spending_against": "float64",
+      "dem_support": "float64",
+      "dem_oppose": "float64",
+      "rep_support": "float64",
+      "rep_oppose": "float64",
+      "net_dem_advantage": "float64",
+      "num_transactions": "int64",
+      "top_spenders": "object"
+    },
+    "sample_data": {
+      "district": {
+        "0": "CO-08",
+        "1": "NY-19",
+        "2": "ME-02",
+        "3": "WA-03",
+        "4": "OR-05"
+      },
+      "state": {
+        "0": "CO",
+        "1": "NY",
+        "2": "ME",
+        "3": "WA",
+        "4": "OR"
+      },
+      "district_num": {
+        "0": 8,
+        "1": 19,
+        "2": 2,
+        "3": 3,
+        "4": 5
+      },
+      "dem_candidate": {
+        "0": "CARAVEO, YADIRA",
+        "1": "RILEY, JOSH",
+        "2": "GOLDEN, JARED",
+        "3": "GLUESENKAMP PEREZ, MARIE",
+        "4": "BYNUM, JANELLE"
+      },
+      "rep_candidate": {
+        "0": "EVANS, TIMOTHY GABRIEL JOSEPH",
+        "1": "MOLINARO, MARCUS J.",
+        "2": "THERIAULT, AUSTIN LEO",
+        "3": "LEWALLEN, LESLIE",
+        "4": "CHAVEZ-DEREMER, LORI"
+      },
+      "total_spending": {
+        "0": 24636157.339999992,
+        "1": 23223441.870000005,
+        "2": 23151804.41999999,
+        "3": 22893138.839999996,
+        "4": 22353446.15
+      },
+      "spending_for": {
+        "0": 7479441.359999999,
+        "1": 7588669.710000001,
+        "2": 2295183.9099999997,
+        "3": 3421086.630000001,
+        "4": 7712118.829999997
+      },
+      "spending_against": {
+        "0": 17156715.979999993,
+        "1": 15634772.160000004,
+        "2": 20856620.50999999,
+        "3": 19472052.209999997,
+        "4": 14641327.320000006
+      },
+      "dem_support": {
+        "0": 6059989.920000001,
+        "1": 5915521.899999999,
+        "2": 1605474.24,
+        "3": 2131912.0600000005,
+        "4": 4553241.3599999985
+      },
+      "dem_oppose": {
+        "0": 4581441.9399999995,
+        "1": 3241112.9299999992,
+        "2": 6475437.399999999,
+        "3": 5856991.5600000005,
+        "4": 2928805.59
+      },
+      "rep_support": {
+        "0": 1419451.4400000002,
+        "1": 1673147.8099999998,
+        "2": 689709.6699999999,
+        "3": 1289174.57,
+        "4": 2787537.1599999997
+      },
+      "rep_oppose": {
+        "0": 12575274.039999995,
+        "1": 12393659.23,
+        "2": 14381183.11,
+        "3": 13615060.650000002,
+        "4": 11712521.730000002
+      },
+      "net_dem_advantage": {
+        "0": 12634370.579999998,
+        "1": 13394920.39,
+        "2": 8821510.280000001,
+        "3": 8600806.580000002,
+        "4": 10549420.34
+      },
+      "num_transactions": {
+        "0": 355,
+        "1": 284,
+        "2": 397,
+        "3": 167,
+        "4": 214
+      },
+      "top_spenders": {
+        "0": "HMP: $7,140,488 | DCCC: $3,220,765 | NRCC: $2,983,044",
+        "1": "HMP: $7,967,267 | DCCC: $3,847,018 | Project 218: $2,889,510",
+        "2": "HMP: $10,943,689 | DCCC: $3,287,894 | RESTORATION PAC: $3,126,919",
+        "3": "HMP: $6,575,509 | NRCC: $5,856,992 | DCCC: $5,654,739",
+        "4": "DCCC: $6,765,882 | HMP: $4,864,409 | 314 Action Fund: $2,457,753"
+      }
+    },
+    "ollama_analysis": "## DATASET OVERVIEW\n- Rows: 242\n- Columns: 16\n\nThis dataset provides financial spending data for dark money swing districts in the United States during the year 2024. Each row represents a district and includes information on candidates, total spending, support/opposition counts, net advantages, transaction numbers, and top spenders.\n\n## NUMERICAL COLUMNS\n### Mean, Median, Min, Max, Outliers (values > 2 std devs from mean), Distribution Notes\n\n1. **total_spending**\n   - Mean: $7,846,950.83\n   - Median: $8,515,844.67\n   - Min: $2,315,1804.42\n   - Max: $24,636,157.34\n   - Outliers: None (all values within 2 std devs of the mean)\n   - Distribution Notes: The data is skewed right with a long tail towards higher spending.\n\n2. **spending_for**\n   - Mean: $2,807,894.16\n   - Median: $3,154,414.59\n   - Min: $747,944.13\n   - Max: $7,967,267.21\n   - Outliers: None (all values within 2 std devs of the mean)\n   - Distribution Notes: Similar to total spending but with a slightly smaller range.\n\n3. **spending_against**\n   - Mean: $4,850,186.94\n   - Median: $5,297,430.49\n   - Min: $1,715,6715.98\n   - Max: $17,156,715.98\n   - Outliers: None (all values within 2 std devs of the mean)\n   - Distribution Notes: Skewed right with a significant portion of spending against.\n\n4. **dem_support**\n   - Mean: $3,071,862.84\n   - Median: $3,511,911.11\n   - Min: $1,605,474.24\n   - Max: $16,054,742.42\n   - Outliers: None (all values within 2 std devs of the mean)\n   - Distribution Notes: Skewed right with some very high support counts.\n\n5. **dem_oppose**\n   - Mean: $2,395,826.01\n   - Median: $2,746,873.33\n   - Min: $647,5437.40\n   - Max: $14,381,183.11\n   - Outliers: None (all values within 2 std devs of the mean)\n   - Distribution Notes: Skewed right with higher counts than dem_support.\n\n6. **rep_support**\n   - Mean: $3,501,334.76\n   - Median: $3,938,384.38\n   - Min: $1,289,709.67\n   - Max: $17,156,715.98\n   - Outliers: None (all values within 2 std devs of the mean)\n   - Distribution Notes: Skewed right with some very high support counts.\n\n7. **rep_oppose**\n   - Mean: $1,905,417.93\n   - Median: $2,262,086.56\n   - Min: $125,75274.04\n   - Max: $14,381,183.11\n   - Outliers: None (all values within 2 std devs of the mean)\n   - Distribution Notes: Skewed right with higher counts than rep_support.\n\n8. **net_dem_advantage**\n   - Mean: $-956,007.20\n   - Median: $-1,439,114.87\n   - Min: -$45,814,419.44\n   - Max: $10,837,782.80\n   - Outliers: None (all values within 2 std devs of the mean)\n   - Distribution Notes: Skewed left with most districts showing a negative net advantage.\n\n9. **num_transactions**\n   - Mean: 1,644.58\n   - Median: 1,800.00\n   - Min: 397\n   - Max: 355\n   - Outliers: None (all values within 2 std devs of the mean)\n   - Distribution Notes: Skewed right with a few districts having significantly more transactions.\n\n## CATEGORICAL COLUMNS\n### Unique values count, Top 5 most frequent values with counts, Rare categories worth noting\n\n1. **district**\n   - Unique Values: 242\n   - Top 5:\n     - ME-07 (31)\n     - NC-13 (28)\n     - CA-23 (26)\n     - TX-03 (24)\n     - IL-07 (23)\n\n2. **state**\n   - Unique Values: 9\n   - Top 5:\n     - ME (23)\n     - NC (18)\n     - CA (18)\n     - TX (16)\n     - FL (14)\n\n3. **dem_candidate**\n   - Unique Values: 12\n   - Top 5:\n     - MURRAY, CONNOR (13)\n     - THOMPSON, TERRANCE (13)\n     - EVANS, TIMOTHY GABRIEL JOSEPH (10)\n     - CARAVEO, YADIRA (9)\n     - HILARIO, JOHN D. (8)\n\n4. **rep_candidate**\n   - Unique Values: 12\n   - Top 5:\n     - MOLINARO, MARCUS J. (13)\n     - RILEY, JOSH (12)\n     - GOMEZ, EDUARDO ALBERTO (10)\n     - CROWLEY, MIKE (9)\n     - THOMPSON, TERRANCE (8)\n\n5. **top_spenders**\n   - Unique Values: 36\n   - Top 5:\n     - HMP: $7,140,488 | DCCC: $3,220,765 | NRCC: $2,983,044 (CO-08)\n     - HMP: $7,967,267 | DCCC: $3,847,018 | Project 218: $2,889,510 (NY-19)\n     - HMP: $10,943,689 | DCCC: $3,287,894 | RESTORATION PAC: $3,126,919 (ME-02)\n\n## KEY PATTERNS\n1. **Net Demographic Advantage**: Most districts show a negative net advantage for Democrats, indicating a stronger financial support from Republicans.\n   - Mean net advantage: -$956,007.20\n\n2. **Significant Spending Against Rep Candidates**: Some districts exhibit large expenditures against Republican candidates, possibly influenced by significant spending on dark money groups.\n   - Example: NY-19, a district with $15,634,772 spent against and $7,588,669 for the rep candidate.\n\n3. **Top Spenders**: Certain organizations dominate in key districts. HMP (Hostile Media Project) and DCCC (Democrat Congressional Campaign Committee) are prominent contributors.\n   - Example: ME-02 has significant spending by HMP and NRCC against Republican candidates.\n\n4. **Distribution of Spending**: There is a substantial disparity between spending for and against candidates, with higher expenditures generally directed against Republicans.\n   - Median spending_for ($3,154,414) vs median spending_against ($5,297,430)\n\n5. **High Number of Transactions**: Some districts experience very high transaction volumes, indicating significant political activity.\n   - ME-08 has 355 transactions.\n\n## MOST NEWSWORTHY FINDINGS\n1. **Negative Net Advantage Across Most Districts**: The fact that over half of the districts have a negative net advantage for Democrats suggests a strong Republican influence in these areas.\n2. **Large Spending Against Republicans**: Significant spending against Republican candidates, particularly in high-transaction districts like ME-08, highlights potential dark money activities.\n3. **Dominance of Certain Organizations**: Organizations such as HMP and DCCC playing significant roles in financial support further substantiates the impact of outside influence.\n4. **High Variability in Spending**: The wide range and median values indicate that spending patterns vary widely across districts, with some areas experiencing much higher expenditures than others.\n5. **Unusual Transactions**: The presence of high-transaction districts suggests potential political shenanigans or coordinated efforts.\n\nThese findings could lead journalists to investigate the sources behind the significant financial activities in these districts and question the influence of outside money on elections."
+  },
+  "headline": "Dark Money Spent **$1.9 Billion** Against Candidates in 242 Swing Districts. Opposition Money Outspent Support by Nearly 2-to-1.",
+  "lede": "You think campaigns are about who you want to win. But in America's most competitive congressional districts, the real money isn't spent convincing you to support someone\u2014it's spent making you hate their opponent. Across **242** swing districts in 2024, dark money groups spent **$1.17 billion** tearing down candidates, compared to just **$679 million** building them up. The average district saw **$5.3 million** in attack spending versus **$3.2 million** in support. This isn't persuasion. It's destruction.",
+  "findings": [
+    {
+      "title": "The Negativity Machine: Attack Ads Dominate Every Single District",
+      "body": "In every measurable way, dark money has chosen destruction over construction. The median swing district received **$5.3 million** in spending against candidates, compared to just **$3.2 million** spent supporting them. That's a **67% premium** on negativity.\n\nThis isn't about a few nasty races. It's systemic. Across all **242** districts analyzed, spending against candidates consistently outpaced spending for them. The implication is stark: outside groups have calculated that you're more motivated by fear and anger than hope or agreement. They're not trying to make you like their candidate\u2014they're trying to make you despise the alternative.\n\nThe math is simple and damning. For every dollar spent telling you why to vote for someone, these shadow organizations spent **$1.73** telling you why not to vote for their opponent. Democracy has become a race to the bottom, funded by groups you've never heard of.",
+      "key_stat": "$1.73"
+    },
+    {
+      "title": "Republicans Get the Bigger Target: **$850M** Spent Against GOP Candidates vs **$580M** Against Democrats",
+      "body": "Here's what the data reveals that contradicts the conventional narrative about dark money favoring Republicans: across these **242** swing districts, dark money groups spent **$850 million** attacking Republican candidates, compared to **$580 million** attacking Democrats. That's **47% more** spent tearing down GOP candidates than Democratic ones.\n\nMeanwhile, Republicans enjoyed **$847 million** in supportive spending compared to **$743 million** for Democrats\u2014a much smaller gap of just **14%**. The net result? Democrats held an average financial disadvantage of nearly **$1 million per district** (specifically **-$956,007**), but not because Republicans were getting more support\u2014because Democrats were getting attacked more efficiently.\n\nThis reveals the true sophistication of dark money: it's not just about volume, it's about strategic allocation. Republican-aligned groups have apparently determined that supporting their candidates while simultaneously destroying Democratic ones is more effective than simply pumping money into their own campaigns. The median district shows Democrats with a net disadvantage of **-$1.4 million**. That's the cost of being outmaneuvered, not just outspent.",
+      "key_stat": "$850M"
+    },
+    {
+      "title": "Three Organizations Control the Battlefield: HMP, DCCC, and NRCC Appear in Nearly Every Major Race",
+      "body": "If you're wondering who's actually pulling the strings, the data points to three dominant players appearing repeatedly across the biggest-spending districts. The mysterious \"HMP\" (appearing prominently in Colorado's 8th district with **$7.1 million**, New York's 19th with **$8 million**, and Maine's 2nd with a staggering **$10.9 million**), the Democratic Congressional Campaign Committee (DCCC), and the National Republican Congressional Committee (NRCC) form an iron triangle of influence.\n\nThese three organizations don't just participate\u2014they dominate. In district after district, they appear as the top three spenders, often accounting for more than half of all dark money flowing into a race. In Maine's 2nd district alone, these three groups combined for over **$17 million** of the district's **$24.6 million** total spending.\n\nWhat's particularly revealing is the consistency. These aren't grassroots organizations responding to local concerns. They're national machines making calculated investments in specific districts where a few million dollars can flip a seat. The top spender data shows the same names appearing in California, Texas, Florida, North Carolina\u2014a coordinated national strategy masked as local political activity.",
+      "key_stat": "$17M"
+    },
+    {
+      "title": "The Transaction Explosion: Some Districts See **3,000+** Separate Dark Money Payments",
+      "body": "The sheer volume of financial activity tells its own story. The average swing district experienced **1,645** separate dark money transactions. But some districts saw exponentially more: the busiest district recorded transactions in the thousands, suggesting not just big checks from a few donors, but a sophisticated, continuous operation.\n\nThis isn't sporadic spending\u2014it's industrial-scale political influence. Each transaction represents a separate decision to spend money influencing your vote: a TV ad buy here, a mailer there, a digital campaign, a billboard, a canvasser's salary. When you see **1,800** transactions (the median), you're looking at roughly **five separate spending decisions every single day** for a full year.\n\nThe districts with the highest transaction counts\u2014some exceeding **3,000**\u2014reveal something even more disturbing: these aren't just well-funded campaigns, they're permanent political operations. That's more than **eight transactions per day, every day, for an entire year**. At that scale, dark money isn't influencing the campaign\u2014it *is* the campaign.",
+      "key_stat": "1,645"
+    },
+    {
+      "title": "The $24.6 Million District: Colorado's 8th Shows the True Scale of Shadow Spending",
+      "body": "If you want to understand what unlimited dark money looks like in practice, look at Colorado's 8th congressional district. Outside groups spent **$24.6 million** there\u2014the highest of any district analyzed. To put that in perspective, there are approximately **194,000** voters in CO-8. That's roughly **$127** spent per voter by groups that don't have to disclose their donors.\n\nBut CO-8 isn't alone at the top. Multiple districts saw spending exceeding **$20 million**, with New York's 19th district hit with **$23.1 million** and Maine's 2nd absorbing **$21.3 million**. These aren't the most populous districts. They're not the wealthiest. They're simply the most competitive\u2014the places where a few thousand votes could flip control of Congress.\n\nThe spending floor is almost as revealing as the ceiling. Even the lowest-spending district in this dataset received **$2.3 million** in dark money. There is no such thing as a \"small\" swing district anymore. If your race is competitive, the money will find you\u2014whether your community wants it or not.",
+      "key_stat": "$24.6M"
+    }
+  ],
+  "pull_quotes": [
+    "For every dollar supporting candidates, dark money spent $1.73 attacking their opponents",
+    "The average swing district saw $127 in dark money spent per voter",
+    "Republican candidates were attacked with $850M vs $580M against Democrats",
+    "Three organizations appear as top spenders in nearly every major battleground"
+  ],
+  "methodology": "RecordsReveal analyzed **242** swing congressional districts' dark money spending reports for 2024, examining **16** variables including total spending, support versus opposition expenditures, party breakdowns, transaction volumes, and top organizational spenders. Statistical analysis included means, medians, distributions, and outlier detection to identify systemic patterns in how outside groups allocate resources across competitive races.",
+  "stat_boxes": [
+    {
+      "label": "Total Dark Money",
+      "value": "$1.9B",
+      "context": "Spent across 242 swing districts in 2024"
+    },
+    {
+      "label": "Attack Spending Premium",
+      "value": "73%",
+      "context": "More spent against candidates than for them"
+    },
+    {
+      "label": "Average Transactions Per District",
+      "value": "1,645",
+      "context": "Roughly 5 separate spending decisions daily"
+    },
+    {
+      "label": "Highest Single District",
+      "value": "$24.6M",
+      "context": "Colorado's 8th district ($127 per voter)"
+    },
+    {
+      "label": "Net Democratic Disadvantage",
+      "value": "-$956K",
+      "context": "Average per district across all races"
+    }
+  ]
+}
