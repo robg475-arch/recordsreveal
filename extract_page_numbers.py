@@ -367,10 +367,11 @@ def extract_page_numbers(combined_insights_path, output_path="page_data.json"):
         page_data["stats"]["busiest_day"] = dow.get('busiest_day', 'Unknown')
         page_data["stats"]["busiest_day_count"] = f"{dow.get('busiest_count', 0):,}"
     
-    # Financial stats (NEW!)
+    # Financial stats (ENHANCED!)
     if comparative_financial:
         financial = comparative_financial
         
+        # Basic stats
         if 'top_entities' in financial:
             top_ent = financial['top_entities']
             page_data["stats"]["total_financial"] = f"${top_ent.get('total', 0):,.0f}"
@@ -382,11 +383,56 @@ def extract_page_numbers(combined_insights_path, output_path="page_data.json"):
                 page_data["stats"]["top_entity_amount"] = f"${top.get('amount', 0):,.0f}"
                 print(f"   ✓ Top entity: {page_data['stats']['top_entity']} ({page_data['stats']['top_entity_amount']})")
         
+        # Comparative advantage
         if 'comparative_advantage' in financial:
             comp_adv = financial['comparative_advantage']
             page_data["stats"]["comparative_leader"] = comp_adv.get('leader', 'N/A')
             page_data["stats"]["comparative_advantage"] = f"${abs(comp_adv.get('net_advantage', 0)):,.0f}"
             print(f"   ✓ Comparative advantage: {page_data['stats']['comparative_advantage']} ({page_data['stats']['comparative_leader']})")
+        
+        # Attack vs Support
+        if 'attack_vs_support' in financial:
+            avs = financial['attack_vs_support']
+            page_data["stats"]["pct_attack"] = f"{avs.get('pct_attack', 0):.1f}%"
+            page_data["stats"]["pct_support"] = f"{avs.get('pct_support', 0):.1f}%"
+            page_data["stats"]["attack_insight"] = avs.get('insight', '')
+            print(f"   ✓ Attack ads: {page_data['stats']['pct_attack']} of spending")
+        
+        # Top spenders
+        if 'top_spenders' in financial and financial['top_spenders'].get('dominant_spender'):
+            dominant = financial['top_spenders']['dominant_spender']
+            page_data["stats"]["dominant_spender"] = dominant.get('name', 'N/A')
+            page_data["stats"]["dominant_spender_amount"] = f"${dominant.get('total', 0):,.0f}"
+            page_data["stats"]["dominant_spender_districts"] = dominant.get('districts', 0)
+            print(f"   ✓ Dominant spender: {page_data['stats']['dominant_spender']} ({page_data['stats']['dominant_spender_amount']})")
+        
+        # Concentration
+        if 'concentration' in financial:
+            conc = financial['concentration']
+            if 'top_10' in conc:
+                page_data["stats"]["top_10_pct"] = f"{conc['top_10'].get('pct', 0):.1f}%"
+                print(f"   ✓ Top 10 concentration: {page_data['stats']['top_10_pct']}")
+        
+        # State leader
+        if 'state_analysis' in financial and financial['state_analysis'].get('highest_total'):
+            top_state = financial['state_analysis']['highest_total']
+            page_data["stats"]["top_state"] = top_state.get('state', 'N/A')
+            page_data["stats"]["top_state_amount"] = f"${top_state.get('total', 0):,.0f}"
+            page_data["stats"]["top_state_districts"] = top_state.get('districts', 0)
+            print(f"   ✓ Top state: {page_data['stats']['top_state']} ({page_data['stats']['top_state_amount']})")
+        
+        # Micro-targeting
+        if 'transaction_patterns' in financial and financial['transaction_patterns'].get('micro_targeting'):
+            mt = financial['transaction_patterns']['micro_targeting'][0]
+            page_data["stats"]["micro_target_entity"] = mt.get('entity', 'N/A')
+            page_data["stats"]["micro_target_transactions"] = mt.get('transactions', 0)
+            print(f"   ✓ Micro-targeting: {page_data['stats']['micro_target_entity']} ({page_data['stats']['micro_target_transactions']} transactions)")
+        
+        # Outliers
+        if 'outliers' in financial and len(financial['outliers']) > 0:
+            page_data["stats"]["outlier_count"] = len(financial['outliers'])
+            page_data["stats"]["top_outlier"] = financial['outliers'][0].get('insight', 'N/A')
+            print(f"   ✓ Outliers detected: {page_data['stats']['outlier_count']}")
     
     # ===================================================================
     # PULL QUOTES

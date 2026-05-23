@@ -129,6 +129,11 @@ Key findings:
 - Top entity: {stats.get('top_entity', 'N/A')} ({stats.get('top_entity_amount', 'N/A')})
 - Total financial: {stats.get('total_financial', 'N/A')}
 - Comparative advantage: {stats.get('comparative_advantage', 'N/A')} ({stats.get('comparative_leader', 'N/A')})
+- Attack ads: {stats.get('pct_attack', 'N/A')} of spending
+- Dominant spender: {stats.get('dominant_spender', 'N/A')} ({stats.get('dominant_spender_amount', 'N/A')})
+- Top 10 concentration: {stats.get('top_10_pct', 'N/A')}
+- Top state: {stats.get('top_state', 'N/A')} ({stats.get('top_state_amount', 'N/A')})
+- Micro-targeting: {stats.get('micro_target_entity', 'N/A')} ({stats.get('micro_target_transactions', 'N/A')} transactions)
 
 Write a compelling headline using one of these proven formulas:
 
@@ -174,6 +179,11 @@ Key findings:
 - Top entity: {stats.get('top_entity', 'N/A')} ({stats.get('top_entity_amount', 'N/A')})
 - Total financial: {stats.get('total_financial', 'N/A')}
 - Comparative advantage: {stats.get('comparative_advantage', 'N/A')} ({stats.get('comparative_leader', 'N/A')})
+- Attack ads: {stats.get('pct_attack', 'N/A')} of spending
+- Dominant spender: {stats.get('dominant_spender', 'N/A')} ({stats.get('dominant_spender_amount', 'N/A')})
+- Top 10 concentration: {stats.get('top_10_pct', 'N/A')}
+- Top state: {stats.get('top_state', 'N/A')} ({stats.get('top_state_amount', 'N/A')})
+- Micro-targeting: {stats.get('micro_target_entity', 'N/A')} ({stats.get('micro_target_transactions', 'N/A')} transactions)
 
 Write a lede using the INVESTIGATION_PLAYBOOK formula:
 [Setup conventional assumption] → [Reveal data contradicts it] → [State finding]
@@ -309,11 +319,15 @@ Return ONLY the text, no title."""
         print("Writing Finding 4: Financial Pattern...")
         finding_prompt = f"""Write a findings section for RecordsReveal about financial patterns.
 
-Data:
-- Top entity: {stats.get('top_entity', 'N/A')}
-- Amount: {stats.get('top_entity_amount', 'N/A')}
+Data (8 dimensions analyzed):
+- Top entity: {stats.get('top_entity', 'N/A')} ({stats.get('top_entity_amount', 'N/A')})
 - Total financial: {stats.get('total_financial', 'N/A')}
 - Comparative advantage: {stats.get('comparative_advantage', 'N/A')} ({stats.get('comparative_leader', 'N/A')})
+- Attack ads: {stats.get('pct_attack', 'N/A')} of all spending
+- Dominant spender: {stats.get('dominant_spender', 'N/A')} spent {stats.get('dominant_spender_amount', 'N/A')} across {stats.get('dominant_spender_districts', 0)} districts
+- Concentration: Top 10 districts = {stats.get('top_10_pct', 'N/A')} of all spending
+- Top state: {stats.get('top_state', 'N/A')} with {stats.get('top_state_amount', 'N/A')} across {stats.get('top_state_districts', 0)} districts
+- Micro-targeting: {stats.get('micro_target_entity', 'N/A')} had {stats.get('micro_target_transactions', 'N/A')} transactions (surgical spending)
 
 EXAMPLE OF GOOD RECORDSREVEAL FINANCIAL FINDING:
 "The money tells the real story. Democrats hold a **$76 million** financial advantage across swing districts—outspending Republicans by 73%. That's not just a fundraising edge. That's an air war, ground game, and digital dominance all rolled into one number.
