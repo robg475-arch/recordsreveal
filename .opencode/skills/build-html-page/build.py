@@ -7,8 +7,20 @@ Assembles final HTML with article content and inline charts
 import sys
 import os
 import json
+import re
 from datetime import datetime
 from pathlib import Path
+
+def markdown_to_html(text):
+    """Convert simple markdown to HTML (bold, paragraphs)"""
+    # Convert **text** to <strong>text</strong>
+    text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
+    
+    # Split into paragraphs and wrap in <p> tags
+    paragraphs = text.split('\n\n')
+    html_paragraphs = [f'<p>{p.strip()}</p>' for p in paragraphs if p.strip()]
+    
+    return '\n'.join(html_paragraphs)
 
 def load_investigations_registry():
     """Load the investigations registry from JSON file"""
@@ -728,7 +740,7 @@ footer{{background:var(--ink);padding:60px 40px 40px;border-top:3px solid var(--
         <h2 class="data-block-title">{finding.get('title', f'Finding {i+1}')}</h2>
         <p class="data-block-sub">Analysis from {stats.get('total_records', 'N/A')} records</p>
         <div class="article-body" style="margin-bottom:20px">
-          <p>{finding.get('body', '')}</p>
+          {markdown_to_html(finding.get('body', ''))}
         </div>
 """
         
