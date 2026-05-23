@@ -43,7 +43,7 @@ def ask_claude(prompt, model="claude-sonnet-4-5-20250929"):
         try:
             message = client.messages.create(
                 model=model_name,
-                max_tokens=8000,  # More tokens for full HTML
+                max_tokens=16000,  # Much more tokens for complete HTML with charts
                 temperature=1,
                 messages=[{"role": "user", "content": prompt}]
             )
@@ -149,13 +149,33 @@ Design a STUNNING single-page HTML report that includes:
 Think: New York Times graphics, The Pudding, FiveThirtyEight data stories.
 Make it interactive. Make it beautiful. Make it STUNNING.
 
-# IMPORTANT
+# CRITICAL REQUIREMENTS
 
-Return ONLY the complete HTML. No explanations. No markdown. Just the full HTML from <!DOCTYPE html> to </html>.
+1. **COMPLETE HTML**: Must end with </body></html> - no truncation
+2. **WORKING CHARTS**: Include ALL JavaScript to initialize Chart.js with REAL DATA from the findings
+3. **SELF-CONTAINED**: Single file, all CSS/JS inline, works offline
+4. **TESTED STRUCTURE**: Proper HTML5 structure with all closing tags
 
-The HTML should be ready to save and open in a browser immediately.
+# CHART DATA TO USE
 
-GO CRAZY. AMAZE ME."""
+Extract numbers from the findings and stats to populate charts. For example:
+- Attack vs Support: $1.17B vs $679M
+- Party breakdown: DEM vs REP spending
+- Top spenders: Use the stat boxes
+- Geographic: Top states if mentioned
+- Concentration: Top 10 districts data
+
+You MUST include the Chart.js initialization JavaScript in <script> tags before </body>.
+
+# OUTPUT FORMAT
+
+Return ONLY the complete HTML. No explanations. No markdown wrapper.
+Start with: <!DOCTYPE html>
+End with: </html>
+
+The HTML must be production-ready and work perfectly when opened in a browser.
+
+MAKE IT AMAZING. CHECK YOUR WORK."""
 
     print("🎨 Asking Claude to design stunning HTML...")
     print("   (This may take 30-60 seconds for full HTML generation)\n")
@@ -175,6 +195,33 @@ GO CRAZY. AMAZE ME."""
     if html.endswith("```"):
         html = html[:-3]
     html = html.strip()
+    
+    # Validate HTML is complete
+    if not html.endswith("</html>"):
+        print("\n⚠️  WARNING: HTML appears incomplete (doesn't end with </html>)")
+        print("   Last 200 chars:", html[-200:])
+        return None
+    
+    if "</body>" not in html:
+        print("\n⚠️  WARNING: HTML missing </body> tag")
+        return None
+    
+    if "<script>" not in html.lower() or "chart" not in html.lower():
+        print("\n⚠️  WARNING: HTML may be missing chart JavaScript")
+    
+    # Count charts
+    chart_count = html.count("new Chart(") + html.count("new Chart ")
+    canvas_count = html.count("<canvas")
+    
+    print(f"\n✅ HTML validation:")
+    print(f"   - Properly closed: {'</html>' in html}")
+    print(f"   - Canvas elements: {canvas_count}")
+    print(f"   - Chart initializations: {chart_count}")
+    
+    if canvas_count > 0 and chart_count == 0:
+        print("\n⚠️  WARNING: Found canvas elements but no Chart.js initialization!")
+        print("   The charts will appear as empty boxes.")
+        return None
     
     # Save HTML
     os.makedirs(output_dir, exist_ok=True)
