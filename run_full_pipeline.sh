@@ -39,8 +39,7 @@ echo "📁 Input CSV: $CSV_FILE"
 echo "📂 Output directory: $OUTPUT_DIR"
 echo ""
 
-# Create output directory (clean slate - delete old files to prevent caching issues)
-rm -rf "$OUTPUT_DIR"
+# Create output directory
 mkdir -p "$OUTPUT_DIR"
 
 TIMER_START=$(date +%s)
@@ -54,6 +53,28 @@ if [ ! -f "$OUTPUT_DIR/recommendations.json" ]; then
     echo "❌ Error: Profiling failed"
     exit 1
 fi
+
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "STEP 1.5: Clean Old Analysis Files"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "Removing any cached analysis insight files from previous runs..."
+echo ""
+echo "Why: If the new dataset doesn't match a specific analysis type"
+echo "(e.g., no lat/lon columns = no geographic analysis), that analysis"
+echo "will be SKIPPED. Without this cleanup, old files from previous datasets"
+echo "would remain and pollute the merge step with wrong data."
+echo ""
+
+# Delete the 5 multidimensional analysis insight files to prevent stale data
+# If an analysis doesn't run on the new dataset, it will simply be absent from the merge
+rm -f "$OUTPUT_DIR/categorical_insights.json"
+rm -f "$OUTPUT_DIR/classification_insights.json"
+rm -f "$OUTPUT_DIR/clustering_insights.json"
+rm -f "$OUTPUT_DIR/geographic_insights.json"
+rm -f "$OUTPUT_DIR/temporal_insights.json"
+
+echo "✅ Clean slate ready - only NEW analyses will be included"
 
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
