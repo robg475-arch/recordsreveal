@@ -131,6 +131,16 @@ Make it AMAZING."""
     if not content:
         return None
     
+    # Clean up markdown code blocks
+    content = content.strip()
+    if content.startswith("```html"):
+        content = content[7:]
+    elif content.startswith("```"):
+        content = content[3:]
+    if content.endswith("```"):
+        content = content[:-3]
+    content = content.strip()
+    
     # Validate
     if "<html" in content.lower() or "<!doctype" in content.lower():
         print("⚠️  WARNING: Claude included full HTML structure, extracting body content...")
