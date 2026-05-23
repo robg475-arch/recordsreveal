@@ -1,0 +1,18 @@
+{
+  "name": "generate-hero-image",
+  "version": "1.0.0",
+  "description": "Generate professional hero images using Leonardo.ai API",
+  "author": "RecordsReveal",
+  "category": "image-generation",
+  "dependencies": ["requests", "python-dotenv"],
+  "input": {
+    "combined_insights": "Path to combined_insights.json",
+    "investigation_id": "Unique investigation identifier"
+  },
+  "output": {
+    "image_file": "images/heroes/{investigation_id}.jpg"
+  },
+  "usage": "python generate.py <combined_insights.json> <investigation_id>",
+  "cost": "$0.00 (uses Leonardo.ai free tier)",
+  "execution_time": "30-60 seconds"
+}

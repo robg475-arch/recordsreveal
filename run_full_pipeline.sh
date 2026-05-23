@@ -193,6 +193,14 @@ fi
 
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "STEP 5.5: Generate Hero Image"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+# Generate investigation ID from timestamp
+INVESTIGATION_ID="investigation-$(date +%Y%m%d-%H%M%S)"
+python3 .opencode/skills/generate-hero-image/generate.py "$OUTPUT_DIR/combined_insights.json" "$INVESTIGATION_ID"
+
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "STEP 6: Build HTML Page"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 python3 .opencode/skills/build-html-page/build.py "$OUTPUT_DIR/article_content.json" "$OUTPUT_DIR/page_data.json" investigations
