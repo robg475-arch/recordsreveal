@@ -39,7 +39,8 @@ echo "📁 Input CSV: $CSV_FILE"
 echo "📂 Output directory: $OUTPUT_DIR"
 echo ""
 
-# Create output directory
+# Create output directory (clean slate - delete old files to prevent caching issues)
+rm -rf "$OUTPUT_DIR"
 mkdir -p "$OUTPUT_DIR"
 
 TIMER_START=$(date +%s)
