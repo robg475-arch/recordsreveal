@@ -87,6 +87,7 @@ def extract_page_numbers(combined_insights_path, output_path="page_data.json"):
     categorical = combined.get('all_patterns', {}).get('categorical', {})
     classification = combined.get('all_patterns', {}).get('classification', {})
     clustering = combined.get('all_patterns', {}).get('clustering', {})
+    comparative_financial = combined.get('all_patterns', {}).get('comparative_financial', {})
     
     insights = combined.get('all_ollama_insights', {})
     
@@ -365,6 +366,27 @@ def extract_page_numbers(combined_insights_path, output_path="page_data.json"):
         dow = temporal['day_of_week']
         page_data["stats"]["busiest_day"] = dow.get('busiest_day', 'Unknown')
         page_data["stats"]["busiest_day_count"] = f"{dow.get('busiest_count', 0):,}"
+    
+    # Financial stats (NEW!)
+    if comparative_financial:
+        financial = comparative_financial
+        
+        if 'top_entities' in financial:
+            top_ent = financial['top_entities']
+            page_data["stats"]["total_financial"] = f"${top_ent.get('total', 0):,.0f}"
+            page_data["stats"]["average_financial"] = f"${top_ent.get('average', 0):,.0f}"
+            
+            if top_ent.get('top_10'):
+                top = top_ent['top_10'][0]
+                page_data["stats"]["top_entity"] = top.get('entity', 'N/A')
+                page_data["stats"]["top_entity_amount"] = f"${top.get('amount', 0):,.0f}"
+                print(f"   ✓ Top entity: {page_data['stats']['top_entity']} ({page_data['stats']['top_entity_amount']})")
+        
+        if 'comparative_advantage' in financial:
+            comp_adv = financial['comparative_advantage']
+            page_data["stats"]["comparative_leader"] = comp_adv.get('leader', 'N/A')
+            page_data["stats"]["comparative_advantage"] = f"${abs(comp_adv.get('net_advantage', 0)):,.0f}"
+            print(f"   ✓ Comparative advantage: {page_data['stats']['comparative_advantage']} ({page_data['stats']['comparative_leader']})")
     
     # ===================================================================
     # PULL QUOTES
