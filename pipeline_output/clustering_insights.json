@@ -809,10 +809,10 @@
       }
     ],
     "cluster_names": [
-      "\"Conservative Core\"",
-      "\"Spending Giant\"",
-      "\"Moderate Middle Ground\""
+      "\"Outlier Minority\"",
+      "\"Mainstream Majority\"",
+      "\"Conservative Enclave\""
     ]
   },
-  "ollama_insights": "Here is the list with the requested information:\n\n\u2022 Cluster 0: \"Conservative Core\"\nThis cluster consists of only three samples, suggesting a tight-knit group that may be less diverse in their characteristics.\n\n\u2022 Cluster 1: \"Spending Giant\"\nThe largest cluster, comprising 206 samples, appears to dominate the dataset with its high spending numbers, indicating a potentially significant economic influence at play.\n\n\u2022 Cluster 2: \"Moderate Middle Ground\"\nWith 33 samples and an intermediate silhouette score, this cluster occupies a central position in the analysis, suggesting a more balanced approach that may be less extreme than either of the other two clusters."
+  "ollama_insights": "Here's the analysis:\n\n* Cluster 0: \"Outlier Minority\"\nThis cluster contains isolated districts with high spending against constituents, indicating a possible disconnect between district officials and their constituents.\n* Cluster 1: \"Mainstream Majority\"\nThis cluster comprises the majority of districts (over 85% of cases), which tend to have strong support for democracy and relatively balanced spending.\n* Cluster 2: \"Conservative Enclave\"\nThis cluster features districts with high levels of dem_support, suggesting a pro-conservative bias and possible less balanced spending."
 }

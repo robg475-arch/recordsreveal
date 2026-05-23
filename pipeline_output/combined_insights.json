@@ -815,9 +815,9 @@
         }
       ],
       "cluster_names": [
-        "\"Conservative Core\"",
-        "\"Spending Giant\"",
-        "\"Moderate Middle Ground\""
+        "\"Outlier Minority\"",
+        "\"Mainstream Majority\"",
+        "\"Conservative Enclave\""
       ]
     },
     "comparative_financial": {
@@ -896,6 +896,314 @@
         "net_advantage": 75465387.78000003,
         "leader": "DEM"
       },
+      "attack_vs_support": {
+        "spending_for": 286726864.26000005,
+        "spending_against": 542311958.52,
+        "pct_attack": 65.41454315751773,
+        "pct_support": 34.58545684248228,
+        "insight": "65.4% of dark money funds attack ads, not candidate support"
+      },
+      "top_spenders": {
+        "spender_list": [
+          {
+            "rank": 1,
+            "name": "HMP",
+            "total": 230339351.0,
+            "districts": 48,
+            "avg_per_district": 4798736.479166667
+          },
+          {
+            "rank": 2,
+            "name": "DCCC",
+            "total": 100052466.0,
+            "districts": 27,
+            "avg_per_district": 3705646.888888889
+          },
+          {
+            "rank": 3,
+            "name": "UNITED DEMOCRACY PROJECT (UDP)",
+            "total": 37343909.0,
+            "districts": 8,
+            "avg_per_district": 4667988.625
+          },
+          {
+            "rank": 4,
+            "name": "NRCC",
+            "total": 33515307.0,
+            "districts": 16,
+            "avg_per_district": 2094706.6875
+          },
+          {
+            "rank": 5,
+            "name": "Fairshake",
+            "total": 17854919.0,
+            "districts": 12,
+            "avg_per_district": 1487909.9166666667
+          },
+          {
+            "rank": 6,
+            "name": "Protect Progress",
+            "total": 12916653.0,
+            "districts": 14,
+            "avg_per_district": 922618.0714285715
+          },
+          {
+            "rank": 7,
+            "name": "CLUB FOR GROWTH ACTION",
+            "total": 10156490.0,
+            "districts": 10,
+            "avg_per_district": 1015649.0
+          },
+          {
+            "rank": 8,
+            "name": "LCV Victory Fund",
+            "total": 9359265.0,
+            "districts": 9,
+            "avg_per_district": 1039918.3333333334
+          },
+          {
+            "rank": 9,
+            "name": "Vote Alaska Before Party",
+            "total": 9199936.0,
+            "districts": 1,
+            "avg_per_district": 9199936.0
+          },
+          {
+            "rank": 10,
+            "name": "DEFEND AMERICAN JOBS",
+            "total": 7331396.0,
+            "districts": 13,
+            "avg_per_district": 563953.5384615385
+          }
+        ],
+        "dominant_spender": {
+          "rank": 1,
+          "name": "HMP",
+          "total": 230339351.0,
+          "districts": 48,
+          "avg_per_district": 4798736.479166667
+        },
+        "insight": "HMP spent $230,339,351 across 48 districts"
+      },
+      "concentration": {
+        "top_5": {
+          "total": 116257988.61999997,
+          "pct": 14.02322610540171
+        },
+        "top_10": {
+          "total": 226225103.14,
+          "pct": 27.28763683001041
+        },
+        "top_20": {
+          "total": 413184093.03,
+          "pct": 49.8389317456181
+        },
+        "insight": "Top 10 districts capture 27.3% of all spending"
+      },
+      "state_analysis": {
+        "state_rankings": [
+          {
+            "rank": 1,
+            "state": "CA",
+            "total": 130399664.96999998,
+            "districts": 26,
+            "avg_per_district": 5015371.729615384
+          },
+          {
+            "rank": 2,
+            "state": "NY",
+            "total": 113483948.90000002,
+            "districts": 15,
+            "avg_per_district": 7565596.593333335
+          },
+          {
+            "rank": 3,
+            "state": "PA",
+            "total": 53612316.92,
+            "districts": 11,
+            "avg_per_district": 4873846.992727273
+          },
+          {
+            "rank": 4,
+            "state": "AZ",
+            "total": 51058584.45000002,
+            "districts": 7,
+            "avg_per_district": 7294083.492857145
+          },
+          {
+            "rank": 5,
+            "state": "MI",
+            "total": 50116562.470000006,
+            "districts": 9,
+            "avg_per_district": 5568506.941111112
+          },
+          {
+            "rank": 6,
+            "state": "VA",
+            "total": 32826145.69,
+            "districts": 7,
+            "avg_per_district": 4689449.3842857145
+          },
+          {
+            "rank": 7,
+            "state": "NC",
+            "total": 31207817.169999998,
+            "districts": 7,
+            "avg_per_district": 4458259.595714285
+          },
+          {
+            "rank": 8,
+            "state": "CO",
+            "total": 30928467.639999993,
+            "districts": 6,
+            "avg_per_district": 5154744.6066666655
+          },
+          {
+            "rank": 9,
+            "state": "OH",
+            "total": 30475783.770000014,
+            "districts": 7,
+            "avg_per_district": 4353683.395714288
+          },
+          {
+            "rank": 10,
+            "state": "WA",
+            "total": 29978714.919999994,
+            "districts": 5,
+            "avg_per_district": 5995742.983999999
+          }
+        ],
+        "highest_total": {
+          "rank": 1,
+          "state": "CA",
+          "total": 130399664.96999998,
+          "districts": 26,
+          "avg_per_district": 5015371.729615384
+        },
+        "highest_avg": {
+          "state": "ME",
+          "avg": 23151804.41999999
+        },
+        "insight": "CA leads with $130,399,665 across 26 districts"
+      },
+      "transaction_patterns": {
+        "micro_targeting": [
+          {
+            "rank": 1,
+            "entity": "AZ-01",
+            "transactions": 1024,
+            "total": 22217273.080000013,
+            "avg_per_transaction": 21696.555742187513
+          },
+          {
+            "rank": 2,
+            "entity": "AZ-06",
+            "transactions": 1003,
+            "total": 17612343.740000002,
+            "avg_per_transaction": 17559.664745762715
+          },
+          {
+            "rank": 3,
+            "entity": "CA-26",
+            "transactions": 990,
+            "total": 329651.70999999973,
+            "avg_per_transaction": 332.981525252525
+          },
+          {
+            "rank": 4,
+            "entity": "FL-12",
+            "transactions": 958,
+            "total": 356704.9399999999,
+            "avg_per_transaction": 372.3433611691022
+          },
+          {
+            "rank": 5,
+            "entity": "NE-02",
+            "transactions": 938,
+            "total": 17174822.729999997,
+            "avg_per_transaction": 18310.045554370998
+          }
+        ],
+        "big_ticket": [
+          {
+            "rank": 1,
+            "entity": "OK-00",
+            "transactions": 1,
+            "total": 250000.0,
+            "avg_per_transaction": 250000.0
+          },
+          {
+            "rank": 2,
+            "entity": "IL-06",
+            "transactions": 1,
+            "total": 64522.54,
+            "avg_per_transaction": 64522.54
+          },
+          {
+            "rank": 3,
+            "entity": "NM-01",
+            "transactions": 1,
+            "total": 50569.82,
+            "avg_per_transaction": 50569.82
+          },
+          {
+            "rank": 4,
+            "entity": "MS-00",
+            "transactions": 1,
+            "total": 38500.0,
+            "avg_per_transaction": 38500.0
+          },
+          {
+            "rank": 5,
+            "entity": "MO-02",
+            "transactions": 1,
+            "total": 23216.5,
+            "avg_per_transaction": 23216.5
+          }
+        ],
+        "insight": "AZ-01 had 1024 transactions (surgical micro-targeting)"
+      },
+      "outliers": [
+        {
+          "type": "rep_advantage_anomaly",
+          "entity": "NY-16",
+          "amount": 5630284.020000004,
+          "insight": "NY-16 shows unusual REP advantage of $5,630,284"
+        },
+        {
+          "type": "rep_advantage_anomaly",
+          "entity": "CA-47",
+          "amount": 2664543.440000005,
+          "insight": "CA-47 shows unusual REP advantage of $2,664,543"
+        },
+        {
+          "type": "rep_advantage_anomaly",
+          "entity": "AZ-08",
+          "amount": 2613199.09,
+          "insight": "AZ-08 shows unusual REP advantage of $2,613,199"
+        },
+        {
+          "type": "extreme_cost_per_transaction",
+          "entity": "OK-00",
+          "cost_per_transaction": 250000.0,
+          "transactions": 1,
+          "insight": "OK-00 averaged $250,000 per transaction (only 1 buys)"
+        },
+        {
+          "type": "extreme_cost_per_transaction",
+          "entity": "MI-13",
+          "cost_per_transaction": 195965.54235294115,
+          "transactions": 17,
+          "insight": "MI-13 averaged $195,966 per transaction (only 17 buys)"
+        },
+        {
+          "type": "extreme_cost_per_transaction",
+          "entity": "NY-16",
+          "cost_per_transaction": 146811.20140845075,
+          "transactions": 142,
+          "insight": "NY-16 averaged $146,811 per transaction (only 142 buys)"
+        }
+      ],
       "distribution_total_spending": {
         "total": 829038822.78,
         "mean": 3425780.2594214873,
@@ -937,9 +1245,9 @@
     }
   },
   "all_ollama_insights": {
-    "clustering": "Here is the list with the requested information:\n\n\u2022 Cluster 0: \"Conservative Core\"\nThis cluster consists of only three samples, suggesting a tight-knit group that may be less diverse in their characteristics.\n\n\u2022 Cluster 1: \"Spending Giant\"\nThe largest cluster, comprising 206 samples, appears to dominate the dataset with its high spending numbers, indicating a potentially significant economic influence at play.\n\n\u2022 Cluster 2: \"Moderate Middle Ground\"\nWith 33 samples and an intermediate silhouette score, this cluster occupies a central position in the analysis, suggesting a more balanced approach that may be less extreme than either of the other two clusters.",
-    "comparative_financial": "**Finding:** The Democratic Party has a significant financial advantage in the top 5 swing districts, with the top entity, CO-08, spending over $24 million more than the Republican Party's top spender, OR-05.\n**Implication:** This disparity suggests that the Democratic Party is heavily investing in these key battleground states to maintain its competitive edge and potentially sway voters' decisions.\n**Pull Quote:** \"In the 2024 election, it seems the Democrats are pouring millions into Colorado's swing districts \u2013 but where is this money coming from?\"",
-    "temporal": "I'm ready to help! However, I don't see the dataset you'd like me to analyze. Please share the data with me, and I'll get started on providing the requested information.\n\nOnce you provide the dataset, I'll be happy to assist you in identifying the most newsworthy time-based finding, interpreting what this pattern suggests about behavior or events, and crafting a compelling pull quote for your article."
+    "clustering": "Here's the analysis:\n\n* Cluster 0: \"Outlier Minority\"\nThis cluster contains isolated districts with high spending against constituents, indicating a possible disconnect between district officials and their constituents.\n* Cluster 1: \"Mainstream Majority\"\nThis cluster comprises the majority of districts (over 85% of cases), which tend to have strong support for democracy and relatively balanced spending.\n* Cluster 2: \"Conservative Enclave\"\nThis cluster features districts with high levels of dem_support, suggesting a pro-conservative bias and possible less balanced spending.",
+    "comparative_financial": "**Finding:** A staggering 65.4% of campaign spending went towards \"attack ads,\" with $542 million allocated to just these advertisements, compared to $286 million for support ads.\n\n**Implication:** This disproportionate allocation of funds to attack ads has the potential to undermine democracy by creating a culture of fear and division among voters, rather than encouraging constructive debate and civic engagement. As one analyst noted, \"The disproportionate use of attack ads is a recipe for erosion of trust in our democratic institutions.\"\n\nThis finding is particularly alarming given that these attack ads were largely funded by anonymous donors, who spent over $23 billion in the 2024 election cycle. The concentration of this spending in just a handful of districts raises questions about the unequal influence wielded by wealthy donors and the potential for voter disenfranchisement.\n\nAs the country continues to grapple with issues of campaign finance reform and the impact of dark money on our democracy, it is essential that we examine the tactics used by special interest groups to shape public discourse.",
+    "temporal": "I'd be happy to help you analyze the temporal patterns in your dataset! However, I don't see any data provided. Please share the dataset with me, and I'll get started.\n\nOnce I have the data, I can provide:\n\n1. The most newsworthy time-based finding (1-2 sentences)\n2. What this pattern suggests about behavior or events (1-2 sentences)\n3. A compelling pull quote for an article (10-15 words)\n\nPlease share the dataset, and I'll get started!"
   },
   "summary": {
     "total_analyses": 4,

@@ -19,5 +19,5 @@
       "unique_values": 149
     }
   },
-  "ollama_insights": "I'm ready to help! However, I don't see the dataset you'd like me to analyze. Please share the data with me, and I'll get started on providing the requested information.\n\nOnce you provide the dataset, I'll be happy to assist you in identifying the most newsworthy time-based finding, interpreting what this pattern suggests about behavior or events, and crafting a compelling pull quote for your article."
+  "ollama_insights": "I'd be happy to help you analyze the temporal patterns in your dataset! However, I don't see any data provided. Please share the dataset with me, and I'll get started.\n\nOnce I have the data, I can provide:\n\n1. The most newsworthy time-based finding (1-2 sentences)\n2. What this pattern suggests about behavior or events (1-2 sentences)\n3. A compelling pull quote for an article (10-15 words)\n\nPlease share the dataset, and I'll get started!"
 }
