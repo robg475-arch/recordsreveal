@@ -702,22 +702,67 @@ footer{{background:var(--ink);padding:60px 40px 40px;border-top:3px solid var(--
 
       <!-- STAT ROW -->
       <div class="stat-row">
-        <div class="stat-cell">
-          <div class="stat-big">{stats.get('peak_hour', 'N/A')}</div>
-          <div class="stat-label">Peak Hour</div>
-          <div class="stat-context">Most activity recorded at this time</div>
+"""
+    
+    # Determine which stats to show based on what's available
+    stat_boxes = []
+    
+    # Financial stats (priority 1)
+    if stats.get('top_entity') and stats.get('top_entity') not in ['N/A', None]:
+        stat_boxes.append({
+            'big': stats.get('top_entity_amount', 'N/A'),
+            'label': stats.get('top_entity', 'Top Entity'),
+            'context': 'Highest spending district'
+        })
+    
+    if stats.get('pct_attack') and stats.get('pct_attack') not in ['N/A', None]:
+        stat_boxes.append({
+            'big': stats.get('pct_attack', 'N/A'),
+            'label': 'Attack Ads',
+            'context': 'Of all dark money spending'
+        })
+    
+    if stats.get('dominant_spender') and stats.get('dominant_spender') not in ['N/A', None]:
+        stat_boxes.append({
+            'big': stats.get('dominant_spender', 'N/A'),
+            'label': 'Dominant Spender',
+            'context': f"{stats.get('dominant_spender_amount', 'N/A')} across {stats.get('dominant_spender_districts', 0)} districts"
+        })
+    
+    # Temporal stats (if no financial)
+    if not stat_boxes and stats.get('peak_hour') and stats.get('peak_hour') not in ['N/A', None]:
+        stat_boxes.append({
+            'big': stats.get('peak_hour', 'N/A'),
+            'label': 'Peak Hour',
+            'context': 'Most activity recorded at this time'
+        })
+    
+    # Geographic stats (if no financial/temporal)
+    if len(stat_boxes) < 3 and stats.get('top_location') and stats.get('top_location') not in ['N/A', None]:
+        stat_boxes.append({
+            'big': stats.get('top_location', 'N/A'),
+            'label': 'Top Location',
+            'context': f"Geographic leader with {stats.get('top_hotspot_count', 'N/A')} records"
+        })
+    
+    # Categorical stats (if no other)
+    if len(stat_boxes) < 3 and stats.get('majority_pct') and stats.get('majority_pct') not in ['N/A', None]:
+        stat_boxes.append({
+            'big': stats.get('majority_pct', 'N/A'),
+            'label': stats.get('majority_category', 'Majority Category'),
+            'context': 'Dominant category in the dataset'
+        })
+    
+    # Render stat boxes (max 3)
+    for stat_box in stat_boxes[:3]:
+        html += f"""        <div class="stat-cell">
+          <div class="stat-big">{stat_box['big']}</div>
+          <div class="stat-label">{stat_box['label']}</div>
+          <div class="stat-context">{stat_box['context']}</div>
         </div>
-        <div class="stat-cell">
-          <div class="stat-big">{stats.get('top_location', 'N/A')}</div>
-          <div class="stat-label">Top Location</div>
-          <div class="stat-context">Geographic leader with {stats.get('top_hotspot_count', 'N/A')} records</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-big">{stats.get('majority_pct', 'N/A')}</div>
-          <div class="stat-label">{stats.get('majority_category', 'Majority Category')}</div>
-          <div class="stat-context">Dominant category in the dataset</div>
-        </div>
-      </div>
+"""
+    
+    html += """      </div>
 """
     
     # Pre-validate charts and build valid chart list

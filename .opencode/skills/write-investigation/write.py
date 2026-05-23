@@ -214,8 +214,8 @@ Return ONLY the lede paragraph, nothing else."""
     # Generate findings based on available analyses
     findings = []
     
-    # Finding 1: Temporal pattern (if available)
-    if 'temporal' in combined.get('analyses', []):
+    # Finding 1: Temporal pattern (if available and has data)
+    if 'temporal' in combined.get('analyses', []) and stats.get('peak_hour') and stats.get('peak_hour') != 'N/A':
         print("Writing Finding 1: Temporal Pattern...")
         finding_prompt = f"""Write a findings section for RecordsReveal about temporal patterns.
 
@@ -248,8 +248,8 @@ Return ONLY the text, no title."""
             })
             print(f"✅ Finding 1 complete\n")
     
-    # Finding 2: Geographic pattern (if available)
-    if 'geographic' in combined.get('analyses', []):
+    # Finding 2: Geographic pattern (if available and has data)
+    if 'geographic' in combined.get('analyses', []) and stats.get('top_location') and stats.get('top_location') != 'N/A':
         print("Writing Finding 2: Geographic Pattern...")
         finding_prompt = f"""Write a findings section for RecordsReveal about geographic patterns.
 
@@ -281,8 +281,8 @@ Return ONLY the text, no title."""
             })
             print(f"✅ Finding 2 complete\n")
     
-    # Finding 3: Category distribution (if available)
-    if 'categorical' in combined.get('analyses', []):
+    # Finding 3: Category distribution (if available and has data)
+    if 'categorical' in combined.get('analyses', []) and stats.get('majority_category') and stats.get('majority_category') != 'N/A':
         print("Writing Finding 3: Category Pattern...")
         finding_prompt = f"""Write a findings section for RecordsReveal about category distribution.
 
