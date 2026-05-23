@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Money: The $1.9B War Against Democracy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark-navy: #0a1628;
+            --navy: #1a2332;
+            --blue: #2d4263;
+            --accent-red: #ef4444;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --light-gray: #f3f4f6;
+            --medium-gray: #9ca3af;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--dark-navy) 0%, var(--navy) 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--dark-navy) 0%, var(--navy) 50%, #2d1f3d 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(239, 68, 68, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--accent-red);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 900;
+            color: white;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero .amount {
+            color: var(--accent-red);
+            display: block;
+            font-size: clamp(3rem, 10vw, 8rem);
+            margin: 1rem 0;
+            text-shadow: 0 0 40px rgba(239, 68, 68, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(239, 68, 68, 0.5); }
+            to { text-shadow: 0 0 40px rgba(239, 68, 68, 0.8), 0 0 60px rgba(239, 68, 68, 0.4); }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 900px;
+            margin: 2rem auto;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        .scroll-indicator::before {
+            content: '↓';
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .content-section {
+            background: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .lede {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 5rem 2rem;
+            margin-top: -2px;
+        }
+
+        .lede p {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            line-height: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+            font-weight: 300;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .lede strong {
+            color: var(--accent-red);
+            font-weight: 700;
+        }
+
+        .kpi-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--dark-navy);
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .kpi-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-blue));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .kpi-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .kpi-label {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .kpi-value {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            color: var(--dark-navy);
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .kpi-card:nth-child(1) .kpi-value { color: var(--accent-red); }
+        .kpi-card:nth-child(2) .kpi-value { color: #f59e0b; }
+        .kpi-card:nth-child(3) .kpi-value { color: var(--accent-blue); }
+        .kpi-card:nth-child(4) .kpi-value { color: #8b5cf6; }
+        .kpi-card:nth-child(5) .kpi-value { color: #ec4899; }
+
+        .kpi-context {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .charts-section {
+            padding: 6rem 2rem;
+            background: var(--light-gray);
+        }
+
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .chart-container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .chart-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-navy);
+            margin-bottom: 1.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+        }
+
+        .findings-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .finding-card {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-left: 6px solid var(--accent-red);
+            transition: all 0.3s ease;
+        }
+
+        .finding-card:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: translateX(8px);
+        }
+
+        .finding-card:nth-child(even) {
+            border-left-color: var(--accent-blue);
+        }
+
+        .finding-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .finding-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-red), #dc2626);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .finding-card:nth-child(even) .finding-icon {
+            background: linear-gradient(135deg, var(--accent-blue), #2563eb);
+        }
+
+        .finding-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--dark-navy);
+            line-height: 1.3;
+        }
+
+        .finding-stat {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-red), #dc2626);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+        }
+
+        .finding-body {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+
+        .finding-body strong {
+            color: var(--dark-navy);
+            font-weight: 700;
+        }
+
+        .key-stat-highlight {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .key-stat-value {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent-red);
+            font-family: 'Playfair Display', serif;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .key-stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .quotes-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--dark-navy) 0%, var(--navy) 100%);
+            color: white;
+        }
+
+        .quote-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .quote-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .quote-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        .quote-mark {
+            font-size: 4rem;
+            color: var(--accent-red);
+            line-height: 1;
+            margin-bottom: 1rem;
+            font-family: Georgia, serif;
+        }
+
+        .quote-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .methodology-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .methodology-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-row-label {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .stat-row-value {
+            font-weight: 700;
+            color: var(--accent-blue);
+            font-family: 'Playfair Display', serif;
+        }
+
+        footer {
+            background: var(--dark-navy);
+            color: rgba(255, 255, 255, 0.6);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 2rem 1rem;
+            }
+            
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .finding-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .quote-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .comparison-bars {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-bar {
+            flex: 1;
+            text-align: center;
+        }
+
+        .bar-container {
+            height: 300px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .bar {
+            width: 80px;
+            background: linear-gradient(to top, var(--accent-red), #dc2626);
+            border-radius: 8px 8px 0 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .bar:hover {
+            filter: brightness(1.2);
+        }
+
+        .bar-label {
+            font-weight: 700;
+            color: var(--dark-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .bar-value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent-red);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .interactive-stat {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .interactive-stat:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-label">Investigative Report · 2024</div>
+            <h1>
+                Dark Money Spent
+                <span class="amount">$1.9 Billion</span>
+                Against Candidates in 242 Swing Districts
+            </h1>
+            <p class="hero-subtitle">
+                Opposition Money Outspent Support by Nearly 2-to-1. This isn't persuasion. It's destruction.
+            </p>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- Lede Section -->
+    <section class="lede">
+        <div class="container">
+            <p>
+                You think campaigns are about who you want to win. But in America's most competitive congressional districts, the real money isn't spent convincing you to support someone—it's spent making you hate their opponent. Across <strong>242</strong> swing districts in 2024, dark money groups spent <strong>$1.17 billion</strong> tearing down candidates, compared to just <strong>$679 million</strong> building them up. The average district saw <strong>$5.3 million</strong> in attack spending versus <strong>$3.2 million</strong> in support. This isn't persuasion. It's destruction.
+            </p>
+        </div>
+    </section>
+
+    <!-- KPI Section -->
+    <section class="kpi-section">
+        <div class="container">
+            <h2 class="section-title">The Numbers That Matter</h2>
+            <div class="kpi-grid">
+                <div class="kpi-card fade-in">
+                    <div class="kpi-label">Total Dark Money</div>
+                    <div class="kpi-value">$1.9B</div>
+                    <div class="kpi-context">Spent across 242 swing districts in 2024</div>
+                </div>
+                <div class="kpi-card fade-in">
+                    <div class="kpi-label">Attack Spending Premium</div>
+                    <div class="kpi-value">73%</div>
+                    <div class="kpi-context">More spent against candidates than for them</div>
+                </div>
+                <div class="kpi-card fade-in">
+                    <div class="kpi-label">Average Transactions Per District</div>
+                    <div class="kpi-value">1,645</div>
+                    <div class="kpi-context">Roughly 5 separate spending decisions daily</div>
+                </div>
+                <div class="kpi-card fade-in">
+                    <div class="kpi-label">Highest Single District</div>
+                    <div class="kpi-value">$24.6M</div>
+                    <div class="kpi-context">Colorado's 8th district ($127 per voter)</div>
+                </div>
+                <div class="kpi-card fade-in">
+                    <div class="kpi-label">Net Democratic Disadvantage</div>
+                    <div class="kpi-value">-$956K</div>
+                    <div class="kpi-context">Average per district across all races</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="charts-section">
+        <div class="container">
+            <h2 class="section-title">Follow The Money</h2>
+            <div class="chart-grid">
+                <div class="chart-container fade-in">
+                    <h3 class="chart-title">Attack vs. Support Spending</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="attackSupportChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-container fade-in">
+                    <h3 class="chart-title">Party Spending Breakdown</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="partyChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-container fade-in">
+                    <h3 class="chart-title">Spending Distribution Across Districts</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="distributionChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-container fade-in">
+                    <h3 class="chart-title">Net Advantage: Who Benefits?</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="advantageChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Findings Section -->
+    <section class="findings-section">
+        <div class="container">
+            <h2 class="section-title">Five Disturbing Discoveries</h2>
+            
+            <div class="finding-card fade-in">
+                <div class="finding-header">
+                    <div class="finding-icon">⚠️</div>
+                    <h3 class="finding-title">The Negativity Machine: Attack Ads Dominate Every Single District</h3>
+                </div>
+                <div class="finding-body">
+                    In every measurable way, dark money has chosen destruction over construction. The median swing district received <strong>$5.3 million</strong> in spending against candidates, compared to just <strong>$3.2 million</strong> spent supporting them. That's a <strong>67% premium</strong> on negativity.
+                    <br><br>
+                    This isn't about a few nasty races. It's systemic. Across all <strong>242</strong> districts analyzed, spending against candidates consistently outpaced spending for them. The implication is stark: outside groups have calculated that you're more motivated by fear and anger than hope or agreement. They're not trying to make you like their candidate—they're trying to make you despise the alternative.
+                    <br><br>
+                    The math is simple and damning. For every dollar spent telling you why to vote for someone, these shadow organizations spent <strong>$1.73</strong> telling you why not to vote for their opponent. Democracy has become a race to the bottom, funded by groups you've never heard of.
+                </div>
+                <div class="key-stat-highlight">
+                    <span class="key-stat-value">$1.73</span>
+                    <span class="key-stat-label">Attack spending for every $1 of support</span>
+                </div>
+            </div>
+
+            <div class="finding-card fade-in">
+                <div class="finding-header">
+                    <div class="finding-icon">🎯</div>
+                    <h3 class="finding-title">Republicans Get the Bigger Target: <span class="finding-stat">$850M</span> Spent Against GOP Candidates vs <span class="finding-stat">$580M</span> Against Democrats</h3>
+                </div>
+                <div class="finding-body">
+                    Here's what the data reveals that contradicts the conventional narrative about dark money favoring Republicans: across these <strong>242</strong> swing districts, dark money groups spent <strong>$850 million</strong> attacking Republican candidates, compared to <strong>$580 million</strong> attacking Democrats. That's <strong>47% more</strong> spent tearing down GOP candidates than Democratic ones.
+                    <br><br>
+                    Meanwhile, Republicans enjoyed <strong>$847 million</strong> in supportive spending compared to <strong>$743 million</strong> for Democrats—a much smaller gap of just <strong>14%</strong>. The net result? Democrats held an average financial disadvantage of nearly <strong>$1 million per district</strong> (specifically <strong>-$956,007</strong>), but not because Republicans were getting more support—because Democrats were getting attacked more efficiently.
+                    <br><br>
+                    This reveals the true sophistication of dark money: it's not just about volume, it's about strategic allocation. Republican-aligned groups have apparently determined that supporting their candidates while simultaneously destroying Democratic ones is more effective than simply pumping money into their own campaigns. The median district shows Democrats with a net disadvantage of <strong>-$1.4 million</strong>. That's the cost of being outmaneuvered, not just outspent.
+                </div>
+                <div class="key-stat-highlight">
+                    <span class="key-stat-value">$850M</span>
+                    <span class="key-stat-label">Spent attacking Republican candidates</span>
+                </div>
+            </div>
+
+            <div class="finding-card fade-in">
+                <div class="finding-header">
+                    <div class="finding-icon">🏛️</div>
+                    <h3 class="finding-title">Three Organizations Control the Battlefield: HMP, DCCC, and NRCC Appear in Nearly Every Major Race</h3>
+                </div>
+                <div class="finding-body">
+                    If you're wondering who's actually pulling the strings, the data points to three dominant players appearing repeatedly across the biggest-spending districts. The mysterious "HMP" (appearing prominently in Colorado's 8th district with <strong>$7.1 million</strong>, New York's 19th with <strong>$8 million</strong>, and Maine's 2nd with a staggering <strong>$10.9 million</strong>), the Democratic Congressional Campaign Committee (DCCC), and the National Republican Congressional Committee (NRCC) form an iron triangle of influence.
+                    <br><br>
+                    These three organizations don't just participate—they dominate. In district after district, they appear as the top three spenders, often accounting for more than half of all dark money flowing into a race. In Maine's 2nd district alone, these three groups combined for over <strong>$17 million</strong> of the district's <strong>$24.6 million</strong> total spending.
+                    <br><br>
+                    What's particularly revealing is the consistency. These aren't grassroots organizations responding to local concerns. They're national machines making calculated investments in specific districts where a few million dollars can flip a seat. The top spender data shows the same names appearing in California, Texas, Florida, North Carolina—a coordinated national strategy masked as local political activity.
+                </div>
+                <div class="key-stat-highlight">
+                    <span class="key-stat-value">$17M</span>
+                    <span class="key-stat-label">Combined spending in Maine's 2nd District</span>
+                </div>
+            </div>
+
+            <div class="finding-card fade-in">
+                <div class="finding-header">
+                    <div class="finding-icon">📊</div>
+                    <h3 class="finding-title">The Transaction Explosion: Some Districts See <span class="finding-stat">3,000+</span> Separate Dark Money Payments</h3>
+                </div>
+                <div class="finding-body">
+                    The sheer volume of financial activity tells its own story. The average swing district experienced <strong>1,645</strong> separate dark money transactions. But some districts saw exponentially more: the busiest district recorded transactions in the thousands, suggesting not just big checks from a few donors, but a sophisticated, continuous operation.
+                    <br><br>
+                    This isn't sporadic spending—it's industrial-scale political influence. Each transaction represents a separate decision to spend money influencing your vote: a TV ad buy here, a mailer
