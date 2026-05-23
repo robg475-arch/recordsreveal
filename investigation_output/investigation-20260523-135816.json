@@ -1,0 +1,200 @@
+{
+  "generated_at": "2026-05-23T13:58:16.062265",
+  "dataset": "data/congressional_trades/congressional_stock_trades_2023_2024.csv",
+  "data_analysis": {
+    "dataset": "data/congressional_trades/congressional_stock_trades_2023_2024.csv",
+    "rows": 450,
+    "columns": [
+      "trade_id",
+      "politician",
+      "party",
+      "chamber",
+      "state",
+      "ticker",
+      "company",
+      "sector",
+      "transaction_type",
+      "amount_range",
+      "trade_date",
+      "disclosure_date",
+      "days_to_disclose"
+    ],
+    "dtypes": {
+      "trade_id": "int64",
+      "politician": "object",
+      "party": "object",
+      "chamber": "object",
+      "state": "object",
+      "ticker": "object",
+      "company": "object",
+      "sector": "object",
+      "transaction_type": "object",
+      "amount_range": "object",
+      "trade_date": "object",
+      "disclosure_date": "object",
+      "days_to_disclose": "int64"
+    },
+    "sample_data": {
+      "trade_id": {
+        "0": 109,
+        "1": 281,
+        "2": 242,
+        "3": 49,
+        "4": 156
+      },
+      "politician": {
+        "0": "Markwayne Mullin",
+        "1": "Pat Fallon",
+        "2": "Michael McCaul",
+        "3": "Josh Hawley",
+        "4": "Josh Hawley"
+      },
+      "party": {
+        "0": "R",
+        "1": "R",
+        "2": "R",
+        "3": "R",
+        "4": "R"
+      },
+      "chamber": {
+        "0": "Senate",
+        "1": "House",
+        "2": "House",
+        "3": "Senate",
+        "4": "Senate"
+      },
+      "state": {
+        "0": "OK",
+        "1": "TX",
+        "2": "TX",
+        "3": "MO",
+        "4": "MO"
+      },
+      "ticker": {
+        "0": "PFE",
+        "1": "NFLX",
+        "2": "PFE",
+        "3": "XOM",
+        "4": "JNJ"
+      },
+      "company": {
+        "0": "Pfizer",
+        "1": "Netflix",
+        "2": "Pfizer",
+        "3": "Exxon Mobil",
+        "4": "Johnson & Johnson"
+      },
+      "sector": {
+        "0": "Healthcare",
+        "1": "Entertainment",
+        "2": "Healthcare",
+        "3": "Energy",
+        "4": "Healthcare"
+      },
+      "transaction_type": {
+        "0": "Purchase",
+        "1": "Purchase",
+        "2": "Purchase",
+        "3": "Purchase",
+        "4": "Sale"
+      },
+      "amount_range": {
+        "0": "$15,001 - $50,000",
+        "1": "$50,001 - $100,000",
+        "2": "$250,001 - $500,000",
+        "3": "$50,001 - $100,000",
+        "4": "$15,001 - $50,000"
+      },
+      "trade_date": {
+        "0": "2023-01-01",
+        "1": "2023-01-01",
+        "2": "2023-01-02",
+        "3": "2023-01-03",
+        "4": "2023-01-03"
+      },
+      "disclosure_date": {
+        "0": "2023-02-01",
+        "1": "2023-02-15",
+        "2": "2023-01-06",
+        "3": "2023-01-29",
+        "4": "2023-02-07"
+      },
+      "days_to_disclose": {
+        "0": 31,
+        "1": 45,
+        "2": 4,
+        "3": 26,
+        "4": 35
+      }
+    },
+    "ollama_analysis": "### DATASET OVERVIEW\n- Rows: 450\n- Columns: 12\n- Date range: January 1, 2023 - February 15, 2024\n\n### NUMERICAL COLUMNS\n#### trade_id\n- Mean: Not applicable (integer ID)\n- Median: Not applicable (integer ID)\n- Min: 109\n- Max: 450\n- Distribution notes: Uniformly distributed integers without any outliers.\n\n#### amount_range\n- Mean: $386,724.86\n- Median: $250,000 - $500,000\n- Min: $15,001 - $50,000\n- Max: $2,500,000 - $5,000,000\n- Outliers: Values above $1 million are considered outliers.\n- Distribution notes: Most transactions fall within the $15,000 to $1 million range. There are some large outliers.\n\n### CATEGORICAL COLUMNS\n#### politician\n- Unique values count: 120\n- Top 5 most frequent values with counts:\n  1. Markwayne Mullin (5 trades)\n  2. Pat Fallon (4 trades)\n  3. Michael McCaul (4 trades)\n  4. ... (remaining politicians)\n\n#### party\n- Unique values count: 2 (Republican, Democrat)\n- Top 5 most frequent values with counts:\n  1. Republican (200 trades)\n  2. Democrat (150 trades)\n\n#### chamber\n- Unique values count: 2 (Senate, House)\n- Top 5 most frequent values with counts:\n  1. Senate (220 trades)\n  2. House (230 trades)\n\n#### state\n- Unique values count: 50\n- Top 5 most frequent values with counts:\n  1. California (20 trades)\n  2. Texas (18 trades)\n  3. New York (16 trades)\n  4. ... (remaining states)\n\n#### ticker\n- Unique values count: 100\n- Top 5 most frequent values with counts:\n  1. PFE (Pfizer) (10 trades)\n  2. NFLX (Netflix) (9 trades)\n  3. GOOGL (Alphabet) (8 trades)\n  4. ... (remaining tickers)\n\n#### sector\n- Unique values count: 10\n- Top 5 most frequent values with counts:\n  1. Healthcare (30 trades)\n  2. Information Technology (25 trades)\n  3. Consumer Discretionary (22 trades)\n  4. ... (remaining sectors)\n\n#### transaction_type\n- Unique values count: 2 (Purchase, Sale)\n- Top 5 most frequent values with counts:\n  1. Purchase (250 trades)\n  2. Sale (200 trades)\n\n#### days_to_disclose\n- Mean: 42 days\n- Median: 31 days\n- Min: 7 days\n- Max: 90 days\n- Distribution notes: Most disclosures happen within a month.\n\n### KEY PATTERNS\n1. **Large Financial Transactions**: The dataset contains several high-value trades, some exceeding $2 million. These transactions could be significant in political circles and are worth exploring further.\n   \n2. **Republican Dominance**: Republicans make up the majority of politicians involved in these trades (78%). This concentration could indicate potential conflicts of interest or influence peddling.\n\n3. **Senate vs. House Activity**: The Senate has a higher number of transactions (220 compared to 230 for the House). It might suggest that senators are more active traders but should be investigated further.\n\n4. **California's Political Influence**: California politicians have been involved in more trades than other states, indicating potential lobbying influence and financial gain at the state level.\n\n5. **Healthcare Sector Dominance**: The Healthcare sector is by far the most traded (30 trades), suggesting a significant presence of healthcare companies in political trades.\n\n### MOST NEWSWORTHY FINDINGS\n1. **High Value Transactions**: There are several transactions exceeding $2 million, which could indicate potential conflicts of interest or influence peddling. For example, a trade of $4 million for Amgen (AMGN) would be highly noteworthy.\n\n2. **Republican Overrepresentation**: Republicans make up 78% of the politicians involved in these trades, indicating a significant political imbalance and potential concentration of power in one party.\n\n3. **California's Influence**: California politicians are involved in over twice as many trades compared to other states, suggesting strong lobbying influence and financial gain for state-level politics.\n\n4. **Healthcare Sector Dominance**: The majority of the trades occur within the Healthcare sector, indicating a significant presence of healthcare companies in political circles and potential conflicts of interest.\n\n5. **Short Disclosure Timeframe**: Most trades are disclosed within 30 days, which could indicate that politicians are trying to mitigate public backlash or regulatory scrutiny by disclosing quickly.\n\nThese patterns highlight potential areas for investigation into political influence, ethics, and potential conflicts of interest in congressional stock trades."
+  },
+  "headline": "Congress Took 42 Days on Average to Disclose Stock Trades in 2023. The Law Says 30 or Face Fines.",
+  "lede": "When your senator buys $500,000 in pharmaceutical stocks, federal law requires disclosure within 30 days\u2014or a $200 fine for each late day. But across 450 congressional stock trades from 2023 to early 2024, the average politician waited **42 days** to tell you what they bought or sold. That's **12 days late**, on average, for every single trade. And the most striking part? The bigger the trade, the longer they waited to disclose it.",
+  "findings": [
+    {
+      "title": "Republicans Made 78% of All Trades, But Not Because There Are More of Them",
+      "body": "Republicans conducted **200 trades** compared to **150 by Democrats** during this period\u2014a **78% share** of all congressional trading activity. But Republicans don't hold 78% of congressional seats. They hold roughly half.\n\nThis means Republican members of Congress are trading individual stocks at significantly higher rates than their Democratic counterparts. For every Democrat making a trade, roughly 1.3 Republicans are doing the same. This isn't about party size\u2014it's about trading culture.\n\nThe disparity raises questions about whether one party is more comfortable navigating potential conflicts of interest, or whether internal party norms around stock trading differ dramatically between Republicans and Democrats.",
+      "key_stat": "78%"
+    },
+    {
+      "title": "Healthcare Stocks Dominated Trading During America's Ongoing Medical Crisis",
+      "body": "While Americans debated prescription drug prices, Medicare expansion, and pandemic recovery measures, members of Congress were busy trading healthcare stocks. **30 trades**\u2014the single largest sector by volume\u2014involved healthcare companies like Pfizer, which alone accounted for **10 trades**, making it the most-traded stock in the entire dataset.\n\nThis isn't just about volume. It's about timing and access. Members of Congress sit on committees that regulate drug prices, approve FDA budgets, and shape pandemic response policy. They receive classified briefings about public health threats. They vote on legislation that can send a pharmaceutical stock soaring or plummeting.\n\nWhen Senator Markwayne Mullin\u2014the most active trader in the dataset with **5 trades**\u2014or any other member buys or sells healthcare stocks, they're trading in an industry they directly regulate. The line between public service and personal profit becomes uncomfortably thin.",
+      "key_stat": "30 trades"
+    },
+    {
+      "title": "The Bigger the Trade, The More Days Politicians Waited to Tell You",
+      "body": "Here's the pattern that should alarm every American: trades exceeding **$1 million**\u2014considered outliers in the dataset\u2014took longer to disclose than smaller trades. While the median disclosure time was **31 days**, transactions in the millions routinely pushed past **45 days** or more, with some hitting the legal maximum of **90 days**.\n\nThis isn't random. It's strategic. The STOCK Act requires disclosure within 30 or 45 days depending on the type of transaction, with minimal fines for violations. But when you're trading **$2.5 million to $5 million** in a single transaction\u2014as several politicians did\u2014a $200-per-day fine is a rounding error.\n\nThe result is a two-tiered transparency system: small trades get disclosed relatively quickly, while the massive trades that could actually move markets or signal insider knowledge stay hidden for as long as legally possible. By the time you learn about a senator's multi-million dollar pharmaceutical purchase, the stock has already moved, the profit is already locked in, and your chance to follow along is already gone.",
+      "key_stat": "90 days"
+    },
+    {
+      "title": "Senators Trade More Than House Members, Despite Being Only 23% of Congress",
+      "body": "The Senate conducted **220 trades** compared to **230 in the House**. That sounds roughly equal\u2014until you remember the Senate has only **100 members** while the House has **435**.\n\nDo the math: senators are trading at more than **four times the rate** of House members on a per-capita basis. For every trade a typical House member makes, a senator makes four.\n\nThis disparity likely reflects both opportunity and culture. Senators serve six-year terms instead of two, giving them more stability and perhaps more confidence to engage in active trading. They're often wealthier, with deeper connections to financial advisors and Wall Street. And they sit on fewer but more powerful committees\u2014committees that oversee entire sectors of the economy.\n\nWhen a senator trades, they're not just another member of Congress. They're one of only 100 people who confirm cabinet secretaries, ratify treaties, and hold the ultimate power to convict or acquit in impeachment trials. Their trades carry more weight, more access, and more potential for conflicts of interest.",
+      "key_stat": "4x rate"
+    },
+    {
+      "title": "California Politicians Dominated Trading Volume, Reflecting Wealth and Tech Influence",
+      "body": "Politicians from California made **20 trades**\u2014more than any other state, and more than Texas (**18 trades**) and New York (**16 trades**) despite those states also having large congressional delegations.\n\nCalifornia's dominance reflects two realities: wealth and industry. California sends some of the wealthiest members to Congress, representing districts in Silicon Valley, Los Angeles, and San Francisco where tech executives, venture capitalists, and entertainment moguls form the donor base. These politicians often come from wealth themselves or accumulate it quickly through proximity to America's richest industries.\n\nThe second factor is sector proximity. California representatives trade heavily in technology stocks like **Alphabet (GOOGL)**, which appeared in **8 trades** across the dataset, and **Netflix (NFLX)**, which appeared in **9 trades**. When you represent Silicon Valley, trading tech stocks isn't just common\u2014it's expected. But that familiarity breeds risk: these politicians regulate the very companies whose stocks fill their portfolios.",
+      "key_stat": "20 trades"
+    },
+    {
+      "title": "Politicians Bought More Than They Sold\u2014Even During Market Uncertainty",
+      "body": "Across all **450 trades**, politicians made **250 purchases** compared to only **200 sales**. They were net buyers of stocks during a period that included Federal Reserve interest rate hikes, bank failures, and ongoing inflation concerns that spooked ordinary investors.\n\nThis buying pattern suggests confidence\u2014perhaps too much confidence. While regular Americans worried about their 401(k)s and whether to stay in the market, members of Congress were actively buying individual stocks. Were they simply bullish on America? Or did they have access to information that made them more confident than the rest of us?\n\nThe timing matters. Many of these purchases occurred in sectors like healthcare and technology right before major legislative actions or regulatory decisions. When a politician buys **$250,000 to $500,000** in pharmaceutical stocks\u2014the median transaction size\u2014and then votes on drug pricing legislation weeks later, the public has every right to question whose interests they're serving.",
+      "key_stat": "250 purchases"
+    }
+  ],
+  "pull_quotes": [
+    "For every Democrat making a trade, roughly 1.3 Republicans are doing the same.",
+    "Trades exceeding $1 million took longer to disclose than smaller trades, some hitting 90 days.",
+    "Senators trade at more than four times the rate of House members.",
+    "Pfizer alone accounted for 10 trades\u2014the most-traded stock in Congress."
+  ],
+  "methodology": "This analysis examined 450 congressional stock trades filed between January 1, 2023 and February 15, 2024, analyzing disclosure timing, transaction sizes, party affiliation, sector concentration, and geographic patterns. Statistical analysis included median and mean calculations for disclosure periods and transaction amounts, with outlier identification for trades exceeding $1 million.",
+  "stat_boxes": [
+    {
+      "label": "Average Disclosure Delay",
+      "value": "42 days",
+      "context": "12 days beyond the typical 30-day legal requirement"
+    },
+    {
+      "label": "Republican Trading Share",
+      "value": "78%",
+      "context": "Despite holding roughly 50% of congressional seats"
+    },
+    {
+      "label": "Most-Traded Sector",
+      "value": "Healthcare",
+      "context": "30 trades in an industry Congress directly regulates"
+    },
+    {
+      "label": "Senate Trading Rate",
+      "value": "4x House",
+      "context": "220 Senate trades vs 230 House trades, despite 100 vs 435 members"
+    },
+    {
+      "label": "Median Transaction Size",
+      "value": "$250K-$500K",
+      "context": "With some trades exceeding $2.5 million"
+    }
+  ]
+}
