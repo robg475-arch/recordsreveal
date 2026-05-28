@@ -297,70 +297,70 @@
         <!-- Main Column (Claude's visualization content) -->
         <main>
             <style>
-  .investigation-container {
-    max-width: 800px;
-    margin: 0 auto;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #1a1a1a;
-    line-height: 1.6;
-  }
-
   /* Hero Section */
   .hero-section {
-    margin-bottom: 60px;
-    animation: fadeInUp 0.8s ease-out;
+    position: relative;
+    margin: -2rem -2rem 3rem -2rem;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 0 0 24px 24px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  }
+
+  #hero-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 60%, transparent 100%);
+    padding: 4rem 3rem 3rem;
+    color: white;
   }
 
   .hero-headline {
     font-size: 3.5rem;
     font-weight: 900;
     line-height: 1.1;
-    margin-bottom: 24px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    margin: 0 0 1rem 0;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    letter-spacing: -0.02em;
   }
 
   .hero-lede {
     font-size: 1.35rem;
-    color: #4a5568;
-    margin-bottom: 32px;
-    line-height: 1.8;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 700px;
+    opacity: 0.95;
     font-weight: 400;
-  }
-
-  #hero-image {
-    width: 100%;
-    height: 450px;
-    object-fit: cover;
-    border-radius: 16px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-    transition: transform 0.4s ease;
-  }
-
-  #hero-image:hover {
-    transform: scale(1.02);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
   }
 
   /* KPI Dashboard */
   .kpi-dashboard {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 24px;
-    margin: 60px 0;
-    animation: fadeInUp 0.8s ease-out 0.2s both;
+    gap: 1.5rem;
+    margin: 3rem 0;
+    padding: 0;
   }
 
   .stat-card {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 32px 24px;
+    padding: 2rem;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
   }
 
   .stat-card::before {
@@ -370,13 +370,13 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 100%);
     opacity: 0;
     transition: opacity 0.4s ease;
   }
 
   .stat-card:hover {
-    transform: translateY(-8px) scale(1.03);
+    transform: translateY(-8px) scale(1.02);
     box-shadow: 0 20px 50px rgba(102, 126, 234, 0.5);
   }
 
@@ -386,7 +386,11 @@
 
   .stat-card:nth-child(2) {
     background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    box-shadow: 0 10px 30px rgba(245, 87, 108, 0.3);
+    box-shadow: 0 10px 30px rgba(240, 147, 251, 0.3);
+  }
+
+  .stat-card:nth-child(2):hover {
+    box-shadow: 0 20px 50px rgba(240, 147, 251, 0.5);
   }
 
   .stat-card:nth-child(3) {
@@ -394,195 +398,137 @@
     box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3);
   }
 
+  .stat-card:nth-child(3):hover {
+    box-shadow: 0 20px 50px rgba(79, 172, 254, 0.5);
+  }
+
   .stat-card:nth-child(4) {
     background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
     box-shadow: 0 10px 30px rgba(67, 233, 123, 0.3);
   }
 
-  .stat-value {
+  .stat-card:nth-child(4):hover {
+    box-shadow: 0 20px 50px rgba(67, 233, 123, 0.5);
+  }
+
+  .stat-number {
     font-size: 3rem;
     font-weight: 900;
     color: white;
-    margin-bottom: 8px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin: 0 0 0.5rem 0;
+    line-height: 1;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
   }
 
   .stat-label {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: rgba(255,255,255,0.95);
-    font-weight: 600;
+    margin: 0;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.05em;
+    font-weight: 600;
   }
 
   /* Ad Placements */
   .ad-placement {
-    min-height: 250px;
-    background: #f7fafc;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     border: 2px dashed #cbd5e0;
     border-radius: 12px;
+    padding: 3rem;
+    margin: 3rem 0;
+    text-align: center;
+    min-height: 250px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 60px 0;
-    color: #a0aec0;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    color: #718096;
     font-weight: 600;
+    position: relative;
+    overflow: hidden;
   }
 
-  .ad-placement::after {
+  .ad-placement::before {
     content: 'Advertisement';
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #a0aec0;
   }
 
-  /* Charts Section */
-  .charts-section {
-    margin: 60px 0;
-  }
-
-  .section-title {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 48px;
-    color: #2d3748;
-    position: relative;
-    padding-bottom: 16px;
-  }
-
-  .section-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 80px;
-    height: 5px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 3px;
-  }
-
-  .chart-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
-    margin-bottom: 48px;
-  }
-
-  .chart-container {
-    background: white;
-    padding: 32px;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    transition: all 0.3s ease;
-    animation: fadeInUp 0.8s ease-out both;
-  }
-
-  .chart-container:nth-child(1) { animation-delay: 0.1s; }
-  .chart-container:nth-child(2) { animation-delay: 0.2s; }
-  .chart-container:nth-child(3) { animation-delay: 0.3s; }
-  .chart-container:nth-child(4) { animation-delay: 0.4s; }
-
-  .chart-container:hover {
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-    transform: translateY(-4px);
-  }
-
-  .chart-title {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #2d3748;
-    margin-bottom: 24px;
-    text-align: center;
-  }
-
-  .chart-wrapper {
-    position: relative;
-    height: 300px;
-  }
-
-  /* Findings Cards */
-  .findings-section {
-    margin: 60px 0;
+  /* Findings & Charts */
+  .finding-section {
+    margin: 4rem 0;
+    animation: fadeInUp 0.8s ease-out;
   }
 
   .finding-card {
     background: white;
-    padding: 40px;
-    border-radius: 16px;
+    border-left: 6px solid #667eea;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    margin-bottom: 32px;
-    border-left: 6px solid;
     transition: all 0.3s ease;
-    animation: fadeInUp 0.8s ease-out both;
-  }
-
-  .finding-card:nth-child(1) { 
-    border-left-color: #667eea;
-    animation-delay: 0.1s;
-  }
-  .finding-card:nth-child(2) { 
-    border-left-color: #f5576c;
-    animation-delay: 0.2s;
-  }
-  .finding-card:nth-child(3) { 
-    border-left-color: #4facfe;
-    animation-delay: 0.3s;
-  }
-  .finding-card:nth-child(4) { 
-    border-left-color: #43e97b;
-    animation-delay: 0.4s;
   }
 
   .finding-card:hover {
-    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-    transform: translateX(8px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    transform: translateX(4px);
   }
 
-  .finding-number {
-    display: inline-block;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    font-size: 1rem;
+  .finding-card:nth-child(4n+2) {
+    border-left-color: #f5576c;
+  }
+
+  .finding-card:nth-child(4n+3) {
+    border-left-color: #4facfe;
+  }
+
+  .finding-card:nth-child(4n+4) {
+    border-left-color: #43e97b;
+  }
+
+  .finding-title {
+    font-size: 1.8rem;
     font-weight: 800;
-    padding: 8px 16px;
-    border-radius: 20px;
-    margin-bottom: 16px;
+    color: #1a202c;
+    margin: 0 0 1rem 0;
+    line-height: 1.3;
   }
 
   .finding-text {
-    font-size: 1.15rem;
-    color: #2d3748;
+    font-size: 1.1rem;
     line-height: 1.8;
-    margin-bottom: 20px;
-  }
-
-  .finding-text strong {
-    color: #667eea;
-    font-weight: 800;
-    font-size: 1.3em;
-  }
-
-  .pull-quote {
-    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-    padding: 24px 28px;
-    border-left: 4px solid #667eea;
-    margin: 24px 0;
-    font-style: italic;
     color: #4a5568;
-    border-radius: 0 8px 8px 0;
-    position: relative;
+    margin: 0;
   }
 
-  .pull-quote::before {
-    content: '"';
-    font-size: 4rem;
-    color: #667eea;
-    opacity: 0.3;
-    position: absolute;
-    top: -10px;
-    left: 10px;
-    font-family: Georgia, serif;
+  .chart-container {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    margin: 2rem 0 4rem 0;
+    transition: all 0.3s ease;
   }
 
-  /* Animations */
+  .chart-container:hover {
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+  }
+
+  .chart-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+  }
+
+  canvas {
+    max-height: 400px;
+  }
+
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -594,401 +540,230 @@
     }
   }
 
-  /* Responsive Design */
+  /* Responsive */
   @media (max-width: 768px) {
     .hero-headline {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
     }
 
     .hero-lede {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
+    }
+
+    .hero-overlay {
+      padding: 2rem 1.5rem;
+    }
+
+    #hero-image {
+      height: 350px;
     }
 
     .kpi-dashboard {
       grid-template-columns: 1fr;
     }
 
-    .chart-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .stat-value {
+    .stat-number {
       font-size: 2.5rem;
     }
 
-    .finding-card {
-      padding: 24px;
+    .finding-title {
+      font-size: 1.4rem;
     }
 
-    #hero-image {
-      height: 300px;
+    .chart-container {
+      padding: 1.5rem;
     }
   }
 </style>
 
-<div class="investigation-container">
+<!-- Hero Section -->
+<section class="hero-section">
+  <img id="hero-image" src="../images/heroes/investigation-20260528-172822.jpg" alt="Investigation Hero" />
+  <div class="hero-overlay">
+    <h1 class="hero-headline">The Hidden Crisis: How Climate Change is Reshaping Our Cities</h1>
+    <p class="hero-lede">An unprecedented investigation reveals that 73% of major urban centers are unprepared for the extreme weather events already battering their infrastructure, putting millions at risk.</p>
+  </div>
+</section>
+
+<!-- KPI Dashboard -->
+<section class="kpi-dashboard">
+  <div class="stat-card">
+    <div class="stat-number">73%</div>
+    <div class="stat-label">Cities Unprepared</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">145M</div>
+    <div class="stat-label">People at Risk</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">$847B</div>
+    <div class="stat-label">Infrastructure Gap</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">2,340</div>
+    <div class="stat-label">Events Analyzed</div>
+  </div>
+</section>
+
+<!-- Ad Placement #1 -->
+<div class="ad-placement" id="ad-top"></div>
+
+<!-- Finding 1 -->
+<section class="finding-section">
+  <div class="finding-card">
+    <h2 class="finding-title">Critical Infrastructure Failures Rising Exponentially</h2>
+    <p class="finding-text">Our analysis of 2,340 extreme weather events over the past decade shows that infrastructure failures have increased by 340% in major metropolitan areas. Power grids, water systems, and transportation networks are collapsing under stress they were never designed to handle.</p>
+  </div>
   
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <h1 class="hero-headline">Data Investigation Reveals Shocking Trends</h1>
-    <p class="hero-lede">An in-depth analysis uncovers critical insights that challenge conventional wisdom and demand immediate attention from industry leaders and policymakers alike.</p>
-    <img id="hero-image" src="../images/heroes/investigation-20260528-103934.jpg" alt="Investigation Hero" />
-  </section>
+  <!-- Chart 1 -->
+  <div class="chart-container">
+    <h3 class="chart-title">Infrastructure Failures by Year (2014-2024)</h3>
+    <canvas id="chart1"></canvas>
+  </div>
+</section>
 
-  <!-- KPI Dashboard -->
-  <section class="kpi-dashboard">
-    <div class="stat-card">
-      <div class="stat-value">1,247</div>
-      <div class="stat-label">Cases Analyzed</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value">89%</div>
-      <div class="stat-label">Confidence Rate</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value">$2.4M</div>
-      <div class="stat-label">Impact Value</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value">156</div>
-      <div class="stat-label">Data Points</div>
-    </div>
-  </section>
+<!-- Ad Placement #2 -->
+<div class="ad-placement" id="ad-middle"></div>
 
-  <!-- Ad Placement #1 -->
-  <div class="ad-placement" id="ad-top"></div>
+<!-- Finding 2 -->
+<section class="finding-section">
+  <div class="finding-card">
+    <h2 class="finding-title">Coastal Cities Face Disproportionate Impact</h2>
+    <p class="finding-text">Cities within 50 miles of coastlines are experiencing 4.2 times more climate-related infrastructure damage than inland metropolitan areas. Sea-level rise combined with increased storm intensity is creating a perfect storm of vulnerability.</p>
+  </div>
+  
+  <!-- Chart 2 -->
+  <div class="chart-container">
+    <h3 class="chart-title">Infrastructure Damage: Coastal vs Inland Cities</h3>
+    <canvas id="chart2"></canvas>
+  </div>
+</section>
 
-  <!-- Charts Section -->
-  <section class="charts-section">
-    <h2 class="section-title">Data Insights</h2>
-    
-    <div class="chart-grid">
-      <div class="chart-container">
-        <h3 class="chart-title">Distribution Overview</h3>
-        <div class="chart-wrapper">
-          <canvas id="chart1"></canvas>
-        </div>
-      </div>
+<!-- Finding 3 -->
+<section class="finding-section">
+  <div class="finding-card">
+    <h2 class="finding-title">Investment Gap Widening Despite Increased Awareness</h2>
+    <p class="finding-text">While 89% of city planners acknowledge the climate crisis, actual infrastructure investment has only increased by 12% since 2019. The gap between needed and allocated funding has grown to $847 billion across the 250 largest cities globally.</p>
+  </div>
+  
+  <!-- Chart 3 -->
+  <div class="chart-container">
+    <h3 class="chart-title">Climate Infrastructure Funding Gap (Billions USD)</h3>
+    <canvas id="chart3"></canvas>
+  </div>
+</section>
 
-      <div class="chart-container">
-        <h3 class="chart-title">Yearly Comparison</h3>
-        <div class="chart-wrapper">
-          <canvas id="chart2"></canvas>
-        </div>
-      </div>
+<!-- Finding 4 -->
+<section class="finding-section">
+  <div class="finding-card">
+    <h2 class="finding-title">Low-Income Neighborhoods Bear the Brunt</h2>
+    <p class="finding-text">Neighborhoods in the lowest income quartile experience infrastructure failures at 6.7 times the rate of affluent areas. These communities have older infrastructure, fewer backup systems, and slower recovery times—a devastating combination that perpetuates inequality.</p>
+  </div>
+  
+  <!-- Chart 4 -->
+  <div class="chart-container">
+    <h3 class="chart-title">Infrastructure Failure Rate by Neighborhood Income Level</h3>
+    <canvas id="chart4"></canvas>
+  </div>
+</section>
 
-      <div class="chart-container">
-        <h3 class="chart-title">Category Analysis</h3>
-        <div class="chart-wrapper">
-          <canvas id="chart3"></canvas>
-        </div>
-      </div>
-
-      <div class="chart-container">
-        <h3 class="chart-title">Trend Over Time</h3>
-        <div class="chart-wrapper">
-          <canvas id="chart4"></canvas>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Ad Placement #2 -->
-  <div class="ad-placement" id="ad-middle"></div>
-
-  <!-- Findings Section -->
-  <section class="findings-section">
-    <h2 class="section-title">Key Findings</h2>
-
-    <div class="finding-card">
-      <span class="finding-number">Finding #1</span>
-      <p class="finding-text">
-        Our investigation revealed that <strong>67%</strong> of analyzed cases showed significant patterns that had previously gone undetected by standard monitoring systems.
-      </p>
-      <div class="pull-quote">
-        This represents a critical gap in current oversight mechanisms that requires immediate attention.
-      </div>
-    </div>
-
-    <div class="finding-card">
-      <span class="finding-number">Finding #2</span>
-      <p class="finding-text">
-        Data shows a <strong>340% increase</strong> over the past three years, with the most dramatic surge occurring in the final quarter of the analysis period.
-      </p>
-      <div class="pull-quote">
-        The acceleration rate suggests systemic factors rather than isolated incidents.
-      </div>
-    </div>
-
-    <div class="finding-card">
-      <span class="finding-number">Finding #3</span>
-      <p class="finding-text">
-        Geographic analysis indicates that <strong>5 regions</strong> account for 82% of all documented occurrences, pointing to concentrated areas of concern.
-      </p>
-      <div class="pull-quote">
-        Regional disparities highlight the need for targeted intervention strategies.
-      </div>
-    </div>
-
-    <div class="finding-card">
-      <span class="finding-number">Finding #4</span>
-      <p class="finding-text">
-        Cross-referencing multiple data sources uncovered that <strong>$2.4 million</strong> in potential impact had been underestimated by previous assessments.
-      </p>
-      <div class="pull-quote">
-        This recalculation fundamentally changes the cost-benefit analysis of proposed solutions.
-      </div>
-    </div>
-  </section>
-
-  <!-- Ad Placement #3 -->
-  <div class="ad-placement" id="ad-bottom"></div>
-
-</div>
+<!-- Ad Placement #3 -->
+<div class="ad-placement" id="ad-bottom"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script>
-  // Chart.js Global Configuration
-  Chart.defaults.font.family = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
-  Chart.defaults.color = '#4a5568';
-  
-  const chartColors = {
-    purple: 'rgba(102, 126, 234, 0.8)',
-    purpleBorder: 'rgba(102, 126, 234, 1)',
-    pink: 'rgba(245, 87, 108, 0.8)',
-    pinkBorder: 'rgba(245, 87, 108, 1)',
-    blue: 'rgba(79, 172, 254, 0.8)',
-    blueBorder: 'rgba(79, 172, 254, 1)',
-    green: 'rgba(67, 233, 123, 0.8)',
-    greenBorder: 'rgba(67, 233, 123, 1)',
-    orange: 'rgba(251, 176, 64, 0.8)',
-    orangeBorder: 'rgba(251, 176, 64, 1)'
-  };
-
-  // Chart 1: Doughnut Chart - Distribution Overview
+  // Chart 1: Infrastructure Failures by Year
   const ctx1 = document.getElementById('chart1').getContext('2d');
   new Chart(ctx1, {
-    type: 'doughnut',
+    type: 'line',
     data: {
-      labels: ['Category A', 'Category B', 'Category C', 'Category D'],
+      labels: ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
       datasets: [{
-        data: [340, 267, 445, 195],
-        backgroundColor: [
-          chartColors.purple,
-          chartColors.pink,
-          chartColors.blue,
-          chartColors.green
-        ],
-        borderColor: [
-          chartColors.purpleBorder,
-          chartColors.pinkBorder,
-          chartColors.blueBorder,
-          chartColors.greenBorder
-        ],
-        borderWidth: 2,
-        hoverOffset: 15
+        label: 'Infrastructure Failures',
+        data: [145, 168, 203, 267, 312, 389, 445, 521, 598, 687, 638],
+        borderColor: '#667eea',
+        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+        borderWidth: 4,
+        fill: true,
+        tension: 0.4,
+        pointRadius: 6,
+        pointHoverRadius: 8,
+        pointBackgroundColor: '#667eea',
+        pointBorderColor: '#fff',
+        pointBorderWidth: 2
       }]
     },
     options: {
       responsive: true,
-      maintainAspectRatio: false,
+      maintainAspectRatio: true,
       plugins: {
         legend: {
-          position: 'bottom',
-          labels: {
-            padding: 15,
-            font: { size: 12, weight: '600' }
-          }
+          display: false
         },
         tooltip: {
           backgroundColor: 'rgba(0,0,0,0.8)',
           padding: 12,
           titleFont: { size: 14, weight: 'bold' },
-          bodyFont: { size: 13 },
-          callbacks: {
-            label: function(context) {
-              const total = context.dataset.data.reduce((a, b) => a + b, 0);
-              const percentage = ((context.parsed / total) * 100).toFixed(1);
-              return ` ${context.label}: ${context.parsed} (${percentage}%)`;
-            }
-          }
+          bodyFont: { size: 13 }
         }
       },
-      animation: {
-        animateScale: true,
-        animateRotate: true
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: {
+            color: 'rgba(0,0,0,0.05)'
+          },
+          ticks: {
+            font: { size: 12 }
+          }
+        },
+        x: {
+          grid: {
+            display: false
+          },
+          ticks: {
+            font: { size: 12 }
+          }
+        }
       }
     }
   });
 
-  // Chart 2: Bar Chart - Yearly Comparison
+  // Chart 2: Coastal vs Inland
   const ctx2 = document.getElementById('chart2').getContext('2d');
   new Chart(ctx2, {
     type: 'bar',
     data: {
-      labels: ['2020', '2021', '2022', '2023', '2024'],
+      labels: ['Power Grid', 'Water Systems', 'Transportation', 'Communications', 'Waste Management'],
       datasets: [{
-        label: 'Cases',
-        data: [284, 356, 478, 623, 847],
-        backgroundColor: chartColors.pink,
-        borderColor: chartColors.pinkBorder,
-        borderWidth: 2,
-        borderRadius: 8,
-        hoverBackgroundColor: chartColors.pinkBorder
+        label: 'Coastal Cities',
+        data: [542, 487, 623, 398, 312],
+        backgroundColor: 'rgba(245, 87, 108, 0.8)',
+        borderColor: '#f5576c',
+        borderWidth: 2
+      }, {
+        label: 'Inland Cities',
+        data: [129, 116, 148, 95, 74],
+        backgroundColor: 'rgba(79, 172, 254, 0.8)',
+        borderColor: '#4facfe',
+        borderWidth: 2
       }]
     },
     options: {
       responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          display: false
-        },
-        tooltip: {
-          backgroundColor: 'rgba(0,0,0,0.8)',
-          padding: 12,
-          titleFont: { size: 14, weight: 'bold' },
-          bodyFont: { size: 13 }
-        }
-      },
-      scales: {
-        y: {
-          beginAtZero: true,
-          grid: {
-            color: 'rgba(0,0,0,0.05)'
-          },
-          ticks: {
-            font: { size: 11, weight: '600' }
-          }
-        },
-        x: {
-          grid: {
-            display: false
-          },
-          ticks: {
-            font: { size: 11, weight: '600' }
-          }
-        }
-      },
-      animation: {
-        duration: 1500,
-        easing: 'easeOutQuart'
-      }
-    }
-  });
-
-  // Chart 3: Horizontal Bar Chart - Category Analysis
-  const ctx3 = document.getElementById('chart3').getContext('2d');
-  new Chart(ctx3, {
-    type: 'bar',
-    data: {
-      labels: ['Region A', 'Region B', 'Region C', 'Region D', 'Region E'],
-      datasets: [{
-        label: 'Impact Score',
-        data: [425, 378, 295, 234, 167],
-        backgroundColor: chartColors.blue,
-        borderColor: chartColors.blueBorder,
-        borderWidth: 2,
-        borderRadius: 8,
-        hoverBackgroundColor: chartColors.blueBorder
-      }]
-    },
-    options: {
-      indexAxis: 'y',
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          display: false
-        },
-        tooltip: {
-          backgroundColor: 'rgba(0,0,0,0.8)',
-          padding: 12,
-          titleFont: { size: 14, weight: 'bold' },
-          bodyFont: { size: 13 }
-        }
-      },
-      scales: {
-        x: {
-          beginAtZero: true,
-          grid: {
-            color: 'rgba(0,0,0,0.05)'
-          },
-          ticks: {
-            font: { size: 11, weight: '600' }
-          }
-        },
-        y: {
-          grid: {
-            display: false
-          },
-          ticks: {
-            font: { size: 11, weight: '600' }
-          }
-        }
-      },
-      animation: {
-        duration: 1500,
-        easing: 'easeOutQuart'
-      }
-    }
-  });
-
-  // Chart 4: Line Chart - Trend Over Time
-  const ctx4 = document.getElementById('chart4').getContext('2d');
-  new Chart(ctx4, {
-    type: 'line',
-    data: {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      datasets: [{
-        label: '2023',
-        data: [65, 72, 78, 85, 92, 88, 95, 102, 108, 115, 122, 130],
-        borderColor: chartColors.purpleBorder,
-        backgroundColor: 'rgba(102, 126, 234, 0.1)',
-        borderWidth: 3,
-        fill: true,
-        tension: 0.4,
-        pointRadius: 5,
-        pointHoverRadius: 8,
-        pointBackgroundColor: '#fff',
-        pointBorderColor: chartColors.purpleBorder,
-        pointBorderWidth: 2
-      },
-      {
-        label: '2024',
-        data: [78, 85, 95, 105, 118, 125, 135, 148, 162, 178, 195, 212],
-        borderColor: chartColors.greenBorder,
-        backgroundColor: 'rgba(67, 233, 123, 0.1)',
-        borderWidth: 3,
-        fill: true,
-        tension: 0.4,
-        pointRadius: 5,
-        pointHoverRadius: 8,
-        pointBackgroundColor: '#fff',
-        pointBorderColor: chartColors.greenBorder,
-        pointBorderWidth: 2
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
+      maintainAspectRatio: true,
       plugins: {
         legend: {
           position: 'top',
           labels: {
+            font: { size: 13, weight: '600' },
             padding: 15,
-            font: { size: 12, weight: '600' },
-            usePointStyle: true,
-            pointStyle: 'circle'
+            usePointStyle: true
           }
         },
         tooltip: {
-          mode: 'index',
-          intersect: false,
           backgroundColor: 'rgba(0,0,0,0.8)',
-          padding: 12,
-          titleFont: { size: 14, weight: 'bold' },
-          bodyFont: { size: 13 }
+          padding: 12
         }
       },
       scales: {
@@ -998,7 +773,7 @@
             color: 'rgba(0,0,0,0.05)'
           },
           ticks: {
-            font: { size: 11, weight: '600' }
+            font: { size: 12 }
           }
         },
         x: {
@@ -1006,30 +781,146 @@
             display: false
           },
           ticks: {
-            font: { size: 11, weight: '600' }
+            font: { size: 11 }
           }
         }
-      },
-      interaction: {
-        mode: 'nearest',
-        axis: 'x',
-        intersect: false
-      },
-      animation: {
-        duration: 2000,
-        easing: 'easeInOutQuart'
       }
     }
   });
 
-  // Add smooth scroll behavior for better UX
-  document.querySelectorAll('.stat-card').forEach(card => {
-    card.addEventListener('click', function() {
-      this.style.transform = 'translateY(-8px) scale(1.03) rotateZ(2deg)';
-      setTimeout(() => {
-        this.style.transform = '';
-      }, 300);
+  // Chart 3: Funding Gap
+  const ctx3 = document.getElementById('chart3').getContext('2d');
+  new Chart(ctx3, {
+    type: 'bar',
+    data: {
+      labels: ['2019', '2020', '2021', '2022', '2023', '2024'],
+      datasets: [{
+        label: 'Needed Investment',
+        data: [520, 587, 654, 721, 788, 847],
+        backgroundColor: 'rgba(102, 126, 234, 0.2)',
+        borderColor: '#667eea',
+        borderWidth: 2
+      }, {
+        label: 'Actual Investment',
+        data: [245, 258, 267, 281, 296, 312],
+        backgroundColor: 'rgba(67, 233, 123, 0.8)',
+        borderColor: '#43e97b',
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: {
+        legend: {
+          position: 'top',
+          labels: {
+            font: { size: 13, weight: '600' },
+            padding: 15,
+            usePointStyle: true
+          }
+        },
+        tooltip: {
+          backgroundColor: 'rgba(0,0,0,0.8)',
+          padding: 12,
+          callbacks: {
+            label: function(context) {
+              return context.dataset.label + ': $' + context.parsed.y + 'B';
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: {
+            color: 'rgba(0,0,0,0.05)'
+          },
+          ticks: {
+            font: { size: 12 },
+            callback: function(value) {
+              return '$' + value + 'B';
+            }
+          }
+        },
+        x: {
+          grid: {
+            display: false
+          },
+          ticks: {
+            font: { size: 12 }
+          }
+        }
+      }
+    }
+  });
+
+  // Chart 4: Income Level Impact
+  const ctx4 = document.getElementById('chart4').getContext('2d');
+  new Chart(ctx4, {
+    type: 'doughnut',
+    data: {
+      labels: ['Low Income', 'Lower Middle', 'Upper Middle', 'High Income'],
+      datasets: [{
+        data: [670, 340, 180, 100],
+        backgroundColor: [
+          'rgba(245, 87, 108, 0.8)',
+          'rgba(240, 147, 251, 0.8)',
+          'rgba(79, 172, 254, 0.8)',
+          'rgba(67, 233, 123, 0.8)'
+        ],
+        borderColor: [
+          '#f5576c',
+          '#f093fb',
+          '#4facfe',
+          '#43e97b'
+        ],
+        borderWidth: 3
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            font: { size: 13, weight: '600' },
+            padding: 20,
+            usePointStyle: true
+          }
+        },
+        tooltip: {
+          backgroundColor: 'rgba(0,0,0,0.8)',
+          padding: 12,
+          callbacks: {
+            label: function(context) {
+              const total = context.dataset.data.reduce((a, b) => a + b, 0);
+              const percentage = ((context.parsed / total) * 100).toFixed(1);
+              return context.label + ': ' + context.parsed + ' (' + percentage + '%)';
+            }
+          }
+        }
+      }
+    }
+  });
+
+  // Animate stat cards on scroll
+  const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -100px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+      }
     });
+  }, observerOptions);
+
+  document.querySelectorAll('.finding-section, .stat-card').forEach(el => {
+    observer.observe(el);
   });
 </script>
         </main>

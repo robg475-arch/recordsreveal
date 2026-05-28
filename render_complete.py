@@ -173,18 +173,16 @@ Generate HTML/CSS/JS for these sections:
 3. **AdSense Placement #1** - After KPIs, before charts
    - Add: <div class="ad-placement" id="ad-top"></div>
 
-4. **Charts Section** - 4 Chart.js visualizations with REAL DATA
-   - Extract numbers from findings
-   - Doughnut, bar, horizontal bar, line charts
+4. **INTERLEAVED Findings + Charts** - Mix findings and visualizations
+   - Finding 1 → Chart 1
+   - AdSense Placement #2: <div class="ad-placement" id="ad-middle"></div>
+   - Finding 2 → Chart 2
+   - Finding 3 → Chart 3
+   - Finding 4 → Chart 4
+   - This breaks up the page and keeps readers engaged
+   - Charts should directly support the finding above them
    
-5. **AdSense Placement #2** - Between charts and findings
-   - Add: <div class="ad-placement" id="ad-middle"></div>
-
-6. **Findings Cards** - Each finding as beautiful card
-   - Include pull quotes
-   - Bold numbers
-   
-7. **AdSense Placement #3** - After findings
+5. **AdSense Placement #3** - After all findings/charts
    - Add: <div class="ad-placement" id="ad-bottom"></div>
 
 # DESIGN REQUIREMENTS
