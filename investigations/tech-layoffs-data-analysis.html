@@ -26,8 +26,8 @@
             --red: #b5271f;
             --orange: #d2691e;
             --border: #ddd9ce;
-            --code-bg: #2d2d2d;
-            --code-text: #f8f8f2;
+            --code-bg: #1a1a1a;
+            --code-text: #e8e8e8;
         }
         
         body {
@@ -172,7 +172,7 @@
         
         .formula {
             background: var(--code-bg);
-            color: var(--code-text);
+            color: var(--code-text) !important;
             padding: 20px;
             margin: 2rem 0;
             border-radius: 4px;
@@ -180,6 +180,10 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.95rem;
             line-height: 1.8;
+        }
+        
+        .formula strong {
+            color: #6db8ff;
         }
         
         code {
@@ -200,6 +204,11 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.95rem;
             line-height: 1.8;
+        }
+        
+        pre code {
+            color: var(--code-text);
+            background: transparent;
         }
         
         .note {
