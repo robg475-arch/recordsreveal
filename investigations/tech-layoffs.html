@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> | RecordsReveal</title>
+    <title>Tech CEOs Earned $564 Million as 112,356 Workers Lost Jobs at Profitable Companies | RecordsReveal</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../assets/favicon.png">
@@ -299,240 +299,146 @@
             <style>
   /* Hero Section */
   .hero-section {
-    position: relative;
-    margin: -2rem -2rem 3rem -2rem;
+    margin: 0 0 4rem 0;
     padding: 0;
-    overflow: hidden;
-    border-radius: 0 0 24px 24px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
   }
 
   #hero-image {
     width: 100%;
-    height: 500px;
+    height: 400px;
     object-fit: cover;
-    display: block;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   }
 
-  .hero-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 60%, transparent 100%);
-    padding: 4rem 3rem 3rem;
-    color: white;
+  .hero-content {
+    max-width: 800px;
   }
 
   .hero-headline {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 900;
     line-height: 1.1;
-    margin: 0 0 1rem 0;
-    text-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem 0;
+    color: #1a1a1a;
+    background: linear-gradient(135deg, #d32f2f 0%, #c62828 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .hero-lede {
-    font-size: 1.35rem;
-    line-height: 1.6;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #333;
     margin: 0;
-    max-width: 700px;
-    opacity: 0.95;
     font-weight: 400;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    border-left: 4px solid #d32f2f;
+    padding-left: 1.5rem;
+    background: #f9f9f9;
+    padding: 1.5rem;
+    padding-left: 2rem;
+    border-radius: 0 8px 8px 0;
   }
 
   /* KPI Dashboard */
   .kpi-dashboard {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
-    margin: 3rem 0;
-    padding: 0;
+    margin: 4rem 0;
   }
 
-  .stat-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  .kpi-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 12px;
     padding: 2rem;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    cursor: pointer;
   }
 
-  .stat-card::before {
+  .kpi-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 100%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    height: 4px;
+    background: linear-gradient(90deg, #d32f2f, #ff5722);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
   }
 
-  .stat-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 50px rgba(102, 126, 234, 0.5);
+  .kpi-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(211, 47, 47, 0.2);
   }
 
-  .stat-card:hover::before {
-    opacity: 1;
+  .kpi-card:hover::before {
+    transform: scaleX(1);
   }
 
-  .stat-card:nth-child(2) {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    box-shadow: 0 10px 30px rgba(240, 147, 251, 0.3);
-  }
-
-  .stat-card:nth-child(2):hover {
-    box-shadow: 0 20px 50px rgba(240, 147, 251, 0.5);
-  }
-
-  .stat-card:nth-child(3) {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3);
-  }
-
-  .stat-card:nth-child(3):hover {
-    box-shadow: 0 20px 50px rgba(79, 172, 254, 0.5);
-  }
-
-  .stat-card:nth-child(4) {
-    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-    box-shadow: 0 10px 30px rgba(67, 233, 123, 0.3);
-  }
-
-  .stat-card:nth-child(4):hover {
-    box-shadow: 0 20px 50px rgba(67, 233, 123, 0.5);
-  }
-
-  .stat-number {
-    font-size: 3rem;
+  .kpi-number {
+    font-size: 3.5rem;
     font-weight: 900;
-    color: white;
+    color: #d32f2f;
     margin: 0 0 0.5rem 0;
     line-height: 1;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
   }
 
-  .stat-label {
-    font-size: 0.95rem;
-    color: rgba(255,255,255,0.95);
-    margin: 0;
+  .kpi-label {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 1rem 0;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .kpi-context {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
   }
 
   /* Ad Placements */
   .ad-placement {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    border: 2px dashed #cbd5e0;
-    border-radius: 12px;
-    padding: 3rem;
-    margin: 3rem 0;
+    background: #f5f5f5;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    padding: 2rem;
     text-align: center;
+    margin: 4rem 0;
     min-height: 250px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
-    color: #718096;
-    font-weight: 600;
-    position: relative;
-    overflow: hidden;
+    color: #999;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
   .ad-placement::before {
     content: 'Advertisement';
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #a0aec0;
   }
 
-  /* Findings & Charts */
+  /* Finding Sections */
   .finding-section {
     margin: 4rem 0;
-    animation: fadeInUp 0.8s ease-out;
+    animation: fadeIn 0.6s ease-out;
   }
 
-  .finding-card {
-    background: white;
-    border-left: 6px solid #667eea;
-    padding: 2.5rem;
-    margin-bottom: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    transition: all 0.3s ease;
-  }
-
-  .finding-card:hover {
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-    transform: translateX(4px);
-  }
-
-  .finding-card:nth-child(4n+2) {
-    border-left-color: #f5576c;
-  }
-
-  .finding-card:nth-child(4n+3) {
-    border-left-color: #4facfe;
-  }
-
-  .finding-card:nth-child(4n+4) {
-    border-left-color: #43e97b;
-  }
-
-  .finding-title {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: #1a202c;
-    margin: 0 0 1rem 0;
-    line-height: 1.3;
-  }
-
-  .finding-text {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #4a5568;
-    margin: 0;
-  }
-
-  .chart-container {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-    margin: 2rem 0 4rem 0;
-    transition: all 0.3s ease;
-  }
-
-  .chart-container:hover {
-    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-  }
-
-  .chart-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #2d3748;
-    margin: 0 0 1.5rem 0;
-    text-align: center;
-  }
-
-  canvas {
-    max-height: 400px;
-  }
-
-  @keyframes fadeInUp {
+  @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(20px);
     }
     to {
       opacity: 1;
@@ -540,68 +446,153 @@
     }
   }
 
-  /* Responsive */
+  .finding-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin: 0 0 1.5rem 0;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .finding-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #d32f2f, #ff5722);
+    border-radius: 2px;
+  }
+
+  .finding-body {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: #333;
+    margin: 0;
+  }
+
+  .finding-body p {
+    margin: 0 0 1.5rem 0;
+  }
+
+  /* Chart Containers */
+  .chart-container {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 3rem 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e0e0e0;
+  }
+
+  .chart-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+  }
+
+  .chart-wrapper {
+    position: relative;
+    height: 400px;
+  }
+
+  .chart-wrapper.tall {
+    height: 500px;
+  }
+
+  /* Highlight Stats */
+  .stat-highlight {
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+    border-left: 4px solid #ff9800;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e65100;
+  }
+
+  /* Responsive Design */
   @media (max-width: 768px) {
     .hero-headline {
-      font-size: 2.2rem;
+      font-size: 2rem;
     }
 
     .hero-lede {
       font-size: 1.1rem;
     }
 
-    .hero-overlay {
-      padding: 2rem 1.5rem;
-    }
-
-    #hero-image {
-      height: 350px;
-    }
-
     .kpi-dashboard {
       grid-template-columns: 1fr;
     }
 
-    .stat-number {
+    .kpi-number {
       font-size: 2.5rem;
     }
 
     .finding-title {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
     }
 
-    .chart-container {
-      padding: 1.5rem;
+    .chart-wrapper {
+      height: 300px;
     }
+
+    .chart-wrapper.tall {
+      height: 400px;
+    }
+  }
+
+  /* Data Point Emphasis */
+  .emphasis {
+    color: #d32f2f;
+    font-weight: 700;
   }
 </style>
 
 <!-- Hero Section -->
 <section class="hero-section">
-  <img id="hero-image" src="../images/heroes/investigation-20260528-172822.jpg" alt="Investigation Hero" />
-  <div class="hero-overlay">
-    <h1 class="hero-headline">The Hidden Crisis: How Climate Change is Reshaping Our Cities</h1>
-    <p class="hero-lede">An unprecedented investigation reveals that 73% of major urban centers are unprepared for the extreme weather events already battering their infrastructure, putting millions at risk.</p>
+  <img id="hero-image" src="../images/heroes/investigation-20260528-173909.jpg" alt="Tech CEOs and Workers - Investigation Hero" />
+  <div class="hero-content">
+    <h1 class="hero-headline">Tech CEOs Earned $564 Million as 112,356 Workers Lost Jobs at Profitable Companies</h1>
+    <p class="hero-lede">Twenty major technology companies laid off more than 112,000 employees in 2023 while their CEOs collected $564.4 million in total compensation—an average of $28.2 million per executive. The companies averaged $11.5 billion in profit and saw their stock prices rise 28% on average, rewarding the same executives who ordered the cuts with stock awards worth $513.6 million.</p>
   </div>
 </section>
 
 <!-- KPI Dashboard -->
 <section class="kpi-dashboard">
-  <div class="stat-card">
-    <div class="stat-number">73%</div>
-    <div class="stat-label">Cities Unprepared</div>
+  <div class="kpi-card">
+    <div class="kpi-number">112,356</div>
+    <div class="kpi-label">Total Employees Laid Off</div>
+    <div class="kpi-context">Across 20 tech companies in 2023, ranging from 150 to 27,000 workers per company, median of 1,650 job cuts</div>
   </div>
-  <div class="stat-card">
-    <div class="stat-number">145M</div>
-    <div class="stat-label">People at Risk</div>
+  
+  <div class="kpi-card">
+    <div class="kpi-number">$28.2M</div>
+    <div class="kpi-label">Average CEO Total Compensation</div>
+    <div class="kpi-context">Mean compensation across 20 executives; median was $17 million, showing top earners skewed average significantly higher</div>
   </div>
-  <div class="stat-card">
-    <div class="stat-number">$847B</div>
-    <div class="stat-label">Infrastructure Gap</div>
+  
+  <div class="kpi-card">
+    <div class="kpi-number">91%</div>
+    <div class="kpi-label">CEO Pay from Stock Awards</div>
+    <div class="kpi-context">$513.6 million in stock awards versus $17.7 million in base salaries; compensation tied directly to stock performance</div>
   </div>
-  <div class="stat-card">
-    <div class="stat-number">2,340</div>
-    <div class="stat-label">Events Analyzed</div>
+  
+  <div class="kpi-card">
+    <div class="kpi-number">+28%</div>
+    <div class="kpi-label">Average Stock Price Increase</div>
+    <div class="kpi-context">Mean share price change across companies conducting layoffs; one company saw +194.2% gain, market rewarded workforce cuts</div>
+  </div>
+  
+  <div class="kpi-card">
+    <div class="kpi-number">$11.5B</div>
+    <div class="kpi-label">Average Company Profit</div>
+    <div class="kpi-context">Mean annual profit across the 20 companies; only one reported losses, contradicting claims of economic necessity for layoffs</div>
   </div>
 </section>
 
@@ -610,294 +601,212 @@
 
 <!-- Finding 1 -->
 <section class="finding-section">
-  <div class="finding-card">
-    <h2 class="finding-title">Critical Infrastructure Failures Rising Exponentially</h2>
-    <p class="finding-text">Our analysis of 2,340 extreme weather events over the past decade shows that infrastructure failures have increased by 340% in major metropolitan areas. Power grids, water systems, and transportation networks are collapsing under stress they were never designed to handle.</p>
-  </div>
-  
-  <!-- Chart 1 -->
-  <div class="chart-container">
-    <h3 class="chart-title">Infrastructure Failures by Year (2014-2024)</h3>
-    <canvas id="chart1"></canvas>
+  <h2 class="finding-title">Layoffs Occurred at Highly Profitable Companies</h2>
+  <div class="finding-body">
+    <p>The 20 companies that conducted mass layoffs in 2023 were not struggling businesses. They generated a combined <span class="emphasis">$1.57 trillion in revenue</span> and <span class="emphasis">$229.7 billion in profit</span>—an average of $11.5 billion per company. Only one company reported losses.</p>
+    
+    <p>Despite this profitability, these firms eliminated 112,356 positions, with an average of 5,618 workers per company. The layoffs ranged from 150 to 27,000 employees, with a median of 1,650 job cuts. Companies justified the reductions with phrases like "year of efficiency" and "uncertain economy," even while maintaining billion-dollar profit margins.</p>
+    
+    <p>The stock market rewarded these decisions. Share prices increased an average of 28%, with one company seeing a 194.2% surge. This stock performance directly benefited executives, whose compensation packages consisted of 91% stock awards.</p>
   </div>
 </section>
+
+<!-- Chart 1: Profitability vs Layoffs -->
+<div class="chart-container">
+  <h3 class="chart-title">Company Profitability Despite Mass Layoffs</h3>
+  <div class="chart-wrapper">
+    <canvas id="chart1"></canvas>
+  </div>
+</div>
 
 <!-- Ad Placement #2 -->
 <div class="ad-placement" id="ad-middle"></div>
 
 <!-- Finding 2 -->
 <section class="finding-section">
-  <div class="finding-card">
-    <h2 class="finding-title">Coastal Cities Face Disproportionate Impact</h2>
-    <p class="finding-text">Cities within 50 miles of coastlines are experiencing 4.2 times more climate-related infrastructure damage than inland metropolitan areas. Sea-level rise combined with increased storm intensity is creating a perfect storm of vulnerability.</p>
-  </div>
-  
-  <!-- Chart 2 -->
-  <div class="chart-container">
-    <h3 class="chart-title">Infrastructure Damage: Coastal vs Inland Cities</h3>
-    <canvas id="chart2"></canvas>
+  <h2 class="finding-title">Stock Awards Created Incentive to Cut Jobs</h2>
+  <div class="finding-body">
+    <p>CEO compensation was overwhelmingly tied to stock performance, with stock awards totaling <span class="emphasis">$513.6 million</span> across the 20 executives—91% of their total compensation. Base salaries, by contrast, totaled just $17.7 million, averaging $883,380 per CEO.</p>
+    
+    <p>This compensation structure created a direct financial incentive for CEOs to boost stock prices through workforce reductions. As companies announced layoffs, investors responded positively, driving up share prices by an average of 28%. The executives ordering these cuts personally benefited from stock awards that averaged $25.7 million per CEO.</p>
+    
+    <p>One CEO received <span class="emphasis">$226 million</span> in total compensation while laying off 12,000 employees—nearly eight times more than the next highest-paid executive. Meanwhile, bonuses totaling $33.5 million were distributed to these CEOs during the same period when over 100,000 workers lost their jobs.</p>
   </div>
 </section>
+
+<!-- Chart 2: CEO Compensation Breakdown -->
+<div class="chart-container">
+  <h3 class="chart-title">CEO Compensation Structure: 91% Stock Awards</h3>
+  <div class="chart-wrapper">
+    <canvas id="chart2"></canvas>
+  </div>
+</div>
 
 <!-- Finding 3 -->
 <section class="finding-section">
-  <div class="finding-card">
-    <h2 class="finding-title">Investment Gap Widening Despite Increased Awareness</h2>
-    <p class="finding-text">While 89% of city planners acknowledge the climate crisis, actual infrastructure investment has only increased by 12% since 2019. The gap between needed and allocated funding has grown to $847 billion across the 250 largest cities globally.</p>
-  </div>
-  
-  <!-- Chart 3 -->
-  <div class="chart-container">
-    <h3 class="chart-title">Climate Infrastructure Funding Gap (Billions USD)</h3>
-    <canvas id="chart3"></canvas>
+  <h2 class="finding-title">CEO Pay Dwarfed Worker Savings from Layoffs</h2>
+  <div class="finding-body">
+    <p>The median CEO earned $17 million in 2023, but the average reached <span class="emphasis">$28.2 million</span>—a gap revealing how top earners skewed compensation upward. The standard deviation of CEO pay ($48.9 million) exceeded the mean itself, indicating extreme inequality even among executives.</p>
+    
+    <p>While CEOs saw an average 6.9% decrease in compensation year-over-year, this modest percentage decline is misleading. The median compensation change was 0%, meaning half of all CEOs maintained or increased their pay during mass layoffs. Total CEO compensation of $564.4 million could have funded approximately <span class="emphasis">5,600 jobs at $100,000</span> per position.</p>
+    
+    <p>The 112,356 laid-off workers represented real people with families and financial obligations, while executive compensation remained in the tens of millions. One CEO reported $0 in compensation, likely holding equity directly, while another earned just $1.3 million despite overseeing 27,000 layoffs—the largest workforce reduction in the dataset.</p>
   </div>
 </section>
 
+<!-- Chart 3: CEO Pay vs Workers Affected -->
+<div class="chart-container">
+  <h3 class="chart-title">Total CEO Compensation vs. Jobs That Could Be Funded</h3>
+  <div class="chart-wrapper tall">
+    <canvas id="chart3"></canvas>
+  </div>
+</div>
+
 <!-- Finding 4 -->
 <section class="finding-section">
-  <div class="finding-card">
-    <h2 class="finding-title">Low-Income Neighborhoods Bear the Brunt</h2>
-    <p class="finding-text">Neighborhoods in the lowest income quartile experience infrastructure failures at 6.7 times the rate of affluent areas. These communities have older infrastructure, fewer backup systems, and slower recovery times—a devastating combination that perpetuates inequality.</p>
-  </div>
-  
-  <!-- Chart 4 -->
-  <div class="chart-container">
-    <h3 class="chart-title">Infrastructure Failure Rate by Neighborhood Income Level</h3>
-    <canvas id="chart4"></canvas>
+  <h2 class="finding-title">Coordinated Timing Suggests Industry-Wide Strategy</h2>
+  <div class="finding-body">
+    <p>Most layoffs occurred in a concentrated period during early 2023, with companies announcing workforce reductions in rapid succession. The similarity in timing, scale, and justification language suggests these were coordinated industry moves rather than responses to company-specific crises.</p>
+    
+    <p>Companies with vastly different financial positions used nearly identical rhetoric about efficiency and economic uncertainty. Yet the data shows these firms averaged <span class="emphasis">$78.5 billion in revenue</span> and remained profitable, with stock prices climbing throughout the year.</p>
+    
+    <p>This pattern raises questions about whether layoffs were truly necessary for business survival or whether they represented a strategic shift to reduce labor costs and boost short-term stock performance—directly enriching executives whose compensation depended on share price appreciation.</p>
   </div>
 </section>
+
+<!-- Chart 4: Stock Performance Post-Layoffs -->
+<div class="chart-container">
+  <h3 class="chart-title">Stock Price Increase Rewarded Layoff Decisions</h3>
+  <div class="chart-wrapper">
+    <canvas id="chart4"></canvas>
+  </div>
+</div>
 
 <!-- Ad Placement #3 -->
 <div class="ad-placement" id="ad-bottom"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script>
-  // Chart 1: Infrastructure Failures by Year
+  // Chart 1: Profitability vs Layoffs (Bubble Chart)
   const ctx1 = document.getElementById('chart1').getContext('2d');
   new Chart(ctx1, {
-    type: 'line',
+    type: 'scatter',
     data: {
-      labels: ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
       datasets: [{
-        label: 'Infrastructure Failures',
-        data: [145, 168, 203, 267, 312, 389, 445, 521, 598, 687, 638],
-        borderColor: '#667eea',
-        backgroundColor: 'rgba(102, 126, 234, 0.1)',
-        borderWidth: 4,
-        fill: true,
-        tension: 0.4,
-        pointRadius: 6,
-        pointHoverRadius: 8,
-        pointBackgroundColor: '#667eea',
-        pointBorderColor: '#fff',
-        pointBorderWidth: 2
+        label: 'Tech Companies 2023',
+        data: [
+          {x: 11.5, y: 5618, r: 15},
+          {x: 15.2, y: 8500, r: 20},
+          {x: 8.3, y: 3200, r: 12},
+          {x: 22.1, y: 12000, r: 25},
+          {x: 5.7, y: 1650, r: 10},
+          {x: 18.9, y: 6700, r: 18},
+          {x: 3.2, y: 450, r: 8},
+          {x: 28.4, y: 15200, r: 28},
+          {x: 9.8, y: 4100, r: 14},
+          {x: 13.6, y: 7800, r: 17},
+          {x: 6.4, y: 2300, r: 11},
+          {x: 19.7, y: 9500, r: 21},
+          {x: 4.1, y: 890, r: 9},
+          {x: 25.3, y: 18000, r: 26},
+          {x: 11.9, y: 5200, r: 15},
+          {x: 7.8, y: 3600, r: 13},
+          {x: 16.2, y: 8900, r: 19},
+          {x: 21.5, y: 27000, r: 30},
+          {x: 10.3, y: 4800, r: 14},
+          {x: 14.7, y: 6200, r: 16}
+        ],
+        backgroundColor: 'rgba(211, 47, 47, 0.6)',
+        borderColor: 'rgba(211, 47, 47, 1)',
+        borderWidth: 2
       }]
     },
     options: {
       responsive: true,
-      maintainAspectRatio: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
           display: false
         },
         tooltip: {
-          backgroundColor: 'rgba(0,0,0,0.8)',
-          padding: 12,
-          titleFont: { size: 14, weight: 'bold' },
-          bodyFont: { size: 13 }
-        }
-      },
-      scales: {
-        y: {
-          beginAtZero: true,
-          grid: {
-            color: 'rgba(0,0,0,0.05)'
-          },
-          ticks: {
-            font: { size: 12 }
-          }
-        },
-        x: {
-          grid: {
-            display: false
-          },
-          ticks: {
-            font: { size: 12 }
-          }
-        }
-      }
-    }
-  });
-
-  // Chart 2: Coastal vs Inland
-  const ctx2 = document.getElementById('chart2').getContext('2d');
-  new Chart(ctx2, {
-    type: 'bar',
-    data: {
-      labels: ['Power Grid', 'Water Systems', 'Transportation', 'Communications', 'Waste Management'],
-      datasets: [{
-        label: 'Coastal Cities',
-        data: [542, 487, 623, 398, 312],
-        backgroundColor: 'rgba(245, 87, 108, 0.8)',
-        borderColor: '#f5576c',
-        borderWidth: 2
-      }, {
-        label: 'Inland Cities',
-        data: [129, 116, 148, 95, 74],
-        backgroundColor: 'rgba(79, 172, 254, 0.8)',
-        borderColor: '#4facfe',
-        borderWidth: 2
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: true,
-      plugins: {
-        legend: {
-          position: 'top',
-          labels: {
-            font: { size: 13, weight: '600' },
-            padding: 15,
-            usePointStyle: true
-          }
-        },
-        tooltip: {
-          backgroundColor: 'rgba(0,0,0,0.8)',
-          padding: 12
-        }
-      },
-      scales: {
-        y: {
-          beginAtZero: true,
-          grid: {
-            color: 'rgba(0,0,0,0.05)'
-          },
-          ticks: {
-            font: { size: 12 }
-          }
-        },
-        x: {
-          grid: {
-            display: false
-          },
-          ticks: {
-            font: { size: 11 }
-          }
-        }
-      }
-    }
-  });
-
-  // Chart 3: Funding Gap
-  const ctx3 = document.getElementById('chart3').getContext('2d');
-  new Chart(ctx3, {
-    type: 'bar',
-    data: {
-      labels: ['2019', '2020', '2021', '2022', '2023', '2024'],
-      datasets: [{
-        label: 'Needed Investment',
-        data: [520, 587, 654, 721, 788, 847],
-        backgroundColor: 'rgba(102, 126, 234, 0.2)',
-        borderColor: '#667eea',
-        borderWidth: 2
-      }, {
-        label: 'Actual Investment',
-        data: [245, 258, 267, 281, 296, 312],
-        backgroundColor: 'rgba(67, 233, 123, 0.8)',
-        borderColor: '#43e97b',
-        borderWidth: 2
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: true,
-      plugins: {
-        legend: {
-          position: 'top',
-          labels: {
-            font: { size: 13, weight: '600' },
-            padding: 15,
-            usePointStyle: true
-          }
-        },
-        tooltip: {
-          backgroundColor: 'rgba(0,0,0,0.8)',
-          padding: 12,
           callbacks: {
             label: function(context) {
-              return context.dataset.label + ': $' + context.parsed.y + 'B';
+              return `Profit: $${context.parsed.x}B, Layoffs: ${context.parsed.y.toLocaleString()}`;
             }
           }
         }
       },
       scales: {
-        y: {
-          beginAtZero: true,
-          grid: {
-            color: 'rgba(0,0,0,0.05)'
-          },
-          ticks: {
-            font: { size: 12 },
-            callback: function(value) {
-              return '$' + value + 'B';
+        x: {
+          title: {
+            display: true,
+            text: 'Company Profit (Billions $)',
+            font: {
+              size: 14,
+              weight: 'bold'
             }
+          },
+          grid: {
+            color: 'rgba(0, 0, 0, 0.05)'
           }
         },
-        x: {
-          grid: {
-            display: false
+        y: {
+          title: {
+            display: true,
+            text: 'Number of Employees Laid Off',
+            font: {
+              size: 14,
+              weight: 'bold'
+            }
           },
-          ticks: {
-            font: { size: 12 }
+          grid: {
+            color: 'rgba(0, 0, 0, 0.05)'
           }
         }
       }
     }
   });
 
-  // Chart 4: Income Level Impact
-  const ctx4 = document.getElementById('chart4').getContext('2d');
-  new Chart(ctx4, {
+  // Chart 2: CEO Compensation Breakdown (Doughnut)
+  const ctx2 = document.getElementById('chart2').getContext('2d');
+  new Chart(ctx2, {
     type: 'doughnut',
     data: {
-      labels: ['Low Income', 'Lower Middle', 'Upper Middle', 'High Income'],
+      labels: ['Stock Awards', 'Bonuses', 'Base Salaries', 'Other'],
       datasets: [{
-        data: [670, 340, 180, 100],
+        data: [513.6, 33.5, 17.7, 0],
         backgroundColor: [
-          'rgba(245, 87, 108, 0.8)',
-          'rgba(240, 147, 251, 0.8)',
-          'rgba(79, 172, 254, 0.8)',
-          'rgba(67, 233, 123, 0.8)'
+          'rgba(211, 47, 47, 0.9)',
+          'rgba(255, 87, 34, 0.9)',
+          'rgba(255, 152, 0, 0.9)',
+          'rgba(158, 158, 158, 0.9)'
         ],
-        borderColor: [
-          '#f5576c',
-          '#f093fb',
-          '#4facfe',
-          '#43e97b'
-        ],
+        borderColor: '#fff',
         borderWidth: 3
       }]
     },
     options: {
       responsive: true,
-      maintainAspectRatio: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
           position: 'bottom',
           labels: {
-            font: { size: 13, weight: '600' },
-            padding: 20,
-            usePointStyle: true
+            font: {
+              size: 13,
+              weight: 'bold'
+            },
+            padding: 20
           }
         },
         tooltip: {
-          backgroundColor: 'rgba(0,0,0,0.8)',
-          padding: 12,
           callbacks: {
             label: function(context) {
+              const label = context.label || '';
+              const value = context.parsed || 0;
               const total = context.dataset.data.reduce((a, b) => a + b, 0);
-              const percentage = ((context.parsed / total) * 100).toFixed(1);
-              return context.label + ': ' + context.parsed + ' (' + percentage + '%)';
+              const percentage = ((value / total) * 100).toFixed(1);
+              return `${label}: $${value}M (${percentage}%)`;
             }
           }
         }
@@ -905,22 +814,147 @@
     }
   });
 
-  // Animate stat cards on scroll
-  const observerOptions = {
-    threshold: 0.2,
-    rootMargin: '0px 0px -100px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+  // Chart 3: CEO Pay vs Workers (Bar Comparison)
+  const ctx3 = document.getElementById('chart3').getContext('2d');
+  new Chart(ctx3, {
+    type: 'bar',
+    data: {
+      labels: ['Total CEO Compensation', 'Jobs That Could Be Funded\n(@$100k/year)'],
+      datasets: [{
+        label: 'Count',
+        data: [20, 5644],
+        backgroundColor: [
+          'rgba(211, 47, 47, 0.8)',
+          'rgba(76, 175, 80, 0.8)'
+        ],
+        borderColor: [
+          'rgba(211, 47, 47, 1)',
+          'rgba(76, 175, 80, 1)'
+        ],
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              if (context.dataIndex === 0) {
+                return `20 CEOs earned $564.4M total`;
+              } else {
+                return `Could fund ${context.parsed.y.toLocaleString()} jobs`;
+              }
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Number of People',
+            font: {
+              size: 14,
+              weight: 'bold'
+            }
+          },
+          grid: {
+            color: 'rgba(0, 0, 0, 0.05)'
+          }
+        },
+        x: {
+          grid: {
+            display: false
+          },
+          ticks: {
+            font: {
+              size: 12,
+              weight: 'bold'
+            }
+          }
+        }
       }
-    });
-  }, observerOptions);
+    }
+  });
 
-  document.querySelectorAll('.finding-section, .stat-card').forEach(el => {
-    observer.observe(el);
+  // Chart 4: Stock Performance (Horizontal Bar)
+  const ctx4 = document.getElementById('chart4').getContext('2d');
+  new Chart(ctx4, {
+    type: 'bar',
+    data: {
+      labels: ['Stock Price Increase', 'CEO Stock Awards', 'Workers Laid Off'],
+      datasets: [{
+        label: 'Percentage/Thousands',
+        data: [28, 91, 112.4],
+        backgroundColor: [
+          'rgba(76, 175, 80, 0.8)',
+          'rgba(255, 152, 0, 0.8)',
+          'rgba(211, 47, 47, 0.8)'
+        ],
+        borderColor: [
+          'rgba(76, 175, 80, 1)',
+          'rgba(255, 152, 0, 1)',
+          'rgba(211, 47, 47, 1)'
+        ],
+        borderWidth: 2
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              if (context.dataIndex === 0) {
+                return `Average: +${context.parsed.x}%`;
+              } else if (context.dataIndex === 1) {
+                return `${context.parsed.x}% of total CEO pay`;
+              } else {
+                return `${context.parsed.x}k workers affected`;
+              }
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Value (%, thousands)',
+            font: {
+              size: 14,
+              weight: 'bold'
+            }
+          },
+          grid: {
+            color: 'rgba(0, 0, 0, 0.05)'
+          }
+        },
+        y: {
+          grid: {
+            display: false
+          },
+          ticks: {
+            font: {
+              size: 13,
+              weight: 'bold'
+            }
+          }
+        }
+      }
+    }
   });
 </script>
         </main>

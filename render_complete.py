@@ -681,7 +681,13 @@ def render_complete(investigation_json_path, output_dir="investigations"):
     # Load investigation
     print("📂 Loading investigation...")
     with open(investigation_json_path, 'r') as f:
-        investigation = json.load(f)
+        data = json.load(f)
+    
+    # Handle both old and new JSON formats
+    if 'investigation' in data:
+        investigation = data['investigation']  # New format from investigate.py v2
+    else:
+        investigation = data  # Old format
     
     headline = investigation.get('headline', '')[:60]
     findings_count = len(investigation.get('findings', []))
