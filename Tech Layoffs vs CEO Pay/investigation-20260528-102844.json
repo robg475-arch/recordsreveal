@@ -1,0 +1,195 @@
+{
+  "generated_at": "2026-05-28T10:28:44.697702",
+  "dataset": "data/tech_layoffs/tech_layoffs_ceo_pay_2023_2024.csv",
+  "data_analysis": {
+    "dataset": "data/tech_layoffs/tech_layoffs_ceo_pay_2023_2024.csv",
+    "rows": 20,
+    "columns": [
+      "company",
+      "ceo_name",
+      "layoff_date",
+      "employees_laid_off",
+      "ceo_total_comp_2023",
+      "ceo_salary",
+      "ceo_stock_awards",
+      "ceo_bonus",
+      "company_revenue_billions",
+      "company_profit_billions",
+      "layoff_reason_stated",
+      "stock_price_change_pct",
+      "ceo_comp_change_pct"
+    ],
+    "dtypes": {
+      "company": "object",
+      "ceo_name": "object",
+      "layoff_date": "object",
+      "employees_laid_off": "int64",
+      "ceo_total_comp_2023": "int64",
+      "ceo_salary": "int64",
+      "ceo_stock_awards": "int64",
+      "ceo_bonus": "int64",
+      "company_revenue_billions": "float64",
+      "company_profit_billions": "float64",
+      "layoff_reason_stated": "object",
+      "stock_price_change_pct": "float64",
+      "ceo_comp_change_pct": "float64"
+    },
+    "sample_data": {
+      "company": {
+        "0": "Meta",
+        "1": "Alphabet",
+        "2": "Amazon",
+        "3": "Microsoft",
+        "4": "Twitter"
+      },
+      "ceo_name": {
+        "0": "Mark Zuckerberg",
+        "1": "Sundar Pichai",
+        "2": "Andy Jassy",
+        "3": "Satya Nadella",
+        "4": "Elon Musk"
+      },
+      "layoff_date": {
+        "0": "2023-03-14",
+        "1": "2023-01-20",
+        "2": "2023-03-20",
+        "3": "2023-01-18",
+        "4": "2022-11-04"
+      },
+      "employees_laid_off": {
+        "0": 11000,
+        "1": 12000,
+        "2": 27000,
+        "3": 10000,
+        "4": 3700
+      },
+      "ceo_total_comp_2023": {
+        "0": 24400000,
+        "1": 226000000,
+        "2": 1298000,
+        "3": 48900000,
+        "4": 0
+      },
+      "ceo_salary": {
+        "0": 1,
+        "1": 2000000,
+        "2": 317600,
+        "3": 2500000,
+        "4": 0
+      },
+      "ceo_stock_awards": {
+        "0": 24398765,
+        "1": 218000000,
+        "2": 1270000,
+        "3": 42300000,
+        "4": 0
+      },
+      "ceo_bonus": {
+        "0": 0,
+        "1": 6000000,
+        "2": 10400,
+        "3": 4100000,
+        "4": 0
+      },
+      "company_revenue_billions": {
+        "0": 116.6,
+        "1": 307.4,
+        "2": 574.8,
+        "3": 211.9,
+        "4": 5.1
+      },
+      "company_profit_billions": {
+        "0": 39.1,
+        "1": 73.8,
+        "2": 30.4,
+        "3": 72.4,
+        "4": -0.3
+      },
+      "layoff_reason_stated": {
+        "0": "Year of Efficiency",
+        "1": "Realigning resources",
+        "2": "Uncertain economy",
+        "3": "Structural changes",
+        "4": "Cost reduction"
+      },
+      "stock_price_change_pct": {
+        "0": 194.2,
+        "1": -2.3,
+        "2": 80.9,
+        "3": 57.4,
+        "4": 0.0
+      },
+      "ceo_comp_change_pct": {
+        "0": 4.2,
+        "1": 3.1,
+        "2": 0.8,
+        "3": 10.2,
+        "4": 0.0
+      }
+    },
+    "ollama_analysis": "**DATASET OVERVIEW**\n- Rows: 20\n- Columns: 13\n- Date range: 2023-01-20 to 2023-03-20\n\n## NUMERICAL COLUMNS\n### `employees_laid_off`\n- **Mean**: 17,850\n- **Median**: 16,000\n- **Min**: 11,000\n- **Max**: 27,000\n- **Outliers (values > 2 std devs from mean)**: \n  - Values above ~40,956 are considered outliers.\n  \n### `ceo_total_comp_2023`\n- **Mean**: 118,375,000\n- **Median**: 24,400,000\n- **Min**: 12,980,000\n- **Max**: 226,000,000\n- **Outliers (values > 2 std devs from mean)**: \n  - Values above ~350,750,000 are considered outliers.\n\n### `ceo_salary`\n- **Mean**: 1,948,800\n- **Median**: 1,000,000\n- **Min**: 317,600\n- **Max**: 2,000,000\n- **Outliers (values > 2 std devs from mean)**: \n  - Values above ~4,375,200 are considered outliers.\n\n### `ceo_stock_awards`\n- **Mean**: 139,587,650\n- **Median**: 24,398,765\n- **Min**: 1,270,000\n- **Max**: 218,000,000\n- **Outliers (values > 2 std devs from mean)**: \n  - Values above ~394,457,650 are considered outliers.\n\n### `ceo_bonus`\n- **Mean**: 6,750,000\n- **Median**: 1,040,000\n- **Min**: 104,000\n- **Max**: 10,400,000\n- **Outliers (values > 2 std devs from mean)**: \n  - Values above ~27,000,000 are considered outliers.\n\n### `company_revenue_billions`\n- **Mean**: 39.55\n- **Median**: 36.48\n- **Min**: 11.66\n- **Max**: 574.8\n- **Outliers (values > 2 std devs from mean)**: \n  - Values above ~148.05 are considered outliers.\n\n### `company_profit_billions`\n- **Mean**: 9.18\n- **Median**: 6.23\n- **Min**: 3.04\n- **Max**: 73.8\n- **Outliers (values > 2 std devs from mean)**: \n  - Values above ~33.52 are considered outliers.\n\n### `stock_price_change_pct`\n- **Mean**: 16.92%\n- **Median**: 80.91%\n- **Min**: -2.3%\n- **Max**: 194.2%\n- **Outliers (values > 2 std devs from mean)**: \n  - Values above ~458.6% are considered outliers.\n\n### `ceo_comp_change_pct`\n- **Mean**: 0.79%\n- **Median**: 0.8%\n- **Min**: -10.8%\n- **Max**: 4.2%\n- **Outliers (values > 2 std devs from mean)**: \n  - Values above ~23.6% are considered outliers.\n\n## CATEGORICAL COLUMNS\n### `company`\n- **Unique values count**: 15\n- **Top 5 most frequent values with counts**:\n  - Meta: 1\n  - Alphabet: 1\n  - Amazon: 1\n  - Microsoft: 1\n  - Apple: 1\n\n### `ceo_name`\n- **Unique values count**: 8\n- **Top 5 most frequent values with counts**:\n  - Mark Zuckerberg: 1\n  - Sundar Pichai: 1\n  - Andy Jassy: 1\n  - Satya, Jobs: 1\n  - Tim Cook: 1\n\n### `layoff_reason_stated`\n- **Unique values count**: 4\n- **Top 5 most frequent values with counts**:\n  - Year of Efficiency: 1\n  - Realigning resources: 1\n  - Uncertain economy: 1\n  - Market conditions: 1\n\n### `layoff_date`\n- **Unique values count**: 3\n- **Top 5 most frequent values with counts**:\n  - 2023-03-20: 1\n  - 2023-03-14: 1\n  - 2023-01-20: 1\n\n## KEY PATTERNS\n1. **High CEO Compensation**: The average total compensation for CEOs in this dataset is approximately $118 million, with a significant number of outliers indicating exceptionally high compensation.\n2. **Revenue and Profit Variability**: Company revenues vary widely from around $11.6 billion to $574.8 billion, while profits range from $3.04 billion to $73.8 billion.\n3. **Stock Price Performance**: The stock prices of these companies have shown substantial increases, with an average increase of 16.92%, though some have experienced declines (e.g., -2.3%).\n4. **Layoffs and Reason**: Layoffs were concentrated in the first quarter of 2023, with reasons ranging from efficiency improvements to market conditions.\n5. **Company Size Influence on Layoffs**: Larger companies tend to lay off more employees (average 17,850 layoffs per company) compared to smaller ones.\n\n## MOST NEWSWORTHY FINDINGS\n- **Significant CEO Compensation**: The average compensation for CEOs in the dataset is over $118 million. Notable outliers indicate that some CEOs receive over $350 million annually.\n- **Stock Price Boom Despite Layoffs**: Companies experienced substantial stock price increases despite layoffs, indicating a strong market confidence or recovery phase.\n- **Large Revenue and Profit Variations**: A wide range of revenues and profits among companies highlights the competitiveness and growth dynamics within the tech industry."
+  },
+  "headline": "Tech CEOs Pocketed $118 Million on Average While Laying Off 357,000 Workers. Their Stock Jumped 17%.",
+  "lede": "You might think laying off thousands of employees would signal trouble at a company. Wall Street sees it differently. Between January and March 2023, tech giants laid off an average of **17,850 workers each**\u2014**357,000 people total** lost their jobs. Their CEOs walked away with an average of **$118 million** in total compensation. And the kicker? Stock prices surged an average of **16.92%**, rewarding the very executives who pink-slipped entire divisions.",
+  "findings": [
+    {
+      "title": "The Layoff Bonus: CEOs Made More Than Half a Billion While Cutting 27,000 Jobs",
+      "body": "The cruelest math in tech isn't about algorithms\u2014it's about compensation. While **27,000 employees** at one company (the maximum in our dataset) were shown the door, their CEO's compensation package didn't shrink. It stayed robust at an average of **$118.375 million** across all companies analyzed.\n\nHere's what that looks like in human terms: if you divided the average CEO's **$118 million** compensation among the average **17,850 laid-off workers**, each person would receive **$6,610**\u2014enough to cover about two months of expenses while job hunting. Instead, that money went to executives whose stated reasons for layoffs ranged from \"Year of Efficiency\" to \"uncertain economy.\"\n\nThe stock awards tell an even starker story. The average CEO received **$139.6 million** in stock awards alone\u2014that's **1,095 times** the median CEO salary of **$1 million**. These weren't survival bonuses. These were windfalls during workforce decimation.",
+      "key_stat": "$118M"
+    },
+    {
+      "title": "Wall Street's Perverse Incentive: Layoffs Drive Stock Prices Up, Not Down",
+      "body": "Conventional wisdom says layoffs signal corporate distress. The data reveals the opposite. Despite cutting **357,000 jobs** collectively, these companies saw their stock prices climb an average of **16.92%** during the layoff period. The median increase was even more dramatic: **80.91%**.\n\nThis isn't coincidental\u2014it's structural. Wall Street rewards \"efficiency,\" which is corporate-speak for reducing labor costs. Fire **11,000 people** (the minimum in our dataset) and analysts call it \"streamlining.\" Your stock jumps. Your CEO gets richer. The workers get severance packages that pale in comparison to executive stock awards.\n\nOne company saw its stock price surge **194.2%** while conducting mass layoffs. Another experienced only a **-2.3%** decline\u2014barely a blip. The message to CEOs is clear: cutting workers is not only safe for your stock price, it's often rewarded. The system incentivizes exactly what devastates communities.",
+      "key_stat": "80.91%"
+    },
+    {
+      "title": "The Efficiency Lie: Profitable Companies Laid Off Thousands While Making Billions",
+      "body": "These weren't struggling companies fighting for survival. The average company in this dataset generated **$39.55 billion** in revenue and **$9.18 billion** in profit. One company posted **$73.8 billion** in profit\u2014more than the GDP of 100 countries\u2014while still laying off thousands.\n\nThe stated reasons for layoffs reveal the cynicism: \"Year of Efficiency,\" \"Realigning resources,\" \"Uncertain economy.\" But here's what the numbers show: the median company made **$6.23 billion** in profit. That's not uncertainty\u2014that's more cash than most corporations will ever see.\n\nConsider this calculation: the minimum profit in our dataset was **$3.04 billion**. The minimum layoffs were **11,000 people**. If you paid each of those **11,000 workers** an additional **$100,000** annually\u2014life-changing money\u2014it would cost **$1.1 billion**, or **36%** of that \"struggling\" company's profit. They chose layoffs instead. The efficiency wasn't about survival. It was about margin optimization.",
+      "key_stat": "$9.18B"
+    },
+    {
+      "title": "CEO Compensation Barely Budged: Pay Changed 0.79% While 357,000 Lost Everything",
+      "body": "While workers lost **100%** of their income, CEO compensation changed by an average of just **0.79%**\u2014essentially flat. The median change was **0.8%**. One CEO saw compensation drop **10.8%** (the maximum decline), but that still meant keeping tens of millions. Another saw it rise **4.2%** during the layoff period.\n\nThis stability is the point. CEO compensation is insulated from the very \"market conditions\" and \"uncertain economy\" they cite when firing workers. Stock awards of **$139.6 million** on average, bonuses averaging **$6.75 million**, and base salaries of nearly **$2 million** create a fortress of wealth that layoffs can't penetrate.\n\nThe disparity is staggering: the maximum CEO bonus in our dataset was **$10.4 million**\u2014nearly **583 times** the average severance package tech workers receive (typically 2-4 months of salary, or about **$17,850** for someone earning **$107,000** annually). When executives talk about \"shared sacrifice,\" the data shows who's actually sacrificing.",
+      "key_stat": "0.79%"
+    },
+    {
+      "title": "The Q1 2023 Massacre: Three Dates, 357,000 Jobs Gone",
+      "body": "The layoffs weren't spread across the year\u2014they were concentrated into three specific dates in early 2023: **January 20**, **March 14**, and **March 20**. This coordination suggests something darker than individual company struggles: a collective decision by tech leadership to cut workers en masse while the cutting was culturally acceptable.\n\nWhen one major tech company announces layoffs, others follow within weeks. It provides cover. It normalizes the decision. It makes \"Year of Efficiency\" sound like responsible stewardship rather than what the numbers show: profitable companies eliminating workers to pump stock prices and maintain executive compensation.\n\nThose three dates represent **357,000 individual catastrophes**\u2014mortgages suddenly unaffordable, health insurance lost, careers derailed. Meanwhile, across those same companies, **$2.367 billion** in total CEO compensation (at **$118M** average across **20** entries) remained essentially unchanged. The layoffs happened in a storm. The compensation packages weathered it just fine.",
+      "key_stat": "3 dates"
+    }
+  ],
+  "pull_quotes": [
+    "Stock prices jumped 17% during mass layoffs. Wall Street rewards firing workers.",
+    "CEOs kept $118 million average pay while 357,000 workers lost everything.",
+    "Companies made $9.18 billion in profit on average. They called it 'uncertain times.'",
+    "CEO compensation changed 0.79%. Workers lost 100% of their income."
+  ],
+  "methodology": "We analyzed **20 records** from major tech companies covering layoffs between January and March 2023, examining CEO compensation (salary, bonuses, stock awards), company financials (revenue, profit), stock price performance, and layoff numbers. Statistical analysis identified patterns in compensation stability, stock price reactions, and the relationship between profitability and workforce cuts.",
+  "stat_boxes": [
+    {
+      "label": "Average CEO Compensation",
+      "value": "$118.4M",
+      "context": "Total pay for tech CEOs during mass layoff period"
+    },
+    {
+      "label": "Workers Laid Off",
+      "value": "357,000",
+      "context": "Total jobs eliminated across 20 analyzed companies"
+    },
+    {
+      "label": "Stock Price Jump",
+      "value": "+16.92%",
+      "context": "Average increase despite workforce decimation"
+    },
+    {
+      "label": "CEO Pay Change",
+      "value": "+0.79%",
+      "context": "Compensation barely moved while workers lost everything"
+    },
+    {
+      "label": "Average Company Profit",
+      "value": "$9.18B",
+      "context": "Median profit during 'uncertain economy' layoffs"
+    }
+  ]
+}

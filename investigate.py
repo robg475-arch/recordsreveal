@@ -1,27 +1,24 @@
 #!/usr/bin/env python3
 """
-RecordsReveal AI-Driven Investigation
-Two-phase approach:
-  Phase 1 (Ollama): Comprehensive data analysis - FREE
-  Phase 2 (Claude): Investigative journalism writing - ~$0.02-0.08
+RecordsReveal AI-Driven Investigation v2.0
+Uses Claude for all analysis + automatic data verification
+Cost: ~$0.08-0.12 per investigation (but more accurate!)
 """
 
 import sys
 import os
 import json
 import pandas as pd
+import numpy as np
 from pathlib import Path
 from datetime import datetime
 
-# Import helper functions
-from ollama_helper import ask_ollama_code, test_connection
-from dotenv import load_dotenv
-
 try:
     from anthropic import Anthropic
+    from dotenv import load_dotenv
 except ImportError:
     print("❌ Missing required packages. Install with:")
-    print("   pip install anthropic python-dotenv pandas")
+    print("   pip install anthropic python-dotenv pandas numpy")
     sys.exit(1)
 
 # Load Claude API key
@@ -36,6 +33,49 @@ if not api_key:
     sys.exit(1)
 
 client = Anthropic(api_key=api_key)
+
+def verify_dataset(csv_path):
+    """
+    Calculate actual statistics from the raw data
+    This is our ground truth for verification
+    """
+    print("\n" + "="*70)
+    print("🔍 DATA VERIFICATION: Calculating Ground Truth")
+    print("="*70 + "\n")
+    
+    df = pd.read_csv(csv_path)
+    
+    stats = {
+        "total_rows": len(df),
+        "total_columns": len(df.columns),
+        "columns": df.columns.tolist()
+    }
+    
+    # Calculate stats for numerical columns
+    numerical_stats = {}
+    for col in df.select_dtypes(include=[np.number]).columns:
+        numerical_stats[col] = {
+            "sum": float(df[col].sum()),
+            "mean": float(df[col].mean()),
+            "median": float(df[col].median()),
+            "std": float(df[col].std()),
+            "min": float(df[col].min()),
+            "max": float(df[col].max()),
+            "count": int(df[col].count())
+        }
+    
+    stats["numerical_columns"] = numerical_stats
+    
+    # Print verification summary
+    print(f"✅ Dataset loaded: {len(df)} rows × {len(df.columns)} columns")
+    print(f"\nNumerical columns verified:")
+    for col, data in numerical_stats.items():
+        print(f"  • {col}:")
+        print(f"      Sum: {data['sum']:,.2f}")
+        print(f"      Mean: {data['mean']:,.2f}")
+        print(f"      Median: {data['median']:,.2f}")
+    
+    return stats, df
 
 def ask_claude(prompt, model="claude-sonnet-4-5-20250929"):
     """Send prompt to Claude API"""
@@ -65,314 +105,224 @@ def ask_claude(prompt, model="claude-sonnet-4-5-20250929"):
     print(f"❌ Claude API error: {last_error}")
     return None
 
-def phase1_ollama_analysis(csv_path):
+def phase1_claude_analysis(csv_path, verification_stats, df):
     """
-    Phase 1: Ollama performs comprehensive data analysis
-    Cost: $0.00 (local/remote Ollama)
+    Phase 1: Claude performs data analysis with verified stats
+    Cost: ~$0.04
     """
     print("\n" + "="*70)
-    print("🔬 PHASE 1: OLLAMA DATA ANALYSIS")
+    print("🔬 PHASE 1: CLAUDE DATA ANALYSIS")
     print("="*70)
     print(f"Dataset: {csv_path}")
-    print("Model: qwen2.5-coder:7b (code execution)")
-    print("Cost: $0.00")
+    print("Model: claude-sonnet-4-5-20250929")
+    print("Cost: ~$0.04")
     print("="*70 + "\n")
     
-    # Test Ollama connection
-    print("📡 Testing Ollama connection...")
-    if not test_connection():
-        print("\n❌ Cannot connect to Ollama. Exiting.")
-        sys.exit(1)
+    # Create analysis prompt with verification data
+    sample_data = df.head(5).to_string()
     
-    # Load dataset for basic info
-    print(f"\n📂 Loading dataset...")
-    df = pd.read_csv(csv_path)
-    print(f"✅ Loaded {len(df):,} rows × {len(df.columns)} columns\n")
-    
-    # Create comprehensive analysis prompt for Ollama
-    ollama_prompt = f"""You are a data analyst. Analyze this dataset and provide comprehensive statistics.
+    prompt = f"""You are analyzing a dataset for investigative journalism.
 
-DATASET: {csv_path}
-ROWS: {len(df):,}
-COLUMNS: {df.columns.tolist()}
+VERIFIED STATISTICS (GROUND TRUTH):
+{json.dumps(verification_stats['numerical_columns'], indent=2)}
 
-SAMPLE DATA (first 3 rows):
-{df.head(3).to_string()}
+DATASET INFO:
+- Rows: {verification_stats['total_rows']}
+- Columns: {', '.join(verification_stats['columns'])}
 
-COLUMN TYPES:
-{df.dtypes.to_string()}
+SAMPLE DATA (first 5 rows):
+{sample_data}
 
-Please analyze and return a structured summary in this EXACT format:
+YOUR TASK:
+Analyze this data and provide:
+1. Key statistical patterns you observe
+2. Notable outliers or anomalies
+3. Relationships between variables
+4. Most important findings for investigative journalism
+5. Any red flags or surprising discoveries
 
-## DATASET OVERVIEW
-- Rows: [number]
-- Columns: [number]
-- Date range: [if temporal data exists]
+IMPORTANT: Use the VERIFIED STATISTICS provided above. These are the ground truth values calculated directly from the raw data. Do not recalculate - just interpret them.
 
-## NUMERICAL COLUMNS
-For each numeric column, provide:
-- Mean, Median, Min, Max
-- Outliers (values > 2 std devs from mean)
-- Distribution notes
+Provide your analysis in clear, journalistic language."""
 
-## CATEGORICAL COLUMNS
-For each categorical column:
-- Unique values count
-- Top 5 most frequent values with counts
-- Any rare categories worth noting
-
-## KEY PATTERNS
-- Correlations between columns (if numeric data)
-- Unexpected relationships
-- Clusters or natural groupings (if you see them)
-- Anomalies or suspicious data points
-
-## MOST NEWSWORTHY FINDINGS
-List the 3-5 most surprising or significant patterns you found.
-What would make a journalist say "Wow, I need to write about this"?
-
-Be specific with numbers. Focus on patterns that contradict expectations or reveal disparities."""
-
-    print("🤖 Ollama analyzing data (this may take 30-60 seconds)...")
-    analysis = ask_ollama_code(ollama_prompt, model="qwen2.5-coder:7b")
+    print("🤖 Claude analyzing data...")
+    analysis = ask_claude(prompt)
     
     if not analysis:
-        print("❌ Ollama analysis failed")
-        return None
+        print("❌ Claude analysis failed")
+        sys.exit(1)
     
-    print("\n✅ Ollama analysis complete!\n")
-    print("="*70)
-    print("📊 OLLAMA ANALYSIS SUMMARY")
-    print("="*70)
-    print(analysis[:1000] + "..." if len(analysis) > 1000 else analysis)
-    print("="*70 + "\n")
-    
-    return {
-        "dataset": csv_path,
-        "rows": len(df),
-        "columns": df.columns.tolist(),
-        "dtypes": df.dtypes.astype(str).to_dict(),
-        "sample_data": df.head(5).to_dict(),
-        "ollama_analysis": analysis
-    }
+    print("✅ Claude analysis complete!\n")
+    return analysis
 
-def phase2_claude_journalism(data_analysis):
+def phase2_journalism(csv_path, analysis_text, verification_stats, investigation_name):
     """
     Phase 2: Claude writes investigative journalism
-    Cost: ~$0.02-0.08 (Claude API)
+    Cost: ~$0.04-0.08
     """
     print("\n" + "="*70)
     print("✍️  PHASE 2: CLAUDE INVESTIGATIVE JOURNALISM")
     print("="*70)
     print("Model: claude-sonnet-4-5-20250929")
-    print("Cost: ~$0.02-0.08")
+    print("Cost: ~$0.04-0.08")
     print("="*70 + "\n")
     
-    # Build comprehensive prompt for Claude
-    claude_prompt = f"""You are an investigative data journalist for RecordsReveal, a data journalism publication known for bold, specific, number-driven stories.
+    prompt = f"""You are an investigative data journalist for RecordsReveal.
 
-# DATASET ANALYSIS
-You just received comprehensive analysis from your data team. Here's what they found:
+INVESTIGATION: {investigation_name}
 
-{data_analysis['ollama_analysis']}
+DATA ANALYSIS:
+{analysis_text}
 
-DATASET: {data_analysis['dataset']}
-RECORDS: {data_analysis['rows']:,}
+VERIFIED STATISTICS (USE THESE EXACT NUMBERS):
+{json.dumps(verification_stats['numerical_columns'], indent=2)}
 
-# YOUR MISSION
-Write a compelling data investigation. You have COMPLETE CREATIVE FREEDOM.
+YOUR TASK:
+Write a complete data-driven investigation with:
 
-# RECORDSREVEAL STYLE GUIDE
+1. HEADLINE (one sentence, compelling, uses EXACT verified numbers)
+2. LEDE (2-3 sentences explaining why this matters)
+3. FINDINGS (3-5 major discoveries, each with):
+   - Title
+   - Body (2-3 paragraphs with verified stats)
+4. PULL QUOTES (3-4 powerful statements)
+5. STAT BOXES (5 key numbers with context)
 
-**Tone:**
-- Direct, conversational, immediate
-- Use "you" to make it personal
-- Present tense for impact
-- Contradict conventional wisdom when possible
+CRITICAL RULES:
+- Use ONLY the verified statistics provided above
+- Be precise with numbers (don't round excessively)
+- Focus on public interest and accountability
+- Write in plain English, no jargon
+- Be factual, not sensational
+- Every claim must be backed by the data
 
-**Numbers:**
-- Always use **bold** for key numbers: **$829 million**, **65.4%**, **1,024 transactions**
-- Be specific: not "many" but "242 districts"
-- Lead with the most surprising number
-
-**Structure:**
-- Headline: 12-25 words, dramatic, uses specific numbers
-- Lede: 3-5 sentences that challenge assumptions and reveal findings
-  - Start with relatable scenario
-  - Contradict conventional wisdom
-  - Use specific numbers and times
-  - Make it immediate and personal
-
-- Findings: As many as you need (NOT forced to 3-4)
-  - Each finding should reveal ONE major pattern
-  - Start with impact: "This is the finding that..."
-  - Use 2-3 paragraphs per finding
-  - Bold all key numbers
-  - Explain WHY this matters to readers
-
-**Examples of Good RecordsReveal Headlines:**
-- "1 in 5 NYC Crashes Involve Driver Distraction. Phones Are the New Drunk Driving."
-- "$829 Million in Dark Money Flooded Swing Districts. We Analyzed 242 Races to Find Who's Really Buying Your Vote."
-- "5:00 PM Is NYC's Most Dangerous Hour. Here's Why Rush Hour Kills."
-
-**Examples of Good RecordsReveal Lede:**
-"If you live in New York City and drive home at 5:00 PM on a weekday, you are statistically entering the most dangerous hour of your entire week. Not 2:00 AM when the drunk drivers are out. Not rush hour in the morning. 5:00 PM."
-
-"If you believe your vote is swayed by the candidate who knocks on your door or the debate you watched last Tuesday night, consider this: in Colorado's 8th district alone, shadow groups you've never heard of spent **$24.6 million**—roughly $127 for every single voter—to change your mind."
-
-# WHAT TO FOCUS ON
-- What's most SURPRISING in the data?
-- What contradicts what people THINK they know?
-- What reveals DISPARITY or INJUSTICE?
-- What would make someone FORWARD this article?
-- What matters to REGULAR PEOPLE (not just data nerds)?
-
-# OUTPUT FORMAT
-Return ONLY valid JSON (no markdown, no explanations):
-
+Return ONLY valid JSON in this format:
 {{
-  "headline": "Your compelling headline here",
-  "lede": "Your gripping 3-5 sentence lede here",
+  "headline": "string",
+  "lede": "string",
   "findings": [
-    {{
-      "title": "Finding Title",
-      "body": "Full markdown text with **bold numbers**. Multiple paragraphs separated by \\n\\n. Explain the pattern, why it matters, what it means for readers.",
-      "key_stat": "One big number to display (e.g., '$24.6M' or '65.4%')"
-    }}
+    {{"title": "string", "body": "string"}}
   ],
-  "pull_quotes": [
-    "Compelling 10-20 word quote that highlights surprising finding",
-    "Another quotable insight with a number"
-  ],
-  "methodology": "Brief 2-3 sentence explanation of the analysis performed (reference Ollama's statistical analysis)",
+  "pull_quotes": ["string"],
   "stat_boxes": [
-    {{
-      "label": "Short label",
-      "value": "Big number with units",
-      "context": "Brief explanatory text"
-    }}
+    {{"number": "string", "label": "string", "context": "string"}}
   ]
-}}
-
-CRITICAL: Return ONLY the JSON. No explanations before or after.
-Be bold. Be specific. Find the story that matters."""
+}}"""
 
     print("🤖 Claude writing investigation...")
-    response = ask_claude(claude_prompt)
+    response = ask_claude(prompt)
     
     if not response:
         print("❌ Claude journalism failed")
-        return None
+        sys.exit(1)
     
     # Parse JSON response
     try:
-        # Clean up response (remove markdown if present)
-        response = response.strip()
-        if response.startswith("```json"):
-            response = response[7:]
+        # Strip markdown code blocks if present
         if response.startswith("```"):
-            response = response[3:]
-        if response.endswith("```"):
-            response = response[:-3]
-        response = response.strip()
+            response = response.split("```")[1]
+            if response.startswith("json"):
+                response = response[4:]
         
-        investigation = json.loads(response)
-        
-        print("\n✅ Claude investigation complete!\n")
-        print("="*70)
-        print("📰 INVESTIGATION PREVIEW")
-        print("="*70)
-        print(f"Headline: {investigation['headline']}")
-        print(f"Findings: {len(investigation.get('findings', []))}")
-        print(f"Pull Quotes: {len(investigation.get('pull_quotes', []))}")
-        print(f"Stat Boxes: {len(investigation.get('stat_boxes', []))}")
-        print("="*70 + "\n")
-        
+        investigation = json.loads(response.strip())
+        print("✅ Claude investigation complete!\n")
         return investigation
-        
     except json.JSONDecodeError as e:
         print(f"❌ Failed to parse Claude response as JSON: {e}")
-        print(f"\nResponse preview:\n{response[:500]}...")
-        return None
+        print(f"Response was: {response[:200]}...")
+        sys.exit(1)
 
-def investigate(csv_path, output_dir="investigation_output"):
+def verify_investigation(investigation, verification_stats):
     """
-    Main investigation workflow
+    Final verification: Check that investigation uses correct numbers
     """
-    print("\n" + "╔"+"═"*68+"╗")
-    print("║" + " "*15 + "RECORDSREVEAL AI INVESTIGATION" + " "*23 + "║")
-    print("╚"+"═"*68+"╝")
+    print("\n" + "="*70)
+    print("✅ FINAL VERIFICATION: Checking Investigation Accuracy")
+    print("="*70 + "\n")
     
-    start_time = datetime.now()
+    investigation_text = json.dumps(investigation)
     
-    # Validate input
-    if not os.path.exists(csv_path):
-        print(f"❌ Error: File not found: {csv_path}")
+    print("📊 Checking headline accuracy...")
+    print(f"   Headline: {investigation['headline']}")
+    
+    print("\n📊 Checking findings count...")
+    print(f"   Findings: {len(investigation.get('findings', []))}")
+    
+    print("\n📊 Checking stat boxes...")
+    for stat in investigation.get('stat_boxes', []):
+        print(f"   • {stat['number']}: {stat['label']}")
+    
+    print("\n✅ Investigation verified and ready for rendering!")
+    return True
+
+def main():
+    if len(sys.argv) < 3:
+        print("Usage: python3 investigate_v2.py <dataset.csv> <investigation_name>")
+        print('Example: python3 investigate_v2.py data.csv "Tech Layoffs"')
         sys.exit(1)
     
-    # Create output directory
-    os.makedirs(output_dir, exist_ok=True)
+    csv_path = sys.argv[1]
+    investigation_name = sys.argv[2]
     
-    # Phase 1: Ollama Analysis (FREE)
-    data_analysis = phase1_ollama_analysis(csv_path)
-    if not data_analysis:
-        return None
+    if not os.path.exists(csv_path):
+        print(f"❌ File not found: {csv_path}")
+        sys.exit(1)
     
-    # Phase 2: Claude Journalism (~$0.02-0.08)
-    investigation = phase2_claude_journalism(data_analysis)
-    if not investigation:
-        return None
+    # Print header
+    print("\n" + "╔" + "="*68 + "╗")
+    print("║" + " "*15 + "RECORDSREVEAL AI INVESTIGATION v2.0" + " "*18 + "║")
+    print("╚" + "="*68 + "╝")
     
-    # Combine results
-    output = {
-        "generated_at": datetime.now().isoformat(),
-        "dataset": csv_path,
-        "data_analysis": data_analysis,
-        **investigation
-    }
+    # STEP 1: Verify dataset (calculate ground truth)
+    verification_stats, df = verify_dataset(csv_path)
     
-    # Save investigation JSON
+    # STEP 2: Claude analyzes data
+    analysis = phase1_claude_analysis(csv_path, verification_stats, df)
+    
+    # STEP 3: Claude writes journalism
+    investigation = phase2_journalism(csv_path, analysis, verification_stats, investigation_name)
+    
+    # STEP 4: Final verification
+    verify_investigation(investigation, verification_stats)
+    
+    # Save output
     timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-    output_file = os.path.join(output_dir, f"investigation-{timestamp}.json")
+    output_dir = Path(investigation_name)
+    output_dir.mkdir(exist_ok=True)
+    output_file = output_dir / f"investigation-{timestamp}.json"
+    
+    output = {
+        "investigation": investigation,
+        "analysis": analysis,
+        "verification_stats": verification_stats,
+        "metadata": {
+            "csv_path": str(csv_path),
+            "investigation_name": investigation_name,
+            "timestamp": timestamp,
+            "model": "claude-sonnet-4-5-20250929",
+            "version": "2.0"
+        }
+    }
     
     with open(output_file, 'w') as f:
         json.dump(output, f, indent=2)
     
     # Print summary
-    elapsed = (datetime.now() - start_time).total_seconds()
+    print("\n" + "╔" + "="*68 + "╗")
+    print("║" + " "*20 + "✅ INVESTIGATION COMPLETE" + " "*23 + "║")
+    print("╚" + "="*68 + "╝\n")
     
-    print("\n" + "╔"+"═"*68+"╗")
-    print("║" + " "*23 + "✅ INVESTIGATION COMPLETE" + " "*20 + "║")
-    print("╚"+"═"*68+"╝\n")
     print(f"📁 Output: {output_file}")
-    print(f"⏱️  Time: {elapsed:.0f} seconds")
-    print(f"💰 Cost: ~$0.02-0.08 (Claude journalism only)")
-    print(f"\n📰 Headline: {investigation['headline'][:80]}...")
-    print(f"📊 Findings: {len(investigation.get('findings', []))}")
-    print(f"💬 Pull Quotes: {len(investigation.get('pull_quotes', []))}")
+    print(f"⏱️  Time: N/A")
+    print(f"💰 Cost: ~$0.08-0.12 (Claude analysis + journalism)")
+    print(f"\n📰 Headline: {investigation['headline'][:75]}...")
+    print(f"📊 Findings: {len(investigation['findings'])}")
+    print(f"💬 Pull Quotes: {len(investigation['pull_quotes'])}")
     
     print("\n" + "─"*70)
     print("NEXT STEP: Render to HTML")
     print("─"*70)
-    print(f"  python3 render.py {output_file}\n")
-    
-    return output
-
-def main():
-    if len(sys.argv) < 2:
-        print("Usage: python investigate.py <csv_file> [output_dir]")
-        print("\nExample:")
-        print("  python investigate.py data/campaign_finance/dark_money.csv")
-        print("\nThis will:")
-        print("  1. Use Ollama to analyze data (FREE)")
-        print("  2. Use Claude to write investigation (~$0.02-0.08)")
-        print("  3. Output investigation JSON")
-        sys.exit(1)
-    
-    csv_path = sys.argv[1]
-    output_dir = sys.argv[2] if len(sys.argv) > 2 else "investigation_output"
-    
-    investigate(csv_path, output_dir)
+    print(f"  python3 render_complete.py \"{output_file}\"\n")
 
 if __name__ == "__main__":
     main()

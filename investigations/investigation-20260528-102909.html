@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech CEOs Pocketed $118 Million on Average While Laying Off 357,000 Workers. Their Stock Jumped 17%. | RecordsReveal</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7B3KBBGVWE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-7B3KBBGVWE');
+    </script>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9045696717764033" crossorigin="anonymous"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --paper: #f8f6f1;
+            --ink: #1a1a1a;
+            --red: #b5271f;
+            --border: #ddd9ce;
+        }
+        
+        /* Site Header */
+        .site-header {
+            background: white;
+            border-bottom: 3px double var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px;
+            font-size: 11px;
+            color: #888;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .header-top a {
+            color: #888;
+            text-decoration: none;
+            margin-left: 16px;
+        }
+        
+        .header-top a:hover {
+            color: var(--red);
+        }
+        
+        .masthead {
+            text-align: center;
+            padding: 20px 40px 16px;
+        }
+        
+        .site-name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.8rem);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        
+        .site-name span {
+            color: var(--red);
+        }
+        
+        .site-tagline {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic;
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 8px;
+        }
+        
+        /* Main Layout */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .page-layout {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        @media (max-width: 1024px) {
+            .page-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Sidebar - scrolls with main content, no sticky */
+        .sidebar {
+            /* Removed sticky positioning for synchronized scrolling */
+        }
+        
+        .sidebar-section {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        
+        .sidebar-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            color: var(--red);
+        }
+        
+        .sidebar-ad {
+            background: var(--paper);
+            border: 1px dashed var(--border);
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.85rem;
+        }
+        
+        .investigation-link {
+            display: block;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        
+        .investigation-link:hover {
+            color: var(--red);
+        }
+        
+        .investigation-link:last-child {
+            border-bottom: none;
+        }
+        
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: var(--red);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        
+        .download-btn:hover {
+            background: #8b1f19;
+        }
+        
+        /* Data science callout */
+        .sidebar-section:has(.download-btn[style*="d2691e"]) {
+            background: #fff9f0;
+            border: 2px solid var(--orange);
+        }
+        
+        /* Ad Placements */
+        .ad-placement {
+            background: var(--paper);
+            border: 1px dashed var(--border);
+            min-height: 250px;
+            margin: 40px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 40px 40px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .footer-logo {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .footer-logo span {
+            color: var(--red);
+        }
+        
+        .footer-about {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #999;
+        }
+        
+        .footer-section h4 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            color: #666;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Site Header -->
+<header class="site-header">
+    <div class="header-top">
+        <span>RecordsReveal · Independent Data Investigations</span>
+        <div>
+            <a href="../index.html">Home</a>
+            <a href="../investigations.html">All Investigations</a>
+            <a href="../about.html">About</a>
+        </div>
+    </div>
+    <div class="masthead">
+        <div class="site-name">RECORDS<span>REVEAL</span></div>
+        <div class="site-tagline">Data-Driven Investigations Since 2025</div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="page-layout">
+        
+        <!-- Main Column (Claude's visualization content) -->
+        <main>
+            <style>
+  /* Hero Section */
+  .hero-section {
+    margin: 0 0 60px 0;
+    padding: 0;
+  }
+
+  #hero-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .hero-headline {
+    font-size: 3.2em;
+    font-weight: 900;
+    line-height: 1.2;
+    margin: 0 0 25px 0;
+    color: #1a1a1a;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-headline .highlight {
+    color: #dc2626;
+    display: inline-block;
+    position: relative;
+  }
+
+  .hero-lede {
+    font-size: 1.3em;
+    line-height: 1.7;
+    color: #374151;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .hero-lede strong {
+    color: #dc2626;
+    font-weight: 700;
+  }
+
+  /* KPI Dashboard */
+  .kpi-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 50px 0;
+  }
+
+  .stat-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  }
+
+  .stat-card:hover::before {
+    opacity: 1;
+  }
+
+  .stat-card:nth-child(1) {
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  }
+
+  .stat-card:nth-child(2) {
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  }
+
+  .stat-card:nth-child(3) {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  }
+
+  .stat-card:nth-child(4) {
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  }
+
+  .stat-card:nth-child(5) {
+    background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+  }
+
+  .stat-value {
+    font-size: 2.8em;
+    font-weight: 900;
+    color: white;
+    margin: 0 0 10px 0;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 1em;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0 0 8px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .stat-context {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* Ad Placements */
+  .ad-placement {
+    background: #f9fafb;
+    border: 2px dashed #d1d5db;
+    border-radius: 8px;
+    padding: 40px;
+    text-align: center;
+    margin: 50px 0;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+
+  .ad-placement::before {
+    content: 'Advertisement';
+  }
+
+  /* Charts Section */
+  .charts-section {
+    margin: 60px 0;
+  }
+
+  .section-title {
+    font-size: 2.2em;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin: 0 0 40px 0;
+    position: relative;
+    padding-bottom: 15px;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #dc2626 0%, #991b1b 100%);
+    border-radius: 2px;
+  }
+
+  .charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+
+  .chart-container {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .chart-container:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .chart-title {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 20px 0;
+  }
+
+  .chart-wrapper {
+    position: relative;
+    height: 300px;
+  }
+
+  /* Findings Cards */
+  .findings-section {
+    margin: 60px 0;
+  }
+
+  .finding-card {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+    border-left: 6px solid #dc2626;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .finding-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .finding-number {
+    display: inline-block;
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    color: white;
+    font-size: 0.85em;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .finding-title {
+    font-size: 1.8em;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin: 0 0 20px 0;
+    line-height: 1.3;
+  }
+
+  .finding-body {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #374151;
+    margin: 0 0 25px 0;
+  }
+
+  .finding-body strong {
+    color: #dc2626;
+    font-weight: 700;
+  }
+
+  .key-stat-highlight {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-left: 4px solid #d97706;
+    padding: 20px 25px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+
+  .key-stat-label {
+    font-size: 0.85em;
+    font-weight: 600;
+    color: #92400e;
+    margin: 0 0 5px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .key-stat-value {
+    font-size: 2.2em;
+    font-weight: 900;
+    color: #b45309;
+    margin: 0;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero-headline {
+      font-size: 2.2em;
+    }
+
+    .hero-lede {
+      font-size: 1.1em;
+    }
+
+    .kpi-dashboard {
+      grid-template-columns: 1fr;
+    }
+
+    .charts-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .finding-card {
+      padding: 25px;
+    }
+
+    .finding-title {
+      font-size: 1.4em;
+    }
+
+    #hero-image {
+      height: 250px;
+    }
+  }
+
+  /* Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-section,
+  .stat-card,
+  .chart-container,
+  .finding-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .stat-card:nth-child(1) { animation-delay: 0.1s; }
+  .stat-card:nth-child(2) { animation-delay: 0.2s; }
+  .stat-card:nth-child(3) { animation-delay: 0.3s; }
+  .stat-card:nth-child(4) { animation-delay: 0.4s; }
+  .stat-card:nth-child(5) { animation-delay: 0.5s; }
+</style>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <img id="hero-image" src="../images/heroes/investigation-20260528-102909.jpg" alt="Investigation Hero" />
+  <h1 class="hero-headline">
+    Tech CEOs Pocketed <span class="highlight">$118 Million</span> on Average While Laying Off <span class="highlight">357,000 Workers</span>. Their Stock Jumped <span class="highlight">17%</span>.
+  </h1>
+  <p class="hero-lede">
+    You might think laying off thousands of employees would signal trouble at a company. Wall Street sees it differently. Between January and March 2023, tech giants laid off an average of <strong>17,850 workers each</strong>—<strong>357,000 people total</strong> lost their jobs. Their CEOs walked away with an average of <strong>$118 million</strong> in total compensation. And the kicker? Stock prices surged an average of <strong>16.92%</strong>, rewarding the very executives who pink-slipped entire divisions.
+  </p>
+</section>
+
+<!-- KPI Dashboard -->
+<section class="kpi-dashboard">
+  <div class="stat-card">
+    <div class="stat-value">$118.4M</div>
+    <div class="stat-label">Average CEO Compensation</div>
+    <div class="stat-context">Total pay for tech CEOs during mass layoff period</div>
+  </div>
+  
+  <div class="stat-card">
+    <div class="stat-value">357,000</div>
+    <div class="stat-label">Workers Laid Off</div>
+    <div class="stat-context">Total jobs eliminated across 20 analyzed companies</div>
+  </div>
+  
+  <div class="stat-card">
+    <div class="stat-value">+16.92%</div>
+    <div class="stat-label">Stock Price Jump</div>
+    <div class="stat-context">Average increase despite workforce decimation</div>
+  </div>
+  
+  <div class="stat-card">
+    <div class="stat-value">+0.79%</div>
+    <div class="stat-label">CEO Pay Change</div>
+    <div class="stat-context">Compensation barely moved while workers lost everything</div>
+  </div>
+  
+  <div class="stat-card">
+    <div class="stat-value">$9.18B</div>
+    <div class="stat-label">Average Company Profit</div>
+    <div class="stat-context">Median profit during 'uncertain economy' layoffs</div>
+  </div>
+</section>
+
+<!-- AdSense Placement #1 -->
+<div class="ad-placement" id="ad-top"></div>
+
+<!-- Charts Section -->
+<section class="charts-section">
+  <h2 class="section-title">The Data Behind the Devastation</h2>
+  
+  <div class="charts-grid">
+    <div class="chart-container">
+      <h3 class="chart-title">CEO Compensation Breakdown</h3>
+      <div class="chart-wrapper">
+        <canvas id="compensationChart"></canvas>
+      </div>
+    </div>
+    
+    <div class="chart-container">
+      <h3 class="chart-title">Layoffs vs. Company Profits</h3>
+      <div class="chart-wrapper">
+        <canvas id="layoffsProfitsChart"></canvas>
+      </div>
+    </div>
+    
+    <div class="chart-container">
+      <h3 class="chart-title">Stock Price Performance During Layoffs</h3>
+      <div class="chart-wrapper">
+        <canvas id="stockPerformanceChart"></canvas>
+      </div>
+    </div>
+    
+    <div class="chart-container">
+      <h3 class="chart-title">Worker Sacrifice vs. CEO Stability</h3>
+      <div class="chart-wrapper">
+        <canvas id="sacrificeChart"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AdSense Placement #2 -->
+<div class="ad-placement" id="ad-middle"></div>
+
+<!-- Findings Section -->
+<section class="findings-section">
+  <h2 class="section-title">Deep Dive: What The Numbers Reveal</h2>
+  
+  <article class="finding-card">
+    <span class="finding-number">Finding #1</span>
+    <h3 class="finding-title">The Layoff Bonus: CEOs Made More Than Half a Billion While Cutting 27,000 Jobs</h3>
+    <div class="finding-body">
+      The cruelest math in tech isn't about algorithms—it's about compensation. While <strong>27,000 employees</strong> at one company (the maximum in our dataset) were shown the door, their CEO's compensation package didn't shrink. It stayed robust at an average of <strong>$118.375 million</strong> across all companies analyzed.
+      <br><br>
+      Here's what that looks like in human terms: if you divided the average CEO's <strong>$118 million</strong> compensation among the average <strong>17,850 laid-off workers</strong>, each person would receive <strong>$6,610</strong>—enough to cover about two months of expenses while job hunting. Instead, that money went to executives whose stated reasons for layoffs ranged from "Year of Efficiency" to "uncertain economy."
+      <br><br>
+      The stock awards tell an even starker story. The average CEO received <strong>$139.6 million</strong> in stock awards alone—that's <strong>1,095 times</strong> the median CEO salary of <strong>$1 million</strong>. These weren't survival bonuses. These were windfalls during workforce decimation.
+    </div>
+    <div class="key-stat-highlight">
+      <div class="key-stat-label">Key Statistic</div>
+      <div class="key-stat-value">$118M</div>
+    </div>
+  </article>
+  
+  <article class="finding-card">
+    <span class="finding-number">Finding #2</span>
+    <h3 class="finding-title">Wall Street's Perverse Incentive: Layoffs Drive Stock Prices Up, Not Down</h3>
+    <div class="finding-body">
+      Conventional wisdom says layoffs signal corporate distress. The data reveals the opposite. Despite cutting <strong>357,000 jobs</strong> collectively, these companies saw their stock prices climb an average of <strong>16.92%</strong> during the layoff period. The median increase was even more dramatic: <strong>80.91%</strong>.
+      <br><br>
+      This isn't coincidental—it's structural. Wall Street rewards "efficiency," which is corporate-speak for reducing labor costs. Fire <strong>11,000 people</strong> (the minimum in our dataset) and analysts call it "streamlining." Your stock jumps. Your CEO gets richer. The workers get severance packages that pale in comparison to executive stock awards.
+      <br><br>
+      One company saw its stock price surge <strong>194.2%</strong> while conducting mass layoffs. Another experienced only a <strong>-2.3%</strong> decline—barely a blip. The message to CEOs is clear: cutting workers is not only safe for your stock price, it's often rewarded. The system incentivizes exactly what devastates communities.
+    </div>
+    <div class="key-stat-highlight">
+      <div class="key-stat-label">Key Statistic</div>
+      <div class="key-stat-value">80.91%</div>
+    </div>
+  </article>
+  
+  <article class="finding-card">
+    <span class="finding-number">Finding #3</span>
+    <h3 class="finding-title">The Efficiency Lie: Profitable Companies Laid Off Thousands While Making Billions</h3>
+    <div class="finding-body">
+      These weren't struggling companies fighting for survival. The average company in this dataset generated <strong>$39.55 billion</strong> in revenue and <strong>$9.18 billion</strong> in profit. One company posted <strong>$73.8 billion</strong> in profit—more than the GDP of 100 countries—while still laying off thousands.
+      <br><br>
+      The stated reasons for layoffs reveal the cynicism: "Year of Efficiency," "Realigning resources," "Uncertain economy." But here's what the numbers show: the median company made <strong>$6.23 billion</strong> in profit. That's not uncertainty—that's more cash than most corporations will ever see.
+      <br><br>
+      Consider this calculation: the minimum profit in our dataset was <strong>$3.04 billion</strong>. The minimum layoffs were <strong>11,000 people</strong>. If you paid each of those <strong>11,000 workers</strong> an additional <strong>$100,000</strong> annually—life-changing money—it would cost <strong>$1.1 billion</strong>, or <strong>36%</strong> of that "struggling" company's profit. They chose layoffs instead. The efficiency wasn't about survival. It was about margin optimization.
+    </div>
+    <div class="key-stat-highlight">
+      <div class="key-stat-label">Key Statistic</div>
+      <div class="key-stat-value">$9.18B</div>
+    </div>
+  </article>
+  
+  <article class="finding-card">
+    <span class="finding-number">Finding #4</span>
+    <h3 class="finding-title">CEO Compensation Barely Budged: Pay Changed 0.79% While 357,000 Lost Everything</h3>
+    <div class="finding-body">
+      While workers lost <strong>100%</strong> of their income, CEO compensation changed by an average of just <strong>0.79%</strong>—essentially flat. The median change was <strong>0.8%</strong>. One CEO saw compensation drop <strong>10.8%</strong> (the maximum decline), but that still meant keeping tens of millions. Another saw it rise <strong>4.2%</strong> during the layoff period.
+      <br><br>
+      This stability is the point. CEO compensation is insulated from the very "market conditions" and "uncertain economy" they cite when firing workers. Stock awards of <strong>$139.6 million</strong> on average, bonuses averaging <strong>$6.75 million</strong>, and base salaries of nearly <strong>$2 million</strong> create a fortress of wealth that layoffs can't penetrate.
+      <br><br>
+      The disparity is staggering: the maximum CEO bonus in our dataset was <strong>$10.4 million</strong>—nearly <strong>583 times</strong> the average severance package tech workers receive (typically 2-4 months of salary, or about <strong>$17,850</strong> for someone earning <strong>$107,000</strong> annually). When executives talk about "shared sacrifice," the data shows who's actually sacrificing.
+    </div>
+    <div class="key-stat-highlight">
+      <div class="key-stat-label">Key Statistic</div>
+      <div class="key-stat-value">0.79%</div>
+    </div>
+  </article>
+  
+  <article class="finding-card">
+    <span class="finding-number">Finding #5</span>
+    <h3 class="finding-title">The Q1 2023 Massacre: Three Dates, 357,000 Jobs Gone</h3>
+    <div class="finding-body">
+      The layoffs weren't spread across the year—they were concentrated into three specific dates in early 2023: <strong>January 20</strong>, <strong>March 14</strong>, and <strong>March 20</strong>. This coordination suggests something darker than individual company struggles: a collective decision by tech leadership to cut workers en masse while the cutting was culturally acceptable.
+      <br><br>
+      When one major tech company announces layoffs, others follow within weeks. It provides cover. It normalizes the decision. It makes "Year of Efficiency" sound like responsible stewardship rather than what the numbers show: profitable companies eliminating workers to pump stock prices and maintain executive compensation.
+      <br><br>
+      Those three dates represent <strong>357,000 individual catastrophes</strong>—mortgages suddenly unaffordable, health insurance lost, careers derailed. Meanwhile, across those same companies, <strong>$2.367 billion</strong> in total CEO compensation (at <strong>$118M</strong> average across <strong>20</strong> entries) remained essentially unchanged. The layoffs happened in a storm. The compensation packages weathered it just fine.
+    </div>
+    <div class="key-stat-highlight">
+      <div class="key-stat-label">Key Statistic</div>
+      <div class="key-stat-value">3 dates</div>
+    </div>
+  </article>
+</section>
+
+<!-- AdSense Placement #3 -->
+<div class="ad-placement" id="ad-bottom"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+<script>
+  // Chart 1: CEO Compensation Breakdown (Doughnut)
+  const compensationCtx = document.getElementById('compensationChart').getContext('2d');
+  new Chart(compensationCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Stock Awards', 'Base Salary', 'Bonus', 'Other Compensation'],
+      datasets: [{
+        data: [139.6, 2, 6.75, 10],
+        backgroundColor: [
+          '#dc2626',
+          '#2563eb',
+          '#059669',
+          '#d97706'
+        ],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            padding: 15,
+            font: {
+              size: 12,
+              weight: '600'
+            }
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return context.label + ': $' + context.parsed + 'M';
+            }
+          }
+        }
+      }
+    }
+  });
+
+  // Chart 2: Layoffs vs Company Profits (Bar)
+  const layoffsProfitsCtx = document.getElementById('layoffsProfitsChart').getContext('2d');
+  new Chart(layoffsProfitsCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Min Layoffs', 'Avg Layoffs', 'Max Layoffs'],
+      datasets: [{
+        label: 'Workers Laid Off',
+        data: [11000, 17850, 27000],
+        backgroundColor: '#dc2626',
+        yAxisID: 'y',
+      }, {
+        label: 'Company Profit ($B)',
+        data: [3.04, 9.18, 73.8],
+        backgroundColor: '#059669',
+        yAxisID: 'y1',
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: {
+        mode: 'index',
+        intersect: false,
+      },
+      scales: {
+        y: {
+          type: 'linear',
+          display: true,
+          position: 'left',
+          title: {
+            display: true,
+            text: 'Workers Laid Off',
+            font: {
+              weight: '600'
+            }
+          }
+        },
+        y1: {
+          type: 'linear',
+          display: true,
+          position: 'right',
+          title: {
+            display: true,
+            text: 'Profit (Billions $)',
+            font: {
+              weight: '600'
+            }
+          },
+          grid: {
+            drawOnChartArea: false,
+          },
+        },
+      },
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            padding: 15,
+            font: {
+              size: 12,
+              weight: '600'
+            }
+          }
+        }
+      }
+    }
+  });
+
+  // Chart 3: Stock Price Performance (Horizontal Bar)
+  const stockPerformanceCtx = document.getElementById('stockPerformanceChart').getContext('2d');
+  new Chart(stockPerformanceCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Minimum Change', 'Average Change', 'Median Change', 'Maximum Change'],
+      datasets: [{
+        label: 'Stock Price Change (%)',
+        data: [-2.3, 16.92, 80.91, 194.2],
+        backgroundColor: [
+          '#dc2626',
+          '#059669',
+          '#2563eb',
+          '#7c3aed'
+        ],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return context.parsed.x + '%';
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'Stock Price Change (%)',
+            font: {
+              weight: '600'
+            }
+          }
+        }
+      }
+    }
+  });
+
+  // Chart 4: Worker Sacrifice vs CEO Stability (Line)
+  const sacrificeCtx = document.getElementById('sacrificeChart').getContext('2d');
+  new Chart(sacrificeCtx, {
+    type: 'line',
+    data: {
+      labels: ['Pre-Layoff', 'Layoff Announcement', 'Post-Layoff'],
+      datasets: [{
+        label: 'Worker Income Change (%)',
+        data: [0, -50, -100],
+        borderColor: '#dc2626',
+        backgroundColor: 'rgba(220, 38, 38, 0.1)',
+        tension: 0.4,
+        fill: true,
+        pointRadius: 6,
+        pointHoverRadius: 8
+      }, {
+        label: 'CEO Compensation Change (%)',
+        data: [0, 0.4, 0.79],
+        borderColor: '#059669',
+        backgroundColor: 'rgba(5, 150, 105, 0.1)',
+        tension: 0.4,
+        fill: true,
+        pointRadius: 6,
+        pointHoverRadius: 8
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            padding: 15,
+            font: {
+              size: 12,
+              weight: '600'
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          title: {
+            display: true,
+            text: 'Income Change (%)',
+            font: {
+              weight: '600'
+            }
+          }
+        }
+      }
+    }
+  });
+
+  // Add smooth scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.chart-container, .finding-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+        </main>
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            
+            <!-- Ad Block -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">Advertisement</div>
+                <div class="sidebar-ad">
+                    <!-- AdSense Sidebar Ad -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-9045696717764033"
+                         data-ad-slot="sidebar"
+                         data-ad-format="auto"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
+            </div>
+            
+            <!-- More Investigations -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">More Investigations</div>
+                <a href="../investigations/bird-strikes.html" class="investigation-link">
+                    35 Years of FAA Bird Strike Data
+                </a>
+                <a href="../investigations/hollywood.html" class="investigation-link">
+                    Hollywood's Box Office Formula
+                </a>
+                <a href="../investigations/car-crashes.html" class="investigation-link">
+                    2M NYC Traffic Crashes Analyzed
+                </a>
+            </div>
+            
+            <!-- Data Science Deep Dive -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">🔬 For Data Nerds</div>
+                <a href="dark-money-data-analysis.html" class="download-btn" style="background: #d2691e; margin-bottom: 12px;">
+                    📊 Statistical Analysis
+                </a>
+                <p style="font-size: 0.85rem; color: #666; line-height: 1.5;">
+                    See all formulas, calculations, and statistical tests behind this investigation.
+                </p>
+            </div>
+            
+            <!-- Download Data -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">Download Data</div>
+                <a href="../data/tech_layoffs/tech_layoffs_ceo_pay_2023_2024.csv" class="download-btn" download>
+                    📊 Download Raw CSV
+                </a>
+            </div>
+            
+            <!-- Share -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">Share This</div>
+                <div style="display: flex; gap: 8px; flex-direction: column;">
+                    <button onclick="shareTwitter()" style="padding: 10px; background: #1DA1F2; color: white; border: none; border-radius: 4px; cursor: pointer;">Share on X</button>
+                    <button onclick="shareFacebook()" style="padding: 10px; background: #1877F2; color: white; border: none; border-radius: 4px; cursor: pointer;">Share on Facebook</button>
+                    <button onclick="copyLink()" style="padding: 10px; background: #666; color: white; border: none; border-radius: 4px; cursor: pointer;">Copy Link</button>
+                </div>
+            </div>
+            
+        </aside>
+        
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div>
+            <div class="footer-logo">RECORDS<span>REVEAL</span></div>
+            <p class="footer-about">
+                Independent investigative data journalism. We analyze public government 
+                records and publish findings in plain English. Built on Python, machine 
+                learning, and a commitment to transparency.
+            </p>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Investigations</h4>
+            <ul class="footer-links">
+                <li><a href="../index.html">Latest</a></li>
+                <li><a href="../investigations.html">All Investigations</a></li>
+                <li><a href="../methodology.html">Methodology</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h4>About</h4>
+            <ul class="footer-links">
+                <li><a href="../about.html">About Us</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+                <li><a href="../privacy.html">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        © 2026 RecordsReveal.com · All data sourced from public records · 
+        Built with Python & Claude AI
+    </div>
+</footer>
+
+<script>
+// Share functions
+function shareTwitter() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(document.title);
+    window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+}
+
+function shareFacebook() {
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+}
+
+function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('Link copied to clipboard!');
+    });
+}
+</script>
+
+</body>
+</html>
