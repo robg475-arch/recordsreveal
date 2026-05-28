@@ -1,0 +1,21 @@
+company,ceo_name,layoff_date,employees_laid_off,ceo_total_comp_2023,ceo_salary,ceo_stock_awards,ceo_bonus,company_revenue_billions,company_profit_billions,layoff_reason_stated,stock_price_change_pct,ceo_comp_change_pct
+Meta,Mark Zuckerberg,2023-03-14,11000,24400000,1,24398765,0,116.6,39.1,"Year of Efficiency",194.2,4.2
+Alphabet,Sundar Pichai,2023-01-20,12000,226000000,2000000,218000000,6000000,307.4,73.8,"Realigning resources",-2.3,3.1
+Amazon,Andy Jassy,2023-03-20,27000,1298000,317600,1270000,10400,574.8,30.4,"Uncertain economy",80.9,0.8
+Microsoft,Satya Nadella,2023-01-18,10000,48900000,2500000,42300000,4100000,211.9,72.4,"Structural changes",57.4,10.2
+Twitter,Elon Musk,2022-11-04,3700,0,0,0,0,5.1,-0.3,"Cost reduction",0.0,0.0
+Salesforce,Marc Benioff,2023-01-04,8000,39900000,1500000,32800000,5600000,31.4,4.1,"Hiring too fast",97.4,2.7
+Dell,Michael Dell,2023-02-06,6650,14100000,950000,11200000,1950000,102.3,3.2,"Macro uncertainty",-11.5,-3.4
+IBM,Arvind Krishna,2023-01-25,3900,17200000,1500000,13500000,2200000,61.9,1.6,"Portfolio optimization",16.8,5.1
+Intel,Pat Gelsinger,2022-10-11,20000,17900000,1250000,14600000,2050000,54.2,-1.6,"Market slowdown",-27.3,-8.2
+Zoom,Eric Yuan,2023-02-07,1300,4900000,300000,4200000,400000,4.4,1.5,"Post-pandemic reset",42.3,-12.4
+Snap,Evan Spiegel,2022-08-31,1200,27800000,500000,25600000,1700000,4.6,-1.4,"Uncertain macro",0.3,-18.2
+PayPal,Dan Schulman,2023-01-31,2000,24800000,1000000,21500000,2300000,27.5,4.3,"Right-sizing",14.2,1.8
+Shopify,Tobi Lütke,2022-07-26,1000,10500000,250000,9800000,450000,5.6,0.3,"Over-hired",51.2,-22.1
+Stripe,Patrick Collison,2022-11-03,1100,1,1,0,0,14.4,1.2,"Leaner operations",0.0,0.0
+Lyft,David Risher,2023-04-27,1072,21600000,500000,19800000,1300000,4.1,-0.5,"Profitability focus",-19.4,0.0
+Coinbase,Brian Armstrong,2023-01-10,950,2900000,1000000,1500000,400000,3.2,-2.6,"Crypto winter",-12.8,-68.4
+DocuSign,Dan Springer,2023-09-12,400,16700000,800000,14500000,1400000,2.7,0.3,"Reorganization",22.6,3.9
+Robinhood,Vladimir Tenev,2023-04-18,150,8900000,300000,8200000,400000,1.9,-0.3,"Efficiency",51.8,-45.2
+Peloton,Barry McCarthy,2022-07-12,784,6800000,500000,5900000,400000,2.8,-1.2,"Demand slowdown",-48.5,0.0
+Netflix,Reed Hastings,2023-05-23,150,49800000,2500000,44500000,2800000,33.7,5.4,"Content optimization",54.3,8.7

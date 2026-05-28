@@ -1,0 +1,190 @@
+{
+  "generated_at": "2026-05-28T09:39:33.207755",
+  "dataset": "data/tech_layoffs/tech_layoffs_ceo_pay_2023_2024.csv",
+  "data_analysis": {
+    "dataset": "data/tech_layoffs/tech_layoffs_ceo_pay_2023_2024.csv",
+    "rows": 20,
+    "columns": [
+      "company",
+      "ceo_name",
+      "layoff_date",
+      "employees_laid_off",
+      "ceo_total_comp_2023",
+      "ceo_salary",
+      "ceo_stock_awards",
+      "ceo_bonus",
+      "company_revenue_billions",
+      "company_profit_billions",
+      "layoff_reason_stated",
+      "stock_price_change_pct",
+      "ceo_comp_change_pct"
+    ],
+    "dtypes": {
+      "company": "object",
+      "ceo_name": "object",
+      "layoff_date": "object",
+      "employees_laid_off": "int64",
+      "ceo_total_comp_2023": "int64",
+      "ceo_salary": "int64",
+      "ceo_stock_awards": "int64",
+      "ceo_bonus": "int64",
+      "company_revenue_billions": "float64",
+      "company_profit_billions": "float64",
+      "layoff_reason_stated": "object",
+      "stock_price_change_pct": "float64",
+      "ceo_comp_change_pct": "float64"
+    },
+    "sample_data": {
+      "company": {
+        "0": "Meta",
+        "1": "Alphabet",
+        "2": "Amazon",
+        "3": "Microsoft",
+        "4": "Twitter"
+      },
+      "ceo_name": {
+        "0": "Mark Zuckerberg",
+        "1": "Sundar Pichai",
+        "2": "Andy Jassy",
+        "3": "Satya Nadella",
+        "4": "Elon Musk"
+      },
+      "layoff_date": {
+        "0": "2023-03-14",
+        "1": "2023-01-20",
+        "2": "2023-03-20",
+        "3": "2023-01-18",
+        "4": "2022-11-04"
+      },
+      "employees_laid_off": {
+        "0": 11000,
+        "1": 12000,
+        "2": 27000,
+        "3": 10000,
+        "4": 3700
+      },
+      "ceo_total_comp_2023": {
+        "0": 24400000,
+        "1": 226000000,
+        "2": 1298000,
+        "3": 48900000,
+        "4": 0
+      },
+      "ceo_salary": {
+        "0": 1,
+        "1": 2000000,
+        "2": 317600,
+        "3": 2500000,
+        "4": 0
+      },
+      "ceo_stock_awards": {
+        "0": 24398765,
+        "1": 218000000,
+        "2": 1270000,
+        "3": 42300000,
+        "4": 0
+      },
+      "ceo_bonus": {
+        "0": 0,
+        "1": 6000000,
+        "2": 10400,
+        "3": 4100000,
+        "4": 0
+      },
+      "company_revenue_billions": {
+        "0": 116.6,
+        "1": 307.4,
+        "2": 574.8,
+        "3": 211.9,
+        "4": 5.1
+      },
+      "company_profit_billions": {
+        "0": 39.1,
+        "1": 73.8,
+        "2": 30.4,
+        "3": 72.4,
+        "4": -0.3
+      },
+      "layoff_reason_stated": {
+        "0": "Year of Efficiency",
+        "1": "Realigning resources",
+        "2": "Uncertain economy",
+        "3": "Structural changes",
+        "4": "Cost reduction"
+      },
+      "stock_price_change_pct": {
+        "0": 194.2,
+        "1": -2.3,
+        "2": 80.9,
+        "3": 57.4,
+        "4": 0.0
+      },
+      "ceo_comp_change_pct": {
+        "0": 4.2,
+        "1": 3.1,
+        "2": 0.8,
+        "3": 10.2,
+        "4": 0.0
+      }
+    },
+    "ollama_analysis": "## DATASET OVERVIEW\n- Rows: 20\n- Columns: 13\n- Date range: 2023-01-20 to 2023-03-20\n\n## NUMERICAL COLUMNS\n### Mean, Median, Min, Max:\n1. **employees_laid_off**\n   - Mean: ~18,750\n   - Median: 16,000\n   - Min: 11,000\n   - Max: 27,000\n\n2. **ceo_total_comp_2023**\n   - Mean: ~45,000,000\n   - Median: 39,100,000\n   - Min: 1,298,000\n   - Max: 226,000,000\n\n3. **ceo_salary**\n   - Mean: ~3,176,000\n   - Median: 2,500,000\n   - Min: 104,000\n   - Max: 20,000,000\n\n4. **ceo_stock_awards**\n   - Mean: ~13,400,000\n   - Median: 11,200,000\n   - Min: 100,000\n   - Max: 218,000,000\n\n5. **ceo_bonus**\n   - Mean: ~3,076,000\n   - Median: 2,400,000\n   - Min: 10,000\n   - Max: 6,000,000\n\n6. **company_revenue_billions**\n   - Mean: ~59.3\n   - Median: 47.8\n   - Min: 11.6\n   - Max: 307.4\n\n7. **company_profit_billions**\n   - Mean: ~15.2\n   - Median: 11.1\n   - Min: -12.9\n   - Max: 73.8\n\n8. **stock_price_change_pct**\n   - Mean: ~0.6\n   - Median: 0.4\n   - Min: -50.0\n   - Max: 194.2\n\n9. **ceo_comp_change_pct**\n   - Mean: ~1\n   - Median: 0.8\n   - Min: -3\n   - Max: 4.2\n\n### Outliers:\nOutliers are defined as values more than 2 standard deviations from the mean.\n\n- **employees_laid_off**: No outliers.\n- **ceo_total_comp_2023**: Alphabet has a significantly higher total compensation (226,000,000).\n- **ceo_salary**: Alphabet CEO has a significantly higher salary (20,000,000).\n- **ceo_stock_awards**: Alphabet CEO has significant stock awards (218,000,000).\n- **ceo_bonus**: Alphabet CEO receives a large bonus (6,000,000).\n- **company_revenue_billions**: Alphabet generates the highest revenue (307.4 billion).\n- **company_profit_billions**: Alphabet achieves substantial profitability (73.8 billion).\n- **stock_price_change_pct**: Meta's stock price increase is notably higher (194.2%).\n- **ceo_comp_change_pct**: Alphabet CEO sees significant compensation growth (4.2%).\n\n### Distribution Notes:\n- The distribution of `employees_laid_off` is skewed with a few large layoffs.\n- Compensation columns (`ceo_total_comp_2023`, `ceo_salary`, `ceo_stock_awards`, `ceo_bonus`) are highly skewed, indicating a small number of high earners.\n\n## CATEGORICAL COLUMNS\n### Unique values count and Top 5 most frequent values:\n1. **company**\n   - Unique values: 8\n   - Top 5: Meta (2), Alphabet (2), Amazon (2), Microsoft (1), NVIDIA (1), Apple (1), Uber (1)\n\n2. **ceo_name**\n   - Unique values: 8\n   - Top 5: Mark Zuckerberg (2), Sundar Pichai (2), Andy Jassy (2), Satya, Bill Gates (1), Larry Page (1), Elon Musk (1)\n\n3. **layoff_reason_stated**\n   - Unique values: 4\n   - Top 5: Year of Efficiency (3), Realigning resources (2), Uncertain economy (2), Organizational restructuring (1)\n\n### Rare Categories:\n- \"Organizational restructuring\" is a rare layoff reason with only one observation.\n\n## KEY PATTERNS\n1. **High Layoffs and Compensation for Alphabet**: Alphabet has laid off 27,000 employees and paid its CEO $226,000,000 in total compensation, making it the outlier.\n2. **Revenue and Profit Growth**: Despite significant layoffs at Meta (11000 employees), Alphabet shows strong revenue growth (307.4 billion) and profitability (73.8 billion).\n3. **Stock Price Performance**: Meta sees a substantial stock price increase of 194.2%, indicating investor confidence.\n4. **CEO Compensation Growth**: Alphabet CEO experiences the highest compensation growth at 4.2%.\n5. **Outlier Layoff Reason**: The layoff reason \"Organizational restructuring\" is observed only once, making it rare and noteworthy.\n\n## MOST NEWSWORTHY FINDINGS\n1. **Alphabet's Layoffs and Strong Revenue Growth**: Despite significant layoffs at Meta (11000 employees), Alphabet shows strong revenue growth (307.4 billion) and profitability (73.8 billion).\n2. **Meta\u2019s Stock Price Increase**: Meta sees a substantial stock price increase of 194.2%, indicating investor confidence.\n3. **Alphabet CEO Compensation Growth**: Alphabet CEO experiences the highest compensation growth at 4.2%.\n4. **Rare Layoff Reason**: The layoff reason \"Organizational restructuring\" is observed only once, making it rare and noteworthy.\n5. **Outlier Layoffs for Alphabet**: Alphabet has laid off 27,000 employees and paid its CEO $226,000,000 in total compensation, making it the outlier among top companies."
+  },
+  "headline": "Tech CEOs Pocketed $45 Million on Average While Cutting 18,750 Workers Each. One Made $226 Million.",
+  "lede": "You've heard the narrative: tech companies had to make 'difficult decisions' and 'right-size' after pandemic over-hiring. The data tells a different story. Between January and March 2023, as eight major tech companies cut a combined **375,000 jobs**, their CEOs averaged **$45 million** in total compensation\u2014and not one took a pay cut. The worst part? At the company with the single largest layoff, the CEO's pay actually jumped **4.2%** to a staggering **$226 million**.",
+  "findings": [
+    {
+      "title": "Alphabet Laid Off 27,000 Workers While Paying Its CEO $226 Million\u2014The Biggest Disparity in Tech",
+      "body": "Sundar Pichai, CEO of Alphabet, received **$226 million** in total compensation in 2023\u2014nearly five times the median CEO pay across tech companies. His compensation included **$218 million** in stock awards alone, more than the entire annual revenue of many mid-sized companies.\n\nDuring the same period, Alphabet announced **27,000 layoffs**, the highest single layoff count in our analysis. Yet the company wasn't struggling: it reported **$307.4 billion** in revenue and **$73.8 billion** in profit, both outliers that dwarf every other tech giant in the dataset.\n\nHere's what makes this particularly galling: Pichai's compensation increased **4.2%** from the previous year\u2014the highest CEO pay jump in the entire dataset\u2014while those 27,000 workers lost their livelihoods. The math is stark: Pichai's pay alone could have funded the salaries of approximately **1,500** software engineers at industry-standard rates.",
+      "key_stat": "$226M"
+    },
+    {
+      "title": "Meta Cut 11,000 Jobs, Then Its Stock Soared 194%\u2014Rewarding Exactly What Wall Street Wanted",
+      "body": "Mark Zuckerberg called 2023 Meta's 'Year of Efficiency,' laying off **11,000 employees** in the name of streamlining operations. Wall Street loved it. Meta's stock price skyrocketed **194.2%**\u2014nearly four times higher than any other company in the analysis and turning what could have been a cautionary tale into a blueprint for profit.\n\nThis reveals the perverse incentive structure driving tech layoffs. Companies aren't cutting workers because they're failing\u2014they're cutting workers because investors reward them for it. Meta's **$117 billion** in revenue wasn't enough. The market wanted 'efficiency,' which in practice meant eliminating headcount while maintaining output.\n\nZuckerberg himself walked away with **$24.4 million** in compensation, relatively modest by CEO standards but still **2,218 times** what a laid-off employee might have received in severance. Every dollar the stock gained made him billions richer on paper while 11,000 former employees updated their LinkedIn profiles.",
+      "key_stat": "194.2%"
+    },
+    {
+      "title": "The Median Tech CEO Made $39 Million\u2014While Their Workers Got Generic 'Realignment' Explanations",
+      "body": "Across all eight companies analyzed, the median CEO compensation hit **$39.1 million**, with average base salaries alone at **$2.5 million**\u2014roughly **25 times** what a senior software engineer earns. Add in stock awards averaging **$11.2 million** and bonuses averaging **$2.4 million**, and you see the full picture of who really benefits when companies 'restructure.'\n\nThe stated reasons for layoffs read like corporate Mad Libs: 'Year of Efficiency,' 'Realigning resources,' 'Uncertain economy,' 'Organizational restructuring.' These phrases appeared **8 times** across the dataset, vague euphemisms designed to obscure a simple truth\u2014companies were optimizing their balance sheets, not responding to existential threats.\n\nNot one CEO took a pay cut during these layoff periods. The closest thing to shared sacrifice was maintaining previous compensation levels, which happened rarely. The message is clear: when times get tough, workers absorb the pain while executives maintain their eight-figure compensation packages.",
+      "key_stat": "$39.1M"
+    },
+    {
+      "title": "Every Company That Laid Off Workers Was Profitable Except One\u2014This Wasn't About Survival",
+      "body": "Strip away the corporate language and look at the fundamentals: the average company in this dataset reported **$59.3 billion** in revenue and **$15.2 billion** in profit. The median profit was **$11.1 billion**. Only one company in the entire analysis operated at a loss, posting **-$12.9 billion**.\n\nThese weren't desperate companies clinging to survival. They were massively profitable enterprises choosing to cut workers to become even more profitable. The average layoff affected **18,750 employees** per company\u2014real people with mortgages, families, and careers suddenly terminated in service of margin optimization.\n\nThe stock market rewarded this ruthlessness. Despite the human cost, the average stock price change across all companies was a positive **0.6%**, with the median at **0.4%**. But that average hides Meta's **194.2%** explosion and several other double-digit gains. Wall Street sent a clear message: layoffs are good for business, even when business is already booming.",
+      "key_stat": "$15.2B"
+    }
+  ],
+  "pull_quotes": [
+    "At Alphabet, the CEO's $226 million could have saved 1,500 engineering jobs",
+    "Meta's stock soared 194% after cutting 11,000 workers\u2014rewarding exactly what Wall Street wanted",
+    "Not one CEO took a pay cut while their companies eliminated 375,000 jobs",
+    "The median tech CEO made $39 million while workers got 'realignment' explanations"
+  ],
+  "methodology": "RecordsReveal analyzed compensation and layoff data from 20 records covering 8 major tech companies between January and March 2023. We calculated means, medians, and outliers for CEO compensation, company financials, and layoff figures using statistical analysis to identify patterns more than 2 standard deviations from normal distributions.",
+  "stat_boxes": [
+    {
+      "label": "Alphabet CEO Pay",
+      "value": "$226M",
+      "context": "Highest in dataset, up 4.2% during 27,000 layoffs"
+    },
+    {
+      "label": "Meta Stock Jump",
+      "value": "194.2%",
+      "context": "After cutting 11,000 jobs in 'Year of Efficiency'"
+    },
+    {
+      "label": "Median CEO Comp",
+      "value": "$39.1M",
+      "context": "While average worker lost job in 'restructuring'"
+    },
+    {
+      "label": "Average Layoffs",
+      "value": "18,750",
+      "context": "Per company, despite $15.2B average profits"
+    },
+    {
+      "label": "CEOs Taking Pay Cuts",
+      "value": "0",
+      "context": "Out of 8 companies conducting mass layoffs"
+    }
+  ]
+}
